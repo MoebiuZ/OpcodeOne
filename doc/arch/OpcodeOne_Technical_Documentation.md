@@ -35,12 +35,12 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [NAND (logical NAND)](#nand)
 		* [NEG (NEGative - two's complement)](#neg)
 		* [CMP (CoMPare)](#cmp)
-	* Rotate and Shift
+	* Rotate, Shift and Bit manipulation
 		* [RL (Rotate Left)](#rl)
 		* [RR (Rotate Right)](#rr)
 		* [SL (Shift Left)](#sl)
 		* [SR (Shift Right)](#sr)
-	* Bit manipulation
+		* [BIT (single BIT operations](#bit)
 	* Jump
 		* [JMP (JuMP)](#jmp)
 		* [CALL (CALL subroutine)](#call)
@@ -62,6 +62,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 * This first draft probably wastes a lot of "data" being 8 bit each opcode (256 possible opcodes). This could be redesigned in the future, or using the empty opcodes to implement complex "non-standard" instructions.
 * Each instruction "cycles consumed" or "instruction speed" will be determined with benchmarks once implemented, and the derived value will be used for this specification.
 * Little endian architecture (for the moment)
+* TODO: What to do when Mode is not in table?
 
 
 ## Registers
@@ -107,7 +108,7 @@ Note: To be rearranged
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[MR](#mr)</sub>   |  <sub>[MW](#mw)</sub>   |  <sub>[VR](#vr)</sub>  |  <sub>[VW](#vw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
 | <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[RL](#rl)</sub>   |  <sub>[RR](#rr)</sub>   |  <sub>[SL](#sl)</sub>   |  <sub>[SR](#sr)</sub>   |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  |
-| <sub>**2x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**2x**</sub> | <sub>[BIT](#bit)</sub>  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**5x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
@@ -126,7 +127,7 @@ Note: To be rearranged
 
 ## Assembly syntax
 
-* Arguments are comma (**,**) separated
+* Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: LD or PUSH)
 * **%** indicates a register
 * **[]** indicates an offset
 * Numbers can be expressed as decimal or hexadecimal (starting with 0x)
@@ -493,20 +494,76 @@ Performs a logical AND between 2 source registers and stores the result in desti
 #### SR
 
 
+#### BIT
+
+// TODO: What to do when number (#) is 24-31?
+
+Sets bit number # on register
+
+| Opcode   | Mode    | Dst reg  | Unused  | Number  |
+|----------|---------|----------|---------|---------|
+| 0000xxxx | 0000    | xxxx     | xxx     | xxxxx   |
+
+	BIT{S} %dst, #(0-24)
+
+
+Resets bit number # on register
+
+| Opcode   | Mode    | Dst reg  | Unused  | Number  |
+|----------|---------|----------|---------|---------|
+| 0000xxxx | 0001    | xxxx     | xxx     | xxxxx   |
+
+	BIT{R} %dst, #(0-24)
+
+
+Tests bit number # on register and sets Z flag accordingly.
+
+| Opcode   | Mode    | Dst reg  | Src Reg | Number  |
+|----------|---------|----------|---------|---------|
+| 0000xxxx | 0010    | xxxx     | xxxx    | xxxxx   |
+
+	BIT{T} %dst, #(0-24)
+
+
 #### CMP
 
 
 #### LD
 	
-	Loads a inmediate value into a register
+	Loads an inmediate value into a register/s
+
+| Opcode   | Mode | Dst Reg  | Unused    | Unused     | Value                         |
+|----------|------|----------|-----------|------------|-------------------------------|
+| 0000xxxx | 0000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 	LD %dst, 0xdeadbe
+
+
+| Opcode   | Mode | Dst Reg1 | Dst reg2 | Unused     | Value                         |
+|----------|------|----------|----------|------------|-------------------------------|
+| 0000xxxx | 0001 | xxxx     | xxxx     | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+	LD %dst1 %dst2, 0xdeadbe
+
+
+| Opcode   | Mode | Dst Reg1 | Dst reg2 | Dst reg3 | Value                         |
+|----------|------|----------|----------|----------|-------------------------------|
+| 0000xxxx | 0010 | xxxx     | xxxx     | xxxx     | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+
+	LD %dst1 %dst2 %dst3, 0xdeadbe
+
 
 #### CP
 	
 	Copies a register into another
 
+| Opcode   | Unused  | Dst reg  | Src Reg | Unused |
+|----------|---------|----------|---------|--------|
+| 0000xxxx | xxxx    | xxxx     | xxxx    | xxxx   |
+
 	CP %dst, %src
+
 
 #### IN
 
@@ -520,6 +577,8 @@ Performs a logical AND between 2 source registers and stores the result in desti
 
 #### NOP
 
+Does nothing (No Operation)
+
 | Opcode   | Unused            |
 |----------|-------------------|
 | 00000000 | xxxxxxxx xxxxxxxx |
@@ -529,5 +588,11 @@ Performs a logical AND between 2 source registers and stores the result in desti
 
 #### HALT
 
+Halts the CPU
 
+| Opcode   | Unused            |
+|----------|-------------------|
+| 0000xxxx | xxxxxxxx xxxxxxxx |
+	
+	HALT
 
