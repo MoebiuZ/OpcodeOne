@@ -59,7 +59,7 @@ Feel free to ask whatever you don't understand to catch up, we are here to help 
 
 You can start contributing following (but not limited by) these [exercises](EXERCISES.md).
 
-Also don't forget to check the [wiki](wiki) to find useful/interesting info and references.
+Also don't forget to check the [wiki](https://github.com/MoebiuZ/OpcodeOne/wiki) to find useful/interesting info and references.
 
 
 
