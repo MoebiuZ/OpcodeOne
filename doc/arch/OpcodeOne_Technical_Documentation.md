@@ -22,6 +22,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [MTR (Memory TRansfer)](#mtr)
 		* [PUSH](#push)
 		* [POP](#pop)
+		* [XCHG (eXCHanGe registers)](#xchg)
 	* Arithmetic and Logical
 		* [ADD (ADDition)](#add)
 		* [SUB (SUBstraction)](#sub)
@@ -41,6 +42,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [SL (Shift Left)](#sl)
 		* [SR (Shift Right)](#sr)
 		* [BIT (single BIT operations](#bit)
+		* [SWP (SWaP bytes)](#swp)
 	* Jump
 		* [JMP (JuMP)](#jmp)
 		* [CALL (CALL subroutine)](#call)
@@ -104,11 +106,11 @@ OpcodeOne has two 24-bit address buses, one intended for RAM (manipulated with M
 Note: To be rearranged
 
 
-|        |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
+| <sub>Higher Byte</sub> |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[MR](#mr)</sub>   |  <sub>[MW](#mw)</sub>   |  <sub>[VR](#vr)</sub>  |  <sub>[VW](#vw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
 | <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[RL](#rl)</sub>   |  <sub>[RR](#rr)</sub>   |  <sub>[SL](#sl)</sub>   |  <sub>[SR](#sr)</sub>   |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  |
-| <sub>**2x**</sub> | <sub>[BIT](#bit)</sub>  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**2x**</sub> | <sub>[BIT](#bit)</sub>  | <sub>[SWP](#swp)</sub>      | <sub>[XCHG](#xchg)</sub>      |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**5x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
@@ -496,7 +498,7 @@ Performs a logical AND between 2 source registers and stores the result in desti
 
 #### BIT
 
-// TODO: What to do when number (#) is 24-31?
+// TODO: What to do when number (#) is 24-31? Should we use Mode to specify High-Medium-Lower byte and use 3 bits (0-7) for number?
 
 Sets bit number # on register
 
@@ -523,6 +525,11 @@ Tests bit number # on register and sets Z flag accordingly.
 | 0000xxxx | 0010    | xxxx     | xxxx    | xxxxx   |
 
 	BIT{T} %dst, #(0-24)
+
+#### SWG
+
+
+#### XCHG
 
 
 #### CMP
