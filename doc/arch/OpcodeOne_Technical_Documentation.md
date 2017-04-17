@@ -103,24 +103,24 @@ OpcodeOne has two 24-bit address buses, one intended for RAM (manipulated with M
 Note: To be rearranged
 
 
-|        |  x0   |  x1   |  x2   |  x3   |  x4   |  x5   |  x6   |  x7   |  x8   |  x9   |  xA   |  xB   |  xC   |  xD   |  xE   |  xF   |
+|        |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| **0x** |  [NOP](#nop)  |  [HALT](#halt) |  [MR](#mr)   |  [MW](#mw)   |  [VR](#vr)  |  [VW](#vw)   |  [PUSH](#push) |  [POP](#pop)  |  [JMP](#jmp)  |  [RET](#ret)  |  [ADD](#add)  |  [SUB](#sub)  |  [MUL](#mul)  |  [DIV](#div)  |  [AND](#and)  |  [OR](#or)   |
-| **1x** |  [XOR](#xor)  |  [NAND](#nand) |  [NEG](#neg)  |  [IN](#in)   |  [OUT](#out)  |  [LD](#ld)   |  [CP](#cp)   |  [CMP](#cmp)  |  [RL](#rl)   |  [RR](#rr)   |  [SL](#sl)   |  [SR](#sr)   |  [INC](#inc)  |  [DEC](#dec)  |  [CALL](#call) |  [MTR](#mtr)  |
-| **2x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **3x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **4x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **5x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **6x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **7x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **8x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **9x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Ax** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Bx** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Cx** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Dx** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Ex** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| **Fx** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[MR](#mr)</sub>   |  <sub>[MW](#mw)</sub>   |  <sub>[VR](#vr)</sub>  |  <sub>[VW](#vw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
+| <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[RL](#rl)</sub>   |  <sub>[RR](#rr)</sub>   |  <sub>[SL](#sl)</sub>   |  <sub>[SR](#sr)</sub>   |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  |
+| <sub>**2x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**5x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**6x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**7x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**8x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**9x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Ax**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Bx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Cx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Dx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Ex**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**Fx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 
 
 
