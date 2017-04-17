@@ -1,0 +1,354 @@
+import re
+import sys
+import struct
+import binascii
+
+
+
+code = []
+instructions = []
+labels = dict()
+
+MAX_INT = 16777215  # 0xffffff
+
+
+REG = "[ABCD]{1}"
+REG_IND = "\[[ABCD]{1}\]"
+HEX = "0x[0-9a-f]{1,6}"
+INT = "[0-9]{1,8}"
+OFFSET = "(?:([\+\-]{1})(" + INT + "|" + HEX + "|" + REG + ")){0,1}"
+NUMBER_INT = "#" + INT
+
+spc = "\s+"
+sep = ",\s+"
+
+
+line_count = 1
+inst_addr = 0
+in_code = True
+
+
+OPCODES = { 
+	"NOP": 	0x00,
+	"HALT": 0x01,
+	"MR": 	0x02,
+	"MW": 	0x03
+}
+
+ADDRESSING_MODES = {
+	"INDIRECT": 		0x00,
+	"INDIRECT+NEAR": 	0x01,
+	"INDIRECT+REG": 	0x02,
+	"INDIRECT+FAR": 	0x03,
+	"INDIRECT-NEAR":	0x04,
+	"INDIRECT-REG":		0x05,
+	"INDIRECT-FAR":		0x06,
+	"ABSOLUTE":			0x07,
+	"ABSOLUTE+NEAR":	0x08,
+	"ABSOLUTE+REG":		0x09,
+	"ABSOLUTE+FAR":		0x0a,
+	"ABSOLUTE-NEAR":	0x0b,
+	"ABSOLUTE-REG":		0x0c,
+	"ABSOLUTE-FAR":		0x0d,
+	"unused7":			0x0e,
+	"unused8":			0x0f
+	
+}
+
+
+REGISTERS = {
+	"A": 		0x00,
+	"B": 		0x01,
+	"C": 		0x02,
+	"D": 		0x03,
+	"unused1":	0x04,
+	"unused2":	0x05,
+	"unused3":	0x06,
+	"unused4":	0x07,
+	"unused5":	0x08,
+	"unused6":	0x09,
+	"unused7":	0x0a,
+	"unused8":	0x0b,
+	"unused9":	0x0c,
+	"unuseda":	0x0d,
+	"unusedb":	0x0e,
+	"unusedc":	0x0f
+}
+
+
+
+
+
+class REMatcher(object):
+    def __init__(self, matchstring):
+        self.matchstring = matchstring
+
+    def match(self,regexp):
+        self.rematch = re.match(regexp, self.matchstring, re.IGNORECASE)
+        return bool(self.rematch)
+
+    def group(self,i):
+        return self.rematch.group(i)
+
+    def groups(self):
+       	return self.rematch.groups()
+
+
+def checkInCode():
+	global in_code
+	global line_count
+	if not in_code:
+		print "Error in line " + str(line_count) + ": Instruction not in code section"
+		exit()
+
+def checkInData():
+	global in_code
+	global line_count
+	if in_code:
+		print "Error in line " + str(line_count) + " Instruction not in data section"
+		exit()
+
+
+
+def write24(num):
+
+	with open("./output.bin", 'ab') as output:
+
+		b = bytearray(struct.pack('>I', num))
+	
+		output.write(chr(b[1]))
+		output.write(chr(b[2]))
+		output.write(chr(b[3]))
+
+	output.close()
+
+	
+	
+def push8(num):
+
+	with open("./output.bin", 'ab') as output:
+	
+		output.write(chr(num))
+		
+	output.close()
+
+
+def push24(num):
+	global code
+	b = bytearray(struct.pack('>I', num))
+	code.append(chr(b[1]))
+	code.append(chr(b[2]))
+	code.append(chr(b[3]))
+
+	
+	
+def push8(num):
+	global code
+	code.append(chr(num))
+		
+
+
+
+def parse(line):
+
+	
+	global in_code
+	global inst_addr
+	global instructions
+	global line_count
+	global tags
+	global MAX_INT
+
+
+	line = line.strip(" \t\n\r")
+	
+	# Remove comments if not inside string
+	if re.match(".*?#.*", line):
+		if not re.match("[^']*'[^#]*#[^']*", line):
+			line = re.sub("\s*#.*", "", line)
+			
+	
+	
+	m = REMatcher(line.strip(" \t\n\r"))
+
+	if line == '': # Empty line
+		pass
+	
+	elif m.match(":(\w+):\\Z"): # Labels
+		if m.group(1) in labels:
+			print "Label :" + m.group(1) + ": is duplicated"
+			exit()
+		else:
+			labels[m.group(1)] = inst_addr 
+
+	elif m.match(".code\Z"): # Section.code
+		in_code = True
+			
+	elif m.match(".data\Z"): # Section .data
+		in_code = False
+		
+	elif m.match("(\w+)\s+DS\s+\'(.+)\'\Z"): # Data String
+		checkInData()
+		#print m.group(1)
+		#print m.group(2)
+		# Note: add 0x00 as string terminator
+		
+	elif m.match("(\w+)\s+DW\s+(" + HEX + ")\Z"): # Data Word
+		checkInData()
+		#print m.group(1)
+		#print m.group(2)
+
+	elif m.match("HALT\Z"):
+		checkInCode()
+		opcode = OPCODES['HALT']
+		instructions.append(inst_addr)
+		push24(opcode << 16)
+		inst_addr += 1
+
+
+	elif m.match("NOP\Z"):
+		checkInCode()
+		opcode = OPCODES['NOP']
+		instructions.append(inst_addr)
+		push24(opcode << 16)
+		inst_addr += 1
+
+	elif m.match("MR" + spc + "(" + REG + ")" + sep + "(\[" + REG + "\]|" + HEX + ")" + OFFSET + "\Z"):
+		checkInCode()
+		opcode = OPCODES['MR']
+		mode = ''
+		r_dest = 'A'
+		r_src = 'A'
+		r_op = 'A'
+		addr = ''
+		offset = ''
+		near = False
+				
+		r_dest = m.group(1).upper()
+		if re.match("\["+REG+"\]", m.group(2), re.IGNORECASE):
+			mode += "INDIRECT"
+			r_dest = m.group(2).upper().translate(None,"[]")
+		else:
+			mode += "ABSOLUTE"
+			addr = m.group(2)
+		if m.group(3) != None: # There is offset
+			mode += m.group(3)
+			if re.match(REG, m.group(4), re.IGNORECASE):
+				mode += "REG"
+				r_op = m.group(4).upper()
+			elif re.match(INT, m.group(4), re.IGNORECASE):
+				if int(m.group(4), 0) <= 15:
+					mode += "NEAR"
+					near = True
+					r_op = m.group(4)
+				elif int(m.group(4), 0) > MAX_INT:
+					print "Error in line " + str(line_count) + ": Max. offset 16777215"
+					exit()
+				else:
+					mode += "FAR"
+					offset = m.group(4)
+			else:
+				mode += "FAR"
+				offset = m.group(4)
+
+		instructions.append(inst_addr)
+		push8(opcode)
+		push8((ADDRESSING_MODES[mode] << 4) | (int(r_op) if near else REGISTERS[r_op]))
+		push8((REGISTERS[r_src] << 4) | REGISTERS[r_dest])
+		inst_addr += 1
+		if addr != '':
+			push24(int(addr, 0))
+			inst_addr += 1
+		if offset != '':
+			push24(int(offset, 0))
+			inst_addr += 1
+
+	elif m.match("MW" + spc + "(\[" + REG + "\]|" + HEX + ")" + OFFSET + sep + "(" + REG + ")\Z"):
+		checkInCode()
+		opcode = OPCODES['MW']
+		mode = ''
+		r_dest = 'A'
+		r_src = 'A'
+		r_op = 'A'
+		addr = ''
+		offset = ''
+		near = False
+				
+		r_src = m.group(4).upper()
+		if re.match("\["+REG+"\]", m.group(1), re.IGNORECASE):
+			mode += "INDIRECT"
+			r_dest = m.group(1).upper().translate(None,"[]")
+		else:
+			mode += "ABSOLUTE"
+			addr = m.group(1)
+		if m.group(2) != None: # There is offset
+			mode += m.group(2)
+			if re.match(REG, m.group(3), re.IGNORECASE):
+				mode += "REG"
+				r_op = m.group(3).upper()
+			elif re.match(INT, m.group(3), re.IGNORECASE):
+				if int(m.group(3), 0) <= 15:
+					mode += "NEAR"
+					near = True
+					r_op = m.group(3)
+				elif int(m.group(3), 0) > MAX_INT:
+					print "Error in line " + str(line_count) + ": Max. offset 16777215"
+					exit()
+				else:
+					mode += "FAR"
+					offset = m.group(3)
+			else:
+				mode += "FAR"
+				offset = m.group(3)
+
+		instructions.append(inst_addr)
+		push8(opcode)
+		push8((ADDRESSING_MODES[mode] << 4) | (int(r_op) if near else REGISTERS[r_op]))
+		push8((REGISTERS[r_src] << 4) | REGISTERS[r_dest])
+		inst_addr += 1
+		if addr != '':
+			push24(int(addr, 0))
+			inst_addr += 1
+		if offset != '':
+			push24(int(offset, 0))
+			inst_addr += 1
+
+
+
+
+		
+	else:
+		print "Error in line " + str(line_count) + ": Syntax error"
+		exit()
+		
+	
+	line_count += 1
+
+
+
+# MAIN #
+
+
+if len(sys.argv) < 2:
+	print 'Usage: assembler.py file.mch'
+	exit()
+
+
+
+
+
+
+with open(sys.argv[1], 'r') as source_file:
+			
+		for line in source_file:
+			parse(line)
+	# Remove empty lines
+	#data = list(filter(None, map(lambda x:x.strip(), source_file.readlines())))
+
+	#removeComments(data)
+
+#with open("./output.bin", 'wb') as output:
+	
+
+for item in code:
+	sys.stdout.write("{0:02x}".format(ord(item), "x"))
