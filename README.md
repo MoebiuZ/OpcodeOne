@@ -14,6 +14,8 @@ Based on my experience, working on "toy projects" without a real world applicati
 
 While writting your own architecture would seem like a waste of time (*Why would I learn a fake architecture while I could learn x86?*), I can ensure you this kind of exercises lay the foundations to better understand how computers work, and is a great playground to improve skills like reverse engineering and programming. I you love retro computers you will understand what I mean.
 
+This repository is also a "self-learning framework" that I hope will serve in the future as a *guide* to develop courses or master classes from a self-learning perspective to complement more formal education (that nowadays is somehow *lacking* and biased for a healthy self-development).
+
 During this journey several topics will be exercised, and is great to learn or improve things like:
 
 * General CPU internals
