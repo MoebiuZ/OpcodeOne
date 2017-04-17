@@ -526,10 +526,31 @@ Tests bit number # on register and sets Z flag accordingly.
 
 	BIT{T} %dst, #(0-24)
 
-#### SWG
+
+#### SWP
+
+// TODO: Rethink this opcode and its usefulness
+
+Swaps 2 bytes on a register (High-Low, High-Medium, Medium-Low)
+
+	SWP{HM} %dst
+	SWP{HL} %dst
+	SWP{ML} %dst
+
+Swaps 2 nibbles on a register
+
+	SWP{N0} %dst
+	SWP{N1} %dst
+	SWP{N2} %dst
+	SWP{N3} %dst
+	SWP{N4} %dst
+	SWP{N5} %dst
+
 
 
 #### XCHG
+
+	XCHG %dst, %src
 
 
 #### CMP
