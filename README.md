@@ -10,7 +10,9 @@ Educational exploration on several aspects of computing.
 
 The only purpose of this project is self learning / knowledge sharing via experimentation.
 
-Working on "toy projects" without a real world application like this could seem like a waste of time (*Why would I learn a fake architecture while I could learn x86?*), but I can ensure you this kind of exercises lay the foundations to better understand how computers work, and is a great playground to improve skills like reverse engineering and programming. I you love retro computers you will understand what I mean.
+Based on my experience, working on "toy projects" without a real world application like this are a great tool for exercising your skills, to learn a wide range of new topics and to understand better how more complex systems work. And of course, to have a lot of fun.
+
+While writting your own architecture would seem like a waste of time (*Why would I learn a fake architecture while I could learn x86?*), I can ensure you this kind of exercises lay the foundations to better understand how computers work, and is a great playground to improve skills like reverse engineering and programming. I you love retro computers you will understand what I mean.
 
 During this journey several topics will be exercised, and is great to learn or improve things like:
 
@@ -41,12 +43,13 @@ __**What this project is not about**__:
 
 ## Contributions
 
+I started this project as a personal *divertimento*, just to have fun and because I like this kind of stuff. But then I though it would be even better opening it for the public to participate, to share ideas and to learn from each other.
 
-This is an open self-training project, so anyone is invited to contribute via Pull Requests. I'll review and accept them if I consider the additions or modifications fit my own "vision" or "taste" for the project.
+So this is an open self-training project; anyone is invited to join and contribute via Pull Requests o chat discussions (you can join us on Telegram group (https://t.me/opcodeone)). I'll review and accept them if I consider the additions or modifications fit my own "vision" or "taste" for the project.
 
-Also you can join https://t.me/opcodeone to friendly collaborate on the design process and bring your ideas, feeling free to ask whatever you don't understand to catch up.
+That doesn't mean I'm the "master" of the project: Although this will be considered the upstream project, every contributor is encouraged to not discard their additions or modifications on their own forks even if these changes are discarded for upstream, since this is a self-learning project, and following different paths or approaches provides value for everyone.
 
-Although this will be considered the upstream project, every contributor is encouraged to not discard their additions or modifications on their own forks even if these changes are discarded for upstream, since this is a self-learning project, and following different paths or approaches provides value for everyone.
+Feel free to ask whatever you don't understand to catch up, we are here to help each other and to learn together at our own pace.
 
 
 
@@ -54,6 +57,8 @@ Although this will be considered the upstream project, every contributor is enco
 
 
 You can start contributing following (but not limited by) these [exercises](EXERCISES.md).
+
+Also don't forget to check the [wiki](wiki) to find useful info and references.
 
 
 
@@ -71,7 +76,7 @@ You can start contributing following (but not limited by) these [exercises](EXER
 - C++ VM implementation
 - WebAssembly VM implementation
 - Create a basic OS and software on top of O¹
-- Write a vulnerable software and exploit
+- Explore flaws on the architecture design and write PoC exploits for them
 - Write a graphic adventure (ala Maniac Mansion)
 - Redesign architecture to implement security countermeasures
 - Write O¹ r_asm/r_anal/r_reg/r_debug [plugins for radare2](https://github.com/radare/radare2/wiki/Implementing-a-new-architecture)
