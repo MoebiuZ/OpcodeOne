@@ -537,14 +537,10 @@ Swaps 2 bytes on a register (High-Low, High-Medium, Medium-Low)
 	SWP{HL} %dst
 	SWP{ML} %dst
 
-Swaps 2 nibbles on a register
+Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
 
-	SWP{N0} %dst
-	SWP{N1} %dst
-	SWP{N2} %dst
-	SWP{N3} %dst
-	SWP{N4} %dst
-	SWP{N5} %dst
+	SWP{Nxy} %dst
+
 
 
 
