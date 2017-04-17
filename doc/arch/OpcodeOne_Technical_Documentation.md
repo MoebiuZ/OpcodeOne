@@ -19,6 +19,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [MW (Memory Write)](#mw)
 		* [VR (Video memory Read)](#vr)
 		* [VW (Video memory Write)](#vw)
+		* [MTR (Memory TRansfer)](#mtr)
 		* [PUSH](#push)
 		* [POP](#pop)
 	* Arithmetic and Logical
@@ -105,7 +106,7 @@ Note: To be rearranged
 |        |  x0   |  x1   |  x2   |  x3   |  x4   |  x5   |  x6   |  x7   |  x8   |  x9   |  xA   |  xB   |  xC   |  xD   |  xE   |  xF   |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | **0x** |  [NOP](#nop)  |  [HALT](#halt) |  [MR](#mr)   |  [MW](#mw)   |  [VR](#vr)  |  [VW](#vw)   |  [PUSH](#push) |  [POP](#pop)  |  [JMP](#jmp)  |  [RET](#ret)  |  [ADD](#add)  |  [SUB](#sub)  |  [MUL](#mul)  |  [DIV](#div)  |  [AND](#and)  |  [OR](#or)   |
-| **1x** |  [XOR](#xor)  |  [NAND](#nand) |  [NEG](#neg)  |  [IN](#in)   |  [OUT](#out)  |  [LD](#ld)   |  [CP](#cp)   |  [CMP](#cmp)  |  [RL](#rl)   |  [RR](#rr)   |  [SL](#sl)   |  [SR](#sr)   |  [INC](#inc)  |  [DEC](#dec)  |  [CALL](#call) |       |
+| **1x** |  [XOR](#xor)  |  [NAND](#nand) |  [NEG](#neg)  |  [IN](#in)   |  [OUT](#out)  |  [LD](#ld)   |  [CP](#cp)   |  [CMP](#cmp)  |  [RL](#rl)   |  [RR](#rr)   |  [SL](#sl)   |  [SR](#sr)   |  [INC](#inc)  |  [DEC](#dec)  |  [CALL](#call) |  [MTR](#mtr)  |
 | **2x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | **3x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | **4x** |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
@@ -129,7 +130,7 @@ Note: To be rearranged
 * **%** indicates a register
 * **[]** indicates an offset
 * Numbers can be expressed as decimal or hexadecimal (starting with 0x)
-* **{}** indicates **flags** or **conditions** (ie.: conditions in JMP or *with carry* in arithmetical operations)
+* **{}** indicates **flags**, **conditions** or **operation type** (ie.: conditions in JMP, *with carry* in arithmetical operations or *direction" in MTR)
 
 
 
@@ -152,7 +153,7 @@ Reads a word from memory to a register.
 | 00000010 | 0000 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %R, [%R]
+	MR %dst, [%src]
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
@@ -160,7 +161,7 @@ Reads a word from memory to a register.
 | 00000010 | 0001 | xxxx     | xxxx      | xxxx       |
 
 	
-	MR %R, [%R]+near_offset
+	MR %dst, [%src]+near_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
@@ -168,14 +169,14 @@ Reads a word from memory to a register.
 | 00000010 | 0010 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %R, [%R]+%R
+	MR %dst, [%src]+%offset
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, [%R]+far_offset
+	MR %dst, [%src]+far_offset
 
 
 
@@ -184,7 +185,7 @@ Reads a word from memory to a register.
 | 00000010 | 0100 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %R, [%R]-near_offset
+	MR %dst, [%src]-near_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
@@ -192,7 +193,7 @@ Reads a word from memory to a register.
 | 00000010 | 0101 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %R, [%R]-%R	
+	MR %dst, [%src]-%offset	
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
@@ -200,7 +201,7 @@ Reads a word from memory to a register.
 | 00000010 | 0110 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, [%R]-far_offset
+	MR %dst, [%src]-far_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
@@ -208,7 +209,7 @@ Reads a word from memory to a register.
 | 00000010 | 0111 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr
+	MR %dst, addr
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
@@ -216,7 +217,7 @@ Reads a word from memory to a register.
 | 00000010 | 1000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr+near_offset
+	MR %dst, addr+near_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
@@ -224,7 +225,7 @@ Reads a word from memory to a register.
 | 00000010 | 1001 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr+%R
+	MR %dst, addr+%offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
@@ -232,7 +233,7 @@ Reads a word from memory to a register.
 | 00000010 | 1010 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr+far_offset
+	MR %dst, addr+far_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
@@ -240,7 +241,7 @@ Reads a word from memory to a register.
 | 00000010 | 1011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr-near_offset
+	MR %dst, addr-near_offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
@@ -248,7 +249,7 @@ Reads a word from memory to a register.
 | 00000010 | 1100 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr-%R
+	MR %dst, addr-%offset
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
@@ -256,7 +257,7 @@ Reads a word from memory to a register.
 | 00000010 | 1101 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %R, addr-far_offset
+	MR %dst, addr-far_offset
 
 
 
@@ -273,7 +274,7 @@ Writes a word from a register into memory
 | 00000011 | 0000 | xxxx     | xxxx      | xxxx       |
 
 
-	MW [%R], %R
+	MW [%dst], %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
@@ -281,7 +282,7 @@ Writes a word from a register into memory
 | 00000011 | 0001 | xxxx     | xxxx      | xxxx       |
 
 	
-	MW [%R]+near_offset, %R
+	MW [%dst]+near_offset, %R
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
@@ -289,7 +290,7 @@ Writes a word from a register into memory
 | 00000011 | 0010 | xxxx     | xxxx      | xxxx       |
 
 
-	MW [%R]+%R, %R
+	MW [%dst]+%offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
@@ -297,7 +298,7 @@ Writes a word from a register into memory
 | 00000011 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW [%R]+far_offset, %R
+	MW [%dst]+far_offset, %src
 
 
 
@@ -306,7 +307,7 @@ Writes a word from a register into memory
 | 00000011 | 0100 | xxxx     | xxxx      | xxxx       |
 
 
-	MW [%R]-near_offset, %R
+	MW [%dst]-near_offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
@@ -314,7 +315,7 @@ Writes a word from a register into memory
 | 00000011 | 0101 | xxxx     | xxxx      | xxxx       |
 
 
-	MW [%R]-%R, %R
+	MW [%dst]-%offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
@@ -322,7 +323,7 @@ Writes a word from a register into memory
 | 00000011 | 0110 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW [%R]-far_offset, %R
+	MW [%dst]-far_offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
@@ -330,7 +331,7 @@ Writes a word from a register into memory
 | 00000011 | 0111 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr, %R
+	MW addr, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
@@ -338,7 +339,7 @@ Writes a word from a register into memory
 | 00000011 | 1000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr+near_offset, %R
+	MW addr+near_offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
@@ -346,7 +347,7 @@ Writes a word from a register into memory
 | 00000011 | 1001 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr+%R, %R
+	MW addr+%dst, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
@@ -354,7 +355,7 @@ Writes a word from a register into memory
 | 00000011 | 1010 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr+far_offset, %R
+	MW addr+far_offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
@@ -362,7 +363,7 @@ Writes a word from a register into memory
 | 00000011 | 1011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr-near_offset, %R
+	MW addr-near_offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
@@ -370,7 +371,7 @@ Writes a word from a register into memory
 | 00000011 | 1100 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr-%R, %R
+	MW addr-%offset, %src
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
@@ -378,12 +379,41 @@ Writes a word from a register into memory
 | 00000011 | 1101 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MW addr-far_offset, %R
+	MW addr-far_offset, %src
 
 
 #### VR
 
 #### VW
+
+#### MTR
+
+Copies a word from Memory to Video memory 
+
+| Opcode   | Mode | Dst addr reg | Src addr reg  | Unused     |
+|----------|------|--------------|---------------|------------|
+| 00000xxx | 0000 | xxxx         | xxxx          | xxxx       |
+
+	MTR{V} [%dst], [%src]
+
+
+Copies a word from Video Memory to Memory 
+
+| Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
+|----------|------|--------------|--------------|------------|
+| 00000xxx | 0001 | xxxx         | xxxx         | xxxx       |
+
+	MTR{M} [%dst], [%src]
+
+
+Exchanges a word between Memory and Video Memory
+
+| Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
+|----------|------|--------------|--------------|------------|
+| 00000xxx | 0010 | xxxx         | xxxx         | xxxx       |
+
+	MTR{X} [%dst], [%src]
+
 
 
 #### AND
@@ -394,64 +424,64 @@ Performs a logical AND between 2 source registers and stores the result in desti
 |----------|--------|----------|-----------|--------------|
 | 00000100 | xxxx   | xxxx     | xxxx      | xxxx         |
 
-	AND %R, %R, %R
+	AND %dst, %src1, %src2
 
 
 #### OR
 
-	OR %R, %R, %R
+	OR %dst, %src1, %src2
 
 #### XOR
 
-	XOR %R, %R, %R
+	XOR %dst, %src1, %src2
 
 #### NEG
 
-	NEG %R, %R
+	NEG %dst, %src
 
 #### NAND
 
-	NAND %R, %R, %R
+	NAND %dst, %src1, %src2
 
 #### INC
 	
-	INC %R
+	INC %dst
 
 #### DEC
 
-	DEC %R
+	DEC %dst
 
 #### ADD
 
-	ADD %R, %R, %R
-	ADD{C} %R, %R, %R
+	ADD %dst, %src1, %src2
+	ADD{C} %dst, %src1, %src1
 
 
 #### SUB
 
-	SUB %R, %R, %R
-	SUB{C} %R, %R, %R
+	SUB %dst, %min, %subtr
+	SUB{C} %dst, %min, %subtr
     
 #### MUL
 
-	MUL %R, %R, %R
- 	MUL{C} %R, %R, %R
+	MUL %dst, %src1, %src2
+ 	MUL{C} %dst, %src1, %src2
 
 #### DIV
 
-	DIV %R, %R, %R
+	DIV %dst, %num, %denom
 
 #### PUSH
 
-	PUSH %R 
-   	PUSH %R %R
-   	PUSH %R %R %R
+	PUSH %src1 
+   	PUSH %src1 %src2
+   	PUSH %src1 %src2 %src3
 
 #### POP
 
-   	POP %R
-   	POP %R %R 
-   	POP %R %R %R
+   	POP %dst1
+   	POP %dst1 %dst2 
+   	POP %dst1 %dst2 %dst3
 
 
 #### RL
@@ -470,13 +500,13 @@ Performs a logical AND between 2 source registers and stores the result in desti
 	
 	Loads a inmediate value into a register
 
-	LD %R, 0xdeadbe
+	LD %dst, 0xdeadbe
 
 #### CP
 	
 	Copies a register into another
 
-	CP %R, %R
+	CP %dst, %src
 
 #### IN
 

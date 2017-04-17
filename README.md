@@ -27,6 +27,7 @@ During this journey several topics will be exercised, and is great to learn or i
 * Compiler basics
 * OS design
 * Retrocomputing
+* git usage
 * ... and much more
 
 
@@ -58,7 +59,7 @@ Feel free to ask whatever you don't understand to catch up, we are here to help 
 
 You can start contributing following (but not limited by) these [exercises](EXERCISES.md).
 
-Also don't forget to check the [wiki](wiki) to find useful info and references.
+Also don't forget to check the [wiki](wiki) to find useful/interesting info and references.
 
 
 

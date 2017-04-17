@@ -1,7 +1,7 @@
 Self-learning exercises
 =======================
 
-This is a non-exhaustive list of exercises a contributor can (should) do in order to fully understand the project all the way up and learn in the process. Remember OpcodeOne is all about self-learning, and contributing/experimenting in all stages is the whole purpose of this.
+This is a non-exhaustive list of exercises a contributor can (should) do in order to fully understand the project all the way up and learn in the process. Remember OpcodeOne is all about self-learning, and contributing/experimentation in all stages is the whole purpose of this.
 
 
 1. Think about the current [assembly syntax](doc/arch/OpcodeOne_Technical_Documentation.md#assembly-syntax) and propose (reasoned) changes to make it more robust/clear/consistent
