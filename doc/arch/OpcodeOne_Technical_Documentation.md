@@ -197,6 +197,7 @@ Reads from the address specified by `%src` register into `%dst` register.
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0000 | xxxx     | xxxx      | xxxx       |
+
 Example:
 ><sub>Read a word from the address specified by %C into %A</sub>
 >
@@ -213,6 +214,7 @@ Reads from the address specified by `%src` register plus a short 4-bit offset in
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0001 | xxxx     | xxxx      | xxxx       |
+
 Example:
 ><sub>Read a word from the address specified by %B plus 3 into %C</sub>
 >
@@ -229,6 +231,7 @@ Reads from the address specified by `%src` register plus an offset specified by 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0010 | xxxx     | xxxx      | xxxx       |
+
 Example:
 ><sub>Read a word from the address specified by %D plus offset specified by %B into %A</sub>
 >
@@ -245,6 +248,7 @@ Reads from the address specified by `%src` register plus an immediate 24-bit off
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate offset              |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
