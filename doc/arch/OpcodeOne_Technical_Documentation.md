@@ -260,9 +260,11 @@ Reads from the address specified by `%src` register plus an immediate 24-bit off
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
->`MR %A, [%C]+1337` | h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)
+>`MR %A, [%C]+1337` <sub>| h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>
 ><sub>or</sub>
->`MR %A, [%C]+0x539` | h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)
+>
+>`MR %A, [%C]+0x539` <sub>| h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 
 
 
@@ -279,9 +281,11 @@ Reads from the address specified by `%src` register minus a short 4-bit *offset*
 Example:
 ><sub>Read a word from the address specified by %B minus 15 into %A</sub>
 >
->`MR %A, [%B]-15` | h(0x02401F) b(00000010 0100 0000 0001 1111)
+>`MR %A, [%B]-15` <sub>| h(0x02401F) b(00000010 0100 0000 0001 1111)</sub>
+>
 ><sub>or</sub>
->`MR %A, [%B]-0xf` | h(0x02401F) b(00000010 0100 0000 0001 1111)
+>
+>`MR %A, [%B]-0xf` <sub>| h(0x02401F) b(00000010 0100 0000 0001 1111)</sub>
 
 
 #### _(MR) Indirect minus register offset mode_
