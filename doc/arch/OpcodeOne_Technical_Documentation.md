@@ -112,7 +112,12 @@ All instruction addressing refers to Memory bus, and Video bus is only accesable
 
 ## Opcode table
 
-Note: To be rearranged
+
+Most significative byte of an instruction indicates the code of operation (opcode).
+
+The following table illustrates all opcodes with their hexadecimal representation.
+
+<sub>Note: The opcode order and their hex value is subject to be rearranged.</sub>
 
 
 | <sub>Higher Byte</sub> |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
@@ -138,21 +143,24 @@ Note: To be rearranged
 
 ## Assembly syntax
 
-* Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: LD or PUSH)
+* Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: `LD` or `PUSH`)
 * **%** indicates a register
-* **[]** indicates an offset
-* Numbers can be expressed as decimal or hexadecimal (starting with 0x)
-* **{}** indicates **flags**, **conditions** or **operation type** (ie.: conditions in JMP, *with carry* in arithmetical operations or *direction" in MTR)
+* **[]** indicates a register is treated as an address
+* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: `RL %C, #3`) 
+* Numbers (as immediate values) can be expressed in decimal or hexadecimal (starting with 0x)
+* Absolute addresses are expresed in hexadecimal.
+* **{}** indicates **flags**, **conditions** or **operation type** (ie.: conditions in `JMP`, *with carry* in arithmetical operations or *direction" in `MTR`)
 
 
 
 ## O¹ instruction set
 
-Notes: 
+<sub>Note: All non-existant opcodes will default to "NOP" until further notice (ie: Non existant opcodes or existing opcodes with unused Mode)</sub>
 
-* All non specified instructions will default to "NOP" (ie: Non existant opcodes or existing opcodes with unused Mode)
+Legend:
 
-
+* *x* represents a variable parameter. It's value will indicate a different register o operation mode (it will be considered a different instruction depending on it's value).
+* *\** means the value will not affect the instruction behaviour (the instruction will be the same regardless of it's value).
 
 
 *MR* 
@@ -170,11 +178,11 @@ Notes:
 | Mode | Operation | Instruction size |
 |------|-----------|------------------|
 | 0000 | [Indirect](#mr_indirect_mode) | 3 bytes (1 word) |
-| 0001 | [Indirect plus short offset](#mr_indirect_plus_short_offset_mode) | 3 bytes (1 words) |
-| 0010 | [Indirect plus register offset](#mr_indirect_plus_register_offset_mode) | 3 bytes (1 words) |
+| 0001 | [Indirect plus short offset](#mr_indirect_plus_short_offset_mode) | 3 bytes (1 word) |
+| 0010 | [Indirect plus register offset](#mr_indirect_plus_register_offset_mode) | 3 bytes (1 word) |
 | 0011 | [Indirect plus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
-| 0100 | [Indirect minus short offset](#mr_indirect_minus_short_offset_mode) | 3 bytes (1 words) |
-| 0101 | [Indirect minus register offset](#mr_indirect_minus_register_offset_mode) | 3 bytes (1 words) |
+| 0100 | [Indirect minus short offset](#mr_indirect_minus_short_offset_mode) | 3 bytes (1 word) |
+| 0101 | [Indirect minus register offset](#mr_indirect_minus_register_offset_mode) | 3 bytes (1 word) |
 | 0110 | [Indirect minus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
 | 0111 | [Absolute](#mr_absolute_mode) | 6 bytes (2 words) |
 | 1000 | [Absolute plus short offset](#mr_absolute_plus_short_offset_mode) | 6 bytes (2 words) |
@@ -196,7 +204,7 @@ Reads from the address specified by `%src` register into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
 |----------|------|----------|-----------|------------|
-| 00000010 | 0000 | xxxx     | xxxx      | xxxx       |
+| 00000010 | 0000 | xxxx     | xxxx      | ****       |
 
 Example:
 ><sub>Read a word from the address specified by %C into %A</sub>
@@ -247,13 +255,14 @@ Reads from the address specified by `%src` register plus an immediate 24-bit off
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate offset              |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000010 | 0011 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
->`MR %A, [%C]+1337`
->`MR %A, [%C]+0x539`
+>`MR %A, [%C]+1337` | h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)
+><sub>or</sub>
+>`MR %A, [%C]+0x539` | h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)
 
 
 
@@ -267,6 +276,12 @@ Reads from the address specified by `%src` register minus a short 4-bit *offset*
 |----------|------|----------|-----------|------------|
 | 00000010 | 0100 | xxxx     | xxxx      | xxxx       |
 
+Example:
+><sub>Read a word from the address specified by %B minus 15 into %A</sub>
+>
+>`MR %A, [%B]-15` | h(0x02401F) b(00000010 0100 0000 0001 1111)
+><sub>or</sub>
+>`MR %A, [%B]-0xf` | h(0x02401F) b(00000010 0100 0000 0001 1111)
 
 
 #### _(MR) Indirect minus register offset mode_
@@ -289,7 +304,7 @@ Reads from the address specified by `%src` register minus an immediate 24-bit of
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate Offset              |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0110 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000010 | 0110 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 
@@ -301,7 +316,7 @@ Reads from address into `%dst`register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0111 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000010 | 0111 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 
@@ -337,7 +352,7 @@ Reads from address plus an immediate 24-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Immediate Offset              |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000010 | 1010 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000010 | 1010 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 
@@ -375,7 +390,7 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000010 | 1101 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000010 | 1101 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 
@@ -385,14 +400,18 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 
 
-#### MW
+*MW*
+---
 
-Writes a word from a register into memory
+**M**emory **W**rite
+
+**Writes a wrod from a [register](#registers) into [Video bus](#video-bus) address.**
+
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
 |----------|------|----------|-----------|------------|
-| 00000011 | 0000 | xxxx     | xxxx      | xxxx       |
+| 00000011 | 0000 | xxxx     | xxxx      | ****       |
 
 
 	MW [%dst], %src
@@ -416,7 +435,7 @@ Writes a word from a register into memory
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000011 | 0011 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 	MW [%dst]+far_offset, %src
@@ -441,7 +460,7 @@ Writes a word from a register into memory
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 0110 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000011 | 0110 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 	MW [%dst]-far_offset, %src
@@ -473,7 +492,7 @@ Writes a word from a register into memory
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000011 | 1010 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000011 | 1010 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 	MW addr+far_offset, %src
@@ -497,17 +516,34 @@ Writes a word from a register into memory
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000011 | 1101 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00000011 | 1101 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 	MW addr-far_offset, %src
 
 
-#### VR
+*VR*
+---
 
-#### VW
+**V**ideo **R**ead
 
-#### MTR
+**Reads a word from [Video bus](#video-bus) into a [register](#registers).**
+
+*VW*
+---
+
+**V**ideo **W**rite
+
+**Writes a word from a [register](#registers) into [Video bus](#video-bus) address.**
+
+
+*MTR*
+---
+
+**M**emory **TR**ansfer
+
+
+	MTR{V} [%dst], [%src]
 
 Copies a word from Memory to Video memory 
 
@@ -515,126 +551,202 @@ Copies a word from Memory to Video memory
 |----------|------|--------------|---------------|------------|
 | 00000xxx | 0000 | xxxx         | xxxx          | xxxx       |
 
-	MTR{V} [%dst], [%src]
 
+
+
+	MTR{M} [%dst], [%src]
 
 Copies a word from Video Memory to Memory 
 
 | Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
 |----------|------|--------------|--------------|------------|
-| 00000xxx | 0001 | xxxx         | xxxx         | xxxx       |
+| 00000xxx | 0001 | xxxx         | xxxx         | ****       |
 
-	MTR{M} [%dst], [%src]
 
+
+
+	MTR{X} [%dst], [%src]
 
 Exchanges a word between Memory and Video Memory
 
 | Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
 |----------|------|--------------|--------------|------------|
-| 00000xxx | 0010 | xxxx         | xxxx         | xxxx       |
-
-	MTR{X} [%dst], [%src]
+| 00000xxx | 0010 | xxxx         | xxxx         | ****       |
 
 
 
-#### AND
+
+
+*AND*
+---
+
+Logical **AND**
 
 Performs a logical AND between 2 source registers and stores the result in destination register
+
+	AND %dst, %src1, %src2
 
 | Opcode   | Unused | Dst Reg  | Src Reg1  | Src Reg2     |
 |----------|--------|----------|-----------|--------------|
 | 00000100 | xxxx   | xxxx     | xxxx      | xxxx         |
 
-	AND %dst, %src1, %src2
 
 
-#### OR
+
+*OR*
+---
+
+Logical **OR**
 
 	OR %dst, %src1, %src2
 
-#### XOR
+*XOR*
+---
+
+Logical **XOR**
 
 	XOR %dst, %src1, %src2
 
-#### NEG
+
+*NEG*
+---
+
+**NEG**ative - Two's complement
 
 	NEG %dst, %src
 
-#### NAND
+
+*NAND*
+---
+
+Logical **N**ot **AND** (NAND)
 
 	NAND %dst, %src1, %src2
 
-#### INC
-	
+
+*INC*
+---
+
+**INC**rement
+
 	INC %dst
 
-#### DEC
+
+*DEC*
+---
+
+**DEC**rement
 
 	DEC %dst
 
-#### ADD
+*ADD*
+---
+
+**ADD**ition
 
 	ADD %dst, %src1, %src2
 	ADD{C} %dst, %src1, %src1
 
 
-#### SUB
+*SUB*
+---
+
+**SUB**straction
 
 	SUB %dst, %min, %subtr
 	SUB{C} %dst, %min, %subtr
     
-#### MUL
+
+*MUL*
+---
+
+**MUL**tiplycation
 
 	MUL %dst, %src1, %src2
  	MUL{C} %dst, %src1, %src2
 
-#### DIV
+*DIV*
+---
+
+**DIV**ision
 
 	DIV %dst, %num, %denom
 
-#### PUSH
+*PUSH*
+---
+
+**PUSH**
 
 	PUSH %src1 
    	PUSH %src1 %src2
    	PUSH %src1 %src2 %src3
 
-#### POP
+
+*POP*
+---
+
+**POP**
 
    	POP %dst1
    	POP %dst1 %dst2 
    	POP %dst1 %dst2 %dst3
 
 
-#### RL
+*RL*
+---
 
-#### RR
-
-#### SL
-
-#### SR
+**R**otate **L**eft
 
 
-#### BIT
+
+*RR*
+---
+
+**R**otate **R**ight
+
+
+*SL*
+---
+
+**S**hift **L**eft
+
+
+*SR*
+---
+
+**S**hift **R**ight
+
+
+*BIT*
+---
+
+**BIT**
 
 // TODO: What to do when number (#) is 24-31? Should we use Mode to specify High-Medium-Lower byte and use 3 bits (0-7) for number?
+
+
+
+	BIT{S} %dst, #(0-24)
 
 Sets bit number # on register
 
 | Opcode   | Mode    | Dst reg  | Unused  | Number  |
 |----------|---------|----------|---------|---------|
-| 0000xxxx | 0000    | xxxx     | xxx     | xxxxx   |
+| 0000xxxx | 0000    | xxxx     | ***     | xxxxx   |
 
-	BIT{S} %dst, #(0-24)
 
+
+	BIT{R} %dst, #(0-24)
 
 Resets bit number # on register
 
 | Opcode   | Mode    | Dst reg  | Unused  | Number  |
 |----------|---------|----------|---------|---------|
-| 0000xxxx | 0001    | xxxx     | xxx     | xxxxx   |
+| 0000xxxx | 0001    | xxxx     | ***     | xxxxx   |
 
-	BIT{R} %dst, #(0-24)
 
+
+	BIT{T} %dst, #(0-24)
 
 Tests bit number # on register and sets Z flag accordingly.
 
@@ -642,48 +754,64 @@ Tests bit number # on register and sets Z flag accordingly.
 |----------|---------|----------|---------|---------|
 | 0000xxxx | 0010    | xxxx     | xxxx    | xxxxx   |
 
-	BIT{T} %dst, #(0-24)
 
 
-#### SWP
+
+*SWP*
+---
+
+**SW**a**P**
 
 // TODO: Rethink this opcode and its usefulness
 
-Swaps 2 bytes on a register (High-Low, High-Medium, Medium-Low)
 
 	SWP{HM} %dst
 	SWP{HL} %dst
 	SWP{ML} %dst
 
-Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
+Swaps 2 bytes on a register (High-Low, High-Medium, Medium-Low)
+
 
 	SWP{Nxy} %dst
 
+Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
 
 
 
-#### XCHG
+
+
+
+*XCHG*
+---
+
+e**XCH**an**G**e
 
 	XCHG %dst, %src
 
 
-#### CMP
+*CMP*
+---
+
+**C**o**MP**are
 
 
-#### LD
-	
+*LD*
+---
+
+**L**oa**D**
+
 	Loads an inmediate value into a register/s
 
 | Opcode   | Mode | Dst Reg  | Unused    | Unused     | Value                         |
 |----------|------|----------|-----------|------------|-------------------------------|
-| 0000xxxx | 0000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 0000xxxx | 0000 | xxxx     | ****      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 	LD %dst, 0xdeadbe
 
 
 | Opcode   | Mode | Dst Reg1 | Dst reg2 | Unused     | Value                         |
 |----------|------|----------|----------|------------|-------------------------------|
-| 0000xxxx | 0001 | xxxx     | xxxx     | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 0000xxxx | 0001 | xxxx     | xxxx     | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 	LD %dst1 %dst2, 0xdeadbe
 
@@ -696,45 +824,79 @@ Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
 	LD %dst1 %dst2 %dst3, 0xdeadbe
 
 
-#### CP
+*CP*
+---
+
+**C**o**P**y
 	
 	Copies a register into another
 
 | Opcode   | Unused  | Dst reg  | Src Reg | Unused |
 |----------|---------|----------|---------|--------|
-| 0000xxxx | xxxx    | xxxx     | xxxx    | xxxx   |
+| 0000xxxx | xxxx    | xxxx     | xxxx    | ****   |
 
 	CP %dst, %src
 
 
-#### IN
+*IN*
+---
 
-#### OUT
+**IN**put
 
-#### JMP
 
-#### CALL
+*OUT*
+---
 
-#### RET
+**OUT**put
 
-#### NOP
 
-Does nothing (No Operation)
+*JMP*
+---
 
-| Opcode   | Unused            |
-|----------|-------------------|
-| 00000000 | xxxxxxxx xxxxxxxx |
+**J**u**MP**
+
+
+*CALL*
+---
+
+**CALL**
+
+
+*RET*
+---
+
+**RET**urn
+
+
+*NOP*
+---
+
+**N**o **OP**eration
 
 	NOP
 
+Does nothing, only consumes time.
 
-#### HALT
+| Opcode   | Unused            |
+|----------|-------------------|
+| 00000000 | ******** ******** |
+
+
+
+
+*HALT*
+---
+
+**HALT**
+
+
+	HALT
 
 Halts the CPU
 
 | Opcode   | Unused            |
 |----------|-------------------|
-| 0000xxxx | xxxxxxxx xxxxxxxx |
+| 0000xxxx | ******** ******** |
 	
-	HALT
+
 
