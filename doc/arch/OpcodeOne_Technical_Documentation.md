@@ -69,24 +69,24 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 
 ## Registers
 
-| Register | id   | Description
-|----------|------|------------------|
-| A        | 0x00 | Generic register |
-| B        | 0x01 | Generic register |
-| C        | 0x02 | Generic register |
-| D        | 0x03 | Generic register |
-| unused   | 0x04 |                  |
-| unused   | 0x05 |                  |
-| unused   | 0x06 |                  |
-| unused   | 0x07 |                  |
-| unused   | 0x08 |                  |
-| unused   | 0x09 |                  |
-| unused   | 0x0a |                  |
-| unused   | 0x0b |                  |
-| FL       | 0x0c | Flags            |
-| SB       | 0x0d | Stack Base       |
-| SP       | 0x0e | Stack Pointer    |
-| PC       | 0x0f | Program Counter  |
+| Register | id   | bin  | Description      |
+|----------|------|------|------------------|
+| A        | 0x00 | 0000 | Generic register |
+| B        | 0x01 | 0001 | Generic register |
+| C        | 0x02 | 0010 | Generic register |
+| D        | 0x03 | 0011 | Generic register |
+| unused   | 0x04 | 0100 |                  |
+| unused   | 0x05 | 0101 |                  |
+| unused   | 0x06 | 0110 |                  |
+| unused   | 0x07 | 0111 |                  |
+| unused   | 0x08 | 1000 |                  |
+| unused   | 0x09 | 1001 |                  |
+| unused   | 0x0a | 1010 |                  |
+| unused   | 0x0b | 1011 |                  |
+| FL       | 0x0c | 1100 | Flags            |
+| SB       | 0x0d | 1101 | Stack Base       |
+| SP       | 0x0e | 1110 | Stack Pointer    |
+| PC       | 0x0f | 1111 | Program Counter  |
 		
 
 
@@ -148,7 +148,13 @@ Notes:
 
 #### MR
 
-Reads a word from memory to a register.
+Memory Read. Reads a word from Memory bus to a register.
+
+##### Indirect mode
+
+Reads from the address specified by "%src" register into "%dst" register.
+
+	MR %dst, [%src]
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
@@ -156,30 +162,49 @@ Reads a word from memory to a register.
 | 00000010 | 0000 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %dst, [%src]
+Instruction size: 3 bytes (1 word)
 
+
+
+##### Indirect plus short offset mode
+
+Reads from the address specified by "%src" register plus a short *offset* (0-15) into "%dst" register.
+
+	MR %dst, [%src]+near_offset
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0001 | xxxx     | xxxx      | xxxx       |
 
+Instruction size: 3 byts (1 word)
+
 	
-	MR %dst, [%src]+near_offset
+##### Indirect plus register offset mode
 
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0010 | xxxx     | xxxx      | xxxx       |
-
+Reads from the address specified by **%src** register plus an offset specified by **%offset** register into **%dst** register.
 
 	MR %dst, [%src]+%offset
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
+| Opcode   | Mode | Dst Reg  | Src Reg   | Offset register    |
+|----------|------|----------|-----------|--------------------|
+| 00000010 | 0010 | xxxx     | xxxx      | xxxx               |
+
+
+Instruction size: 3 bytes (1 word)
+
+
+##### Indirect plus absolute offset
+
+Reads from the address specified by **%src** register plus an absolute 24 bit offset into **%dst** register
+
+	MR %dst, [%src]+abs_offset
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Absolute offset               |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, [%src]+far_offset
+Instruction size: 6 bytes (2 words)
 
 
 
