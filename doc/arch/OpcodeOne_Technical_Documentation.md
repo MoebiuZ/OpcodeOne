@@ -64,7 +64,8 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 * This first draft probably wastes a lot of "data" being 8 bit each opcode (256 possible opcodes). This could be redesigned in the future, or using the empty opcodes to implement complex "non-standard" instructions.
 * Each instruction "cycles consumed" or "instruction speed" will be determined with benchmarks once implemented, and the derived value will be used for this specification.
 * Little endian architecture (for the moment)
-* TODO: What to do when Mode is not in table?
+* TODO: What to do when Mode is *unused*? (Raise error - do NOP - do NOP and set special flag)
+* TODO: What to do when Opcode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 
 
 ## Registers
@@ -96,9 +97,17 @@ FL (Flags)  ---> Carry, Zero, Negative, Two's complement overflow, Signed (N/V),
 
 ## Addressing
 
+OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. On a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.
+
+
+All instruction addressing refers to Memory bus, and Video bus is only accesable with [VR](#vr), [VW](#vw) and [MTR](#mtr) instructions.
+
+### Memory bus
+
+### Video bus
+
 // TODO
 
-OpcodeOne has two 24-bit address buses, one intended for RAM (manipulated with MR & MW instructions) and one intended for VRAM (manipulated with VR & VW instructions). Second one is designed to interact with video memory (for example, as a framebuffer), but it's possible to use it as a secondary RAM.
 
 
 ## Opcode table
@@ -146,146 +155,226 @@ Notes:
 
 
 
-#### MR
+*MR* 
+---
+**M**emory **R**ead
 
-Memory Read. Reads a word from Memory bus to a register.
+**Reads a word from [*memory bus*](#memory-bus) into a [*register*](#registers).**
 
-##### Indirect mode
+| Opcode | - |
+|--------|---|
+| 00000010 | 0x02 |
 
-Reads from the address specified by "%src" register into "%dst" register.
+
+
+| Mode | Operation | Instruction size |
+|------|-----------|------------------|
+| 0000 | [Indirect](#mr_indirect_mode) | 3 bytes (1 word) |
+| 0001 | [Indirect plus short offset](#mr_indirect_plus_short_offset_mode) | 3 bytes (1 words) |
+| 0010 | [Indirect plus register offset](#mr_indirect_plus_register_offset_mode) | 3 bytes (1 words) |
+| 0011 | [Indirect plus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
+| 0100 | [Indirect minus short offset](#mr_indirect_minus_short_offset_mode) | 3 bytes (1 words) |
+| 0101 | [Indirect minus register offset](#mr_indirect_minus_register_offset_mode) | 3 bytes (1 words) |
+| 0110 | [Indirect minus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
+| 0111 | [Absolute](#mr_absolute_mode) | 6 bytes (2 words) |
+| 1000 | [Absolute plus short offset](#mr_absolute_plus_short_offset_mode) | 6 bytes (2 words) |
+| 1001 | [Absolute plus register offset](#mr_absolute_plus_register_offset_mode) | 6 bytes (2 words) |
+| 1010 | [Absolute plus immediate offset](#mr_absolute_plus_immediate_offset_mode) | 9 bytes (3 words) |
+| 1011 | [Absolute minus short offset](#mr_absolute_minus_short_offset_mode) | 6 bytes (2 words) |
+| 1100 | [Absolute minus register offset](#mr_absolute_minus_register_offset_mode) | 6 bytes (2 words) |
+| 1101 | [Absolute minus immediate offset](#mr_absolute_minus_immediate_offset_mode) | 9 bytes (3 words) |
+| 1110 | Unused | N/A |
+| 1111 | Unused | N/A |
+
+
+#### _(MR) Indirect mode_
 
 	MR %dst, [%src]
+
+Reads from the address specified by `%src` register into `%dst` register.
 
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0000 | xxxx     | xxxx      | xxxx       |
+Example:
+><sub>Read a word from the address specified by %C into %A</sub>
+>
+>`MR %A, [%C]`
 
 
-Instruction size: 3 bytes (1 word)
 
+#### _(MR) Indirect plus short offset mode_
 
+	MR %dst, [%src]+short_offset
 
-##### Indirect plus short offset mode
-
-Reads from the address specified by "%src" register plus a short *offset* (0-15) into "%dst" register.
-
-	MR %dst, [%src]+near_offset
+Reads from the address specified by `%src` register plus a short 4-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0001 | xxxx     | xxxx      | xxxx       |
-
-Instruction size: 3 byts (1 word)
+Example:
+><sub>Read a word from the address specified by %B plus 3 into %C</sub>
+>
+>`MR %C, [%B]+3`
 
 	
-##### Indirect plus register offset mode
 
-Reads from the address specified by **%src** register plus an offset specified by **%offset** register into **%dst** register.
+#### _(MR) Indirect plus register offset mode_
 
 	MR %dst, [%src]+%offset
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset register    |
-|----------|------|----------|-----------|--------------------|
-| 00000010 | 0010 | xxxx     | xxxx      | xxxx               |
+Reads from the address specified by `%src` register plus an offset specified by `%offset` register into `%dst` register.
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg |
+|----------|------|----------|-----------|------------|
+| 00000010 | 0010 | xxxx     | xxxx      | xxxx       |
+Example:
+><sub>Read a word from the address specified by %D plus offset specified by %B into %A</sub>
+>
+>`MR %A, [%D]+%B`
 
 
-Instruction size: 3 bytes (1 word)
 
+#### _(MR) Indirect plus immediate offset mode_
 
-##### Indirect plus absolute offset
+	MR %dst, [%src]+imm_offset
 
-Reads from the address specified by **%src** register plus an absolute 24 bit offset into **%dst** register
+Reads from the address specified by `%src` register plus an immediate 24-bit offset into `%dst` register
 
-	MR %dst, [%src]+abs_offset
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Absolute offset               |
+| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate offset              |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+Example:
+><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
+>
+>`MR %A, [%C]+1337`
+>`MR %A, [%C]+0x539`
 
 
-Instruction size: 6 bytes (2 words)
 
+#### _(MR) Indirect minus short offset mode_
 
+	MR %dst, [%src]-short_offset
+
+Reads from the address specified by `%src` register minus a short 4-bit *offset* into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0100 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %dst, [%src]-near_offset
 
+#### _(MR) Indirect minus register offset mode_
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
+	MR %dst, [%src]-%offset	
+
+Reads from the address specified by `%src` register minus an offset specified by `%offset` register into `%dst` register.
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg |
 |----------|------|----------|-----------|------------|
 | 00000010 | 0101 | xxxx     | xxxx      | xxxx       |
 
 
-	MR %dst, [%src]-%offset	
 
+#### _(MR) Indirect plus immediate offset mode_
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
+	MR %dst, [%src]-imm_offset
+
+Reads from the address specified by `%src` register minus an immediate 24-bit offset into `%dst` register
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate Offset              |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0110 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, [%src]-far_offset
 
+#### _(MR) Absolute mode_
+
+	MR %dst, addr
+
+Reads from address into `%dst`register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 0111 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr
 
+#### _(MR) Absolute plus short offset mode_
+
+	MR %dst, addr+short_offset
+
+Reads from address plus short 4-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 1000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr+near_offset
 
+#### _(MR) Absolute plus register offset mode_
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
+	MR %dst, addr+%offset
+
+Reads from address plus offset specified by `%offset` register into `%dst`register.
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 1001 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr+%offset
 
+#### _(MR) Absolute plus immediate offset mode_
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
+	MR %dst, addr+imm_offset
+
+Reads from address plus an immediate 24-bit offset into `%dst` register.
+
+| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Immediate Offset              |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
 | 00000010 | 1010 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr+far_offset
 
+#### _(MR) Absolute minus short offset mode_
+
+	MR %dst, addr-short_offset
+
+Reads from address plus a short 4-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 1011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr-near_offset
 
+
+#### _(MR) Absolute minus register offset mode_
+
+	MR %dst, addr-%offset
+
+Reads from address minus offset specified by `%offset` register into `%dst`register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
 |----------|------|----------|-----------|------------|-------------------------------|
 | 00000010 | 1100 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr-%offset
 
+
+#### _(MR) Absolute minus immediate offset mode_
+
+	MR %dst, addr-imm_offset
+
+Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 | Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
 |----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
 | 00000010 | 1101 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
-	MR %dst, addr-far_offset
+
 
 
 
