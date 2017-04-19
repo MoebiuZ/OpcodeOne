@@ -821,9 +821,72 @@ Logical **N**ot **AND** (NAND)
 
 **PUSH**
 
+**Stores one, two or three registers into the address defined by SP register, incrementing SP after each register.**
+
+| Opcode | - |
+|--------|---|
+| 00000110 | 0x1F |
+
+| Mode | Operation       | Instruction size | Cycles |
+|------|-----------------|------------------|--------|
+| 0000 | [Single](#push-single) | 3 bytes (1 word) | |
+| 0001 | [Double](#push-double) | 3 bytes (1 word) | |
+| 0010 | [Triple](#push-triple) | 3 bytes (1 word) | |
+| ...  | Unused          | N/A              | |
+
+&nbsp;
+
+#### _(PUSH) Single_
+
 	PUSH %src1 
+
+Stores `%src1` into address defined by `%SP`, then increments `%SP`.
+
+| Opcode   | Mode    | Src1 Reg | Unused | Unused |
+|----------|---------|----------|--------|--------|
+| 00000110 | 0000    | xxxx     | ****   | ****   |
+
+Example:
+><sub>Push %C contents to stack.</sub>
+>
+>`PUSH %C`
+
+&nbsp;
+
+#### _(PUSH) Dobule_
+
    	PUSH %src1 %src2
+
+Stores `%src1` into address defined by `%SP`, then increments `%SP`,
+Stores `%src2` into address defined by `%SP`, then increments `%SP`.
+
+| Opcode   | Mode    | Src1 Reg | Src2 Reg | Unused |
+|----------|---------|----------|----------|--------|
+| 00000110 | 0001    | xxxx     | xxxx     | ****   |
+
+Example:
+><sub>Push %D, then %A to stack.</sub>
+>
+>`PUSH %D %A`
+
+&nbsp;
+
+#### _(PUSH) Triple_
+
    	PUSH %src1 %src2 %src3
+
+Stores `%src1` into address defined by `%SP`, then increments `%SP`,
+Stores `%src2` into address defined by `%SP`, then increments `%SP`,
+Stores `%src2` into address defined by `%SP`, then increments `%SP`.
+
+| Opcode   | Mode    | Src1 Reg | Src2 Reg | Src3 Reg |
+|----------|---------|----------|----------|----------|
+| 00000110 | 0010    | xxxx     | xxxx     | xxxx     |
+
+Example:
+><sub>Push %B, then %A, then %C to stack.</sub>
+>
+>`PUSH %B %A %C`
 
 &nbsp;
 
@@ -834,9 +897,72 @@ Logical **N**ot **AND** (NAND)
 
 **POP**
 
+**Stores one, two or three registers into the address defined by SP register, incrementing SP after each register.**
+
+| Opcode | - |
+|--------|---|
+| 00000111 | 0x1F |
+
+| Mode | Operation       | Instruction size | Cycles |
+|------|-----------------|------------------|--------|
+| 0000 | [Single](#pop-single) | 3 bytes (1 word) | |
+| 0001 | [Double](#pop-double) | 3 bytes (1 word) | |
+| 0010 | [Triple](#pop-triple) | 3 bytes (1 word) | |
+| ...  | Unused          | N/A              | |
+
+&nbsp;
+
+#### _(POP) Single_
+
    	POP %dst1
-   	POP %dst1 %dst2 
-   	POP %dst1 %dst2 %dst3
+
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`,
+
+| Opcode   | Mode    | Dst1 Reg | Unused | Unused |
+|----------|---------|----------|--------|--------|
+| 00000111 | 0000    | xxxx     | ****   | ****   |
+
+Example:
+><sub>Pop from stack to %C.</sub>
+>
+>`POP %C
+
+&nbsp;
+
+#### _(POP) Double_
+
+   	POP %dst2 %dst1
+
+Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+
+| Opcode   | Mode    | Dst1 Reg | Dst2 Reg | Unused |
+|----------|---------|----------|----------|--------|
+| 00000111 | 0001    | xxxx     | xxxx     | ****   |
+
+Example:
+><sub>Pop from stack to %A, then %D to stack.</sub>
+>
+>`POP %D %A
+
+&nbsp;
+
+#### _(POP) Triple_
+
+   	POP %dst3 %dst2 %dst1
+
+Loads from address defined by `%SP` to `%dst3`, then decrements `%SP`,
+Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+
+| Opcode   | Mode    | Dst1 Reg | Dst2 Reg | Dst3 Reg |
+|----------|---------|----------|----------|----------|
+| 00000111 | 0010    | xxxx     | xxxx     | xxxx     |
+
+Example:
+><sub>Pop from stack to %C, then %A, then %B.</sub>
+>
+>`POP %B %A %C`
 
 &nbsp;
 
