@@ -431,20 +431,20 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 | Mode | Operation | Instruction size |
 |------|-----------|------------------|
-| 0000 | [Indirect](#mw_indirect_mode) | 3 bytes (1 word) |
-| 0001 | [Indirect plus short offset](#mw_indirect_plus_short_offset_mode) | 3 bytes (1 word) |
-| 0010 | [Indirect plus register offset](#mw_indirect_plus_register_offset_mode) | 3 bytes (1 word) |
-| 0011 | [Indirect plus immediate offset](#mw_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
-| 0100 | [Indirect minus short offset](#mw_indirect_minus_short_offset_mode) | 3 bytes (1 word) |
-| 0101 | [Indirect minus register offset](#mw_indirect_minus_register_offset_mode) | 3 bytes (1 word) |
-| 0110 | [Indirect minus immediate offset](#mw_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
-| 0111 | [Absolute](#mw_absolute_mode) | 6 bytes (2 words) |
-| 1000 | [Absolute plus short offset](#mw_absolute_plus_short_offset_mode) | 6 bytes (2 words) |
-| 1001 | [Absolute plus register offset](#mw_absolute_plus_register_offset_mode) | 6 bytes (2 words) |
-| 1010 | [Absolute plus immediate offset](#mw_absolute_plus_immediate_offset_mode) | 9 bytes (3 words) |
-| 1011 | [Absolute minus short offset](#mw_absolute_minus_short_offset_mode) | 6 bytes (2 words) |
-| 1100 | [Absolute minus register offset](#mw_absolute_minus_register_offset_mode) | 6 bytes (2 words) |
-| 1101 | [Absolute minus immediate offset](#mw_absolute_minus_immediate_offset_mode) | 9 bytes (3 words) |
+| 0000 | [Indirect](#mw-indirect-mode) | 3 bytes (1 word) |
+| 0001 | [Indirect plus short offset](#mw-indirect-plus-short-offset-mode) | 3 bytes (1 word) |
+| 0010 | [Indirect plus register offset](#mw-indirect-plus-register-offset-mode) | 3 bytes (1 word) |
+| 0011 | [Indirect plus immediate offset](#mw-indirect-plus-immediate-offset-mode) | 6 bytes (2 words) |
+| 0100 | [Indirect minus short offset](#mw-indirect-minus-short-offset-mode) | 3 bytes (1 word) |
+| 0101 | [Indirect minus register offset](#mw-indirect-minus-register-offset-mode) | 3 bytes (1 word) |
+| 0110 | [Indirect minus immediate offset](#mw-indirect-plus-immediate-offset-mode) | 6 bytes (2 words) |
+| 0111 | [Absolute](#mw-absolute-mode) | 6 bytes (2 words) |
+| 1000 | [Absolute plus short offset](#mw-absolute-plus-short-offset-mode) | 6 bytes (2 words) |
+| 1001 | [Absolute plus register offset](#mw-absolute-plus-register-offset-mode) | 6 bytes (2 words) |
+| 1010 | [Absolute plus immediate offset](#mw-absolute-plus-immediate-offset-mode) | 9 bytes (3 words) |
+| 1011 | [Absolute minus short offset](#mw-absolute-minus-short-offset-mode) | 6 bytes (2 words) |
+| 1100 | [Absolute minus register offset](#mw-absolute-minus-register-offset-mode) | 6 bytes (2 words) |
+| 1101 | [Absolute minus immediate offset](#mw-absolute-minus-immediate-offset-mode) | 9 bytes (3 words) |
 | 1110 | Unused | N/A |
 | 1111 | Unused | N/A |
 
@@ -635,33 +635,50 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 **Transfers a word between Memory and Video buses.**
 
+| Opcode | - |
+|--------|---|
+| 00011111 | 0x1F |
+
+| Mode | Operation       | Instruction size |
+|------|-----------------|------------------|
+| 0000 | [Memory to Video](#mtr-memory-to-video) | 3 bytes (1 word) |
+| 0001 | [Video to Memory](#mtr-video-to-memory) | 3 bytes (1 word) |
+| 0010 | [Exchange](#mtr-exchange) | 3 bytes (1 word) |
+| ...  | Unused          | N/A              |
+
+#### _(MTR) Memory to Video_
+
 	MTR{V} [%dst], [%src]
 
 Copies a word from Memory to Video memory 
 
-| Opcode   | Mode | Dst addr reg | Src addr reg  | Unused     |
-|----------|------|--------------|---------------|------------|
-| 00000xxx | 0000 | xxxx         | xxxx          | xxxx       |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused |
+|----------|------|---------|---------|--------|
+| 00011111 | 0000 | xxxx    | xxxx    | ****   |
 
 &nbsp;
+
+#### _(MTR) Video to Memory_
 
 	MTR{M} [%dst], [%src]
 
 Copies a word from Video Memory to Memory 
 
-| Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
-|----------|------|--------------|--------------|------------|
-| 00000xxx | 0001 | xxxx         | xxxx         | ****       |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused |
+|----------|------|---------|---------|--------|
+| 00011111 | 0001 | xxxx    | xxxx    | ****   |
 
 &nbsp;
+
+#### _(MTR) Exchange_
 
 	MTR{X} [%dst], [%src]
 
 Exchanges a word between Memory and Video Memory
 
-| Opcode   | Mode | Dst addr reg | Src addr reg | Unused     |
-|----------|------|--------------|--------------|------------|
-| 00000xxx | 0010 | xxxx         | xxxx         | ****       |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused |
+|----------|------|---------|---------|--------|
+| 00011111 | 0010 | xxxx    | xxxx    | ****   |
 
 
 &nbsp;
