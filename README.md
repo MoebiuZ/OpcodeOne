@@ -1,7 +1,7 @@
 OpcodeOne (O¹) Project
 ======================
 
-Educational exploration on several aspects of computing.
+Educational exploration on several aspects of computing through the design and implementation of a fictional CPU architecture.
 
 
 
@@ -52,7 +52,7 @@ So this is an open self-training project; anyone is invited to join and contribu
 
 That doesn't mean I'm the "master" of the project: Although this will be considered the upstream project, every contributor is encouraged to not discard their additions or modifications on their own forks even if these changes are discarded for upstream, since this is a self-learning project, and following different paths or approaches provides value for everyone.
 
-Feel free to ask whatever you don't understand to catch up, we are here to help each other and to learn together at our own pace.
+Don't hesitate to ask whatever you don't understand to catch up, we are here to help each other and to learn together at our own pace.
 
 
 
@@ -76,6 +76,7 @@ Also don't forget to check the [wiki](https://github.com/MoebiuZ/OpcodeOne/wiki)
 - Design an intermediate language
 - Write a compiler (and probably a custom high level language)
 - Bare metal ARM11 VM implementation on Raspberry Pi
+- Hardware CPU simulator based on RPi (a *big box* with CPU pin out)
 - C++ VM implementation
 - WebAssembly VM implementation
 - Create a basic OS and software on top of O¹
