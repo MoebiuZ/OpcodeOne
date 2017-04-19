@@ -55,45 +55,49 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [HALT (HALT machine)](#halt)
 
 
-
-
+***
 
 ## Preliminary notes
 
 * Word size is 24 bits, and is the minimum data unit (for the moment).
-* This first draft probably wastes a lot of "data" being 8 bit each opcode (256 possible opcodes). This could be redesigned in the future, or using the empty opcodes to implement complex "non-standard" instructions.
+* This first draft probably "wastes" a lot of "data" being 8 bit each opcode (256 possible opcodes). This could be redesigned in the future, or using the empty opcodes to implement complex "non-standard" instructions.
 * Each instruction "cycles consumed" or "instruction speed" will be determined with benchmarks once implemented, and the derived value will be used for this specification.
 * Little endian architecture (for the moment)
 * TODO: What to do when Mode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 * TODO: What to do when Opcode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 
+***
 
 ## Registers
 
-| Register | id   | bin  | Description      |
-|----------|------|------|------------------|
-| A        | 0x00 | 0000 | Generic register |
-| B        | 0x01 | 0001 | Generic register |
-| C        | 0x02 | 0010 | Generic register |
-| D        | 0x03 | 0011 | Generic register |
-| unused   | 0x04 | 0100 |                  |
-| unused   | 0x05 | 0101 |                  |
-| unused   | 0x06 | 0110 |                  |
-| unused   | 0x07 | 0111 |                  |
-| unused   | 0x08 | 1000 |                  |
-| unused   | 0x09 | 1001 |                  |
-| unused   | 0x0a | 1010 |                  |
-| unused   | 0x0b | 1011 |                  |
-| FL       | 0x0c | 1100 | Flags            |
-| SB       | 0x0d | 1101 | Stack Base       |
-| SP       | 0x0e | 1110 | Stack Pointer    |
-| PC       | 0x0f | 1111 | Program Counter  |
-		
+All O¹ registers are 24-bits wide.
 
+The following table shows the available registers and their binary encoding withing instructions.
+
+| Register | id   | bin  | Description      | Access     |
+|----------|------|------|------------------|------------|
+| A        | 0x00 | 0000 | Generic register | Read/Write |
+| B        | 0x01 | 0001 | Generic register | Read/Write |
+| C        | 0x02 | 0010 | Generic register | Read/Write |
+| D        | 0x03 | 0011 | Generic register | Read/Write |
+| unused   | 0x04 | 0100 |                  | N/A        |
+| unused   | 0x05 | 0101 |                  | N/A        |
+| unused   | 0x06 | 0110 |                  | N/A        |
+| unused   | 0x07 | 0111 |                  | N/A        |
+| unused   | 0x08 | 1000 |                  | N/A        |
+| unused   | 0x09 | 1001 |                  | N/A        |
+| unused   | 0x0a | 1010 |                  | N/A        |
+| unused   | 0x0b | 1011 |                  | N/A        |
+| FL       | 0x0c | 1100 | Flags            | Read-only  |
+| SB       | 0x0d | 1101 | Stack Base       | Read/Write |
+| SP       | 0x0e | 1110 | Stack Pointer    | Read/Write |
+| PC       | 0x0f | 1111 | Program Counter  | Read/Write |
+		
+***
 
 ## Status flags
 
-Status flags are store in the FL register.
+Status flags are stored in the FL register.
 
 // TODO
 
@@ -103,11 +107,12 @@ Status flags are store in the FL register.
 * Two's complement overflow
 * Signed (N/V)
 
+***
 
 ## Addressing
 
-OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. On a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
-All instruction addressing refers to Memory bus, and Video bus is only accesable with [VR](#vr), [VW](#vw) and [MTR](#mtr) instructions.
+OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
+All instructions addressing refer to Memory bus, and Video bus is only accessible with [VR](#vr), [VW](#vw) and [MTR](#mtr) instructions.
 
 
 ### Memory bus
@@ -118,10 +123,9 @@ All instruction addressing refers to Memory bus, and Video bus is only accesable
 
 // TODO
 
-
+***
 
 ## Opcode table
-
 
 Most significative byte of an instruction indicates the code of operation (opcode).  
 The following table illustrates all opcodes with their hexadecimal representation.  
@@ -147,7 +151,7 @@ The following table illustrates all opcodes with their hexadecimal representatio
 | <sub>**Ex**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**Fx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 
-
+***
 
 ## Assembly syntax
 
@@ -159,7 +163,7 @@ The following table illustrates all opcodes with their hexadecimal representatio
 * Absolute addresses are expresed in hexadecimal.
 * **{}** indicates **flags**, **conditions** or **operation type** (ie.: conditions in `JMP`, *with carry* in arithmetical operations or *direction" in `MTR`)
 
-
+***
 
 ## O¹ instruction set
 
@@ -185,20 +189,20 @@ Legend:
 
 | Mode | Operation | Instruction size |
 |------|-----------|------------------|
-| 0000 | [Indirect](#mr_indirect_mode) | 3 bytes (1 word) |
-| 0001 | [Indirect plus short offset](#mr_indirect_plus_short_offset_mode) | 3 bytes (1 word) |
-| 0010 | [Indirect plus register offset](#mr_indirect_plus_register_offset_mode) | 3 bytes (1 word) |
-| 0011 | [Indirect plus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
-| 0100 | [Indirect minus short offset](#mr_indirect_minus_short_offset_mode) | 3 bytes (1 word) |
-| 0101 | [Indirect minus register offset](#mr_indirect_minus_register_offset_mode) | 3 bytes (1 word) |
-| 0110 | [Indirect minus immediate offset](#mr_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
-| 0111 | [Absolute](#mr_absolute_mode) | 6 bytes (2 words) |
-| 1000 | [Absolute plus short offset](#mr_absolute_plus_short_offset_mode) | 6 bytes (2 words) |
-| 1001 | [Absolute plus register offset](#mr_absolute_plus_register_offset_mode) | 6 bytes (2 words) |
-| 1010 | [Absolute plus immediate offset](#mr_absolute_plus_immediate_offset_mode) | 9 bytes (3 words) |
-| 1011 | [Absolute minus short offset](#mr_absolute_minus_short_offset_mode) | 6 bytes (2 words) |
-| 1100 | [Absolute minus register offset](#mr_absolute_minus_register_offset_mode) | 6 bytes (2 words) |
-| 1101 | [Absolute minus immediate offset](#mr_absolute_minus_immediate_offset_mode) | 9 bytes (3 words) |
+| 0000 | [Indirect](#mr-indirect-mode) | 3 bytes (1 word) |
+| 0001 | [Indirect plus short offset](#mr-indirect-plus-short-offset-mode) | 3 bytes (1 word) |
+| 0010 | [Indirect plus register offset](#mr-indirect-plus-register-offset-mode) | 3 bytes (1 word) |
+| 0011 | [Indirect plus immediate offset](#mr-indirect-plus-immediate-offset-mode) | 6 bytes (2 words) |
+| 0100 | [Indirect minus short offset](#mr-indirect-minus-short-offset-mode) | 3 bytes (1 word) |
+| 0101 | [Indirect minus register offset](#mr-indirect-minus-register-offset-mode) | 3 bytes (1 word) |
+| 0110 | [Indirect minus immediate offset](#mr-indirect-plus-immediate-offset-mode) | 6 bytes (2 words) |
+| 0111 | [Absolute](#mr-absolute-mode) | 6 bytes (2 words) |
+| 1000 | [Absolute plus short offset](#mr-absolute-plus-short-offset-mode) | 6 bytes (2 words) |
+| 1001 | [Absolute plus register offset](#mr-absolute-plus-register-offset-mode) | 6 bytes (2 words) |
+| 1010 | [Absolute plus immediate offset](#mr-absolute-plus-immediate-offset-mode) | 9 bytes (3 words) |
+| 1011 | [Absolute minus short offset](#mr-absolute-minus-short-offset-mode) | 6 bytes (2 words) |
+| 1100 | [Absolute minus register offset](#mr-absolute-minus-register-offset-mode) | 6 bytes (2 words) |
+| 1101 | [Absolute minus immediate offset](#mr-absolute-minus-immediate-offset-mode) | 9 bytes (3 words) |
 | 1110 | Unused | N/A |
 | 1111 | Unused | N/A |
 
