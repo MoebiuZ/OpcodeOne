@@ -7,7 +7,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 
 * [Preliminary notes](#preliminary-notes)
 * [Registers](#registers)
-* Status flags
+* [Status flags](#status-flags)
 * [Addressing](#addressing)
 * [Opcode table](#opcode-table)
 * [Assembly syntax](#assembly-syntax)
@@ -91,18 +91,28 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		
 
 
+## Status flags
 
-FL (Flags)  ---> Carry, Zero, Negative, Two's complement overflow, Signed (N/V), x , x,  x
+Status flags are store in the FL register.
+
+// TODO
+
+* Carry
+* Zero
+* Negative
+* Two's complement overflow
+* Signed (N/V)
 
 
 ## Addressing
 
-OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. On a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.
-
-
+OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. On a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
 All instruction addressing refers to Memory bus, and Video bus is only accesable with [VR](#vr), [VW](#vw) and [MTR](#mtr) instructions.
 
+
 ### Memory bus
+
+// TODO
 
 ### Video bus
 
@@ -113,10 +123,8 @@ All instruction addressing refers to Memory bus, and Video bus is only accesable
 ## Opcode table
 
 
-Most significative byte of an instruction indicates the code of operation (opcode).
-
-The following table illustrates all opcodes with their hexadecimal representation.
-
+Most significative byte of an instruction indicates the code of operation (opcode).  
+The following table illustrates all opcodes with their hexadecimal representation.  
 <sub>Note: The opcode order and their hex value is subject to be rearranged.</sub>
 
 
@@ -194,6 +202,7 @@ Legend:
 | 1110 | Unused | N/A |
 | 1111 | Unused | N/A |
 
+&nbsp;
 
 #### _(MR) Indirect mode_
 
@@ -202,16 +211,16 @@ Legend:
 Reads from the address specified by `%src` register into `%dst` register.
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0000 | xxxx     | xxxx      | ****       |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused |
+|----------|------|---------|---------|--------|
+| 00000010 | 0000 | xxxx    | xxxx    | ****   |
 
 Example:
 ><sub>Read a word from the address specified by %C into %A</sub>
 >
 >`MR %A, [%C]`
 
-
+&nbsp;
 
 #### _(MR) Indirect plus short offset mode_
 
@@ -219,16 +228,16 @@ Example:
 
 Reads from the address specified by `%src` register plus a short 4-bit offset into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0001 | xxxx     | xxxx      | xxxx       |
+| Opcode   | Mode | Dst Reg | Src Reg | Short Offset |
+|----------|------|---------|---------|--------------|
+| 00000010 | 0001 | xxxx    | xxxx    | xxxx         |
 
 Example:
 ><sub>Read a word from the address specified by %B plus 3 into %C</sub>
 >
 >`MR %C, [%B]+3`
 
-	
+&nbsp;
 
 #### _(MR) Indirect plus register offset mode_
 
@@ -236,16 +245,16 @@ Example:
 
 Reads from the address specified by `%src` register plus an offset specified by `%offset` register into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0010 | xxxx     | xxxx      | xxxx       |
+| Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
+|----------|------|---------|---------|------------|
+| 00000010 | 0010 | xxxx    | xxxx    | xxxx       |
 
 Example:
 ><sub>Read a word from the address specified by %D plus offset specified by %B into %A</sub>
 >
 >`MR %A, [%D]+%B`
 
-
+&nbsp;
 
 #### _(MR) Indirect plus immediate offset mode_
 
@@ -253,20 +262,20 @@ Example:
 
 Reads from the address specified by `%src` register plus an immediate 24-bit offset into `%dst` register
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate offset              |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0011 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused | Immediate Offset              |
+|----------|------|---------|---------|--------|-------------------------------|
+| 00000010 | 0011 | xxxx    | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
->`MR %A, [%C]+1337` <sub>| h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`MR %A, [%C]+1337` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 >
 ><sub>or</sub>
 >
->`MR %A, [%C]+0x539` <sub>| h(0x023020 , 0x000539) b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`MR %A, [%C]+0x539` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 
-
+&nbsp;
 
 #### _(MR) Indirect minus short offset mode_
 
@@ -274,19 +283,20 @@ Example:
 
 Reads from the address specified by `%src` register minus a short 4-bit *offset* into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0100 | xxxx     | xxxx      | xxxx       |
+| Opcode   | Mode | Dst Reg | Src Reg | Short Offset |
+|----------|------|---------|---------|--------------|
+| 00000010 | 0100 | xxxx    | xxxx    | xxxx         |
 
 Example:
 ><sub>Read a word from the address specified by %B minus 15 into %A</sub>
 >
->`MR %A, [%B]-15` <sub>| h(0x02401F) b(00000010 0100 0000 0001 1111)</sub>
+>`MR %A, [%B]-15` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
 >
 ><sub>or</sub>
 >
->`MR %A, [%B]-0xf` <sub>| h(0x02401F) b(00000010 0100 0000 0001 1111)</sub>
+>`MR %A, [%B]-0xf` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
 
+&nbsp;
 
 #### _(MR) Indirect minus register offset mode_
 
@@ -294,11 +304,11 @@ Example:
 
 Reads from the address specified by `%src` register minus an offset specified by `%offset` register into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg |
-|----------|------|----------|-----------|------------|
-| 00000010 | 0101 | xxxx     | xxxx      | xxxx       |
+| Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
+|----------|------|---------|---------|------------|
+| 00000010 | 0101 | xxxx    | xxxx    | xxxx       |
 
-
+&nbsp;
 
 #### _(MR) Indirect plus immediate offset mode_
 
@@ -306,11 +316,11 @@ Reads from the address specified by `%src` register minus an offset specified by
 
 Reads from the address specified by `%src` register minus an immediate 24-bit offset into `%dst` register
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Immediate Offset              |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0110 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Src Reg | Unused | Immediate Offset              |
+|----------|------|---------|---------|--------|-------------------------------|
+| 00000010 | 0110 | xxxx    | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
+&nbsp;
 
 #### _(MR) Absolute mode_
 
@@ -318,11 +328,11 @@ Reads from the address specified by `%src` register minus an immediate 24-bit of
 
 Reads from address into `%dst`register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 0111 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Unused | Address                       |
+|----------|------|---------|--------|--------|-------------------------------|
+| 00000010 | 0111 | xxxx    | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
+&nbsp;
 
 #### _(MR) Absolute plus short offset mode_
 
@@ -330,11 +340,11 @@ Reads from address into `%dst`register.
 
 Reads from address plus short 4-bit offset into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 1000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Short Offset | Address                       |
+|----------|------|---------|--------|--------------|-------------------------------|
+| 00000010 | 1000 | xxxx    | ****   | xxxx         | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
+&nbsp;
 
 #### _(MR) Absolute plus register offset mode_
 
@@ -342,11 +352,11 @@ Reads from address plus short 4-bit offset into `%dst` register.
 
 Reads from address plus offset specified by `%offset` register into `%dst`register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset Reg | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 1001 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Offset Reg | Address                       |
+|----------|------|---------|--------|------------|-------------------------------|
+| 00000010 | 1001 | xxxx    | ****   | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
+&nbsp;
 
 #### _(MR) Absolute plus immediate offset mode_
 
@@ -354,11 +364,11 @@ Reads from address plus offset specified by `%offset` register into `%dst`regist
 
 Reads from address plus an immediate 24-bit offset into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Immediate Offset              |
-|----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000010 | 1010 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Unused | Address                       | Immediate Offset              |
+|----------|------|---------|--------|--------|-------------------------------|-------------------------------|
+| 00000010 | 1010 | xxxx    | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
+&nbsp;
 
 #### _(MR) Absolute minus short offset mode_
 
@@ -366,12 +376,11 @@ Reads from address plus an immediate 24-bit offset into `%dst` register.
 
 Reads from address plus a short 4-bit offset into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 1011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Short Offset | Address                       |
+|----------|------|---------|--------|--------------|-------------------------------|
+| 00000010 | 1011 | xxxx    | ****   | xxxx         | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
-
+&nbsp;
 
 #### _(MR) Absolute minus register offset mode_
 
@@ -379,12 +388,11 @@ Reads from address plus a short 4-bit offset into `%dst` register.
 
 Reads from address minus offset specified by `%offset` register into `%dst`register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000010 | 1100 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Offset Reg | Address                       |
+|----------|------|---------|--------|------------|-------------------------------|
+| 00000010 | 1100 | xxxx    | ****   | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
-
+&nbsp;
 
 #### _(MR) Absolute minus immediate offset mode_
 
@@ -392,15 +400,15 @@ Reads from address minus offset specified by `%offset` register into `%dst`regis
 
 Reads from address minus an immediate 24-bit offset into `%dst` register.
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
-|----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000010 | 1101 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Unused | Unused | Address                       | Immediate Offset              |
+|----------|------|---------|--------|--------|-------------------------------|-------------------------------|
+| 00000010 | 1101 | xxxx    | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 
+&nbsp;
 
-
-
+&nbsp;
 
 
 
@@ -411,120 +419,188 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 **Writes a wrod from a [register](#registers) into [Video bus](#video-bus) address.**
 
+| Opcode | - |
+|--------|---|
+| 00000010 | 0x02 |
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     |
-|----------|------|----------|-----------|------------|
-| 00000011 | 0000 | xxxx     | xxxx      | ****       |
 
+| Mode | Operation | Instruction size |
+|------|-----------|------------------|
+| 0000 | [Indirect](#mw_indirect_mode) | 3 bytes (1 word) |
+| 0001 | [Indirect plus short offset](#mw_indirect_plus_short_offset_mode) | 3 bytes (1 word) |
+| 0010 | [Indirect plus register offset](#mw_indirect_plus_register_offset_mode) | 3 bytes (1 word) |
+| 0011 | [Indirect plus immediate offset](#mw_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
+| 0100 | [Indirect minus short offset](#mw_indirect_minus_short_offset_mode) | 3 bytes (1 word) |
+| 0101 | [Indirect minus register offset](#mw_indirect_minus_register_offset_mode) | 3 bytes (1 word) |
+| 0110 | [Indirect minus immediate offset](#mw_indirect_plus_immediate_offset_mode) | 6 bytes (2 words) |
+| 0111 | [Absolute](#mw_absolute_mode) | 6 bytes (2 words) |
+| 1000 | [Absolute plus short offset](#mw_absolute_plus_short_offset_mode) | 6 bytes (2 words) |
+| 1001 | [Absolute plus register offset](#mw_absolute_plus_register_offset_mode) | 6 bytes (2 words) |
+| 1010 | [Absolute plus immediate offset](#mw_absolute_plus_immediate_offset_mode) | 9 bytes (3 words) |
+| 1011 | [Absolute minus short offset](#mw_absolute_minus_short_offset_mode) | 6 bytes (2 words) |
+| 1100 | [Absolute minus register offset](#mw_absolute_minus_register_offset_mode) | 6 bytes (2 words) |
+| 1101 | [Absolute minus immediate offset](#mw_absolute_minus_immediate_offset_mode) | 9 bytes (3 words) |
+| 1110 | Unused | N/A |
+| 1111 | Unused | N/A |
+
+&nbsp;
+
+#### _(MW) Indirect mode_
 
 	MW [%dst], %src
 
+| Opcode   | Mode | Dst Reg | Src Reg | Unused |
+|----------|------|---------|---------|--------|
+| 00000011 | 0000 | xxxx    | xxxx    | ****   |
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
-|----------|------|----------|-----------|------------|
-| 00000011 | 0001 | xxxx     | xxxx      | xxxx       |
+&nbsp;
 
+#### _(MW) Indirect plus short offset mode_
+
+	MW [%dst]+short_offset, %src
+
+
+| Opcode   | Mode | Dst Reg | Src Reg | Short Offset |
+|----------|------|---------|---------|--------------|
+| 00000011 | 0001 | xxxx    | xxxx    | xxxx         |
+
+&nbsp;
+
+#### _(MW) Indirect plus register offset mode_
 	
-	MW [%dst]+near_offset, %R
-
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
-|----------|------|----------|-----------|------------|
-| 00000011 | 0010 | xxxx     | xxxx      | xxxx       |
-
-
 	MW [%dst]+%offset, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 0011 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
+|----------|------|---------|---------|------------|
+| 00000011 | 0010 | xxxx    | xxxx    | xxxx       |
+
+&nbsp;
+
+#### _(MW) Indirect plus immediate offset mode_
+
+	MW [%dst]+imm_offset, %src
 
 
-	MW [%dst]+far_offset, %src
+| Opcode   | Mode | Dst Reg | Src Reg | Unused | Immediate Offset              |
+|----------|------|---------|---------|--------|-------------------------------|
+| 00000011 | 0011 | xxxx    | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Indirect minus short offset mode_
+
+	MW [%dst]-short_offset, %src
 
 
+| Opcode   | Mode | Dst Reg | Src Reg | Short Offset |
+|----------|------|---------|---------|--------------|
+| 00000011 | 0100 | xxxx    | xxxx    | xxxx         |
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     |
-|----------|------|----------|-----------|------------|
-| 00000011 | 0100 | xxxx     | xxxx      | xxxx       |
+&nbsp;
 
-
-	MW [%dst]-near_offset, %src
-
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    |
-|----------|------|----------|-----------|------------|
-| 00000011 | 0101 | xxxx     | xxxx      | xxxx       |
-
+#### _(MW) Indirect minus register offset mode_
 
 	MW [%dst]-%offset, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Offset                        |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 0110 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
+|----------|------|---------|---------|------------|
+| 00000011 | 0101 | xxxx    | xxxx    | xxxx       |
+
+&nbsp;
+
+#### _(MW) Indirect plus immediate offset mode_
+
+	MW [%dst]-imm_offset, %src
 
 
-	MW [%dst]-far_offset, %src
+| Opcode   | Mode | Dst Reg | Src Reg | Unused | Immediate Offset              |
+|----------|------|---------|---------|--------|-------------------------------|
+| 00000011 | 0110 | xxxx    | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
+&nbsp;
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 0111 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
-
+#### _(MW) Absolute mode_
 
 	MW addr, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 1000 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Unused | Src Reg | Unused | Address                       |
+|----------|------|--------|---------|--------|-------------------------------|
+| 00000011 | 0111 | ****   | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Absolute plus short offset mode_
+
+	MW addr+short_offset, %src
 
 
-	MW addr+near_offset, %src
+| Opcode   | Mode | Unused | Src Reg | Short Offset | Address                       |
+|----------|------|--------|---------|--------------|-------------------------------|
+| 00000011 | 1000 | ****   | xxxx    | xxxx         | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Absolute plus register offset mode_
+
+	MW addr+%offset, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 1001 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
+|----------|------|--------|---------|------------|-------------------------------|
+| 00000011 | 1001 | ****   | xxxx    | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Absolute plus immediate offset mode_
+
+	MW addr+imm_offset, %src
 
 
-	MW addr+%dst, %src
+| Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Immediate Offset              |
+|----------|------|--------|---------|--------|-------------------------------|-------------------------------|
+| 00000011 | 1010 | ****   | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Absolute minus short offset mode_
+
+	MW addr-short_offset, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
-|----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000011 | 1010 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Unused | Src Reg | Short Offset | Address                       |
+|----------|------|--------|---------|--------------|-------------------------------|
+| 00000011 | 1011 | ****   | xxxx    | xxxx         | xxxx xxxx xxxx xxxx xxxx xxxx |
 
+&nbsp;
 
-	MW addr+far_offset, %src
-
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Offset     | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 1011 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
-
-
-	MW addr-near_offset, %src
-
-
-| Opcode   | Mode | Dst Reg  | Src Reg   | Off Reg    | Address                       |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 00000011 | 1100 | xxxx     | xxxx      | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
-
+#### _(MW) Absolute minus register offset mode_
 
 	MW addr-%offset, %src
 
 
-| Opcode   | Mode | Dst Reg  | Src Reg   | Unused     | Address                       | Offset                        |
-|----------|------|----------|-----------|------------|-------------------------------|-------------------------------|
-| 00000011 | 1101 | xxxx     | xxxx      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
+| Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
+|----------|------|--------|---------|------------|-------------------------------|
+| 00000011 | 1100 | ****   | xxxx    | xxxx       | xxxx xxxx xxxx xxxx xxxx xxxx |
+
+&nbsp;
+
+#### _(MW) Absolute minus immediate offset mode_
+
+	MW addr-imm_offset, %src
 
 
-	MW addr-far_offset, %src
+| Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Immediate offset              |
+|----------|------|--------|---------|--------|-------------------------------|-------------------------------|
+| 00000011 | 1101 | ****   | xxxx    | ****   | xxxx xxxx xxxx xxxx xxxx xxxx | xxxx xxxx xxxx xxxx xxxx xxxx |
 
+
+&nbsp;
+
+&nbsp;
 
 *VR*
 ---
@@ -533,6 +609,10 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 **Reads a word from [Video bus](#video-bus) into a [register](#registers).**
 
+&nbsp;
+
+&nbsp;
+
 *VW*
 ---
 
@@ -540,12 +620,16 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 **Writes a word from a [register](#registers) into [Video bus](#video-bus) address.**
 
+&nbsp;
+
+&nbsp;
 
 *MTR*
 ---
 
 **M**emory **TR**ansfer
 
+**Transfers a word between Memory and Video buses.**
 
 	MTR{V} [%dst], [%src]
 
@@ -555,8 +639,7 @@ Copies a word from Memory to Video memory
 |----------|------|--------------|---------------|------------|
 | 00000xxx | 0000 | xxxx         | xxxx          | xxxx       |
 
-
-
+&nbsp;
 
 	MTR{M} [%dst], [%src]
 
@@ -566,8 +649,7 @@ Copies a word from Video Memory to Memory
 |----------|------|--------------|--------------|------------|
 | 00000xxx | 0001 | xxxx         | xxxx         | ****       |
 
-
-
+&nbsp;
 
 	MTR{X} [%dst], [%src]
 
@@ -578,15 +660,16 @@ Exchanges a word between Memory and Video Memory
 | 00000xxx | 0010 | xxxx         | xxxx         | ****       |
 
 
+&nbsp;
 
-
+&nbsp;
 
 *AND*
 ---
 
 Logical **AND**
 
-Performs a logical AND between 2 source registers and stores the result in destination register
+Performs a logical AND between 2 source registers and stores the result in destination register.
 
 	AND %dst, %src1, %src2
 
@@ -595,7 +678,9 @@ Performs a logical AND between 2 source registers and stores the result in desti
 | 00000100 | xxxx   | xxxx     | xxxx      | xxxx         |
 
 
+&nbsp;
 
+&nbsp;
 
 *OR*
 ---
@@ -604,6 +689,10 @@ Logical **OR**
 
 	OR %dst, %src1, %src2
 
+&nbsp;
+
+&nbsp;
+
 *XOR*
 ---
 
@@ -611,6 +700,9 @@ Logical **XOR**
 
 	XOR %dst, %src1, %src2
 
+&nbsp;
+
+&nbsp;
 
 *NEG*
 ---
@@ -619,6 +711,9 @@ Logical **XOR**
 
 	NEG %dst, %src
 
+&nbsp;
+
+&nbsp;
 
 *NAND*
 ---
@@ -627,6 +722,9 @@ Logical **N**ot **AND** (NAND)
 
 	NAND %dst, %src1, %src2
 
+&nbsp;
+
+&nbsp;
 
 *INC*
 ---
@@ -635,6 +733,9 @@ Logical **N**ot **AND** (NAND)
 
 	INC %dst
 
+&nbsp;
+
+&nbsp;
 
 *DEC*
 ---
@@ -642,6 +743,10 @@ Logical **N**ot **AND** (NAND)
 **DEC**rement
 
 	DEC %dst
+
+&nbsp;
+
+&nbsp;
 
 *ADD*
 ---
@@ -651,6 +756,9 @@ Logical **N**ot **AND** (NAND)
 	ADD %dst, %src1, %src2
 	ADD{C} %dst, %src1, %src1
 
+&nbsp;
+
+&nbsp;
 
 *SUB*
 ---
@@ -659,7 +767,10 @@ Logical **N**ot **AND** (NAND)
 
 	SUB %dst, %min, %subtr
 	SUB{C} %dst, %min, %subtr
-    
+
+&nbsp;
+
+&nbsp;    
 
 *MUL*
 ---
@@ -669,12 +780,20 @@ Logical **N**ot **AND** (NAND)
 	MUL %dst, %src1, %src2
  	MUL{C} %dst, %src1, %src2
 
+&nbsp;
+
+&nbsp;
+
 *DIV*
 ---
 
 **DIV**ision
 
 	DIV %dst, %num, %denom
+
+&nbsp;
+
+&nbsp;
 
 *PUSH*
 ---
@@ -685,6 +804,9 @@ Logical **N**ot **AND** (NAND)
    	PUSH %src1 %src2
    	PUSH %src1 %src2 %src3
 
+&nbsp;
+
+&nbsp;
 
 *POP*
 ---
@@ -695,31 +817,45 @@ Logical **N**ot **AND** (NAND)
    	POP %dst1 %dst2 
    	POP %dst1 %dst2 %dst3
 
+&nbsp;
+
+&nbsp;
 
 *RL*
 ---
 
 **R**otate **L**eft
 
+&nbsp;
 
+&nbsp;
 
 *RR*
 ---
 
 **R**otate **R**ight
 
+&nbsp;
+
+&nbsp;
 
 *SL*
 ---
 
 **S**hift **L**eft
 
+&nbsp;
+
+&nbsp;
 
 *SR*
 ---
 
 **S**hift **R**ight
 
+&nbsp;
+
+&nbsp;
 
 *BIT*
 ---
@@ -748,7 +884,9 @@ Resets bit number # on register
 |----------|---------|----------|---------|---------|
 | 0000xxxx | 0001    | xxxx     | ***     | xxxxx   |
 
+&nbsp;
 
+&nbsp;
 
 	BIT{T} %dst, #(0-24)
 
@@ -759,7 +897,9 @@ Tests bit number # on register and sets Z flag accordingly.
 | 0000xxxx | 0010    | xxxx     | xxxx    | xxxxx   |
 
 
+&nbsp;
 
+&nbsp;
 
 *SWP*
 ---
@@ -781,9 +921,9 @@ Swaps 2 bytes on a register (High-Low, High-Medium, Medium-Low)
 Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
 
 
+&nbsp;
 
-
-
+&nbsp;
 
 *XCHG*
 ---
@@ -792,12 +932,18 @@ e**XCH**an**G**e
 
 	XCHG %dst, %src
 
+&nbsp;
+
+&nbsp;
 
 *CMP*
 ---
 
 **C**o**MP**are
 
+&nbsp;
+
+&nbsp;
 
 *LD*
 ---
@@ -827,80 +973,124 @@ e**XCH**an**G**e
 
 	LD %dst1 %dst2 %dst3, 0xdeadbe
 
+&nbsp;
+
+&nbsp;
 
 *CP*
 ---
 
 **C**o**P**y
 	
-	Copies a register into another
+**Copies a register into another**
+	
+	CP %dst, %src
+
+Copies `%src` register into `%dst` register.
 
 | Opcode   | Unused  | Dst reg  | Src Reg | Unused |
 |----------|---------|----------|---------|--------|
 | 0000xxxx | xxxx    | xxxx     | xxxx    | ****   |
 
-	CP %dst, %src
 
+&nbsp;
+
+&nbsp;
 
 *IN*
 ---
 
 **IN**put
 
+&nbsp;
+
+&nbsp;
 
 *OUT*
 ---
 
 **OUT**put
 
+&nbsp;
+
+&nbsp;
 
 *JMP*
 ---
 
 **J**u**MP**
 
+&nbsp;
+
+&nbsp;
 
 *CALL*
 ---
 
 **CALL**
 
+&nbsp;
+
+&nbsp;
 
 *RET*
 ---
 
 **RET**urn
 
+&nbsp;
+
+&nbsp;
 
 *NOP*
 ---
 
 **N**o **OP**eration
 
+**Does nothing, only consumes cycles.**
+
+| Opcode | - |
+|--------|---|
+| 00000000 | 0x00 |
+
+| Instruction size |
+|------------------|
+| 3 bytes (1 word) |
+
+
 	NOP
 
-Does nothing, only consumes time.
+No operation.
 
 | Opcode   | Unused            |
 |----------|-------------------|
 | 00000000 | ******** ******** |
 
 
+&nbsp;
 
+&nbsp;
 
 *HALT*
 ---
 
 **HALT**
 
+**Suspends the execution of the CPU until an interruption is received.**
+
+| Opcode | - |
+|--------|---|
+| 00000001 | 0x01 |
+
+| Instruction size |
+|------------------|
+| 3 bytes (1 word) |
 
 	HALT
 
-Halts the CPU
+Halts the CPU.
 
 | Opcode   | Unused            |
 |----------|-------------------|
-| 0000xxxx | ******** ******** |
+| 00000001 | ******** ******** |
 	
-
-
