@@ -114,9 +114,9 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 | 0   | C    | [Carry](#carry-c-flag) | No |
 
 
-| <sub><sub>23</sub></sub></sub> | <sub><sub>22</sub></sub> | <sub><sub>21</sub></sub> | <sub><sub>20</sub></sub> | <sub><sub>19</sub></sub> | <sub><sub>18</sub></sub> | <sub><sub>17</sub></sub> | <sub><sub>16</sub></sub> | <sub><sub>15</sub></sub> | <sub><sub>14</sub></sub> | <sub><sub>13</sub></sub> | <sub><sub>12</sub></sub> | <sub><sub>11</sub></sub> | <sub><sub>10</sub></sub> | <sub><sub>9</sub></sub> | <sub><sub>8</sub></sub> | <sub><sub>7</sub></sub> | <sub><sub>6</sub></sub> | <sub><sub>5</sub></sub> | <sub><sub>4</sub></sub> | <sub><sub>3</sub></sub> | <sub><sub>2</sub></sub> | <sub><sub>1</sub></sub> | <sub><sub>0</sub></sub> |
+| <sub><sup>23</sup></sub></sub> | <sub><sup>22</sup></sub> | <sub><sup>21</sup></sub> | <sub><sup>20</sup></sub> | <sub><sup>19</sup></sub> | <sub><sup>18</sup></sub> | <sub><sup>17</sup></sub> | <sub><sup>16</sup></sub> | <sub><sup>15</sup></sub> | <sub><sup>14</sup></sub> | <sub><sup>13</sup></sub> | <sub><sup>12</sup></sub> | <sub><sup>11</sup></sub> | <sub><sup>10</sup></sub> | <sub><sup>9</sup></sub> | <sub><sup>8</sup></sub> | <sub><sup>7</sup></sub> | <sub><sup>6</sup></sub> | <sub><sup>5</sup></sub> | <sub><sup>4</sup></sub> | <sub><sup>3</sup></sub> | <sub><sup>2</sup></sub> | <sub><sup>1</sup></sub> | <sub><sup>0</sup></sub> |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-| <sub><sub>II</sub></sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sub>Z</sub></sub> | <sub><sub>SB</sub></sub> | <sub><sub>P</sub></sub> | <sub><sub>V<sub></sub> | <sub><sub>S</sub></sub> | <sub><sub>C</sub></sub> |
+| <sub><sup>II</sup></sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sup>Z</sup></sub> | <sub><sup>SB</sup></sub> | <sub><sup>P</sup></sub> | <sub><sup>V<sub></sub> | <sub><sup>S</sup></sub> | <sub><sup>C</sup></sub> |
 
 
 #### _Invalid Instruction (II) flag_
