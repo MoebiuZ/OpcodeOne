@@ -13,5 +13,6 @@ This is a non-exhaustive list of exercises a contributor can (should) do in orde
 
 #### Exercises on your own
 
-1. Implement another emulator with your language of choice. (Recomended a language you don't know well and want to learn)
-2. Implement another assembler with your language of choice. (Recomended a language you don't know well and want to learn)
+1. Implement another emulator with your language of choice. (Recommendation: choose a language you don't know well and want to learn/improve)
+2. Implement another assembler with your language of choice. (Recommendation: choose a language you don't know well and want to learn/improve)
+3. Write some simple programs in O¹ assembly.
