@@ -80,14 +80,14 @@ The following table shows the available registers and their binary encoding with
 | B        | 0x01 | 0001 | Generic register | Read/Write |
 | C        | 0x02 | 0010 | Generic register | Read/Write |
 | D        | 0x03 | 0011 | Generic register | Read/Write |
-| unused   | 0x04 | 0100 |                  | N/A        |
-| unused   | 0x05 | 0101 |                  | N/A        |
-| unused   | 0x06 | 0110 |                  | N/A        |
-| unused   | 0x07 | 0111 |                  | N/A        |
-| unused   | 0x08 | 1000 |                  | N/A        |
-| unused   | 0x09 | 1001 |                  | N/A        |
-| unused   | 0x0a | 1010 |                  | N/A        |
-| unused   | 0x0b | 1011 |                  | N/A        |
+| unused   | 0x04 | 0100 | To be defined    | N/A        |
+| unused   | 0x05 | 0101 | To be defined    | N/A        |
+| unused   | 0x06 | 0110 | To be defined    | N/A        |
+| unused   | 0x07 | 0111 | To be defined    | N/A        |
+| unused   | 0x08 | 1000 | To be defined    | N/A        |
+| unused   | 0x09 | 1001 | To be defined    | N/A        |
+| unused   | 0x0a | 1010 | To be defined    | N/A        |
+| unused   | 0x0b | 1011 | To be defined    | N/A        |
 | FL       | 0x0c | 1100 | Flags            | Read-only  |
 | SB       | 0x0d | 1101 | Stack Base       | Read/Write |
 | SP       | 0x0e | 1110 | Stack Pointer    | Read/Write |
@@ -97,15 +97,57 @@ The following table shows the available registers and their binary encoding with
 
 ## Status flags
 
-Status flags are stored in the FL register.
+Status flags are stored in the FL register.  
+Flags marked as *exposed* means there is a hardware pin that outputs its status.
 
 // TODO
 
-* Carry
-* Zero
-* Negative
-* Two's complement overflow
-* Signed (N/V)
+
+| Bit | Name | Description | Exposed | 
+|-----|------|-------------|---------|
+| 23  | II   | [Invalid Instruction](#invalid-instruction-ii-flag) | Yes |
+| 6   | Z    | [Zero](#zero-z-flag) | No |
+| 4   | SB   | [Subtraction](#subtraction-sb-flag) | No |
+| 3   | P    | [Parity](#parity-p-flag) | No |
+| 2   | V    | [Overflow](#overflow-v-flag) | No |
+| 1   | S    | [Sign](#sign-s-flag) | No |
+| 0   | C    | [Carry](#carry-c-flag) | No |
+
+
+| <sub>23</sub> | <sub>22</sub> | <sub>21</sub> | <sub>20</sub> | <sub>19</sub> | <sub>18</sub> | <sub>17</sub> | <sub>16</sub> | <sub>15</sub> | <sub>14</sub> | <sub>13</sub> | <sub>12</sub> | <sub>11</sub> | <sub>10</sub> | <sub>9</sub> | <sub>8</sub> | <sub>7</sub> | <sub>6</sub> | <sub>5</sub> | <sub>4</sub> | <sub>3</sub> | <sub>2</sub> | <sub>1</sub> | <sub>0</sub> |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| <sub>II</sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub>Z</sub> | <sub>SB</sub> | <sub>P</sub> | <sub>V<sub> | <sub>S</sub> | <sub>C</sub> |
+
+
+#### _Invalid Instruction (II) flag_
+
+This flag is set if the last instruction was invalid.  
+This happens when the Opcode or Mode encoded in the instruction doesn't exist.
+
+#### _Zero (Z) flag_
+
+This flag is set if the last operation value was zero.
+
+#### _Subtraction (SB) flag_
+
+This flag is set if the last operation was a subtraction.
+
+#### _Parity (P) flag_
+
+This flag is set if the last operation has set an even number of bits.
+
+#### _Overflow (V) flag_
+
+This flag is set if a 2-complement result doesn't fit a register.
+
+#### _Sign (S) flag_
+
+This flag is set if a 2-complement value is negative.
+
+#### _Carry (C) flag_
+
+This flag is set if last operation result did not fit in a register.
+
 
 ***
 
@@ -1021,7 +1063,7 @@ Sets bit number # on register
 |----------|---------|----------|---------|---------|
 | 0000xxxx | 0000    | xxxx     | ***     | xxxxx   |
 
-
+&nbsp;
 
 	BIT{R} %dst, #(0-24)
 
@@ -1030,8 +1072,6 @@ Resets bit number # on register
 | Opcode   | Mode    | Dst reg  | Unused  | Number  |
 |----------|---------|----------|---------|---------|
 | 0000xxxx | 0001    | xxxx     | ***     | xxxxx   |
-
-&nbsp;
 
 &nbsp;
 
@@ -1099,26 +1139,28 @@ e**XCH**an**G**e
 
 	Loads an inmediate value into a register/s
 
-| Opcode   | Mode | Dst Reg  | Unused    | Unused     | Value                         |
-|----------|------|----------|-----------|------------|-------------------------------|
-| 0000xxxx | 0000 | xxxx     | ****      | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+		LD %dst, 0xdeadbe
 
-	LD %dst, 0xdeadbe
+| Opcode   | Mode | Dst Reg  | Unused | Unused | Value                         |
+|----------|------|----------|--------|--------|-------------------------------|
+| 0000xxxx | 0000 | xxxx     | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
-| Opcode   | Mode | Dst Reg1 | Dst reg2 | Unused     | Value                         |
-|----------|------|----------|----------|------------|-------------------------------|
-| 0000xxxx | 0001 | xxxx     | xxxx     | ****       | xxxx xxxx xxxx xxxx xxxx xxxx |
+&nbsp;
 
 	LD %dst1 %dst2, 0xdeadbe
 
+| Opcode   | Mode | Dst Reg1 | Dst Reg2 | Unused | Value                         |
+|----------|------|----------|----------|--------|-------------------------------|
+| 0000xxxx | 0001 | xxxx     | xxxx     | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-| Opcode   | Mode | Dst Reg1 | Dst reg2 | Dst reg3 | Value                         |
+&nbsp;
+
+	LD %dst1 %dst2 %dst3, 0xdeadbe
+
+| Opcode   | Mode | Dst Reg1 | Dst Reg2 | Dst Reg3 | Value                         |
 |----------|------|----------|----------|----------|-------------------------------|
 | 0000xxxx | 0010 | xxxx     | xxxx     | xxxx     | xxxx xxxx xxxx xxxx xxxx xxxx |
 
-
-	LD %dst1 %dst2 %dst3, 0xdeadbe
 
 &nbsp;
 
@@ -1135,9 +1177,9 @@ e**XCH**an**G**e
 
 Copies `%src` register into `%dst` register.
 
-| Opcode   | Unused  | Dst reg  | Src Reg | Unused |
-|----------|---------|----------|---------|--------|
-| 0000xxxx | xxxx    | xxxx     | xxxx    | ****   |
+| Opcode   | Unused | Dst Reg | Src Reg | Unused |
+|----------|--------|---------|---------|--------|
+| 0000xxxx | ****   | xxxx    | xxxx    | ****   |
 
 
 &nbsp;
@@ -1213,6 +1255,9 @@ No operation.
 |----------|-------------------|
 | 00000000 | ******** ******** |
 
+Flag affection:
+
+* Resets II
 
 &nbsp;
 
@@ -1240,4 +1285,9 @@ Halts the CPU.
 | Opcode   | Unused            |
 |----------|-------------------|
 | 00000001 | ******** ******** |
+
+
+Flag affection:
+
+* Resets II
 	
