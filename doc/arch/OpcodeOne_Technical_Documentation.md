@@ -81,9 +81,9 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
                                |                                  | -> MB22          |
                                |                                  | -> MB23         -+                  
               +-      IO0 <->  |                                  |
- 	          |       IO1 <->  |                                  |
+              |       IO1 <->  |                                  |
 Input/Output  |        ...     |                                  |
-              |      IO22 <->  |                                  |
+    bus       |      IO22 <->  |                                  |
               +-     IO23 <->  |                                  |
                                |                                  |
                         ___    |                                  |                  
