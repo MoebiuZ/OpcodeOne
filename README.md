@@ -77,6 +77,7 @@ Also don't forget to check the [wiki](https://github.com/MoebiuZ/OpcodeOne/wiki)
 - Write a compiler (and probably a custom high level language)
 - Bare metal ARM11 VM implementation on Raspberry Pi
 - Hardware CPU simulator based on RPi (a *big box* with CPU pin out)
+- Implement JTAG on hardware CPU simulator
 - C++ VM implementation
 - WebAssembly VM implementation
 - Create a basic OS and software on top of O¹
@@ -84,4 +85,5 @@ Also don't forget to check the [wiki](https://github.com/MoebiuZ/OpcodeOne/wiki)
 - Write a graphic adventure (ala Maniac Mansion)
 - Redesign architecture to implement security countermeasures
 - Write O¹ r_asm/r_anal/r_reg/r_debug [plugins for radare2](https://github.com/radare/radare2/wiki/Implementing-a-new-architecture)
+- Study the possibility to implement O¹ on a cheap FPGA
 - ...
