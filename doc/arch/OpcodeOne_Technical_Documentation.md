@@ -6,9 +6,11 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 ## Table of contents
 
 * [Preliminary notes](#preliminary-notes)
+* [CPU pin out](#cpu-pin-out)
 * [Registers](#registers)
 * [Status flags](#status-flags)
 * [Addressing](#addressing)
+* [Interruptions](#interruptions)
 * [Opcode table](#opcode-table)
 * [Assembly syntax](#assembly-syntax)
 * [O¹ Instruction set](#o-instruction-set)
@@ -65,6 +67,37 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 * Little endian architecture (for the moment)
 * TODO: What to do when Mode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 * TODO: What to do when Opcode is *unused*? (Raise error - do NOP - do NOP and set special flag)
+
+***
+
+```
+
+                  +----------------------------------+
+           HALT - |                                  | - MB0          -+
+            RST - |                                  | - MB1           | Memory bus
+                  |                                  |  ...            |
+                  |                                  | - MB23         -+
+                  |                                  |                  
+                  |                                  |
+                  |                                  |
+                  |                                  |
+                  |                                  |                  
+                  |                                  | - VB0          -+
+                  |                                  | - VB1           | Video bus
+                  |                                  |  ...            |
+                  |                                  | - VB23         -+
+                  |                                  |
+                  |                                  |
+                  |                                  |
+            CLK - |                                  |           
+                  +----------------------------------+
+                    |   |        |
+                    O0  O1  ...  O23
+                    
+                    |             |
+                    +-------------+
+                     Input/Output
+```
 
 ***
 
@@ -166,6 +199,14 @@ All instructions addressing refer to [Memory bus](#memory-bus), and [Video bus](
 
 ***
 
+## Interruptions
+
+// TODO
+
+
+***
+
+
 ## Opcode table
 
 Most significative byte of an instruction indicates the code of operation (opcode).  
@@ -202,7 +243,7 @@ The following table illustrates all opcodes with their hexadecimal representatio
 * **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: [`RL`](#rl)` %C, #3`) 
 * Numbers (as immediate values) can be expressed in decimal or hexadecimal (starting with 0x)
 * Absolute addresses are expresed in hexadecimal.
-* **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction" in [`MTR`](#mtr))
+* **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`MTR`](#mtr))
 
 ***
 
@@ -211,8 +252,8 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 Legend:
 
-* *x* represents a variable parameter. It's value will indicate a different register o operation mode (it will be considered a different instruction depending on it's value).
-* *\** means the value will not affect the instruction behaviour (the instruction will be the same regardless of it's value).
+* **x** represents a variable parameter. It's value will indicate a different register o operation mode (it will be considered a different instruction depending on it's value).
+* **\*** means the value will not affect the instruction behaviour (the instruction will be the same regardless of it's value).
 
 
 *MR* 
