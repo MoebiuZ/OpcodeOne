@@ -114,9 +114,9 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 | 0   | C    | [Carry](#carry-c-flag) | No |
 
 
-| <sub>23</sub> | <sub>22</sub> | <sub>21</sub> | <sub>20</sub> | <sub>19</sub> | <sub>18</sub> | <sub>17</sub> | <sub>16</sub> | <sub>15</sub> | <sub>14</sub> | <sub>13</sub> | <sub>12</sub> | <sub>11</sub> | <sub>10</sub> | <sub>9</sub> | <sub>8</sub> | <sub>7</sub> | <sub>6</sub> | <sub>5</sub> | <sub>4</sub> | <sub>3</sub> | <sub>2</sub> | <sub>1</sub> | <sub>0</sub> |
+| <sub><sub>23</sub></sub></sub> | <sub><sub>22</sub></sub> | <sub><sub>21</sub></sub> | <sub><sub>20</sub></sub> | <sub><sub>19</sub></sub> | <sub><sub>18</sub></sub> | <sub><sub>17</sub></sub> | <sub><sub>16</sub></sub> | <sub><sub>15</sub></sub> | <sub><sub>14</sub></sub> | <sub><sub>13</sub></sub> | <sub><sub>12</sub></sub> | <sub><sub>11</sub></sub> | <sub><sub>10</sub></sub> | <sub><sub>9</sub></sub> | <sub><sub>8</sub></sub> | <sub><sub>7</sub></sub> | <sub><sub>6</sub></sub> | <sub><sub>5</sub></sub> | <sub><sub>4</sub></sub> | <sub><sub>3</sub></sub> | <sub><sub>2</sub></sub> | <sub><sub>1</sub></sub> | <sub><sub>0</sub></sub> |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-| <sub>II</sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub>Z</sub> | <sub>SB</sub> | <sub>P</sub> | <sub>V<sub> | <sub>S</sub> | <sub>C</sub> |
+| <sub><sub>II</sub></sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sub>Z</sub></sub> | <sub><sub>SB</sub></sub> | <sub><sub>P</sub></sub> | <sub><sub>V<sub></sub> | <sub><sub>S</sub></sub> | <sub><sub>C</sub></sub> |
 
 
 #### _Invalid Instruction (II) flag_
