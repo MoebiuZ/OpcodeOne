@@ -39,10 +39,8 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 		* [NEG (NEGative - two's complement)](#neg)
 		* [CMP (CoMPare)](#cmp)
 	* Rotate, Shift and Bit manipulation
-		* [RL (Rotate Left)](#rl)
-		* [RR (Rotate Right)](#rr)
-		* [SL (Shift Left)](#sl)
-		* [SR (Shift Right)](#sr)
+		* [ROT (ROTate)](#rot)
+		* [SH (SHift)](#sh)
 		* [BIT (single BIT operations](#bit)
 		* [SWP (SWaP bytes)](#swp)
 	* Jump
@@ -220,8 +218,9 @@ The following table illustrates all opcodes with their hexadecimal representatio
 | <sub>Higher Byte</sub> |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[MR](#mr)</sub>   |  <sub>[MW](#mw)</sub>   |  <sub>[VR](#vr)</sub>  |  <sub>[VW](#vw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
-| <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[RL](#rl)</sub>   |  <sub>[RR](#rr)</sub>   |  <sub>[SL](#sl)</sub>   |  <sub>[SR](#sr)</sub>   |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  |
-| <sub>**2x**</sub> | <sub>[BIT](#bit)</sub>  | <sub>[SWP](#swp)</sub>      | <sub>[XCHG](#xchg)</sub>      |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[ROT](#rot)</sub>   | <sub>[SH](#sh)</sub>  |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  |
+| <sub>**2x**</sub> | <sub>[BIT](#bit)</sub>  |
+| <sub>[SWP](#swp)</sub> | <sub>[XCHG](#xchg)</sub>  |   |  |    |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**5x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
@@ -243,7 +242,7 @@ The following table illustrates all opcodes with their hexadecimal representatio
 * Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
 * **[]** indicates a register is treated as an address
-* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: [`RL`](#rl)` %C, #3`) 
+* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: [`ROT`](#rot)`{R} %C, #3`) 
 * Numbers (as immediate values) can be expressed in decimal or hexadecimal (starting with 0x)
 * Absolute addresses are expresed in hexadecimal.
 * **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`MTR`](#mtr))
@@ -1052,41 +1051,31 @@ Example:
 
 &nbsp;
 
-*RL*
+*ROT*
 ---
 
-**R**otate **L**eft
+**ROT**ate
+
+	ROT{L} %dst %src
+	ROT{R} %dst %src
 
 &nbsp;
 
 &nbsp;
 
-*RR*
+
+*SH*
 ---
 
-**R**otate **R**ight
+**SH**ift
+
+	SH{L} %dst %src
+	SH{R} %dst %src
 
 &nbsp;
 
 &nbsp;
 
-*SL*
----
-
-**S**hift **L**eft
-
-&nbsp;
-
-&nbsp;
-
-*SR*
----
-
-**S**hift **R**ight
-
-&nbsp;
-
-&nbsp;
 
 *BIT*
 ---
