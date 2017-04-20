@@ -100,8 +100,6 @@ The following table shows the available registers and their binary encoding with
 Status flags are stored in the FL register.  
 Flags marked as *exposed* means there is a hardware pin that outputs its status.
 
-// TODO
-
 
 | Bit | Name | Description | Exposed | 
 |-----|------|-------------|---------|
@@ -114,6 +112,7 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 | 0   | C    | [Carry](#carry-c-flag) | No |
 
 
+**FL register**  
 | <sub><sup>23</sup></sub></sub> | <sub><sup>22</sup></sub> | <sub><sup>21</sup></sub> | <sub><sup>20</sup></sub> | <sub><sup>19</sup></sub> | <sub><sup>18</sup></sub> | <sub><sup>17</sup></sub> | <sub><sup>16</sup></sub> | <sub><sup>15</sup></sub> | <sub><sup>14</sup></sub> | <sub><sup>13</sup></sub> | <sub><sup>12</sup></sub> | <sub><sup>11</sup></sub> | <sub><sup>10</sup></sub> | <sub><sup>9</sup></sub> | <sub><sup>8</sup></sub> | <sub><sup>7</sup></sub> | <sub><sup>6</sup></sub> | <sub><sup>5</sup></sub> | <sub><sup>4</sup></sub> | <sub><sup>3</sup></sub> | <sub><sup>2</sup></sub> | <sub><sup>1</sup></sub> | <sub><sup>0</sup></sub> |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 | <sub><sup>II</sup></sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sup>Z</sup></sub> | <sub><sup>SB</sup></sub> | <sub><sup>P</sup></sub> | <sub><sup>V<sub></sub> | <sub><sup>S</sup></sub> | <sub><sup>C</sup></sub> |
@@ -153,8 +152,8 @@ This flag is set if last operation result did not fit in a register.
 
 ## Addressing
 
-OpcodeOne has two 24-bit address buses, Memory Bus and Video Bus. For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
-All instructions addressing refer to Memory bus, and Video bus is only accessible with [VR](#vr), [VW](#vw) and [MTR](#mtr) instructions.
+OpcodeOne has two 24-bit address buses, Memory bus and Video bus. For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
+All instructions addressing refer to [Memory bus](#memory-bus), and [Video bus](#video-bus) is only accessible with [`VR`](#vr), [`VW`](#vw) and [`MTR`](#mtr) instructions.
 
 
 ### Memory bus
@@ -197,19 +196,18 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 ## Assembly syntax
 
-* Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: `LD` or `PUSH`)
+* Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
 * **[]** indicates a register is treated as an address
-* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: `RL %C, #3`) 
+* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: [`RL`](#rl)` %C, #3`) 
 * Numbers (as immediate values) can be expressed in decimal or hexadecimal (starting with 0x)
 * Absolute addresses are expresed in hexadecimal.
-* **{}** indicates **flags**, **conditions** or **operation type** (ie.: conditions in `JMP`, *with carry* in arithmetical operations or *direction" in `MTR`)
+* **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction" in [`MTR`](#mtr))
 
 ***
 
 ## O¹ instruction set
 
-<sub>Note: All non-existant opcodes will default to "NOP" until further notice (ie: Non existant opcodes or existing opcodes with unused Mode)</sub>
 
 Legend:
 
@@ -221,7 +219,7 @@ Legend:
 ---
 **M**emory **R**ead
 
-**Reads a word from [*memory bus*](#memory-bus) into a [*register*](#registers).**
+**Reads a word from [*Memory bus*](#memory-bus) into a [*register*](#registers).**
 
 | Opcode | - |
 |--------|---|
@@ -675,7 +673,7 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 **M**emory **TR**ansfer
 
-**Transfers a word between Memory and Video buses.**
+**Transfers a word between [Memory](#memory-bus) and [Video](#video-bus) buses.**
 
 | Opcode | - |
 |--------|---|
@@ -692,7 +690,7 @@ Reads from address minus an immediate 24-bit offset into `%dst` register.
 
 	MTR{V} [%dst], [%src]
 
-Copies a word from Memory to Video memory 
+Copies a word from [Memory bus](#memory-bus) to [Video bus](#video-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -704,7 +702,7 @@ Copies a word from Memory to Video memory
 
 	MTR{M} [%dst], [%src]
 
-Copies a word from Video Memory to Memory 
+Copies a word from [Video bus](#video-bus) to [Memory bus](#memory-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -716,7 +714,7 @@ Copies a word from Video Memory to Memory
 
 	MTR{X} [%dst], [%src]
 
-Exchanges a word between Memory and Video Memory
+Exchanges a word between [Memory bus](#memory-bus) and [Video bus](#video-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
