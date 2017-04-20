@@ -79,8 +79,8 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
                         ___   |                                  |-> MB1           |
                         RST ->|                                  |   ...           | Memory bus
                               |            _--------_            |-> MB22          |
-                              |           +_ O¹ CPU _+           |-> MB23         -+                  
-               +-      IO0 <->|             --------             |
+                              |           +  O¹ CPU  +           |-> MB23         -+                  
+               +-      IO0 <->|            ¯--------¯            |
                |       IO1 <->|                                  |
  Input/Output  |        ...   |                                  |
      bus       |      IO22 <->|                                  |
