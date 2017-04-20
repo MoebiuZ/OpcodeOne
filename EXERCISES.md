@@ -6,9 +6,10 @@ This is a non-exhaustive list of exercises a contributor can (should) do in orde
 
 #### Contribution exercises
 
-1. Think about the current [assembly syntax](doc/arch/OpcodeOne_Technical_Documentation.md#assembly-syntax) and propose (reasoned) changes to make it more robust/clear/consistent.
-2. Think about current [instruction set](doc/arch/OpcodeOne_Technical_Documentation.md#o-instruction-set) and propose (reasoned) opcode addition/modification/removal. The *reasoned* part is important here, since is part of the design process; specify why/where/how/pros&cons about the changes proposed.
-3. Think about the [OpcodeOne (O¹) technical documentation](doc/arch/OpcodeOne_Technical_Documentation.md) and propose alternatives to improve it (style, layout, content).
+1. Try to familiarize with and use all features git and Github offers to facilitate productivity and collaboration. It is good for you.
+2. Think about the current [assembly syntax](doc/arch/OpcodeOne_Technical_Documentation.md#assembly-syntax) and propose (reasoned) changes to make it more robust/clear/consistent.
+4. Think about current [instruction set](doc/arch/OpcodeOne_Technical_Documentation.md#o-instruction-set) and propose (reasoned) opcode addition/modification/removal. The *reasoned* part is important here, since is part of the design process; specify why/where/how/pros&cons about the changes proposed.
+5. Think about the [OpcodeOne (O¹) technical documentation](doc/arch/OpcodeOne_Technical_Documentation.md) and propose alternatives to improve it (style, layout, content).
 
 
 #### Exercises on your own
