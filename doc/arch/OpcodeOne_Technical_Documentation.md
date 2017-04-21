@@ -515,13 +515,13 @@ Reads from address minus a 24-bit offset into `%dst` register.
 *PAW*
 ---
 
-**P**rimary **A**dress bus **W**rite
+**P**rimary **A**ddress bus **W**rite
 
 **Writes a word from a [register](#registers) into [Primary address bus](#primary-address-bus) address.**
 
 | Opcode | - |
 |--------|---|
-| 00000010 | 0x02 |
+| 00000011 | 0x02 |
 
 
 
