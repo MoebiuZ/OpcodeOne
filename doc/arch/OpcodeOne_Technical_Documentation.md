@@ -241,9 +241,9 @@ The following table illustrates all opcodes with their hexadecimal representatio
 * Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
 * **[]** indicates a register is treated as an address
-* **#** indicates a numerical parameter, and it will be expresed in a decimal (ie: [`ROT`](#rot)`{R} %C, #3`) 
-* Numbers (as immediate values) can be expressed in decimal or hexadecimal (starting with 0x)
-* Absolute addresses are expresed in hexadecimal.
+* **#** indicates an immediate value, and it will be expressed in a decimal (ie: [`ROT`](#rot)`{R} %C, #3`) 
+* Values can be expressed in decimal or hexadecimal (starting with 0x)
+* Addresses are expressed in hexadecimal.
 * **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`MTR`](#mtr))
 
 ***
@@ -310,7 +310,7 @@ Example:
 
 #### _(MR) Indirect plus immediate offset mode_
 
-	MR %dst, [%src]+imm_offset
+	MR %dst, [%src]+#imm_offset
 
 Reads from the address specified by `%src` register plus an immediate 4-bit offset into `%dst` register.
 
@@ -321,7 +321,7 @@ Reads from the address specified by `%src` register plus an immediate 4-bit offs
 Example:
 ><sub>Read a word from the address specified by %B plus 3 into %C</sub>
 >
->`MR %C, [%B]+3`
+>`MR %C, [%B]+#3`
 
 &nbsp;
 
@@ -365,9 +365,9 @@ Example:
 
 #### _(MR) Indirect minus immediate offset mode_
 
-	MR %dst, [%src]-imm_offset
+	MR %dst, [%src]-#imm_offset
 
-Reads from the address specified by `%src` register minus an immediate  4-bit *offset* into `%dst` register.
+Reads from the address specified by `%src` register minus an immediate 4-bit *offset* into `%dst` register.
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
 |----------|------|---------|---------|------------|
@@ -376,11 +376,8 @@ Reads from the address specified by `%src` register minus an immediate  4-bit *o
 Example:
 ><sub>Read a word from the address specified by %B minus 15 into %A</sub>
 >
->`MR %A, [%B]-15` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
->
-><sub>or</sub>
->
->`MR %A, [%B]-0xf` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
+>`MR %A, [%B]-#15` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
+
 
 &nbsp;
 
@@ -422,7 +419,7 @@ Reads from address into `%dst` register.
 
 #### _(MR) Absolute plus immediate offset mode_
 
-	MR %dst, addr+imm_offset
+	MR %dst, addr+#imm_offset
 
 Reads from address plus an immediate 4-bit offset into `%dst` register.
 
@@ -458,7 +455,7 @@ Reads from address plus a 24-bit offset into `%dst` register.
 
 #### _(MR) Absolute minus immediate offset mode_
 
-	MR %dst, addr-imm_offset
+	MR %dst, addr-#imm_offset
 
 Reads from address plus an immediate 4-bit offset into `%dst` register.
 
@@ -544,7 +541,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 #### _(MW) Indirect plus immediate offset mode_
 
-	MW [%dst]+imm_offset, %src
+	MW [%dst]+#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -577,7 +574,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 #### _(MW) Indirect minus immediate offset mode_
 
-	MW [%dst]-imm_offset, %src
+	MW [%dst]-#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -621,7 +618,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 #### _(MW) Absolute plus immediate offset mode_
 
-	MW addr+imm_offset, %src
+	MW addr+#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -654,7 +651,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 #### _(MW) Absolute minus immediate offset mode_
 
-	MW addr-imm_offset, %src
+	MW addr-#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -1091,9 +1088,9 @@ Example:
 
 Sets bit number # on register
 
-| Opcode   | Mode | Dst reg | Unused | Number |
-|----------|------|---------|--------|--------|
-| 0000xxxx | 0000 | xxxx    | ***    | xxxxx  |
+| Opcode   | Mode | Dst reg | Unused | Bit number |
+|----------|------|---------|--------|------------|
+| 0000xxxx | 0000 | xxxx    | ***    | xxxxx      |
 
 &nbsp;
 
@@ -1101,9 +1098,9 @@ Sets bit number # on register
 
 Resets bit number # on register
 
-| Opcode   | Mode | Dst reg | Unused | Number |
-|----------|------|---------|--------|--------|
-| 0000xxxx | 0001 | xxxx    | ***    | xxxxx  |
+| Opcode   | Mode | Dst reg | Unused | Bit number |
+|----------|------|---------|--------|------------|
+| 0000xxxx | 0001 | xxxx    | ***    | xxxxx      |
 
 &nbsp;
 
@@ -1111,9 +1108,9 @@ Resets bit number # on register
 
 Tests bit number # on register and sets Z flag accordingly.
 
-| Opcode   | Mode | Dst reg | Unused | Number |
-|----------|------|---------|--------|--------|
-| 0000xxxx | 0010 | xxxx    | ***    | xxxxx  |
+| Opcode   | Mode | Dst reg | Unused | Bit number |
+|----------|------|---------|--------|------------|
+| 0000xxxx | 0010 | xxxx    | ***    | xxxxx      |
 
 
 &nbsp;
@@ -1172,18 +1169,7 @@ e**XCH**an**G**e
 *Loads a value into a register/s*
 
 
-Variants:
-
-| Mnemonic | Decription |
-|----------|---------------|
-| LD | Loads a 24 bit value |
-| LD{I} | Loads an immediate 8 bits value |
-
-
-
-
-
-		LD %dst1, 0xdeadbe
+		LD %dst1, value
 
 | Opcode   | Mode | Dst Reg1 | Unused | Unused | Value                         |
 |----------|------|----------|--------|--------|-------------------------------|
@@ -1191,7 +1177,7 @@ Variants:
 
 &nbsp;
 
-	LD %dst1 %dst2, 0xdeadbe
+	LD %dst1 %dst2, value
 
 | Opcode   | Mode | Dst Reg1 | Dst Reg2 | Unused | Value                         |
 |----------|------|----------|----------|--------|-------------------------------|
@@ -1208,13 +1194,13 @@ Variants:
 
 &nbsp;
 
-	LD{I} %dst, imm_value
+	LD %dst, #imm_value
 
-Loads an immediate 8 bit value into `%dst`.
+Loads an immediate 8-bit value into `%dst`.
 
-| Opcode   | Mode | Dst Reg | Value    |
-|----------|------|---------|----------|
-| 0000xxxx | 0011 | xxxx    | xxxxxxxx |
+| Opcode   | Mode | Dst Reg | Imm Value |
+|----------|------|---------|-----------|
+| 0000xxxx | 0011 | xxxx    | xxxxxxxx  |
 
 
 
