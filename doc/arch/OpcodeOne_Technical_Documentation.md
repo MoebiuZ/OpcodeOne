@@ -196,8 +196,8 @@ This flag is set if last operation result did not fit in a register.
 
 ## Addressing
 
-OpcodeOne has two 24-bit address buses, Primary Address bus and Secondary Address bus. 
-For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
+OpcodeOne has two 24-bit address buses, **Primary Address bus** and **Secondary Address bus**. 
+For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video), but second one can be used for any other purpose (for example, double the memory via segmentation).  
 All instructions addressing refer to [Primary Address bus](#primary-address-bus), and [Secondary Address bus](#secondary-address-bus) is only accessible with [`SAR`](#sar), [`SAW`](#saw) and [`ABT`](#abt) instructions.
 
 
