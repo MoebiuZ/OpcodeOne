@@ -1006,7 +1006,7 @@ Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`,
 Example:
 ><sub>Pop from stack to %C.</sub>
 >
->`POP %C
+>`POP %C`
 
 &nbsp;
 
@@ -1024,7 +1024,7 @@ Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
 Example:
 ><sub>Pop from stack to %A, then %D to stack.</sub>
 >
->`POP %D %A
+>`POP %D %A`
 
 &nbsp;
 
@@ -1090,7 +1090,7 @@ Sets bit number # on register
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
-| 0000xxxx | 0000 | xxxx    | ***    | xxxxx      |
+| 00011110 | 0000 | xxxx    | ***    | xxxxx      |
 
 &nbsp;
 
@@ -1100,7 +1100,7 @@ Resets bit number # on register
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
-| 0000xxxx | 0001 | xxxx    | ***    | xxxxx      |
+| 00011110 | 0001 | xxxx    | ***    | xxxxx      |
 
 &nbsp;
 
@@ -1110,7 +1110,7 @@ Tests bit number # on register and sets Z flag accordingly.
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
-| 0000xxxx | 0010 | xxxx    | ***    | xxxxx      |
+| 00011110 | 0010 | xxxx    | ***    | xxxxx      |
 
 
 &nbsp;
@@ -1173,7 +1173,7 @@ e**XCH**an**G**e
 
 | Opcode   | Mode | Dst Reg1 | Unused | Unused | Value                         |
 |----------|------|----------|--------|--------|-------------------------------|
-| 0000xxxx | 0000 | xxxx     | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00010101 | 0000 | xxxx     | ****   | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 &nbsp;
 
@@ -1181,15 +1181,15 @@ e**XCH**an**G**e
 
 | Opcode   | Mode | Dst Reg1 | Dst Reg2 | Unused | Value                         |
 |----------|------|----------|----------|--------|-------------------------------|
-| 0000xxxx | 0001 | xxxx     | xxxx     | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00010101 | 0001 | xxxx     | xxxx     | ****   | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 &nbsp;
 
-	LD %dst1 %dst2 %dst3, 0xdeadbe
+	LD %dst1 %dst2 %dst3, value
 
 | Opcode   | Mode | Dst Reg1 | Dst Reg2 | Dst Reg3 | Value                         |
 |----------|------|----------|----------|----------|-------------------------------|
-| 0000xxxx | 0010 | xxxx     | xxxx     | xxxx     | xxxx xxxx xxxx xxxx xxxx xxxx |
+| 00010101 | 0010 | xxxx     | xxxx     | xxxx     | xxxx xxxx xxxx xxxx xxxx xxxx |
 
 
 &nbsp;
@@ -1200,7 +1200,7 @@ Loads an immediate 8-bit value into `%dst`.
 
 | Opcode   | Mode | Dst Reg | Imm Value |
 |----------|------|---------|-----------|
-| 0000xxxx | 0011 | xxxx    | xxxxxxxx  |
+| 00010101 | 0011 | xxxx    | xxxxxxxx  |
 
 
 
@@ -1221,7 +1221,7 @@ Copies `%src` register into `%dst` register.
 
 | Opcode   | Unused | Dst Reg | Src Reg | Unused |
 |----------|--------|---------|---------|--------|
-| 0000xxxx | ****   | xxxx    | xxxx    | ****   |
+| 00010110 | ****   | xxxx    | xxxx    | ****   |
 
 
 &nbsp;
