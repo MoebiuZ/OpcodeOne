@@ -16,12 +16,12 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 * [O¹ Instruction set](#o-instruction-set)
 	* Load and Exchange
 		* [LD (LoaD)](#ld)
-		* [CP (CoPy)](3cp)
-		* [MR (Memory Read)](#mr)
-		* [MW (Memory Write)](#mw)
-		* [VR (Video memory Read)](#vr)
-		* [VW (Video memory Write)](#vw)
-		* [MTR (Memory TRansfer)](#mtr)
+		* [CP (CoPy)](#cp)
+		* [PAR (Primary Address bus Read)](#par)
+		* [PAW (Primary Address bus Write)](#paw)
+		* [SAR (Secondary Address bus Read)](#sar)
+		* [SAW (Secondary Address bus Write)](#saw)
+		* [ABT (Address Bus Transfer)](#abt)
 		* [PUSH](#push)
 		* [POP](#pop)
 		* [XCHG (eXCHanGe registers)](#xchg)
@@ -53,7 +53,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 	* CPU control
 		* [NOP (No OPeration)](#nop)
 		* [HALT (HALT machine)](#halt)
-
+	* [Glossary](#glossary)
 
 ***
 
@@ -73,28 +73,38 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 ```
 
                         ___   +----------------------------------+
-                        HLT <-|                                  |-> MB0          -+
-                        ___   |                                  |-> MB1           |
-                        RST ->|                                  |   ...           | Memory bus
-                              |            _--------_            |-> MB22          |
-                              |           +  O¹ CPU  +           |-> MB23         -+                  
+                        HLT <-|                                  |-> PA0          -+
+                        ___   |                                  |-> PA1           |
+                        RST ->|                                  |   ...           | Primary Address bus
+                              |            _--------_            |-> PA22          |
+                              |           +  O¹ CPU  +           |-> PA23         -+                  
                +-      IO0 <->|            ¯--------¯            |
                |       IO1 <->|                                  |
  Input/Output  |        ...   |                                  |
-     bus       |      IO22 <->|                                  |
+     bus       |      IO22 <->|                                  |-> BS 
                +-     IO23 <->|                                  |
                               |                                  |
                         ___   |                                  |                  
-                        IRQ ->|                                  |-> VB0          -+
-                        ___   |                                  |-> VB1           |
-                        NMI ->|                                  |   ...           | Video bus
-                              |                          TDI [ ] |-> VB22          |
-                              |                          TDO [ ] |-> VB23         -+
+                        IRQ ->|                                  |-> SA0          -+
+                        ___   |                                  |-> SA1           |
+                        NMI ->|                                  |   ...           | Secondary Address bus
+                              |                          TDI [ ] |-> SA22          |
+                              |                          TDO [ ] |-> SA23         -+
                               |                          TCK [ ] |
                               |                          TMS [ ] |
                         CLK ->|                         TRST [ ] |           
                               +----------------------------------+
       
+
+Legend:
+
+* BS; Bus select
+* CLK; Clock  
+* HLT; Halt  
+* IRQ; Interruption Request  
+* NMI; Non-Maskable Interruption  
+* RST; Reset  
+
 
       
 ```
@@ -186,15 +196,16 @@ This flag is set if last operation result did not fit in a register.
 
 ## Addressing
 
-OpcodeOne has two 24-bit address buses, Memory bus and Video bus. For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
-All instructions addressing refer to [Memory bus](#memory-bus), and [Video bus](#video-bus) is only accessible with [`VR`](#vr), [`VW`](#vw) and [`MTR`](#mtr) instructions.
+OpcodeOne has two 24-bit address buses, Primary Address bus and Secondary Address bus. 
+For a *standard* use case, one is intended for RAM/ROM and the other for VRAM (Video bus), but second one can be used for any other purpose.  
+All instructions addressing refer to [Primary Address bus](#primary-address-bus), and [Secondary Address bus](#secondary-address-bus) is only accessible with [`SAR`](#sar), [`SAW`](#saw) and [`ABT`](#abt) instructions.
 
 
-### Memory bus
+### Primary Address bus
 
 // TODO
 
-### Video bus
+### Secondary Address bus
 
 // TODO
 
@@ -217,8 +228,8 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 | <sub>Higher Byte</sub> |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[MR](#mr)</sub>   |  <sub>[MW](#mw)</sub>   |  <sub>[VR](#vr)</sub>  |  <sub>[VW](#vw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
-| <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[ROT](#rot)</sub>   | <sub>[SH](#sh)</sub>  |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[MTR](#mtr)</sub>  | <sub>[BIT](#bit)</sub>  | <sub>[SWP](#swp)</sub> | 
+| <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[PAR](#par)</sub>   |  <sub>[PAW](#paw)</sub>   |  <sub>[SAR](#sar)</sub>  |  <sub>[SAW](#saw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
+| <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[ROT](#rot)</sub>   | <sub>[SH](#sh)</sub>  |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[ABT](#abt)</sub>  | <sub>[BIT](#bit)</sub>  | <sub>[SWP](#swp)</sub> | 
 | <sub>**2x**</sub> | <sub>[XCHG](#xchg)</sub>  |   |  |    |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
 | <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
@@ -241,10 +252,10 @@ The following table illustrates all opcodes with their hexadecimal representatio
 * Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
 * **[]** indicates a register is treated as an address
-* **#** indicates an immediate value, and it will be expressed in a decimal (ie: [`ROT`](#rot)`{R} %C, #3`) 
+* **#** indicates an immediate value, and it will be expressed in a decimal
 * Values can be expressed in decimal or hexadecimal (starting with 0x)
-* Addresses are expressed in hexadecimal.
-* **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`MTR`](#mtr))
+* Addresses are expressed in hexadecimal
+* **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`ABT`](#abt))
 
 ***
 
@@ -257,11 +268,11 @@ Legend:
 * **\*** means the value will not affect the instruction behaviour (the instruction will be the same regardless of it's value).
 
 
-*MR* 
+*PAR* 
 ---
-**M**emory **R**ead
+**P**rimary **A**ddress bus **R**ead
 
-**Reads a word from [*Memory bus*](#memory-bus) into a [*register*](#registers).**
+**Reads a word from [*Primary Address bus*](#primary-address-bus) into a [*register*](#registers).**
 
 | Opcode | - |
 |--------|---|
@@ -271,28 +282,28 @@ Legend:
 
 | Mode | Operation | Instruction size | Cycles |
 |------|-----------|------------------|--------|
-| 0000 | [Indirect](#mr-indirect-mode) | 3 bytes (1 word) | |
-| 0001 | [Indirect plus immediate offset](#mr-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0010 | [Indirect plus register offset](#mr-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
-| 0011 | [Indirect plus offset](#mr-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0100 | [Indirect minus immediate offset](#mr-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0101 | [Indirect minus register offset](#mr-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
-| 0110 | [Indirect minus offset](#mr-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0111 | [Absolute](#mr-absolute-mode) | 6 bytes (2 words) | |
-| 1000 | [Absolute plus immediate offset](#mr-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1001 | [Absolute plus register offset](#mr-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
-| 1010 | [Absolute plus offset](#mr-absolute-plus-offset-mode) | 9 bytes (3 words) | |
-| 1011 | [Absolute minus immediate offset](#mr-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1100 | [Absolute minus register offset](#mr-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
-| 1101 | [Absolute minus offset](#mr-absolute-minus-offset-mode) | 9 bytes (3 words) | |
+| 0000 | [Indirect](#par-indirect-mode) | 3 bytes (1 word) | |
+| 0001 | [Indirect plus immediate offset](#par-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
+| 0010 | [Indirect plus register offset](#par-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
+| 0011 | [Indirect plus offset](#par-indirect-plus-offset-mode) | 6 bytes (2 words) | |
+| 0100 | [Indirect minus immediate offset](#par-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
+| 0101 | [Indirect minus register offset](#par-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
+| 0110 | [Indirect minus offset](#par-indirect-plus-offset-mode) | 6 bytes (2 words) | |
+| 0111 | [Absolute](#par-absolute-mode) | 6 bytes (2 words) | |
+| 1000 | [Absolute plus immediate offset](#par-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
+| 1001 | [Absolute plus register offset](#par-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
+| 1010 | [Absolute plus offset](#par-absolute-plus-offset-mode) | 9 bytes (3 words) | |
+| 1011 | [Absolute minus immediate offset](#par-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
+| 1100 | [Absolute minus register offset](#par-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
+| 1101 | [Absolute minus offset](#par-absolute-minus-offset-mode) | 9 bytes (3 words) | |
 | 1110 | Unused | N/A | |
 | 1111 | Unused | N/A | |
 
 &nbsp;
 
-#### _(MR) Indirect mode_
+#### _(PAR) Indirect mode_
 
-	MR %dst, [%src]
+	PAR %dst, [%src]
 
 Reads from the address specified by `%src` register into `%dst` register.
 
@@ -304,13 +315,13 @@ Reads from the address specified by `%src` register into `%dst` register.
 Example:
 ><sub>Read a word from the address specified by %C into %A</sub>
 >
->`MR %A, [%C]`
+>`PAR %A, [%C]`
 
 &nbsp;
 
-#### _(MR) Indirect plus immediate offset mode_
+#### _(PAR) Indirect plus immediate offset mode_
 
-	MR %dst, [%src]+#imm_offset
+	PAR %dst, [%src]+#imm_offset
 
 Reads from the address specified by `%src` register plus an immediate 4-bit offset into `%dst` register.
 
@@ -321,13 +332,13 @@ Reads from the address specified by `%src` register plus an immediate 4-bit offs
 Example:
 ><sub>Read a word from the address specified by %B plus 3 into %C</sub>
 >
->`MR %C, [%B]+#3`
+>`PAR %C, [%B]+#3`
 
 &nbsp;
 
-#### _(MR) Indirect plus register offset mode_
+#### _(PAR) Indirect plus register offset mode_
 
-	MR %dst, [%src]+%offset
+	PAR %dst, [%src]+%offset
 
 Reads from the address specified by `%src` register plus an offset specified by `%offset` register into `%dst` register.
 
@@ -338,13 +349,13 @@ Reads from the address specified by `%src` register plus an offset specified by 
 Example:
 ><sub>Read a word from the address specified by %D plus offset specified by %B into %A</sub>
 >
->`MR %A, [%D]+%B`
+>`PAR %A, [%D]+%B`
 
 &nbsp;
 
-#### _(MR) Indirect plus offset mode_
+#### _(PAR) Indirect plus offset mode_
 
-	MR %dst, [%src]+offset
+	PAR %dst, [%src]+offset
 
 Reads from the address specified by `%src` register plus a 24-bit offset into `%dst` register
 
@@ -355,17 +366,17 @@ Reads from the address specified by `%src` register plus a 24-bit offset into `%
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
->`MR %A, [%C]+1337` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`PAR %A, [%C]+1337` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 >
 ><sub>or</sub>
 >
->`MR %A, [%C]+0x539` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`PAR %A, [%C]+0x539` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 
 &nbsp;
 
-#### _(MR) Indirect minus immediate offset mode_
+#### _(PAR) Indirect minus immediate offset mode_
 
-	MR %dst, [%src]-#imm_offset
+	PAR %dst, [%src]-#imm_offset
 
 Reads from the address specified by `%src` register minus an immediate 4-bit *offset* into `%dst` register.
 
@@ -376,14 +387,14 @@ Reads from the address specified by `%src` register minus an immediate 4-bit *of
 Example:
 ><sub>Read a word from the address specified by %B minus 15 into %A</sub>
 >
->`MR %A, [%B]-#15` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
+>`PAR %A, [%B]-#15` <sub>h(0x02401F) | b(00000010 0100 0000 0001 1111)</sub>
 
 
 &nbsp;
 
-#### _(MR) Indirect minus register offset mode_
+#### _(PAR) Indirect minus register offset mode_
 
-	MR %dst, [%src]-%offset	
+	PAR %dst, [%src]-%offset	
 
 Reads from the address specified by `%src` register minus an offset specified by `%offset` register into `%dst` register.
 
@@ -393,9 +404,9 @@ Reads from the address specified by `%src` register minus an offset specified by
 
 &nbsp;
 
-#### _(MR) Indirect plus offset mode_
+#### _(PAR) Indirect plus offset mode_
 
-	MR %dst, [%src]-offset
+	PAR %dst, [%src]-offset
 
 Reads from the address specified by `%src` register minus a 24-bit offset into `%dst` register
 
@@ -405,9 +416,9 @@ Reads from the address specified by `%src` register minus a 24-bit offset into `
 
 &nbsp;
 
-#### _(MR) Absolute mode_
+#### _(PAR) Absolute mode_
 
-	MR %dst, addr
+	PAR %dst, addr
 
 Reads from address into `%dst` register.
 
@@ -417,9 +428,9 @@ Reads from address into `%dst` register.
 
 &nbsp;
 
-#### _(MR) Absolute plus immediate offset mode_
+#### _(PAR) Absolute plus immediate offset mode_
 
-	MR %dst, addr+#imm_offset
+	PAR %dst, addr+#imm_offset
 
 Reads from address plus an immediate 4-bit offset into `%dst` register.
 
@@ -429,9 +440,9 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MR) Absolute plus register offset mode_
+#### _(PAR) Absolute plus register offset mode_
 
-	MR %dst, addr+%offset
+	PAR %dst, addr+%offset
 
 Reads from address plus offset specified by `%offset` register into `%dst` register.
 
@@ -441,9 +452,9 @@ Reads from address plus offset specified by `%offset` register into `%dst` regis
 
 &nbsp;
 
-#### _(MR) Absolute plus offset mode_
+#### _(PAR) Absolute plus offset mode_
 
-	MR %dst, addr+offset
+	PAR %dst, addr+offset
 
 Reads from address plus a 24-bit offset into `%dst` register.
 
@@ -453,9 +464,9 @@ Reads from address plus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MR) Absolute minus immediate offset mode_
+#### _(PAR) Absolute minus immediate offset mode_
 
-	MR %dst, addr-#imm_offset
+	PAR %dst, addr-#imm_offset
 
 Reads from address plus an immediate 4-bit offset into `%dst` register.
 
@@ -465,9 +476,9 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MR) Absolute minus register offset mode_
+#### _(PAR) Absolute minus register offset mode_
 
-	MR %dst, addr-%offset
+	PAR %dst, addr-%offset
 
 Reads from address minus offset specified by `%offset` register into `%dst` register.
 
@@ -477,9 +488,9 @@ Reads from address minus offset specified by `%offset` register into `%dst` regi
 
 &nbsp;
 
-#### _(MR) Absolute minus offset mode_
+#### _(PAR) Absolute minus offset mode_
 
-	MR %dst, addr-offset
+	PAR %dst, addr-offset
 
 Reads from address minus a 24-bit offset into `%dst` register.
 
@@ -495,12 +506,12 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 
 
-*MW*
+*PAW*
 ---
 
-**M**emory **W**rite
+**P**rimary **A**dress bus **W**rite
 
-**Writes a wrod from a [register](#registers) into [Video bus](#video-bus) address.**
+**Writes a word from a [register](#registers) into [Primary address bus](#primary-address-bus) address.**
 
 | Opcode | - |
 |--------|---|
@@ -510,28 +521,28 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 | Mode | Operation | Instruction size | Cycles |
 |------|-----------|------------------|--------|
-| 0000 | [Indirect](#mw-indirect-mode) | 3 bytes (1 word) | |
-| 0001 | [Indirect plus immediate offset](#mw-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0010 | [Indirect plus register offset](#mw-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
-| 0011 | [Indirect plus offset](#mw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0100 | [Indirect minus immediate offset](#mw-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0101 | [Indirect minus register offset](#mw-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
-| 0110 | [Indirect minus offset](#mw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0111 | [Absolute](#mw-absolute-mode) | 6 bytes (2 words) | |
-| 1000 | [Absolute plus immediate offset](#mw-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1001 | [Absolute plus register offset](#mw-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
-| 1010 | [Absolute plus offset](#mw-absolute-plus-offset-mode) | 9 bytes (3 words) | |
-| 1011 | [Absolute minus immediate offset](#mw-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1100 | [Absolute minus register offset](#mw-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
-| 1101 | [Absolute minus offset](#mw-absolute-minus-offset-mode) | 9 bytes (3 words) | |
+| 0000 | [Indirect](#paw-indirect-mode) | 3 bytes (1 word) | |
+| 0001 | [Indirect plus immediate offset](#paw-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
+| 0010 | [Indirect plus register offset](#paw-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
+| 0011 | [Indirect plus offset](#paw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
+| 0100 | [Indirect minus immediate offset](#paw-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
+| 0101 | [Indirect minus register offset](#paw-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
+| 0110 | [Indirect minus offset](#paw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
+| 0111 | [Absolute](#paw-absolute-mode) | 6 bytes (2 words) | |
+| 1000 | [Absolute plus immediate offset](#paw-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
+| 1001 | [Absolute plus register offset](#paw-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
+| 1010 | [Absolute plus offset](#paw-absolute-plus-offset-mode) | 9 bytes (3 words) | |
+| 1011 | [Absolute minus immediate offset](#paw-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
+| 1100 | [Absolute minus register offset](#paw-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
+| 1101 | [Absolute minus offset](#paw-absolute-minus-offset-mode) | 9 bytes (3 words) | |
 | 1110 | Unused | N/A | |
 | 1111 | Unused | N/A | |
 
 &nbsp;
 
-#### _(MW) Indirect mode_
+#### _(PAW) Indirect mode_
 
-	MW [%dst], %src
+	PAW [%dst], %src
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -539,9 +550,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect plus immediate offset mode_
+#### _(PAW) Indirect plus immediate offset mode_
 
-	MW [%dst]+#imm_offset, %src
+	PAW [%dst]+#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -550,9 +561,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect plus register offset mode_
+#### _(PAW) Indirect plus register offset mode_
 	
-	MW [%dst]+%offset, %src
+	PAW [%dst]+%offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
@@ -561,9 +572,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect plus offset mode_
+#### _(PAW) Indirect plus offset mode_
 
-	MW [%dst]+offset, %src
+	PAW [%dst]+offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
@@ -572,9 +583,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect minus immediate offset mode_
+#### _(PAW) Indirect minus immediate offset mode_
 
-	MW [%dst]-#imm_offset, %src
+	PAW [%dst]-#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -583,9 +594,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect minus register offset mode_
+#### _(PAW) Indirect minus register offset mode_
 
-	MW [%dst]-%offset, %src
+	PAW [%dst]-%offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
@@ -594,9 +605,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Indirect plus offset mode_
+#### _(PAW) Indirect plus offset mode_
 
-	MW [%dst]-offset, %src
+	PAW [%dst]-offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
@@ -605,9 +616,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute mode_
+#### _(PAW) Absolute mode_
 
-	MW addr, %src
+	PAW addr, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       |
@@ -616,9 +627,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute plus immediate offset mode_
+#### _(PAW) Absolute plus immediate offset mode_
 
-	MW addr+#imm_offset, %src
+	PAW addr+#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -627,9 +638,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute plus register offset mode_
+#### _(PAW) Absolute plus register offset mode_
 
-	MW addr+%offset, %src
+	PAW addr+%offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
@@ -638,9 +649,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute plus offset mode_
+#### _(PAW) Absolute plus offset mode_
 
-	MW addr+offset, %src
+	PAW addr+offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Offset                        |
@@ -649,9 +660,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute minus immediate offset mode_
+#### _(PAW) Absolute minus immediate offset mode_
 
-	MW addr-#imm_offset, %src
+	PAW addr-#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -660,9 +671,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute minus register offset mode_
+#### _(PAW) Absolute minus register offset mode_
 
-	MW addr-%offset, %src
+	PAW addr-%offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
@@ -671,9 +682,9 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(MW) Absolute minus offset mode_
+#### _(PAW) Absolute minus offset mode_
 
-	MW addr-offset, %src
+	PAW addr-offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Offset                        |
@@ -707,12 +718,12 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-*MTR*
+*ABT*
 ---
 
-**M**emory **TR**ansfer
+**A**ddress **B**us **T**ransfer
 
-**Transfers a word between [Memory](#memory-bus) and [Video](#video-bus) buses.**
+**Transfers a word between [Primary](#primary-address-bus) and [Secondary](#secondary-address-bus) address buses.**
 
 | Opcode | - |
 |--------|---|
@@ -720,16 +731,16 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 | Mode | Operation       | Instruction size | Cycles |
 |------|-----------------|------------------|--------|
-| 0000 | [Memory to Video](#mtr-memory-to-video) | 3 bytes (1 word) | |
-| 0001 | [Video to Memory](#mtr-video-to-memory) | 3 bytes (1 word) | |
-| 0010 | [Exchange](#mtr-exchange) | 3 bytes (1 word) | |
+| 0000 | [Primary to Secondary](#abt-primary-to-secondary) | 3 bytes (1 word) | |
+| 0001 | [Secondary to Primary](#abt-secondary-to-primary) | 3 bytes (1 word) | |
+| 0010 | [Exchange](#abt-exchange) | 3 bytes (1 word) | |
 | ...  | Unused          | N/A              | |
 
-#### _(MTR) Memory to Video_
+#### _(ABT) Primary to Secondary_
 
-	MTR{V} [%dst], [%src]
+	ABT{S} [%dst], [%src]
 
-Copies a word from [Memory bus](#memory-bus) to [Video bus](#video-bus)
+Copies a word from [Primary Address bus](#primary-address-bus) to [Secondary Address bus](#secondary-address-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -737,11 +748,11 @@ Copies a word from [Memory bus](#memory-bus) to [Video bus](#video-bus)
 
 &nbsp;
 
-#### _(MTR) Video to Memory_
+#### _(ABT) Secondary to Primary_
 
-	MTR{M} [%dst], [%src]
+	ABT{P} [%dst], [%src]
 
-Copies a word from [Video bus](#video-bus) to [Memory bus](#memory-bus)
+Copies a word from [Secondary Address bus](#secondary-address-bus) to [Primary Address bus](#primary-address-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -749,11 +760,11 @@ Copies a word from [Video bus](#video-bus) to [Memory bus](#memory-bus)
 
 &nbsp;
 
-#### _(MTR) Exchange_
+#### _(ABT) Exchange_
 
-	MTR{X} [%dst], [%src]
+	ABT{X} [%dst], [%src]
 
-Exchanges a word between [Memory bus](#memory-bus) and [Video bus](#video-bus)
+Exchanges a word between [Primary Address bus](#primary-address-bus) and [Secondary Address bus](#secondary-address-bus)
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -1333,3 +1344,13 @@ Flag affection:
 
 * Resets II
 	
+***
+
+## Glossary
+
+| Term | Description |
+|------|-------------|
+| Immediate value | A value that is included on the most significative word of an instruction |
+| Register | Internal 24-bit storage unit. O¹ has 16 registers for multiple purposes |
+| Opcode | Code of operation. Most significative byte of an instruction, that indicates the operation |
+| Word | 24-bit data unit. Is the smallest data size in O¹ | 
