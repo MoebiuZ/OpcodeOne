@@ -81,7 +81,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
                +-      IO0 <->|            ¯--------¯            |
                |       IO1 <->|                                  |
  Input/Output  |        ...   |                                  |
-     bus       |      IO22 <->|                                  |-> BS 
+     bus       |      IO22 <->|                                  |-> ABS 
                +-     IO23 <->|                                  |
                               |                                  |
                         ___   |                                  |                  
@@ -98,12 +98,12 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 
 Legend:
 
-* BS; Bus select
-* CLK; Clock  
-* HLT; Halt  
-* IRQ; Interruption Request  
-* NMI; Non-Maskable Interruption  
-* RST; Reset  
+* ABS: Address Bus Select
+* CLK: Clock  
+* HLT: Halt  
+* IRQ: Interruption Request  
+* NMI: Non-Maskable Interruption  
+* RST: Reset  
 
 
       
