@@ -147,6 +147,7 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 | Bit | Name | Description | Exposed | 
 |-----|------|-------------|---------|
 | 23  | II   | [Invalid Instruction](#invalid-instruction-ii-flag) | Yes |
+| 22  | AB   | [Address Bus selection](#address-bus-selection-flag) | Yes (ABS) |
 | 6   | Z    | [Zero](#zero-z-flag) | No |
 | 4   | SB   | [Subtraction](#subtraction-sb-flag) | No |
 | 3   | P    | [Parity](#parity-p-flag) | No |
@@ -159,13 +160,18 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 
 | <sub><sup>23</sup></sub></sub> | <sub><sup>22</sup></sub> | <sub><sup>21</sup></sub> | <sub><sup>20</sup></sub> | <sub><sup>19</sup></sub> | <sub><sup>18</sup></sub> | <sub><sup>17</sup></sub> | <sub><sup>16</sup></sub> | <sub><sup>15</sup></sub> | <sub><sup>14</sup></sub> | <sub><sup>13</sup></sub> | <sub><sup>12</sup></sub> | <sub><sup>11</sup></sub> | <sub><sup>10</sup></sub> | <sub><sup>9</sup></sub> | <sub><sup>8</sup></sub> | <sub><sup>7</sup></sub> | <sub><sup>6</sup></sub> | <sub><sup>5</sup></sub> | <sub><sup>4</sup></sub> | <sub><sup>3</sup></sub> | <sub><sup>2</sup></sub> | <sub><sup>1</sup></sub> | <sub><sup>0</sup></sub> |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-| <sub><sup>II</sup></sub>  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sup>Z</sup></sub> | <sub><sup>SB</sup></sub> | <sub><sup>P</sup></sub> | <sub><sup>V<sub></sub> | <sub><sup>S</sup></sub> | <sub><sup>C</sup></sub> |
+| <sub><sup>II</sup></sub>  | <sub><sup>AB</sup></sub> |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | <sub><sup>Z</sup></sub> | <sub><sup>SB</sup></sub> | <sub><sup>P</sup></sub> | <sub><sup>V<sub></sub> | <sub><sup>S</sup></sub> | <sub><sup>C</sup></sub> |
 
 
 #### _Invalid Instruction (II) flag_
 
+Note: To be deleted if we decide to use Interruptions for this purpose.
 This flag is set if the last instruction was invalid.  
 This happens when the Opcode or Mode encoded in the instruction doesn't exist.
+
+#### _Address Bus selection (AB) flag_
+
+This flag is set if Secondary Address bus is selected, and reset for Primary Address bus selection.
 
 #### _Zero (Z) flag_
 
