@@ -521,7 +521,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 | Opcode | - |
 |--------|---|
-| 00000011 | 0x02 |
+| 00000011 | 0x03 |
 
 
 
