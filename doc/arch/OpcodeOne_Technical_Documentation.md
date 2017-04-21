@@ -115,7 +115,7 @@ Legend:
 
 All O¹ registers are 24-bits wide.
 
-The following table shows the available registers and their binary encoding withing instructions.
+The following table shows the available registers and their binary encoding within instructions.
 
 | Register | id   | bin  | Description      | Access     |
 |----------|------|------|------------------|------------|
@@ -147,7 +147,7 @@ Flags marked as *exposed* means there is a hardware pin that outputs its status.
 | Bit | Name | Description | Exposed | 
 |-----|------|-------------|---------|
 | 23  | II   | [Invalid Instruction](#invalid-instruction-ii-flag) | Yes |
-| 22  | AB   | [Address Bus selection](#address-bus-selection-flag) | Yes (ABS) |
+| 22  | AB   | [Address Bus selection](#address-bus-selection-ab-flag) | Yes (ABS) |
 | 6   | Z    | [Zero](#zero-z-flag) | No |
 | 4   | SB   | [Subtraction](#subtraction-sb-flag) | No |
 | 3   | P    | [Parity](#parity-p-flag) | No |
