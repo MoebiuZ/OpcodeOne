@@ -233,23 +233,23 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 
 | <sub>Higher Byte</sub> |  <sub>x0</sub>   |  <sub>x1</sub>   |  <sub>x2</sub>   |  <sub>x3</sub>  |  <sub>x4</sub>   |  <sub>x5</sub>   |  <sub>x6</sub>   |  <sub>x7</sub>   |  <sub>x8</sub>   |  <sub>x9</sub>   |  <sub>xA</sub>   |  <sub>xB</sub>   |  <sub>xC</sub>   |  <sub>xD</sub>   |  <sub>xE</sub>   |  <sub>xF</sub>   |
-|--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | <sub>**0x**</sub> |  <sub>[NOP](#nop)</sub>  |  <sub>[HALT](#halt)</sub> |  <sub>[PAR](#par)</sub>   |  <sub>[PAW](#paw)</sub>   |  <sub>[SAR](#sar)</sub>  |  <sub>[SAW](#saw)</sub>   |  <sub>[PUSH](#push)</sub> |  <sub>[POP](#pop)</sub>  |  <sub>[JMP](#jmp)</sub>  |  <sub>[RET](#ret)</sub>  |  <sub>[ADD](#add)</sub>  |  <sub>[SUB](#sub)</sub>  |  <sub>[MUL](#mul)</sub>  |  <sub>[DIV](#div)</sub>  |  <sub>[AND](#and)</sub>  |  <sub>[OR](#or)</sub>   |
 | <sub>**1x**</sub> |  <sub>[XOR](#xor)</sub>  |  <sub>[NAND](#nand)</sub> |  <sub>[NEG](#neg)</sub>  |  <sub>[IN](#in)</sub>   |  <sub>[OUT](#out)</sub>  |  <sub>[LD](#ld)</sub>   |  <sub>[CP](#cp)</sub>   |  <sub>[CMP](#cmp)</sub>  |  <sub>[ROT](#rot)</sub>   | <sub>[SH](#sh)</sub>  |  <sub>[INC](#inc)</sub>  |  <sub>[DEC](#dec)</sub>  |  <sub>[CALL](#call)</sub> |  <sub>[ABT](#abt)</sub>  | <sub>[BIT](#bit)</sub>  | <sub>[SWP](#swp)</sub> | 
-| <sub>**2x**</sub> | <sub>[XCHG](#xchg)</sub>  |   |  |    |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**3x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**4x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**5x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**6x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**7x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**8x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**9x**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Ax**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Bx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Cx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Dx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Ex**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
-| <sub>**Fx**</sub> |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+| <sub>**2x**</sub> | <sub>[XCHG](#xchg)</sub>  | | | | | | | | | | | | | | | |
+| <sub>**3x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**4x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**5x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**6x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**7x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**8x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**9x**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Ax**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Bx**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Cx**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Dx**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Ex**</sub> | | | | | | | | | | | | | | | | |
+| <sub>**Fx**</sub> | | | | | | | | | | | | | | | | |
 
 ***
 
@@ -257,8 +257,8 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 * Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
-* **[]** indicates a register is treated as an address
-* **#** indicates an immediate value, and it will be expressed in a decimal
+* **[]** indicates a register is used as an address
+* **#** indicates an immediate value, and it will be expressed in decimal
 * Values can be expressed in decimal or hexadecimal (starting with 0x)
 * Addresses are expressed in hexadecimal
 * **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`ABT`](#abt))
@@ -270,7 +270,7 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 Legend:
 
-* **x** represents a variable parameter. It's value will indicate a different register o operation mode (it will be considered a different instruction depending on it's value).
+* **x** represents a variable parameter. Its value will indicate a different register o operation mode (it will be considered a different instruction depending on it's value).
 * **\*** means the value will not affect the instruction behaviour (the instruction will be the same regardless of it's value).
 
 
@@ -1293,22 +1293,39 @@ Copies `%src` register into `%dst` register.
 *NOP*
 ---
 
-**N**o **OP**eration
+(0x00) **N**o **OP**eration
 
-**Does nothing, only consumes cycles.**
+Does nothing, only consumes cycles.
 
-| Opcode | - |
-|--------|---|
-| 00000000 | 0x00 |
+&nbsp;
 
-| Instruction size | Cycles |
-|------------------|--------|
-| 3 bytes (1 word) |        |
+**Modes:**
 
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | Instruction size | Cycles |
+|---|---|---|---|---|
+| <sub>00000000</sub> | <sub>N/A</sub> | <sub>[No Operation](#1-no-operation)</sub> | 3 bytes (1 word) | |
+
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. No operation
+
+Doesn't perform any operation.
+
+<sub>Syntax:</sub>
 
 	NOP
 
-No operation.
+<sub>Instruction bytecode:</sub>
 
 | Opcode   | Unused            |
 |----------|-------------------|
@@ -1325,38 +1342,57 @@ Flag affection:
 *HALT*
 ---
 
-**HALT**
+(0x01) **HALT**
 
-**Suspends the execution of the CPU until an interruption is received.**
+Suspends the execution of the CPU until an interruption is received.
 
-| Opcode | - |
-|--------|---|
-| 00000001 | 0x01 |
+&nbsp;
 
-| Instruction size | Cycles |
-|------------------|--------|
-| 3 bytes (1 word) |        |
+**Modes:**
+
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00000001</sub> | <sub>N/A</sub> | <sub>[Halt](#1-halt)</sub> | <sub> 3 bytes (1 word)</sub> | |
+
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+| <sub>[II](#invalid-instruction-ii-flag)</sub> | <sub>Reset</sub> |
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. Halt
+
+Halts the CPU.
+
+<sub>Syntax:</sub>
 
 	HALT
 
-Halts the CPU.
+<sub>Instruction bytecode:</sub>
 
 | Opcode   | Unused            |
 |----------|-------------------|
 | 00000001 | ******** ******** |
 
 
-Flag affection:
 
-* Resets II
 	
 ***
 
 ## Glossary
 
-| Term | Description |
-|------|-------------|
+**Warning**: These definitions are related to OpcodeOne architecture only. Doesn't necessary reflect generic or other architecture definitions.
+
+| Term | Definition |
+|---|---|
 | Immediate value | A value that is included on the most significative word of an instruction |
+| Instruction | Single operation performed by execution unit. CPU executes one instruction at a time. It is a bytecode composed by an opcode and parameters |
 | Register | Internal 24-bit storage unit. O¹ has 16 registers for multiple purposes |
-| Opcode | Code of operation. Most significative byte of an instruction, that indicates the operation |
+| Opcode | Code of operation. Most significative byte of an instruction, that indicates the operation to perform |
 | Word | 24-bit data unit. Is the smallest data size in O¹ | 
