@@ -1,0 +1,29 @@
+{
+	"INSTRUCTIONS": [
+		{ 
+			"opcode": "0x00", 
+			"mnemonic": "NOP", 
+			"modes": [
+				{ "mode": "*", "suffix": "", "size": 1, "cycles": 0, "Desc": "No Operation" }
+			]
+		},
+
+		{ 
+			"opcode": "0x02", 
+			"mnemonic": "PAR", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect mode", "params": [ "R", "[R]", "U4" ] },
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect plus immediate", "params": [ "R", "[R]", "+I4" ] },
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect plus register", "params": [ "R", "[R]", "+R" ] },
+				{ "mode": "0x3", "suffix": "", "size": 2, "cycles": 0, "Desc": "Indirect plus offset", "params": [ "R", "[R]", "U4", "+W" ] },
+
+				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect minus immediate", "params": [ "R", "[R]", "-I4" ] },
+				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect minus register", "params": [ "R", "[R]", "-R" ] },
+				{ "mode": "0x6", "suffix": "", "size": 1, "cycles": 0, "Desc": "Indirect minus offset", "params": [ "R", "[R]", "U4", "-W" ] },
+				
+
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "Desc": "Absolute mode", "params": [ "R", "U4", "U4", "W" ] }
+			]
+		}
+	]
+}
