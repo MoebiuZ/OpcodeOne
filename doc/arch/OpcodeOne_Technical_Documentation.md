@@ -276,42 +276,55 @@ Legend:
 
 *PAR* 
 ---
-**P**rimary **A**ddress bus **R**ead
 
-**Reads a word from [*Primary Address bus*](#primary-address-bus) into a [*register*](#registers).**
+(0x02) **P**rimary **A**ddress bus **R**ead
 
-| Opcode | - |
-|--------|---|
-| 00000010 | 0x02 |
+Reads a word from [*Primary Address bus*](#primary-address-bus) into a [*register*](#registers).
 
 
+_**Operations:**_
 
-| Mode | Operation | Instruction size | Cycles |
-|------|-----------|------------------|--------|
-| 0000 | [Indirect](#par-indirect-mode) | 3 bytes (1 word) | |
-| 0001 | [Indirect plus immediate offset](#par-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0010 | [Indirect plus register offset](#par-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
-| 0011 | [Indirect plus offset](#par-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0100 | [Indirect minus immediate offset](#par-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0101 | [Indirect minus register offset](#par-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
-| 0110 | [Indirect minus offset](#par-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0111 | [Absolute](#par-absolute-mode) | 6 bytes (2 words) | |
-| 1000 | [Absolute plus immediate offset](#par-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1001 | [Absolute plus register offset](#par-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
-| 1010 | [Absolute plus offset](#par-absolute-plus-offset-mode) | 9 bytes (3 words) | |
-| 1011 | [Absolute minus immediate offset](#par-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1100 | [Absolute minus register offset](#par-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
-| 1101 | [Absolute minus offset](#par-absolute-minus-offset-mode) | 9 bytes (3 words) | |
-| 1110 | Unused | N/A | |
-| 1111 | Unused | N/A | |
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00000010</sub> | <sub>0000</sub> | <sub>[Indirect](#1-par-indirect-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000010</sub> | <sub>0001</sub> | <sub>[Indirect plus immediate offset](#2-par-indirect-plus-immediate-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000010</sub> | <sub>0010</sub> | <sub>[Indirect plus register offset](#3-par-indirect-plus-register-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000010</sub> | <sub>0011</sub> | <sub>[Indirect plus offset](#4-par-indirect-plus-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>0100</sub> | <sub>[Indirect minus immediate offset](#5-par-indirect-minus-immediate-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000010</sub> | <sub>0101</sub> | <sub>[Indirect minus register offset](#6-par-indirect-minus-register-offset-mode) | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000010</sub> | <sub>0110</sub> | <sub>[Indirect minus offset](#7-par-indirect-plus-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>0111</sub> | <sub>[Absolute](#8-par-absolute-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>1000</sub> | <sub>[Absolute plus immediate offset](#9-par-absolute-plus-immediate-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>1001</sub> | <sub>[Absolute plus register offset](#10-par-absolute-plus-register-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>1010</sub> | <sub>[Absolute plus offset](#11-par-absolute-plus-offset-mode)</sub> | <sub>9 bytes (3 words)</sub> | |
+| <sub>00000010</sub> | <sub>1011</sub> | <sub>[Absolute minus immediate offset](#12-par-absolute-minus-immediate-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>1100</sub> | <sub>[Absolute minus register offset](#13-par-absolute-minus-register-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000010</sub> | <sub>1101</sub> | <sub>[Absolute minus offset](#14-par-absolute-minus-offset-mode)</sub> | <sub>9 bytes (3 words)</sub> | |
+| <sub>00000010</sub> | <sub>1110</sub> | <sub>Unused</sub> | <sub>N/A</sub> | |
+| <sub>00000010</sub> | <sub>1111</sub> | <sub>Unused</sub> | <sub>N/A</sub> | |
 
 &nbsp;
 
-#### _(PAR) Indirect mode_
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+
+#### 1. PAR Indirect mode
+
+Reads from the address specified by `%src` register into `%dst` register.
+
+<sub>Syntax:</<ub>
 
 	PAR %dst, [%src]
 
-Reads from the address specified by `%src` register into `%dst` register.
+<sub>Bytecode:</sub>
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
@@ -325,11 +338,16 @@ Example:
 
 &nbsp;
 
-#### _(PAR) Indirect plus immediate offset mode_
+#### 2. PAR Indirect plus immediate offset mode
+
+Reads from the address specified by `%src` register plus an immediate 4-bit offset into `%dst` register.
+
+<sub>Syntax:</<ub>
 
 	PAR %dst, [%src]+#imm_offset
 
-Reads from the address specified by `%src` register plus an immediate 4-bit offset into `%dst` register.
+
+<sub>Bytecode:</<ub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
 |----------|------|---------|---------|------------|
@@ -342,11 +360,15 @@ Example:
 
 &nbsp;
 
-#### _(PAR) Indirect plus register offset mode_
+#### 3. PAR Indirect plus register offset mode
+
+Reads from the address specified by `%src` register plus an offset specified by `%offset` register into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]+%offset
 
-Reads from the address specified by `%src` register plus an offset specified by `%offset` register into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
 |----------|------|---------|---------|------------|
@@ -359,11 +381,15 @@ Example:
 
 &nbsp;
 
-#### _(PAR) Indirect plus offset mode_
+#### 4. PAR Indirect plus offset mode
+
+Reads from the address specified by `%src` register plus a 24-bit offset into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]+offset
 
-Reads from the address specified by `%src` register plus a 24-bit offset into `%dst` register
+<sub>Bytecode</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
 |----------|------|---------|---------|--------|-------------------------------|
@@ -380,11 +406,15 @@ Example:
 
 &nbsp;
 
-#### _(PAR) Indirect minus immediate offset mode_
+#### 5. PAR Indirect minus immediate offset mode
+
+Reads from the address specified by `%src` register minus an immediate 4-bit *offset* into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]-#imm_offset
 
-Reads from the address specified by `%src` register minus an immediate 4-bit *offset* into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
 |----------|------|---------|---------|------------|
@@ -398,11 +428,15 @@ Example:
 
 &nbsp;
 
-#### _(PAR) Indirect minus register offset mode_
+#### 6. Indirect minus register offset mode
+
+Reads from the address specified by `%src` register minus an offset specified by `%offset` register into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]-%offset	
 
-Reads from the address specified by `%src` register minus an offset specified by `%offset` register into `%dst` register.
+<sub>Bytecode</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
 |----------|------|---------|---------|------------|
@@ -410,11 +444,15 @@ Reads from the address specified by `%src` register minus an offset specified by
 
 &nbsp;
 
-#### _(PAR) Indirect plus offset mode_
+#### 7. PAR Indirect plus offset mode
+
+Reads from the address specified by `%src` register minus a 24-bit offset into `%dst` register
+
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]-offset
 
-Reads from the address specified by `%src` register minus a 24-bit offset into `%dst` register
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
 |----------|------|---------|---------|--------|-------------------------------|
@@ -422,11 +460,15 @@ Reads from the address specified by `%src` register minus a 24-bit offset into `
 
 &nbsp;
 
-#### _(PAR) Absolute mode_
+#### 8. PAR Absolute mode
+
+Reads from address into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr
 
-Reads from address into `%dst` register.
+<sub>Bytecode</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Unused | Address                       |
 |----------|------|---------|--------|--------|-------------------------------|
@@ -434,11 +476,15 @@ Reads from address into `%dst` register.
 
 &nbsp;
 
-#### _(PAR) Absolute plus immediate offset mode_
+#### 9. PAR Absolute plus immediate offset mode
+
+Reads from address plus an immediate 4-bit offset into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr+#imm_offset
 
-Reads from address plus an immediate 4-bit offset into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Imm Offset | Address                       |
 |----------|------|---------|--------|------------|-------------------------------|
@@ -446,11 +492,15 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAR) Absolute plus register offset mode_
+#### 10. PAR Absolute plus register offset mode
+
+Reads from address plus offset specified by `%offset` register into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr+%offset
 
-Reads from address plus offset specified by `%offset` register into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Offset Reg | Address                       |
 |----------|------|---------|--------|------------|-------------------------------|
@@ -458,11 +508,15 @@ Reads from address plus offset specified by `%offset` register into `%dst` regis
 
 &nbsp;
 
-#### _(PAR) Absolute plus offset mode_
+#### 11. PAR Absolute plus offset mode
+
+Reads from address plus a 24-bit offset into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr+offset
 
-Reads from address plus a 24-bit offset into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Unused | Address                       | Offset                        |
 |----------|------|---------|--------|--------|-------------------------------|-------------------------------|
@@ -470,11 +524,15 @@ Reads from address plus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAR) Absolute minus immediate offset mode_
+#### 12. PAR Absolute minus immediate offset mode
+
+Reads from address plus an immediate 4-bit offset into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr-#imm_offset
 
-Reads from address plus an immediate 4-bit offset into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Imm Offset | Address                       |
 |----------|------|---------|--------|------------|-------------------------------|
@@ -482,11 +540,15 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAR) Absolute minus register offset mode_
+#### 13. PAR Absolute minus register offset mode
+
+Reads from address minus offset specified by `%offset` register into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr-%offset
 
-Reads from address minus offset specified by `%offset` register into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Offset Reg | Address                       |
 |----------|------|---------|--------|------------|-------------------------------|
@@ -494,11 +556,15 @@ Reads from address minus offset specified by `%offset` register into `%dst` regi
 
 &nbsp;
 
-#### _(PAR) Absolute minus offset mode_
+#### 14. PAR Absolute minus offset mode
+
+Reads from address minus a 24-bit offset into `%dst` register.
+
+<sub>Syntax:</sub>
 
 	PAR %dst, addr-offset
 
-Reads from address minus a 24-bit offset into `%dst` register.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Unused | Unused | Address                       | Offset                        |
 |----------|------|---------|--------|--------|-------------------------------|-------------------------------|
@@ -515,38 +581,45 @@ Reads from address minus a 24-bit offset into `%dst` register.
 *PAW*
 ---
 
-**P**rimary **A**ddress bus **W**rite
+(0x03) **P**rimary **A**ddress bus **W**rite
 
-**Writes a word from a [register](#registers) into [Primary address bus](#primary-address-bus) address.**
-
-| Opcode | - |
-|--------|---|
-| 00000011 | 0x03 |
+Writes a word from a [register](#registers) into [Primary address bus](#primary-address-bus) address.
 
 
+**Operations:**
 
-| Mode | Operation | Instruction size | Cycles |
-|------|-----------|------------------|--------|
-| 0000 | [Indirect](#paw-indirect-mode) | 3 bytes (1 word) | |
-| 0001 | [Indirect plus immediate offset](#paw-indirect-plus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0010 | [Indirect plus register offset](#paw-indirect-plus-register-offset-mode) | 3 bytes (1 word) | |
-| 0011 | [Indirect plus offset](#paw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0100 | [Indirect minus immediate offset](#paw-indirect-minus-immediate-offset-mode) | 3 bytes (1 word) | |
-| 0101 | [Indirect minus register offset](#paw-indirect-minus-register-offset-mode) | 3 bytes (1 word) | |
-| 0110 | [Indirect minus offset](#paw-indirect-plus-offset-mode) | 6 bytes (2 words) | |
-| 0111 | [Absolute](#paw-absolute-mode) | 6 bytes (2 words) | |
-| 1000 | [Absolute plus immediate offset](#paw-absolute-plus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1001 | [Absolute plus register offset](#paw-absolute-plus-register-offset-mode) | 6 bytes (2 words) | |
-| 1010 | [Absolute plus offset](#paw-absolute-plus-offset-mode) | 9 bytes (3 words) | |
-| 1011 | [Absolute minus immediate offset](#paw-absolute-minus-immediate-offset-mode) | 6 bytes (2 words) | |
-| 1100 | [Absolute minus register offset](#paw-absolute-minus-register-offset-mode) | 6 bytes (2 words) | |
-| 1101 | [Absolute minus offset](#paw-absolute-minus-offset-mode) | 9 bytes (3 words) | |
-| 1110 | Unused | N/A | |
-| 1111 | Unused | N/A | |
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00000011</sub> | <sub>0000</sub> | <sub>[Indirect](#1-paw-indirect-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000011</sub> | <sub>0001</sub> | <sub>[Indirect plus immediate offset](#2-paw-indirect-plus-immediate-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000011</sub> | <sub>0010</sub> | <sub>[Indirect plus register offset](#3-paw-indirect-plus-register-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000011</sub> | <sub>0011</sub> | <sub>[Indirect plus offset](#4-paw-indirect-plus-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>0100</sub> | <sub>[Indirect minus immediate offset](#5-paw-indirect-minus-immediate-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000011</sub> | <sub>0101</sub> | <sub>[Indirect minus register offset](#6-paw-indirect-minus-register-offset-mode)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000011</sub> | <sub>0110</sub> | <sub>[Indirect minus offset](#7-paw-indirect-plus-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>0111</sub> | <sub>[Absolute](#8-paw-absolute-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>1000</sub> | <sub>[Absolute plus immediate offset](#9-paw-absolute-plus-immediate-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>1001</sub> | <sub>[Absolute plus register offset](#10-paw-absolute-plus-register-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>1010</sub> | <sub>[Absolute plus offset](#11-paw-absolute-plus-offset-mode)</sub> | <sub>9 bytes (3 words)</sub> | |
+| <sub>00000011</sub> | <sub>1011</sub> | <sub>[Absolute minus immediate offset](#12-paw-absolute-minus-immediate-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>1100</sub> | <sub>[Absolute minus register offset](#13-paw-absolute-minus-register-offset-mode)</sub> | <sub>6 bytes (2 words)</sub> | |
+| <sub>00000011</sub> | <sub>1101</sub> | <sub>[Absolute minus offset](#14-paw-absolute-minus-offset-mode)</sub> | <sub>9 bytes (3 words)</sub> | |
+| <sub>00000011</sub> | <sub>1110</sub>| <sub>Unused</sub> | <sub>N/A</sub> | |
+| <sub>00000011</sub> | <sub>1111</sub> | <sub>Unused</sub> | <sub>N/A</sub> | |
 
 &nbsp;
 
-#### _(PAW) Indirect mode_
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. PAW Indirect mode
 
 	PAW [%dst], %src
 
@@ -556,7 +629,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect plus immediate offset mode_
+#### 2. PAW Indirect plus immediate offset mode
 
 	PAW [%dst]+#imm_offset, %src
 
@@ -567,7 +640,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect plus register offset mode_
+#### 3. PAW Indirect plus register offset mode
 	
 	PAW [%dst]+%offset, %src
 
@@ -578,7 +651,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect plus offset mode_
+#### 4. PAW Indirect plus offset mode
 
 	PAW [%dst]+offset, %src
 
@@ -589,7 +662,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect minus immediate offset mode_
+#### 5. PAW Indirect minus immediate offset mode
 
 	PAW [%dst]-#imm_offset, %src
 
@@ -600,7 +673,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect minus register offset mode_
+#### 6. PAW Indirect minus register offset mode
 
 	PAW [%dst]-%offset, %src
 
@@ -611,7 +684,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Indirect plus offset mode_
+#### 7. PAW Indirect plus offset mode
 
 	PAW [%dst]-offset, %src
 
@@ -622,7 +695,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute mode_
+#### 8. PAW Absolute mode
 
 	PAW addr, %src
 
@@ -633,7 +706,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute plus immediate offset mode_
+#### 9. PAW Absolute plus immediate offset mode
 
 	PAW addr+#imm_offset, %src
 
@@ -644,7 +717,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute plus register offset mode_
+#### 10. PAW Absolute plus register offset mode
 
 	PAW addr+%offset, %src
 
@@ -655,7 +728,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute plus offset mode_
+#### 11. PAW Absolute plus offset mode
 
 	PAW addr+offset, %src
 
@@ -666,7 +739,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute minus immediate offset mode_
+#### 12. PAW Absolute minus immediate offset mode
 
 	PAW addr-#imm_offset, %src
 
@@ -677,7 +750,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute minus register offset mode_
+#### 13. PAW Absolute minus register offset mode
 
 	PAW addr-%offset, %src
 
@@ -688,7 +761,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-#### _(PAW) Absolute minus offset mode_
+#### 14. PAW Absolute minus offset mode
 
 	PAW addr-offset, %src
 
@@ -702,23 +775,48 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 &nbsp;
 
-*VR*
+*SAR*
 ---
 
-**V**ideo **R**ead
+(0x04) **S**econdary **A**ddres bus **R**ead
 
-**Reads a word from [Video bus](#video-bus) into a [register](#registers).**
+Reads a word from [Secondary address bus](#secondary-address-bus) into a [register](#registers).
+
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
 
 &nbsp;
 
 &nbsp;
 
-*VW*
+*SAW*
 ---
 
-**V**ideo **W**rite
+(0x05) **S**econdary **A**ddress bus **W**rite
 
-**Writes a word from a [register](#registers) into [Video bus](#video-bus) address.**
+Writes a word from a [register](#registers) into [Secondary address bus](#secondary-address-bus) address.
+
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
 
 &nbsp;
 
@@ -727,54 +825,76 @@ Reads from address minus a 24-bit offset into `%dst` register.
 *ABT*
 ---
 
-**A**ddress **B**us **T**ransfer
+(0x1D) **A**ddress **B**us **T**ransfer
 
-**Transfers a word between [Primary](#primary-address-bus) and [Secondary](#secondary-address-bus) address buses.**
+Transfers a word between [Primary](#primary-address-bus) and [Secondary](#secondary-address-bus) address buses.
 
-| Opcode | - |
-|--------|---|
-| 00011111 | 0x1F |
+**Operations:**
 
-| Mode | Operation       | Instruction size | Cycles |
-|------|-----------------|------------------|--------|
-| 0000 | [Primary to Secondary](#abt-primary-to-secondary) | 3 bytes (1 word) | |
-| 0001 | [Secondary to Primary](#abt-secondary-to-primary) | 3 bytes (1 word) | |
-| 0010 | [Exchange](#abt-exchange) | 3 bytes (1 word) | |
-| ...  | Unused          | N/A              | |
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00011101</sub> | <sub>0000</sub> | <sub>[Primary to Secondary](#1-abt-primary-to-secondary)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00011101</sub> | <sub>0001</sub> | <sub>[Secondary to Primary](#2-abt-secondary-to-primary)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00011101</sub> | <sub>0010</sub> | <sub>[Exchange](#3-abt-exchange) | <sub>3 bytes (1 word)</sub> | |
+| <sub>00011101</sub> | <sub>...</sub> | <sub>Unused</sub> | <sub>N/A</sub> | |
 
-#### _(ABT) Primary to Secondary_
+&nbsp;
 
-	ABT{S} [%dst], [%src]
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. ABT Primary to Secondary
 
 Copies a word from [Primary Address bus](#primary-address-bus) to [Secondary Address bus](#secondary-address-bus)
 
+<sub>Syntax:</sub>
+
+	ABT{S} [%dst], [%src]
+
+<sub>Bytecode:</sub>
+
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
-| 00011111 | 0000 | xxxx    | xxxx    | ****   |
+| 00011101 | 0000 | xxxx    | xxxx    | ****   |
 
 &nbsp;
 
-#### _(ABT) Secondary to Primary_
-
-	ABT{P} [%dst], [%src]
+#### 2. ABT Secondary to Primary
 
 Copies a word from [Secondary Address bus](#secondary-address-bus) to [Primary Address bus](#primary-address-bus)
 
+<sub>Syntax:</sub>
+
+	ABT{P} [%dst], [%src]
+
+<sub><Bytecode:</sub>
+
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
-| 00011111 | 0001 | xxxx    | xxxx    | ****   |
+| 00011101 | 0001 | xxxx    | xxxx    | ****   |
 
 &nbsp;
 
-#### _(ABT) Exchange_
-
-	ABT{X} [%dst], [%src]
+#### 3. ABT Exchange
 
 Exchanges a word between [Primary Address bus](#primary-address-bus) and [Secondary Address bus](#secondary-address-bus)
 
+<sub>Syntax:</sub>
+
+	ABT{X} [%dst], [%src]
+
+<sub>Bytecode:</sub>
+
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
-| 00011111 | 0010 | xxxx    | xxxx    | ****   |
+| 00011101 | 0010 | xxxx    | xxxx    | ****   |
 
 
 &nbsp;
@@ -784,25 +904,53 @@ Exchanges a word between [Primary Address bus](#primary-address-bus) and [Second
 *AND*
 ---
 
-Logical **AND**
+(0x0E) Logical **AND**
 
 Performs a logical AND between 2 source registers and stores the result in destination register.
 
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+<sub>Syntax:</sub>
+
 	AND %dst, %src1, %src2
+
+<sub>Bytecode:</sub>
 
 | Opcode   | Unused | Dst Reg  | Src Reg1  | Src Reg2     |
 |----------|--------|----------|-----------|--------------|
-| 00000100 | xxxx   | xxxx     | xxxx      | xxxx         |
+| 00001110 | xxxx   | xxxx     | xxxx      | xxxx         |
 
 
 &nbsp;
 
 &nbsp;
 
-*OR*
+(0x0F) *OR*
 ---
 
 Logical **OR**
+
+&nbsp;
+
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
 
 	OR %dst, %src1, %src2
 
@@ -813,7 +961,7 @@ Logical **OR**
 *XOR*
 ---
 
-Logical **XOR**
+(0x10) Logical **XOR**
 
 	XOR %dst, %src1, %src2
 
@@ -824,7 +972,7 @@ Logical **XOR**
 *NEG*
 ---
 
-**NEG**ative - Two's complement
+(0x12) **NEG**ative - Two's complement
 
 	NEG %dst, %src
 
@@ -835,7 +983,7 @@ Logical **XOR**
 *NAND*
 ---
 
-Logical **N**ot **AND** (NAND)
+(0x11) Logical **N**ot **AND** (NAND)
 
 	NAND %dst, %src1, %src2
 
@@ -846,7 +994,7 @@ Logical **N**ot **AND** (NAND)
 *INC*
 ---
 
-**INC**rement
+(0x1A) **INC**rement
 
 	INC %dst
 
@@ -857,7 +1005,7 @@ Logical **N**ot **AND** (NAND)
 *DEC*
 ---
 
-**DEC**rement
+(0x1B) **DEC**rement
 
 	DEC %dst
 
@@ -868,7 +1016,7 @@ Logical **N**ot **AND** (NAND)
 *ADD*
 ---
 
-**ADD**ition
+(0x0A) **ADD**ition
 
 	ADD %dst, %src1, %src2
 	ADD{C} %dst, %src1, %src1
@@ -882,7 +1030,7 @@ Logical **N**ot **AND** (NAND)
 *SUB*
 ---
 
-**SUB**traction
+(0x0B) **SUB**traction
 
 	SUB %dst, %min, %subtr
 	SUB{C} %dst, %min, %subtr
@@ -894,7 +1042,7 @@ Logical **N**ot **AND** (NAND)
 *MUL*
 ---
 
-**MUL**tiplication
+(0x0C) **MUL**tiplication
 
 	MUL %dst, %src1, %src2
  	MUL{C} %dst, %src1, %src2
@@ -906,7 +1054,7 @@ Logical **N**ot **AND** (NAND)
 *DIV*
 ---
 
-**DIV**ision
+(0x0D) **DIV**ision
 
 	DIV %dst, %num, %denom
 
@@ -917,28 +1065,40 @@ Logical **N**ot **AND** (NAND)
 *PUSH*
 ---
 
-**PUSH**
+(0x06) **PUSH**
 
-**Stores one, two or three registers into the address defined by SP register, incrementing SP after each register.**
+Stores one, two or three registers into the address defined by SP register, incrementing SP after each register.
 
-| Opcode | - |
-|--------|---|
-| 00000110 | 0x1F |
+**Operations:**
 
-| Mode | Operation       | Instruction size | Cycles |
-|------|-----------------|------------------|--------|
-| 0000 | [Single](#push-single) | 3 bytes (1 word) | |
-| 0001 | [Double](#push-double) | 3 bytes (1 word) | |
-| 0010 | [Triple](#push-triple) | 3 bytes (1 word) | |
-| ...  | Unused          | N/A              | |
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00000110</sub> | <sub>0000</sub> | <sub>[Single](#1-push-single)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000110</sub> | <sub>0001</sub> | <sub>[Double](#2-push-double)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000110</sub> | <sub>0010</sub> | <sub>[Triple](#3-push-triple)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000110</sub> | <sub>...</sub>  | <sub>Unused</sub> | <sub>N/A</sub> | |
 
 &nbsp;
 
-#### _(PUSH) Single_
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. PUSH Single
+
+Stores `%src1` into address defined by `%SP`, then increments `%SP`.
+
+<sub>Syntax:</sub>
 
 	PUSH %src1 
 
-Stores `%src1` into address defined by `%SP`, then increments `%SP`.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Src1 Reg | Unused | Unused |
 |----------|---------|----------|--------|--------|
@@ -951,12 +1111,16 @@ Example:
 
 &nbsp;
 
-#### _(PUSH) Double_
-
-   	PUSH %src1 %src2
+#### 2. PUSH Double
 
 Stores `%src1` into address defined by `%SP`, then increments `%SP`,  
 Stores `%src2` into address defined by `%SP`, then increments `%SP`.
+
+<sub>Syntax:</sub>
+
+   	PUSH %src1 %src2
+
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Src1 Reg | Src2 Reg | Unused |
 |----------|---------|----------|----------|--------|
@@ -969,13 +1133,17 @@ Example:
 
 &nbsp;
 
-#### _(PUSH) Triple_
-
-   	PUSH %src1 %src2 %src3
+#### 3. PUSH Triple
 
 Stores `%src1` into address defined by `%SP`, then increments `%SP`,  
 Stores `%src2` into address defined by `%SP`, then increments `%SP`,  
 Stores `%src2` into address defined by `%SP`, then increments `%SP`.
+
+<sub>Syntax:</sub>
+
+   	PUSH %src1 %src2 %src3
+
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Src1 Reg | Src2 Reg | Src3 Reg |
 |----------|---------|----------|----------|----------|
@@ -993,28 +1161,40 @@ Example:
 *POP*
 ---
 
-**POP**
+(0x07) **POP**
 
-**Loads one, two or three registers from the address defined by SP register, decrementing SP after each register.**
+Loads one, two or three registers from the address defined by SP register, decrementing SP after each register.
 
-| Opcode | - |
-|--------|---|
-| 00000111 | 0x1F |
+**Operations:**
 
-| Mode | Operation       | Instruction size | Cycles |
-|------|-----------------|------------------|--------|
-| 0000 | [Single](#pop-single) | 3 bytes (1 word) | |
-| 0001 | [Double](#pop-double) | 3 bytes (1 word) | |
-| 0010 | [Triple](#pop-triple) | 3 bytes (1 word) | |
-| ...  | Unused          | N/A              | |
+| <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
+|---|---|---|---|---|
+| <sub>00000111</sub> | <sub>0000</sub> | <sub>[Single](#1-pop-single)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000111</sub> | <sub>0001</sub> | <sub>[Double](#2-pop-double)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000111</sub> | <sub>0010</sub> | <sub>[Triple](#3-pop-triple)</sub> | <sub>3 bytes (1 word)</sub> | |
+| <sub>00000111</sub> | <sub>...</sub>  | <sub>Unused</sub> | <sub>N/A</sub> | |
 
 &nbsp;
 
-#### _(POP) Single_
+**Flag affection:**
+
+| <sub>Flag</sub> | <sub>Effect</sub> |
+|---|---|
+
+
+&nbsp;
+
+**Instruction details:**
+
+#### 1. POP Single
+
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+
+<sub>Syntax:</sub>
 
    	POP %dst1
 
-Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`,
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Dst1 Reg | Unused | Unused |
 |----------|---------|----------|--------|--------|
@@ -1027,12 +1207,16 @@ Example:
 
 &nbsp;
 
-#### _(POP) Double_
-
-   	POP %dst2 %dst1
+#### 2. POP Double
 
 Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,  
 Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+
+<sub>Syntax:</sub>
+
+   	POP %dst2 %dst1
+
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Dst1 Reg | Dst2 Reg | Unused |
 |----------|---------|----------|----------|--------|
@@ -1045,13 +1229,17 @@ Example:
 
 &nbsp;
 
-#### _(POP) Triple_
-
-   	POP %dst3 %dst2 %dst1
+#### 3. POP Triple
 
 Loads from address defined by `%SP` to `%dst3`, then decrements `%SP`,  
 Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,  
 Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+
+<sub>Syntax:</sub>
+
+   	POP %dst3 %dst2 %dst1
+
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode    | Dst1 Reg | Dst2 Reg | Dst3 Reg |
 |----------|---------|----------|----------|----------|
@@ -1069,7 +1257,7 @@ Example:
 *ROT*
 ---
 
-**ROT**ate
+(0x18) **ROT**ate
 
 	ROT{L} %dst %src
 	ROT{R} %dst %src
@@ -1082,7 +1270,7 @@ Example:
 *SH*
 ---
 
-**SH**ift
+(0x19) **SH**ift
 
 	SH{L} %dst %src
 	SH{R} %dst %src
@@ -1095,15 +1283,17 @@ Example:
 *BIT*
 ---
 
-**BIT**
+(0x1E) **BIT**
 
 // TODO: What to do when number (#) is 24-31? Should we use Mode to specify High-Medium-Lower byte and use 3 bits (0-7) for number?
 
+Sets bit number # on register.
 
+<sub>Syntax:</sub>
 
 	BIT{S} %dst, #(0-24)
 
-Sets bit number # on register
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
@@ -1111,9 +1301,13 @@ Sets bit number # on register
 
 &nbsp;
 
+Resets bit number # on register.
+
+<sub>Syntax:</sub>
+
 	BIT{R} %dst, #(0-24)
 
-Resets bit number # on register
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
@@ -1121,9 +1315,13 @@ Resets bit number # on register
 
 &nbsp;
 
+Tests bit number # on register and sets Z flag accordingly.
+
+<sub>Syntax:</sub>
+
 	BIT{T} %dst, #(0-24)
 
-Tests bit number # on register and sets Z flag accordingly.
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst reg | Unused | Bit number |
 |----------|------|---------|--------|------------|
@@ -1137,7 +1335,7 @@ Tests bit number # on register and sets Z flag accordingly.
 *SWP*
 ---
 
-**SW**a**P**
+(0x1F) **SW**a**P**
 
 // TODO: Rethink this opcode and its usefulness
 
@@ -1161,7 +1359,7 @@ Swaps 2 nibbles on a register, where *x* and *y* are nibble number (0-5)
 *XCHG*
 ---
 
-e**XCH**an**G**e
+(0x20) e**XCH**an**G**e
 
 	XCHG %dst, %src
 
@@ -1172,7 +1370,7 @@ e**XCH**an**G**e
 *CMP*
 ---
 
-**C**o**MP**are
+(0x17) **C**o**MP**are
 
 &nbsp;
 
@@ -1181,7 +1379,7 @@ e**XCH**an**G**e
 *LD*
 ---
 
-**L**oa**D**
+(0x15) **L**oa**D**
 
 *Loads a value into a register/s*
 
@@ -1228,7 +1426,7 @@ Loads an immediate 8-bit value into `%dst`.
 *CP*
 ---
 
-**C**o**P**y
+(0x16) **C**o**P**y
 	
 **Copies a register into another**
 	
@@ -1248,7 +1446,7 @@ Copies `%src` register into `%dst` register.
 *IN*
 ---
 
-**IN**put
+(0x13) **IN**put
 
 &nbsp;
 
@@ -1257,7 +1455,7 @@ Copies `%src` register into `%dst` register.
 *OUT*
 ---
 
-**OUT**put
+(0x14) **OUT**put
 
 &nbsp;
 
@@ -1266,7 +1464,7 @@ Copies `%src` register into `%dst` register.
 *JMP*
 ---
 
-**J**u**MP**
+(0x08) **J**u**MP**
 
 &nbsp;
 
@@ -1275,7 +1473,7 @@ Copies `%src` register into `%dst` register.
 *CALL*
 ---
 
-**CALL**
+(0x1C) **CALL**
 
 &nbsp;
 
@@ -1284,7 +1482,7 @@ Copies `%src` register into `%dst` register.
 *RET*
 ---
 
-**RET**urn
+(0x09) **RET**urn
 
 &nbsp;
 
@@ -1299,7 +1497,7 @@ Does nothing, only consumes cycles.
 
 &nbsp;
 
-**Modes:**
+**Operations:**
 
 | <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | Instruction size | Cycles |
 |---|---|---|---|---|
@@ -1331,9 +1529,6 @@ Doesn't perform any operation.
 |----------|-------------------|
 | 00000000 | ******** ******** |
 
-Flag affection:
-
-* Resets II
 
 &nbsp;
 
@@ -1346,9 +1541,8 @@ Flag affection:
 
 Suspends the execution of the CPU until an interruption is received.
 
-&nbsp;
 
-**Modes:**
+_**Operations:**_
 
 | <sub>Opcode</sub> | <sub>Mode</sub> | <sub>Operation</sub> | <sub>Instruction size</sub> | <sub>Cycles</sub> |
 |---|---|---|---|---|
@@ -1356,7 +1550,7 @@ Suspends the execution of the CPU until an interruption is received.
 
 &nbsp;
 
-**Flag affection:**
+_**Flag affection:**_
 
 | <sub>Flag</sub> | <sub>Effect</sub> |
 |---|---|
@@ -1364,7 +1558,7 @@ Suspends the execution of the CPU until an interruption is received.
 
 &nbsp;
 
-**Instruction details:**
+_**Instruction details:**_
 
 #### 1. Halt
 
