@@ -63,6 +63,7 @@ OpcodeOne (O¹) Technical Documentation (DRAFT) v0.0.1
 * This first draft probably "wastes" a lot of "data" being 8 bit each opcode (256 possible opcodes). This could be redesigned in the future, or using the empty opcodes to implement complex "non-standard" instructions.
 * Each instruction "cycles consumed" or "instruction speed" will be determined with benchmarks once implemented, and the derived value will be used for this specification.
 * Little endian architecture (for the moment)
+* All registers are 0x000000 on power / reset
 * TODO: What to do when Mode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 * TODO: What to do when Opcode is *unused*? (Raise error - do NOP - do NOP and set special flag)
 
