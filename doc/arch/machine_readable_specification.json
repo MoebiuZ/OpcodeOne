@@ -1,0 +1,178 @@
+{
+	"syntax": [
+		{ "opcode": 8, "Code of operation" },
+		{ "mode": 4, "Mode of operation" },
+		{ "%": 4, "desc": "Register" },
+		{ "#": 0, "desc": "Immediate value (variable size)" },
+		{ "W": 24, "desc": "Word" },
+		{ "U": 0, "desc": "Unused (variable size)" }	
+	],
+
+
+
+	"instructions": [
+		{ 
+			"opcode": "0x00", 
+			"mnemonic": "NOP", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "No Operation", "params": [] }
+			]
+		},
+
+		{ 
+			"opcode": "0x01", 
+			"mnemonic": "HALT", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "Halt", "params": [] }
+			]
+		},
+
+		{ 
+			"opcode": "0x02", 
+			"mnemonic": "PAR", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect", "params": [ "%", "[%]", "U4" ] },
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus immediate", "params": [ "%", "[%]", "+#4" ] },
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus register", "params": [ "%", "[%]", "+R" ] },
+				{ "mode": "0x3", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect plus offset", "params": [ "%", "[%]", "U4", "+W" ] },
+				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "%", "[%]", "-#4" ] },
+				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "%", "[%]", "-R" ] },
+				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "%", "[%]", "U4", "-W" ] },
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "W" ] }
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "W" ] }
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "W" ] }
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "W", "+W" ] }
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "W" ] }
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "W" ] }
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "W", "-W" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x03", 
+			"mnemonic": "PAW", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect", "params": [ "[%]", "%", "U4" ] },
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus immediate", "params": [ "[%]", "%", "+#4" ] },
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus register", "params": [ "[%]", "%", "+R" ] },
+				{ "mode": "0x3", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect plus offset", "params": [ "[%]", "%", "U4", "+W" ] },
+				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "[%]", "%", "-#4" ] },
+				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "[%]", "%", "-R" ] },
+				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "[%]", "%", "U4", "-W" ] },
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "W" ] }
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "W" ] }
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "W" ] }
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "W", "+W" ] }
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "W" ] }
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "W" ] }
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "W", "-W" ] }
+			]
+		},
+
+				{ 
+			"opcode": "0x04", 
+			"mnemonic": "SAR", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect", "params": [ "%", "[%]", "U4" ] },
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus immediate", "params": [ "%", "[%]", "+#4" ] },
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus register", "params": [ "%", "[%]", "+R" ] },
+				{ "mode": "0x3", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect plus offset", "params": [ "%", "[%]", "U4", "+W" ] },
+				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "%", "[%]", "-#4" ] },
+				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "%", "[%]", "-R" ] },
+				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "%", "[%]", "U4", "-W" ] },
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "W" ] }
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "W" ] }
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "W" ] }
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "W", "+W" ] }
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "W" ] }
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "W" ] }
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "W", "-W" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x05", 
+			"mnemonic": "SAW", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect", "params": [ "[%]", "%", "U4" ] },
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus immediate", "params": [ "[%]", "%", "+#4" ] },
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect plus register", "params": [ "[%]", "%", "+R" ] },
+				{ "mode": "0x3", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect plus offset", "params": [ "[%]", "%", "U4", "+W" ] },
+				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "[%]", "%", "-#4" ] },
+				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "[%]", "%", "-R" ] },
+				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "[%]", "%", "U4", "-W" ] },
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "W" ] }
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "W" ] }
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "W" ] }
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "W", "+W" ] }
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "W" ] }
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "W" ] }
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "W", "-W" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x06", 
+			"mnemonic": "PUSH", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Single", "params": [ "%" ] }
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Double", "params": [ "%%" ] }
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Triple", "params": [ "%%%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x07", 
+			"mnemonic": "POP", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Single", "params": [ "%" ] }
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Double", "params": [ "%%" ] }
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Triple", "params": [ "%%%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x0e", 
+			"mnemonic": "AND", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "AND", "params": [ "%", "%", "%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x0f", 
+			"mnemonic": "OR", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "OR", "params": [ "%", "%", "%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x10", 
+			"mnemonic": "XOR", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "XOR", "params": [ "%", "%", "%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x11", 
+			"mnemonic": "NAND", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "Not AND", "params": [ "%", "%", "%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x15", 
+			"mnemonic": "LD", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 2, "cycles": 0, "desc": "Single", "params": [ "%", "W" ] }
+				{ "mode": "0x1", "suffix": "", "size": 2, "cycles": 0, "desc": "Double", "params": [ "%%", "W" ] }
+				{ "mode": "0x2", "suffix": "", "size": 2, "cycles": 0, "desc": "Triple", "params": [ "%%%", "W" ] }
+				{ "mode": "0x3", "suffix": "", "size": 1, "cycles": 0, "desc": "Immediate", "params": [ "%", "#8" ] }
+			]
+		}
+
+	]
+}

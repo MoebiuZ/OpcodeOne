@@ -321,7 +321,7 @@ _**Operations:**_
 
 Reads from the address specified by `%src` register into `%dst` register.
 
-<sub>Syntax:</<ub>
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]
 
@@ -343,12 +343,12 @@ Example:
 
 Reads from the address specified by `%src` register plus an immediate 4-bit offset into `%dst` register.
 
-<sub>Syntax:</<ub>
+<sub>Syntax:</sub>
 
 	PAR %dst, [%src]+#imm_offset
 
 
-<sub>Bytecode:</<ub>
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
 |----------|------|---------|---------|------------|
