@@ -55,13 +55,13 @@
 				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "%", "[%]", "-#4" ] },
 				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "%", "[%]", "-R" ] },
 				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "%", "[%]", "U4", "-W" ] },
-				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "W" ] },
-				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "W" ] },
-				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "W" ] },
-				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "W", "+W" ] },
-				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "W" ] },
-				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "W" ] },
-				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "W", "-W" ] }
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "[W]" ] },
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "[W]" ] },
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "[W]" ] },
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "[W]", "+W" ] },
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "[W]" ] },
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "[W]" ] },
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "[W]", "-W" ] }
 			]
 		},
 
@@ -76,13 +76,13 @@
 				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "[%]", "%", "-#4" ] },
 				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "[%]", "%", "-R" ] },
 				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "[%]", "%", "U4", "-W" ] },
-				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "W" ] },
-				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "W" ] },
-				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "W" ] },
-				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "W", "+W" ] },
-				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "W" ] },
-				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "W" ] },
-				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "W", "-W" ] }
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "[W]" ] },
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "[W]" ] },
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "[W]" ] },
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "[W]", "+W" ] },
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "[W]" ] },
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "[W]" ] },
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "[W]", "-W" ] }
 			]
 		},
 
@@ -97,13 +97,13 @@
 				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "%", "[%]", "-#4" ] },
 				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "%", "[%]", "-R" ] },
 				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "%", "[%]", "U4", "-W" ] },
-				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "W" ] },
-				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "W" ] },
-				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "W" ] },
-				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "W", "+W" ] },
-				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "W" ] },
-				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "W" ] },
-				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "W", "-W" ] }
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "%", "U4", "U4", "[W]" ] },
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "%", "U4", "+#4", "[W]" ] },
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "%", "U4", "+R", "[W]" ] },
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "%", "U4", "U4", "[W]", "+W" ] },
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "%", "U4", "-#4", "[W]" ] },
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "%", "U4", "-R", "[W]" ] },
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "%", "U4", "U4", "[W]", "-W" ] }
 			]
 		},
 
@@ -118,13 +118,13 @@
 				{ "mode": "0x4", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus immediate", "params": [ "[%]", "%", "-#4" ] },
 				{ "mode": "0x5", "suffix": "", "size": 1, "cycles": 0, "desc": "Indirect minus register", "params": [ "[%]", "%", "-R" ] },
 				{ "mode": "0x6", "suffix": "", "size": 2, "cycles": 0, "desc": "Indirect minus offset", "params": [ "[%]", "%", "U4", "-W" ] },
-				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "W" ] },
-				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "W" ] },
-				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "W" ] },
-				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "W", "+W" ] },
-				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "W" ] },
-				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "W" ] },
-				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "W", "-W" ] }
+				{ "mode": "0x7", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute", "params": [ "U4", "%", "U4", "[W]" ] },
+				{ "mode": "0x8", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus immediate", "params": [ "U4", "%", "+#4", "[W]" ] },
+				{ "mode": "0x9", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute plus register", "params": [ "U4", "%", "+R", "[W]" ] },
+				{ "mode": "0xa", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute plus offset", "params": [ "U4", "%", "U4", "[W]", "+W" ] },
+				{ "mode": "0xb", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus immediate", "params": [ "U4", "%", "-#4", "[W]" ] },
+				{ "mode": "0xc", "suffix": "", "size": 2, "cycles": 0, "desc": "Absolute minus register", "params": [ "U4", "%", "-R", "[W]" ] },
+				{ "mode": "0xd", "suffix": "", "size": 3, "cycles": 0, "desc": "Absolute minus offset", "params": [ "U4", "%", "U4", "[W]", "-W" ] }
 			]
 		},
 
