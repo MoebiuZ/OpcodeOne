@@ -1,14 +1,31 @@
 {
 	"syntax": [
-		{ "opcode": 8, "Code of operation" },
-		{ "mode": 4, "Mode of operation" },
+		{ "opcode": 8, "desc": "Code of operation" },
+		{ "mode": 4, "desc": "Mode of operation" },
 		{ "%": 4, "desc": "Register" },
 		{ "#": 0, "desc": "Immediate value (variable size)" },
 		{ "W": 24, "desc": "Word" },
 		{ "U": 0, "desc": "Unused (variable size)" }	
 	],
 
-
+	"registers": [ 
+		{ "0x0": "A" },	
+		{ "0x1": "B" },
+		{ "0x2": "C" },
+		{ "0x3": "D" },
+		{ "0x1": "unused" },
+		{ "0x5": "unused" },
+		{ "0x6": "unused" },
+		{ "0x7": "unused" },
+		{ "0x8": "unused" },
+		{ "0x9": "unused" },
+		{ "0xa": "unused" },
+		{ "0xb": "unused" },
+		{ "0xc": "FL" },
+		{ "0xd": "SB" },
+		{ "0xe": "SP" },
+		{ "0xf": "PC" }		
+	],
 
 	"instructions": [
 		{ 
@@ -172,7 +189,44 @@
 				{ "mode": "0x2", "suffix": "", "size": 2, "cycles": 0, "desc": "Triple", "params": [ "%%%", "W" ] }
 				{ "mode": "0x3", "suffix": "", "size": 1, "cycles": 0, "desc": "Immediate", "params": [ "%", "#8" ] }
 			]
-		}
+		},
 
+		{ 
+			"opcode": "0x16", 
+			"mnemonic": "CP", 
+			"modes": [
+				{ "mode": "U4", "suffix": "", "size": 1, "cycles": 0, "desc": "Copy register", "params": [ "%", "%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x1A", 
+			"mnemonic": "INC", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Single", "params": [ "%" ] }
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Double", "params": [ "%%" ] }
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Triple", "params": [ "%%%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x1B", 
+			"mnemonic": "DEC", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "", "size": 1, "cycles": 0, "desc": "Single", "params": [ "%" ] }
+				{ "mode": "0x1", "suffix": "", "size": 1, "cycles": 0, "desc": "Double", "params": [ "%%" ] }
+				{ "mode": "0x2", "suffix": "", "size": 1, "cycles": 0, "desc": "Triple", "params": [ "%%%" ] }
+			]
+		},
+
+		{ 
+			"opcode": "0x1D", 
+			"mnemonic": "ABT", 
+			"modes": [
+				{ "mode": "0x0", "suffix": "S", "size": 1, "cycles": 0, "desc": "Primary to Secondary", "params": [ "[%]", "[%]" ] }
+				{ "mode": "0x1", "suffix": "P", "size": 1, "cycles": 0, "desc": "Secondary to Primary", "params": [ "[%]", "[%]" ] }
+				{ "mode": "0x2", "suffix": "X", "size": 1, "cycles": 0, "desc": "Exchange", "params": [ "[%]", "[%]" ] }
+			]
+		}
 	]
 }
