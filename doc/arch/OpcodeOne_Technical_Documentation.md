@@ -875,7 +875,7 @@ Copies a word from [Secondary Address bus](#secondary-address-bus) to [Primary A
 
 	ABT{P} [%dst], [%src]
 
-<sub><Bytecode:</sub>
+<sub>Bytecode:</sub>
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused |
 |----------|------|---------|---------|--------|
@@ -997,7 +997,9 @@ Logical **OR**
 
 (0x1A) **INC**rement
 
-	INC %dst
+	INC %dst1
+	INC %dst1 %dst2
+	INC %dst1 %dst2 %dst3
 
 &nbsp;
 
@@ -1008,7 +1010,9 @@ Logical **OR**
 
 (0x1B) **DEC**rement
 
-	DEC %dst
+	DEC %dst1
+	DEC %dst1 %dst2
+	DEC %dst1 %dst2 %dst3	
 
 &nbsp;
 
