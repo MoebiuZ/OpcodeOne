@@ -258,10 +258,10 @@ The following table illustrates all opcodes with their hexadecimal representatio
 
 * Arguments are comma (**,**) separated, except when different parameters *group* as a single argument (ie.: [`LD`](#ld) or [`PUSH`](#push))
 * **%** indicates a register
-* **[]** indicates a register is used as an address
+* **[]** indicates an address
 * **#** indicates an immediate value, and it will be expressed in decimal
 * Values can be expressed in decimal or hexadecimal (starting with 0x)
-* Addresses are expressed in hexadecimal
+* Absolute addresses are expressed in hexadecimal
 * **{}** indicates **operation type** (ie.: conditions in [`JMP`](#jmp), *with carry* in arithmetical operations or *direction* in [`ABT`](#abt))
 
 ***
@@ -345,7 +345,7 @@ Reads from the address specified by `%src` register plus an immediate 4-bit offs
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]+#imm_offset
+	PAR %dst, [%src] +#imm_offset
 
 
 <sub>Bytecode:</sub>
@@ -357,7 +357,7 @@ Reads from the address specified by `%src` register plus an immediate 4-bit offs
 Example:
 ><sub>Read a word from the address specified by %B plus 3 into %C</sub>
 >
->`PAR %C, [%B]+#3`
+>`PAR %C, [%B] +#3`
 
 &nbsp;
 
@@ -367,7 +367,7 @@ Reads from the address specified by `%src` register plus an offset specified by 
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]+%offset
+	PAR %dst, [%src] +%offset
 
 <sub>Bytecode:</sub>
 
@@ -388,7 +388,7 @@ Reads from the address specified by `%src` register plus a 24-bit offset into `%
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]+offset
+	PAR %dst, [%src] +offset
 
 <sub>Bytecode</sub>
 
@@ -399,11 +399,11 @@ Reads from the address specified by `%src` register plus a 24-bit offset into `%
 Example:
 ><sub>Read a word from the address specified by %C plus 1337 into %A</sub>
 >
->`PAR %A, [%C]+1337` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`PAR %A, [%C] +1337` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 >
 ><sub>or</sub>
 >
->`PAR %A, [%C]+0x539` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
+>`PAR %A, [%C] +0x539` <sub>h(0x023020 , 0x000539) | b(00000010 0011 0000 0010 0000, 000000000000010100111001)</sub>
 
 &nbsp;
 
@@ -413,7 +413,7 @@ Reads from the address specified by `%src` register minus an immediate 4-bit *of
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]-#imm_offset
+	PAR %dst, [%src] -#imm_offset
 
 <sub>Bytecode:</sub>
 
@@ -435,7 +435,7 @@ Reads from the address specified by `%src` register minus an offset specified by
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]-%offset	
+	PAR %dst, [%src] -%offset	
 
 <sub>Bytecode</sub>
 
@@ -451,7 +451,7 @@ Reads from the address specified by `%src` register minus a 24-bit offset into `
 
 <sub>Syntax:</sub>
 
-	PAR %dst, [%src]-offset
+	PAR %dst, [%src] -offset
 
 <sub>Bytecode:</sub>
 
@@ -467,7 +467,7 @@ Reads from address into `%dst` register.
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr
+	PAR %dst, [addr]
 
 <sub>Bytecode</sub>
 
@@ -483,7 +483,7 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr+#imm_offset
+	PAR %dst, [addr] +#imm_offset
 
 <sub>Bytecode:</sub>
 
@@ -499,7 +499,7 @@ Reads from address plus offset specified by `%offset` register into `%dst` regis
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr+%offset
+	PAR %dst, [addr] +%offset
 
 <sub>Bytecode:</sub>
 
@@ -515,7 +515,7 @@ Reads from address plus a 24-bit offset into `%dst` register.
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr+offset
+	PAR %dst, [addr] +offset
 
 <sub>Bytecode:</sub>
 
@@ -531,7 +531,7 @@ Reads from address plus an immediate 4-bit offset into `%dst` register.
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr-#imm_offset
+	PAR %dst, [addr] -#imm_offset
 
 <sub>Bytecode:</sub>
 
@@ -547,7 +547,7 @@ Reads from address minus offset specified by `%offset` register into `%dst` regi
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr-%offset
+	PAR %dst, [addr] -%offset
 
 <sub>Bytecode:</sub>
 
@@ -563,7 +563,7 @@ Reads from address minus a 24-bit offset into `%dst` register.
 
 <sub>Syntax:</sub>
 
-	PAR %dst, addr-offset
+	PAR %dst, [addr] -offset
 
 <sub>Bytecode:</sub>
 
@@ -632,7 +632,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 2. PAW Indirect plus immediate offset mode
 
-	PAW [%dst]+#imm_offset, %src
+	PAW [%dst] +#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -643,7 +643,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 3. PAW Indirect plus register offset mode
 	
-	PAW [%dst]+%offset, %src
+	PAW [%dst] +%offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
@@ -654,7 +654,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 4. PAW Indirect plus offset mode
 
-	PAW [%dst]+offset, %src
+	PAW [%dst] +offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
@@ -665,7 +665,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 5. PAW Indirect minus immediate offset mode
 
-	PAW [%dst]-#imm_offset, %src
+	PAW [%dst] -#imm_offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Imm Offset |
@@ -676,7 +676,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 6. PAW Indirect minus register offset mode
 
-	PAW [%dst]-%offset, %src
+	PAW [%dst] -%offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Offset Reg |
@@ -687,7 +687,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 7. PAW Indirect plus offset mode
 
-	PAW [%dst]-offset, %src
+	PAW [%dst] -offset, %src
 
 
 | Opcode   | Mode | Dst Reg | Src Reg | Unused | Offset                        |
@@ -698,7 +698,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 8. PAW Absolute mode
 
-	PAW addr, %src
+	PAW [addr], %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       |
@@ -709,7 +709,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 9. PAW Absolute plus immediate offset mode
 
-	PAW addr+#imm_offset, %src
+	PAW [addr] +#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -720,7 +720,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 10. PAW Absolute plus register offset mode
 
-	PAW addr+%offset, %src
+	PAW [addr] +%offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
@@ -731,7 +731,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 11. PAW Absolute plus offset mode
 
-	PAW addr+offset, %src
+	PAW [addr] +offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Offset                        |
@@ -742,7 +742,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 12. PAW Absolute minus immediate offset mode
 
-	PAW addr-#imm_offset, %src
+	PAW [addr] -#imm_offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Imm Offset | Address                       |
@@ -753,7 +753,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 13. PAW Absolute minus register offset mode
 
-	PAW addr-%offset, %src
+	PAW [addr] -%offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Offset Reg | Address                       |
@@ -764,7 +764,7 @@ Writes a word from a [register](#registers) into [Primary address bus](#primary-
 
 #### 14. PAW Absolute minus offset mode
 
-	PAW addr-offset, %src
+	PAW [addr] -offset, %src
 
 
 | Opcode   | Mode | Unused | Src Reg | Unused | Address                       | Offset                        |
