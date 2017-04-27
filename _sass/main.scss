@@ -188,7 +188,7 @@ iframe {
   width: 100%;
 }
 article {
-  max-width: 500px;
+  max-width: 1000px;
   margin: 0 auto;
   .title {
     line-height: 1.4em;
@@ -284,6 +284,9 @@ article {
   }
 }
 .footer {
+  background-color: #000;
+  position: fixed;
+  bottom: 0px;
   margin-top: 50px;
   color: #777;
   a {
@@ -291,6 +294,8 @@ article {
     font-weight: bold;
   }
 }
+
+
 section {
   max-width: 500px;
   margin: 0 auto 50px auto;

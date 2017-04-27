@@ -5,12 +5,17 @@
 		{% assign prompt = 'About the Author' %}
 	{% else %}
 		{% assign link = '/' %}
+		{% assign icon = 'assets/home-icon.png' %}
 		{% assign prompt = 'Back to Home' %}
 	{% endif %}
 
-	<a href="{{ link }}">
-		<img src="https://www.gravatar.com/avatar/{{ site.author_gravatar }}.png?s=80" class="gravatar">
+	<a href="{{ link | prepend: site.site_url }}">
+		<img src="{{ icon | prepend: site.site_url }}" class="gravatar">
 	</a> 
 	<span class="logo-prompt">{{ prompt }}</span>
 
+</aside>
+
+<aside>
+Text
 </aside>
