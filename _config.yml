@@ -7,6 +7,8 @@ author_name:        "Antonio R. (@MoebiuZ)"
 twitter_username:   MoebiuZ
 github_username:    MoebiuZ
 
+site_url:           https://opcode.one
+
 
 baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
 permalink:          /:title
