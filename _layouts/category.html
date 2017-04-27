@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<section>
+	
+	<h3>Entries tagged as "{{ page.tag }}" &#172;</h3>
+
+    {% for post in site.categories[page.tag] %}
+
+		<ul>
+			<li>
+				<div class="post-date">
+					<span>{{ post.date | date: "%b %d" }}</span>
+				</div>
+				<div class="title">
+					<a href="{{ post.url | prepend: site.site_url }}">{{ post.title }}</a>
+				</div>
+			</li>
+		</ul>
+
+    {% endfor %}
+
+   </section>
+<!--<div class="blog list">
+    <h1>Filed Under <small>#{{ page.tag }}</small></h1>
+
+    {% for post in site.categories[page.tag] %}
+        
+    {% endfor %}
+</div> -->

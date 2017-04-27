@@ -1,5 +1,6 @@
 # Site Info
-title:              "OpcodeOne"
+title:              "OpcodeOne (O¹) Project"
+title_short:        "O¹"
 description:        "Self-educational architecture design, implementation and tools"
 
 
@@ -30,6 +31,9 @@ gems:
   - jekyll-sitemap
 
 
+collections:
+  category:
+    output: true
 
 defaults:
   -
@@ -47,3 +51,8 @@ defaults:
       type:         "posts"
     values:
       layout:       "post"
+  -
+    scope:
+      type:         "category"
+    values:
+      layout:       "category"
