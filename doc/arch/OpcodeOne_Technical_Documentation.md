@@ -1214,12 +1214,12 @@ Example:
 
 #### 2. POP Double
 
-Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,  
-Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`,  
+Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`.
 
 <sub>Syntax:</sub>
 
-   	POP %dst2 %dst1
+   	POP %dst1 %dst2
 
 <sub>Bytecode:</sub>
 
@@ -1228,7 +1228,7 @@ Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
 | 00000111 | 0001    | xxxx     | xxxx     | ****   |
 
 Example:
-><sub>Pop from stack to %A, then %D to stack.</sub>
+><sub>Pop from stack to %D, then %A to stack.</sub>
 >
 >`POP %D %A`
 
@@ -1236,13 +1236,13 @@ Example:
 
 #### 3. POP Triple
 
-Loads from address defined by `%SP` to `%dst3`, then decrements `%SP`,  
+Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`,  
 Loads from address defined by `%SP` to `%dst2`, then decrements `%SP`,  
-Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
+Loads from address defined by `%SP` to `%dst3`, then decrements `%SP`.
 
 <sub>Syntax:</sub>
 
-   	POP %dst3 %dst2 %dst1
+   	POP %dst1 %dst2 %dst3
 
 <sub>Bytecode:</sub>
 
@@ -1251,7 +1251,7 @@ Loads from address defined by `%SP` to `%dst1`, then decrements `%SP`.
 | 00000111 | 0010    | xxxx     | xxxx     | xxxx     |
 
 Example:
-><sub>Pop from stack to %C, then %A, then %B.</sub>
+><sub>Pop from stack to %B, then %A, then %C.</sub>
 >
 >`POP %B %A %C`
 
