@@ -1,2 +1,0 @@
-OpcodeOne (O¹) emulators
-========================
