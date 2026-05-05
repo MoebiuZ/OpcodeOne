@@ -7,6 +7,3 @@ What
 OpcodeOne (O¹) is a programmable C-CHIP (a.k.a CPU) architecture for a byte-addressed 24-bit system, with a 16-bit instruction word, a mixed-width register model, an intentionally small set of architectural side effects, and a deliberately expressive set of assembly mnemonics.
 
 
-Why
----
-Desde muy pequeño 
