@@ -1,0 +1,11 @@
+{
+  "family": "TIMES",
+  "entries": [
+    {
+      "form": "times_reg_reg",
+      "pattern": "times_reg_reg",
+      "template": "TIMES[.U][.KH] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    }
+  ]
+}

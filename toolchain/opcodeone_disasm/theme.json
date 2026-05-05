@@ -1,0 +1,63 @@
+{
+  "tokens": {
+    "plain": {},
+    "address": {
+      "fg": "cyan",
+      "attrs": ["bold"]
+    },
+    "mnemonic": {
+      "fg": "yellow",
+      "attrs": ["bold"]
+    },
+    "reg16": {
+      "fg": "green",
+      "fg256": 76,
+      "attrs": ["bold"]
+    },
+    "reg24": {
+      "fg": "magenta",
+      "fg256": 171,
+      "attrs": ["bold"]
+    },
+    "regspecial": {
+      "fg": "red",
+      "fg256": 196,
+      "attrs": ["bold"]
+    },
+    "literal": {
+      "fg": "magenta"
+    },
+    "modifier": {
+      "fg": "red",
+      "attrs": ["bold"]
+    },
+    "extender": {
+      "fg": "yellow"
+    },
+    "keyword": {
+      "fg": "blue",
+      "attrs": ["dim"]
+    },
+    "condition": {
+      "fg": "cyan",
+      "attrs": ["bold"]
+    },
+    "bracket": {
+      "fg": "white",
+      "attrs": ["dim"]
+    },
+    "segment": {
+      "fg": "red",
+      "attrs": ["bold"]
+    }
+  },
+  "ui": {
+    "current_line": {
+      "bg256": 236
+    },
+    "status": {
+      "fg": "cyan",
+      "attrs": ["reverse"]
+    }
+  }
+}

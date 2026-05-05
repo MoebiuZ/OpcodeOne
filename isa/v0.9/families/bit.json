@@ -1,0 +1,172 @@
+{
+  "name": "BIT",
+  "opcode_ref": "BIT",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "bit_op",
+      "syntax": {
+        "style": "infix",
+        "patterns": [
+          {
+            "name": "testbit",
+            "sequence": [
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "TESTBIT",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "bit",
+                "slot_kind": "operand",
+                "operand_kind_ref": "bit_index_5"
+              }
+            ]
+          },
+          {
+            "name": "setbit",
+            "sequence": [
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "SETBIT",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "bit",
+                "slot_kind": "operand",
+                "operand_kind_ref": "bit_index_5"
+              }
+            ]
+          },
+          {
+            "name": "clearbit",
+            "sequence": [
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "CLEARBIT",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "bit",
+                "slot_kind": "operand",
+                "operand_kind_ref": "bit_index_5"
+              }
+            ]
+          },
+          {
+            "name": "togglebit",
+            "sequence": [
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "TOGGLEBIT",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "bit",
+                "slot_kind": "operand",
+                "operand_kind_ref": "bit_index_5"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "bit_index_within_width",
+          "bit_operand": "bit",
+          "target_operand": "dest"
+        }
+      ],
+      "defaults": {},
+      "derived_fields": {
+        "operation": {
+          "type": "enum_lookup",
+          "source": "sequence.operation",
+          "enum_ref": "bit_subop"
+        },
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "SUBOP",
+              "kind": "slot",
+              "source": "derived.operation",
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "SZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 7,
+              "lsb": 5
+            },
+            {
+              "name": "BITIDX",
+              "kind": "slot",
+              "source": "sequence.bit",
+              "msb": 4,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Tests, sets, clears or toggles a single bit."
+      }
+    }
+  ]
+}

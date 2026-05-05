@@ -1,0 +1,175 @@
+{
+  "name": "MEMABS16",
+  "opcode_ref": "MEMABS16",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "takeabs_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "takeabs_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_abs4"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_abs24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "ADDR_HI",
+              "kind": "slot",
+              "source": "sequence.mem.addr_hi8",
+              "msb": 7,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "ADDR_LO",
+              "kind": "slot",
+              "source": "sequence.mem.addr_lo16",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads two bytes from absolute memory into A, B, C or D."
+      }
+    },
+    {
+      "name": "giveabs_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "giveabs_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_abs4"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_abs24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "ADDR_HI",
+              "kind": "slot",
+              "source": "sequence.mem.addr_hi8",
+              "msb": 7,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "ADDR_LO",
+              "kind": "slot",
+              "source": "sequence.mem.addr_lo16",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores two bytes from A, B, C or D into absolute memory."
+      }
+    }
+  ]
+}

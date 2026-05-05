@@ -1,0 +1,11 @@
+{
+  "family": "JABS",
+  "entries": [
+    {
+      "form": "jump_abs",
+      "pattern": "jump_abs",
+      "template": "JMP <addr>",
+      "relation": "mnemonic-shortened"
+    }
+  ]
+}

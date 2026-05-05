@@ -1,0 +1,17 @@
+{
+  "family": "SET",
+  "entries": [
+    {
+      "form": "imm6",
+      "pattern": "imm6",
+      "template": "SET <dest>,<imm>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "imm16",
+      "pattern": "imm16",
+      "template": "SET <dest>,<imm>",
+      "relation": "helper-words-elided"
+    }
+  ]
+}

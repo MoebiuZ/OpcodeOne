@@ -1,0 +1,174 @@
+{
+  "name": "MINMAX",
+  "opcode_ref": "MINMAX",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "minmax_reg_reg",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "min",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "MIN",
+                "name": "operation"
+              },
+              {
+                "kind": "literal",
+                "value": "of"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "slot",
+                "name": "unsigned_kw",
+                "slot_kind": "keyword",
+                "keyword_ref": "keyword_unsigned",
+                "optional": true
+              }
+            ]
+          },
+          {
+            "name": "max",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "MAX",
+                "name": "operation"
+              },
+              {
+                "kind": "literal",
+                "value": "of"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "slot",
+                "name": "unsigned_kw",
+                "slot_kind": "keyword",
+                "keyword_ref": "keyword_unsigned",
+                "optional": true
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "same_width",
+          "operands": [
+            "dest",
+            "src"
+          ]
+        }
+      ],
+      "defaults": {
+        "unsigned_kw": false
+      },
+      "derived_fields": {
+        "operation": {
+          "type": "enum_lookup",
+          "source": "sequence.operation",
+          "enum_ref": "minmax_op"
+        },
+        "unsigned": {
+          "type": "keyword_presence_flag",
+          "source": "sequence.unsigned_kw",
+          "present_value": 1,
+          "absent_value": 0
+        },
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "slot",
+              "source": "derived.operation",
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "U",
+              "kind": "slot",
+              "source": "derived.unsigned",
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "SZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 7,
+              "lsb": 5
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 4,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Writes the min or max of src and dest back to dest, signed or unsigned. If both operands compare equal, dest keeps that same value with no additional side effects."
+      }
+    }
+  ]
+}

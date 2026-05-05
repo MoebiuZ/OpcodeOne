@@ -1,0 +1,295 @@
+{
+  "name": "STACK",
+  "opcode_ref": "STACK",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "place_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "place_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "PLACE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 8,
+              "lsb": 6
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 5,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores reg16 to the ascending stack in little-endian order at the address pointed to by SP, then advances SP by 2 to the next free byte."
+      }
+    },
+    {
+      "name": "place_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "place_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "PLACE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 8,
+              "lsb": 6
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 5,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores reg24 to the ascending stack in little-endian order at the address pointed to by SP, then advances SP by 3 to the next free byte."
+      }
+    },
+    {
+      "name": "lift_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "lift_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "LIFT"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 8,
+              "lsb": 6
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 5,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Decrements SP by 2 and then reconstructs reg16 from two stack bytes in little-endian order."
+      }
+    },
+    {
+      "name": "lift_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "lift_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "LIFT"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 8,
+              "lsb": 6
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 5,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Decrements SP by 3 and then reconstructs reg24 from three stack bytes in little-endian order."
+      }
+    }
+  ]
+}

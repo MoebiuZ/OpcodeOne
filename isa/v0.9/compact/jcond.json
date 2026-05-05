@@ -1,0 +1,29 @@
+{
+  "family": "JCOND",
+  "entries": [
+    {
+      "form": "jump_conditional_relative",
+      "pattern": "equal",
+      "template": "JMP.EQ <lhs>,<rhs>,<offset>",
+      "relation": "mnemonic-shortened-with-suffix-and-reordered-operands"
+    },
+    {
+      "form": "jump_conditional_relative",
+      "pattern": "less_than",
+      "template": "JMP.LT <lhs>,<rhs>,<offset>",
+      "relation": "mnemonic-shortened-with-suffix-and-reordered-operands"
+    },
+    {
+      "form": "jump_conditional_relative",
+      "pattern": "below",
+      "template": "JMP.BLW <lhs>,<rhs>,<offset>",
+      "relation": "mnemonic-shortened-with-suffix-and-reordered-operands"
+    },
+    {
+      "form": "jump_conditional_relative",
+      "pattern": "check",
+      "template": "JMP.CHK <lhs>,<rhs>,<offset>",
+      "relation": "mnemonic-shortened-with-suffix-and-reordered-operands"
+    }
+  ]
+}

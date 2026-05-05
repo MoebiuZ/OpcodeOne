@@ -1,0 +1,32 @@
+{
+  "description": "Each form owns one or more machine words. Variable fields read from family opcode, named sequence inputs, or derived fields.",
+  "field_kinds": [
+    "fixed",
+    "slot"
+  ],
+  "field_properties": [
+    "name",
+    "msb",
+    "lsb",
+    "kind",
+    "value",
+    "source"
+  ],
+  "source_ref_forms": [
+    "family_opcode",
+    "sequence.<name>",
+    "sequence.<name>.<member>",
+    "derived.<name>"
+  ],
+  "derived_field_required_keys": [
+    "type"
+  ],
+  "derived_field_types": [
+    "enum_lookup",
+    "width_flag",
+    "bit_slice",
+    "keyword_presence_flag",
+    "keyword_combination_lookup",
+    "slot_or_constant"
+  ]
+}

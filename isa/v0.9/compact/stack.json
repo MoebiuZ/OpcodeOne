@@ -1,0 +1,29 @@
+{
+  "family": "STACK",
+  "entries": [
+    {
+      "form": "place_reg16",
+      "pattern": "place_reg16",
+      "template": "PLACE <src>",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "place_reg24",
+      "pattern": "place_reg24",
+      "template": "PLACE <src>",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "lift_reg16",
+      "pattern": "lift_reg16",
+      "template": "LIFT <dest>",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "lift_reg24",
+      "pattern": "lift_reg24",
+      "template": "LIFT <dest>",
+      "relation": "same-as-canonical"
+    }
+  ]
+}

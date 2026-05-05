@@ -1,0 +1,47 @@
+{
+  "family": "LOGIC",
+  "entries": [
+    {
+      "form": "reg_reg_or_not",
+      "pattern": "and",
+      "template": "AND <dest>,<src>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "reg_reg_or_not",
+      "pattern": "or",
+      "template": "OR <dest>,<src>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "reg_reg_or_not",
+      "pattern": "xor",
+      "template": "XOR <dest>,<src>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "reg_reg_or_not",
+      "pattern": "not",
+      "template": "NOT <dest>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "imm16",
+      "pattern": "and",
+      "template": "AND <dest>,<imm>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "imm16",
+      "pattern": "or",
+      "template": "OR <dest>,<imm>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "imm16",
+      "pattern": "xor",
+      "template": "XOR <dest>,<imm>",
+      "relation": "mnemonic-first"
+    }
+  ]
+}

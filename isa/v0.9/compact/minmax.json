@@ -1,0 +1,17 @@
+{
+  "family": "MINMAX",
+  "entries": [
+    {
+      "form": "minmax_reg_reg",
+      "pattern": "min",
+      "template": "MIN[.U] <dest>,<src>",
+      "relation": "keyword-elided-and-suffixed"
+    },
+    {
+      "form": "minmax_reg_reg",
+      "pattern": "max",
+      "template": "MAX[.U] <dest>,<src>",
+      "relation": "keyword-elided-and-suffixed"
+    }
+  ]
+}

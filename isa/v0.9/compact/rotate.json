@@ -1,0 +1,17 @@
+{
+  "family": "ROTATE",
+  "entries": [
+    {
+      "form": "rotate_reg_reg",
+      "pattern": "leftrotate",
+      "template": "LROT <dest>,<src>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "rotate_reg_reg",
+      "pattern": "rightrotate",
+      "template": "RROT <dest>,<src>",
+      "relation": "mnemonic-first"
+    }
+  ]
+}

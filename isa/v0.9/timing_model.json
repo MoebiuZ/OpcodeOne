@@ -1,0 +1,2634 @@
+{
+  "default_model": "reference-rp2350-o3-lto-2026-04-23",
+  "models": {
+    "reference-rp2350-o3-lto-2026-04-23": {
+      "units": "chronons",
+      "notes": [
+        "This timing model uses integer picoseconds frozen from the latest 2026-04-23 RP2350 O3+LTO reference VM rerun.",
+        "In the current canonical model, 1 chronon equals 1 measured picosecond on the reference VM implementation.",
+        "paths contains the canonical exact per-path chronons from the reference run and is the complete timing view.",
+        "Instruction forms derive their timing from the exact paths that reference the same family and form."
+      ],
+      "paths": [
+        {
+          "name": "system_pass",
+          "path_id": 1,
+          "path_id_name": "SYSTEM_PASS",
+          "family": "SYSTEM",
+          "form": "pass",
+          "chronons": 967095,
+          "reference_asm": [
+            "PASS"
+          ],
+          "conditions": {
+            "operation": "pass"
+          }
+        },
+        {
+          "name": "system_stop",
+          "path_id": 2,
+          "path_id_name": "SYSTEM_STOP",
+          "family": "SYSTEM",
+          "form": "stop",
+          "chronons": 966667,
+          "reference_asm": [
+            "STOP"
+          ],
+          "conditions": {
+            "operation": "stop"
+          }
+        },
+        {
+          "name": "system_interruptions_on",
+          "path_id": 3,
+          "path_id_name": "SYSTEM_INTERRUPTIONS_ON",
+          "family": "SYSTEM",
+          "form": "interruptions_on",
+          "chronons": 1100776,
+          "reference_asm": [
+            "INTERRUPTIONS on",
+            "INTERRUPTIONS off"
+          ],
+          "conditions": {
+            "operation": "interruptions_on"
+          }
+        },
+        {
+          "name": "system_interruptions_off",
+          "path_id": 4,
+          "path_id_name": "SYSTEM_INTERRUPTIONS_OFF",
+          "family": "SYSTEM",
+          "form": "interruptions_off",
+          "chronons": 993333,
+          "reference_asm": [
+            "INTERRUPTIONS on",
+            "INTERRUPTIONS off"
+          ],
+          "conditions": {
+            "operation": "interruptions_off"
+          }
+        },
+        {
+          "name": "movecopy_copy_16_to_16",
+          "path_id": 5,
+          "path_id_name": "MOVECOPY_COPY_16_TO_16",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1093743,
+          "reference_asm": [
+            "COPY A into C"
+          ],
+          "conditions": {
+            "operation": "copy",
+            "src_width_bits": 16,
+            "dest_width_bits": 16
+          }
+        },
+        {
+          "name": "movecopy_copy_24_to_24",
+          "path_id": 6,
+          "path_id_name": "MOVECOPY_COPY_24_TO_24",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1100331,
+          "reference_asm": [
+            "COPY X into Y"
+          ],
+          "conditions": {
+            "operation": "copy",
+            "src_width_bits": 24,
+            "dest_width_bits": 24
+          }
+        },
+        {
+          "name": "movecopy_copy_16_to_24",
+          "path_id": 7,
+          "path_id_name": "MOVECOPY_COPY_16_TO_24",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1100247,
+          "reference_asm": [
+            "COPY A into X"
+          ],
+          "conditions": {
+            "operation": "copy",
+            "src_width_bits": 16,
+            "dest_width_bits": 24
+          }
+        },
+        {
+          "name": "movecopy_copy_24_to_16",
+          "path_id": 8,
+          "path_id_name": "MOVECOPY_COPY_24_TO_16",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1133503,
+          "reference_asm": [
+            "COPY X into A"
+          ],
+          "conditions": {
+            "operation": "copy",
+            "src_width_bits": 24,
+            "dest_width_bits": 16
+          }
+        },
+        {
+          "name": "movecopy_move_16_to_16",
+          "path_id": 9,
+          "path_id_name": "MOVECOPY_MOVE_16_TO_16",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1087120,
+          "reference_asm": [
+            "MOVE A to C"
+          ],
+          "conditions": {
+            "operation": "move",
+            "src_width_bits": 16,
+            "dest_width_bits": 16
+          }
+        },
+        {
+          "name": "movecopy_move_24_to_24",
+          "path_id": 10,
+          "path_id_name": "MOVECOPY_MOVE_24_TO_24",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1120470,
+          "reference_asm": [
+            "MOVE X to Y"
+          ],
+          "conditions": {
+            "operation": "move",
+            "src_width_bits": 24,
+            "dest_width_bits": 24
+          }
+        },
+        {
+          "name": "movecopy_move_16_to_24",
+          "path_id": 11,
+          "path_id_name": "MOVECOPY_MOVE_16_TO_24",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1100291,
+          "reference_asm": [
+            "MOVE A to X"
+          ],
+          "conditions": {
+            "operation": "move",
+            "src_width_bits": 16,
+            "dest_width_bits": 24
+          }
+        },
+        {
+          "name": "movecopy_move_24_to_16",
+          "path_id": 12,
+          "path_id_name": "MOVECOPY_MOVE_24_TO_16",
+          "family": "MOVECOPY",
+          "form": "copy_or_move",
+          "chronons": 1127038,
+          "reference_asm": [
+            "MOVE X to A"
+          ],
+          "conditions": {
+            "operation": "move",
+            "src_width_bits": 24,
+            "dest_width_bits": 16
+          }
+        },
+        {
+          "name": "movecopy_swap_16",
+          "path_id": 13,
+          "path_id_name": "MOVECOPY_SWAP_16",
+          "family": "MOVECOPY",
+          "form": "swap",
+          "chronons": 1073721,
+          "reference_asm": [
+            "SWAP A with C"
+          ],
+          "conditions": {
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "movecopy_swap_24",
+          "path_id": 14,
+          "path_id_name": "MOVECOPY_SWAP_24",
+          "family": "MOVECOPY",
+          "form": "swap",
+          "chronons": 1106956,
+          "reference_asm": [
+            "SWAP X with Y"
+          ],
+          "conditions": {
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "movecopy_special_from_k",
+          "path_id": 15,
+          "path_id_name": "MOVECOPY_SPECIAL_FROM_K",
+          "family": "MOVECOPY",
+          "form": "copy_k_into_reg24",
+          "chronons": 1106917,
+          "reference_asm": [
+            "COPY K into X"
+          ],
+          "conditions": {
+            "special_register": "K",
+            "direction": "from_special"
+          }
+        },
+        {
+          "name": "movecopy_special_from_sp",
+          "path_id": 16,
+          "path_id_name": "MOVECOPY_SPECIAL_FROM_SP",
+          "family": "MOVECOPY",
+          "form": "copy_sp_into_reg24",
+          "chronons": 1107012,
+          "reference_asm": [
+            "COPY SP into X"
+          ],
+          "conditions": {
+            "special_register": "SP",
+            "direction": "from_special"
+          }
+        },
+        {
+          "name": "movecopy_special_from_pc",
+          "path_id": 17,
+          "path_id_name": "MOVECOPY_SPECIAL_FROM_PC",
+          "family": "MOVECOPY",
+          "form": "copy_pc_into_reg24",
+          "chronons": 1106917,
+          "reference_asm": [
+            "COPY PC into X"
+          ],
+          "conditions": {
+            "special_register": "PC",
+            "direction": "from_special"
+          }
+        },
+        {
+          "name": "movecopy_special_to_k",
+          "path_id": 18,
+          "path_id_name": "MOVECOPY_SPECIAL_TO_K",
+          "family": "MOVECOPY",
+          "form": "copy_reg24_into_k",
+          "chronons": 1113333,
+          "reference_asm": [
+            "COPY X into K"
+          ],
+          "conditions": {
+            "special_register": "K",
+            "direction": "to_special"
+          }
+        },
+        {
+          "name": "movecopy_special_to_sp",
+          "path_id": 19,
+          "path_id_name": "MOVECOPY_SPECIAL_TO_SP",
+          "family": "MOVECOPY",
+          "form": "copy_reg24_into_sp",
+          "chronons": 1113423,
+          "reference_asm": [
+            "COPY X into SP"
+          ],
+          "conditions": {
+            "special_register": "SP",
+            "direction": "to_special"
+          }
+        },
+        {
+          "name": "stack_place_16",
+          "path_id": 20,
+          "path_id_name": "STACK_PLACE_16",
+          "family": "STACK",
+          "form": "place_reg16",
+          "chronons": 1114390,
+          "reference_asm": [
+            "PLACE A",
+            "LIFT C"
+          ],
+          "conditions": {
+            "operation": "place",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "stack_place_24",
+          "path_id": 21,
+          "path_id_name": "STACK_PLACE_24",
+          "family": "STACK",
+          "form": "place_reg24",
+          "chronons": 1167560,
+          "reference_asm": [
+            "PLACE X",
+            "LIFT Y"
+          ],
+          "conditions": {
+            "operation": "place",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "stack_lift_16",
+          "path_id": 22,
+          "path_id_name": "STACK_LIFT_16",
+          "family": "STACK",
+          "form": "lift_reg16",
+          "chronons": 1060000,
+          "reference_asm": [
+            "PLACE A",
+            "LIFT C"
+          ],
+          "conditions": {
+            "operation": "lift",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "stack_lift_24",
+          "path_id": 23,
+          "path_id_name": "STACK_LIFT_24",
+          "family": "STACK",
+          "form": "lift_reg24",
+          "chronons": 1120000,
+          "reference_asm": [
+            "PLACE X",
+            "LIFT Y"
+          ],
+          "conditions": {
+            "operation": "lift",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "flow_enter_abs",
+          "path_id": 24,
+          "path_id_name": "FLOW_ENTER_ABS",
+          "family": "FLOW",
+          "form": "enter_addr",
+          "chronons": 1456623,
+          "reference_asm": [
+            "ENTER 0x00F004"
+          ],
+          "conditions": {
+            "operation": "enter_abs"
+          }
+        },
+        {
+          "name": "flow_enter_reg",
+          "path_id": 25,
+          "path_id_name": "FLOW_ENTER_REG",
+          "family": "FLOW",
+          "form": "enter_reg24",
+          "chronons": 1063643,
+          "reference_asm": [
+            "ENTER X"
+          ],
+          "conditions": {
+            "operation": "enter_reg"
+          }
+        },
+        {
+          "name": "flow_leave",
+          "path_id": 26,
+          "path_id_name": "FLOW_LEAVE",
+          "family": "FLOW",
+          "form": "leave",
+          "chronons": 1120269,
+          "reference_asm": [
+            "LEAVE"
+          ],
+          "conditions": {
+            "operation": "leave"
+          }
+        },
+        {
+          "name": "flow_leave_interrupt",
+          "path_id": 27,
+          "path_id_name": "FLOW_LEAVE_INTERRUPT",
+          "family": "FLOW",
+          "form": "leave_interrupt",
+          "chronons": 1221575,
+          "reference_asm": [
+            "LEAVE interruption"
+          ],
+          "conditions": {
+            "operation": "leave_interrupt"
+          }
+        },
+        {
+          "name": "plus_reg_16",
+          "path_id": 28,
+          "path_id_name": "PLUS_REG_16",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1107332,
+          "reference_asm": [
+            "A PLUS B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "normal"
+          }
+        },
+        {
+          "name": "plus_reg_24",
+          "path_id": 29,
+          "path_id_name": "PLUS_REG_24",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1160685,
+          "reference_asm": [
+            "X PLUS Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "normal"
+          }
+        },
+        {
+          "name": "plus_keep_carry_reg_16",
+          "path_id": 30,
+          "path_id_name": "PLUS_KEEP_CARRY_REG_16",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1180286,
+          "reference_asm": [
+            "A PLUS B keep carry"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "keep_carry"
+          }
+        },
+        {
+          "name": "plus_keep_carry_reg_24",
+          "path_id": 31,
+          "path_id_name": "PLUS_KEEP_CARRY_REG_24",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1227335,
+          "reference_asm": [
+            "X PLUS Y keep carry"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "keep_carry"
+          }
+        },
+        {
+          "name": "plus_use_carry_reg_16",
+          "path_id": 32,
+          "path_id_name": "PLUS_USE_CARRY_REG_16",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1106958,
+          "reference_asm": [
+            "A PLUS B use carry"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "use_carry"
+          }
+        },
+        {
+          "name": "plus_use_carry_reg_24",
+          "path_id": 33,
+          "path_id_name": "PLUS_USE_CARRY_REG_24",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1173800,
+          "reference_asm": [
+            "X PLUS Y use carry"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "use_carry"
+          }
+        },
+        {
+          "name": "plus_keep_and_use_carry_reg_16",
+          "path_id": 34,
+          "path_id_name": "PLUS_KEEP_AND_USE_CARRY_REG_16",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1180409,
+          "reference_asm": [
+            "A PLUS B keep and use carry"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "plus_keep_and_use_carry_reg_24",
+          "path_id": 35,
+          "path_id_name": "PLUS_KEEP_AND_USE_CARRY_REG_24",
+          "family": "PLUS",
+          "form": "reg_reg",
+          "chronons": 1253739,
+          "reference_asm": [
+            "X PLUS Y keep and use carry"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "plus_imm6_16",
+          "path_id": 36,
+          "path_id_name": "PLUS_IMM6_16",
+          "family": "PLUS",
+          "form": "imm6",
+          "chronons": 1066874,
+          "reference_asm": [
+            "A PLUS 3"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "plus_imm6_24",
+          "path_id": 37,
+          "path_id_name": "PLUS_IMM6_24",
+          "family": "PLUS",
+          "form": "imm6",
+          "chronons": 1106667,
+          "reference_asm": [
+            "X PLUS 3"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "plus_imm16_16",
+          "path_id": 38,
+          "path_id_name": "PLUS_IMM16_16",
+          "family": "PLUS",
+          "form": "imm16",
+          "chronons": 1488037,
+          "reference_asm": [
+            "A PLUS 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "plus_imm16_24",
+          "path_id": 39,
+          "path_id_name": "PLUS_IMM16_24",
+          "family": "PLUS",
+          "form": "imm16",
+          "chronons": 1533826,
+          "reference_asm": [
+            "X PLUS 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "minus_reg_16",
+          "path_id": 40,
+          "path_id_name": "MINUS_REG_16",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1120649,
+          "reference_asm": [
+            "A MINUS B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "normal"
+          }
+        },
+        {
+          "name": "minus_reg_24",
+          "path_id": 41,
+          "path_id_name": "MINUS_REG_24",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1140743,
+          "reference_asm": [
+            "X MINUS Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "normal"
+          }
+        },
+        {
+          "name": "minus_keep_borrow_reg_16",
+          "path_id": 42,
+          "path_id_name": "MINUS_KEEP_BORROW_REG_16",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1133666,
+          "reference_asm": [
+            "A MINUS B keep borrow"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "keep_borrow"
+          }
+        },
+        {
+          "name": "minus_keep_borrow_reg_24",
+          "path_id": 43,
+          "path_id_name": "MINUS_KEEP_BORROW_REG_24",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1193785,
+          "reference_asm": [
+            "X MINUS Y keep borrow"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "keep_borrow"
+          }
+        },
+        {
+          "name": "minus_use_borrow_reg_16",
+          "path_id": 44,
+          "path_id_name": "MINUS_USE_BORROW_REG_16",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1093625,
+          "reference_asm": [
+            "A MINUS B use borrow"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "use_borrow"
+          }
+        },
+        {
+          "name": "minus_use_borrow_reg_24",
+          "path_id": 45,
+          "path_id_name": "MINUS_USE_BORROW_REG_24",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1147078,
+          "reference_asm": [
+            "X MINUS Y use borrow"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "use_borrow"
+          }
+        },
+        {
+          "name": "minus_keep_and_use_borrow_reg_16",
+          "path_id": 46,
+          "path_id_name": "MINUS_KEEP_AND_USE_BORROW_REG_16",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1147038,
+          "reference_asm": [
+            "A MINUS B keep and use borrow"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "modifier": "keep_and_use_borrow"
+          }
+        },
+        {
+          "name": "minus_keep_and_use_borrow_reg_24",
+          "path_id": 47,
+          "path_id_name": "MINUS_KEEP_AND_USE_BORROW_REG_24",
+          "family": "MINUS",
+          "form": "reg_reg",
+          "chronons": 1240489,
+          "reference_asm": [
+            "X MINUS Y keep and use borrow"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "modifier": "keep_and_use_borrow"
+          }
+        },
+        {
+          "name": "minus_imm6_16",
+          "path_id": 48,
+          "path_id_name": "MINUS_IMM6_16",
+          "family": "MINUS",
+          "form": "imm6",
+          "chronons": 1067053,
+          "reference_asm": [
+            "A MINUS 3"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "minus_imm6_24",
+          "path_id": 49,
+          "path_id_name": "MINUS_IMM6_24",
+          "family": "MINUS",
+          "form": "imm6",
+          "chronons": 1086852,
+          "reference_asm": [
+            "X MINUS 3"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "minus_imm16_16",
+          "path_id": 50,
+          "path_id_name": "MINUS_IMM16_16",
+          "family": "MINUS",
+          "form": "imm16",
+          "chronons": 1487713,
+          "reference_asm": [
+            "A MINUS 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "minus_imm16_24",
+          "path_id": 51,
+          "path_id_name": "MINUS_IMM16_24",
+          "family": "MINUS",
+          "form": "imm16",
+          "chronons": 1513826,
+          "reference_asm": [
+            "X MINUS 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "set_imm6_16",
+          "path_id": 52,
+          "path_id_name": "SET_IMM6_16",
+          "family": "SET",
+          "form": "imm6",
+          "chronons": 1006667,
+          "reference_asm": [
+            "SET A to 7"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "set_imm6_24",
+          "path_id": 53,
+          "path_id_name": "SET_IMM6_24",
+          "family": "SET",
+          "form": "imm6",
+          "chronons": 1020000,
+          "reference_asm": [
+            "SET X to 7"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 6
+          }
+        },
+        {
+          "name": "set_imm16_16",
+          "path_id": 54,
+          "path_id_name": "SET_IMM16_16",
+          "family": "SET",
+          "form": "imm16",
+          "chronons": 1440190,
+          "reference_asm": [
+            "SET A to 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "set_imm16_24",
+          "path_id": 55,
+          "path_id_name": "SET_IMM16_24",
+          "family": "SET",
+          "form": "imm16",
+          "chronons": 1446667,
+          "reference_asm": [
+            "SET X to 0x1234"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_and_reg_16",
+          "path_id": 56,
+          "path_id_name": "LOGIC_AND_REG_16",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1033963,
+          "reference_asm": [
+            "A AND B"
+          ],
+          "conditions": {
+            "operation": "and",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "logic_and_reg_24",
+          "path_id": 57,
+          "path_id_name": "LOGIC_AND_REG_24",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1073720,
+          "reference_asm": [
+            "X AND Y"
+          ],
+          "conditions": {
+            "operation": "and",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "logic_or_reg_16",
+          "path_id": 58,
+          "path_id_name": "LOGIC_OR_REG_16",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1033333,
+          "reference_asm": [
+            "A OR B"
+          ],
+          "conditions": {
+            "operation": "or",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "logic_or_reg_24",
+          "path_id": 59,
+          "path_id_name": "LOGIC_OR_REG_24",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1080290,
+          "reference_asm": [
+            "X OR Y"
+          ],
+          "conditions": {
+            "operation": "or",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "logic_xor_reg_16",
+          "path_id": 60,
+          "path_id_name": "LOGIC_XOR_REG_16",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1040249,
+          "reference_asm": [
+            "A XOR B"
+          ],
+          "conditions": {
+            "operation": "xor",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "logic_xor_reg_24",
+          "path_id": 61,
+          "path_id_name": "LOGIC_XOR_REG_24",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1060330,
+          "reference_asm": [
+            "X XOR Y"
+          ],
+          "conditions": {
+            "operation": "xor",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "logic_not_reg_16",
+          "path_id": 62,
+          "path_id_name": "LOGIC_NOT_REG_16",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1053542,
+          "reference_asm": [
+            "NOT A"
+          ],
+          "conditions": {
+            "operation": "not",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "logic_not_reg_24",
+          "path_id": 63,
+          "path_id_name": "LOGIC_NOT_REG_24",
+          "family": "LOGIC",
+          "form": "reg_reg_or_not",
+          "chronons": 1060209,
+          "reference_asm": [
+            "NOT X"
+          ],
+          "conditions": {
+            "operation": "not",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "logic_and_imm16_16",
+          "path_id": 64,
+          "path_id_name": "LOGIC_AND_IMM16_16",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1427889,
+          "reference_asm": [
+            "A AND 0x00FF"
+          ],
+          "conditions": {
+            "operation": "and",
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_and_imm16_24",
+          "path_id": 65,
+          "path_id_name": "LOGIC_AND_IMM16_24",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1460853,
+          "reference_asm": [
+            "X AND 0x00FF"
+          ],
+          "conditions": {
+            "operation": "and",
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_or_imm16_16",
+          "path_id": 66,
+          "path_id_name": "LOGIC_OR_IMM16_16",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1433674,
+          "reference_asm": [
+            "A OR 0x0034"
+          ],
+          "conditions": {
+            "operation": "or",
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_or_imm16_24",
+          "path_id": 67,
+          "path_id_name": "LOGIC_OR_IMM16_24",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1493672,
+          "reference_asm": [
+            "X OR 0x0034"
+          ],
+          "conditions": {
+            "operation": "or",
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_xor_imm16_16",
+          "path_id": 68,
+          "path_id_name": "LOGIC_XOR_IMM16_16",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1440177,
+          "reference_asm": [
+            "A XOR 0x0034"
+          ],
+          "conditions": {
+            "operation": "xor",
+            "width_bits": 16,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "logic_xor_imm16_24",
+          "path_id": 69,
+          "path_id_name": "LOGIC_XOR_IMM16_24",
+          "family": "LOGIC",
+          "form": "imm16",
+          "chronons": 1500339,
+          "reference_asm": [
+            "X XOR 0x0034"
+          ],
+          "conditions": {
+            "operation": "xor",
+            "width_bits": 24,
+            "immediate_bits": 16
+          }
+        },
+        {
+          "name": "bit_test_16",
+          "path_id": 70,
+          "path_id_name": "BIT_TEST_16",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1074001,
+          "reference_asm": [
+            "A TESTBIT 7"
+          ],
+          "conditions": {
+            "operation": "test",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "bit_test_24",
+          "path_id": 71,
+          "path_id_name": "BIT_TEST_24",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1093543,
+          "reference_asm": [
+            "X TESTBIT 7"
+          ],
+          "conditions": {
+            "operation": "test",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "bit_set_16",
+          "path_id": 72,
+          "path_id_name": "BIT_SET_16",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1053625,
+          "reference_asm": [
+            "A SETBIT 7"
+          ],
+          "conditions": {
+            "operation": "set",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "bit_set_24",
+          "path_id": 73,
+          "path_id_name": "BIT_SET_24",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1100247,
+          "reference_asm": [
+            "X SETBIT 7"
+          ],
+          "conditions": {
+            "operation": "set",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "bit_clear_16",
+          "path_id": 74,
+          "path_id_name": "BIT_CLEAR_16",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1026878,
+          "reference_asm": [
+            "A CLEARBIT 7"
+          ],
+          "conditions": {
+            "operation": "clear",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "bit_clear_24",
+          "path_id": 75,
+          "path_id_name": "BIT_CLEAR_24",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1086973,
+          "reference_asm": [
+            "X CLEARBIT 7"
+          ],
+          "conditions": {
+            "operation": "clear",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "bit_toggle_16",
+          "path_id": 76,
+          "path_id_name": "BIT_TOGGLE_16",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1046933,
+          "reference_asm": [
+            "A TOGGLEBIT 7"
+          ],
+          "conditions": {
+            "operation": "toggle",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "bit_toggle_24",
+          "path_id": 77,
+          "path_id_name": "BIT_TOGGLE_24",
+          "family": "BIT",
+          "form": "bit_op",
+          "chronons": 1086928,
+          "reference_asm": [
+            "X TOGGLEBIT 7"
+          ],
+          "conditions": {
+            "operation": "toggle",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "minmax_min_signed_16",
+          "path_id": 78,
+          "path_id_name": "MINMAX_MIN_SIGNED_16",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1100711,
+          "reference_asm": [
+            "MIN of A B"
+          ],
+          "conditions": {
+            "operation": "min",
+            "signedness": "signed",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "minmax_min_signed_24",
+          "path_id": 79,
+          "path_id_name": "MINMAX_MIN_SIGNED_24",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1180709,
+          "reference_asm": [
+            "MIN of X Y"
+          ],
+          "conditions": {
+            "operation": "min",
+            "signedness": "signed",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "minmax_min_unsigned_16",
+          "path_id": 80,
+          "path_id_name": "MINMAX_MIN_UNSIGNED_16",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1093622,
+          "reference_asm": [
+            "MIN of A B unsigned"
+          ],
+          "conditions": {
+            "operation": "min",
+            "signedness": "unsigned",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "minmax_min_unsigned_24",
+          "path_id": 81,
+          "path_id_name": "MINMAX_MIN_UNSIGNED_24",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1120872,
+          "reference_asm": [
+            "MIN of X Y unsigned"
+          ],
+          "conditions": {
+            "operation": "min",
+            "signedness": "unsigned",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "minmax_max_signed_16",
+          "path_id": 82,
+          "path_id_name": "MINMAX_MAX_SIGNED_16",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1093543,
+          "reference_asm": [
+            "MAX of A B"
+          ],
+          "conditions": {
+            "operation": "max",
+            "signedness": "signed",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "minmax_max_signed_24",
+          "path_id": 83,
+          "path_id_name": "MINMAX_MAX_SIGNED_24",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1174052,
+          "reference_asm": [
+            "MAX of X Y"
+          ],
+          "conditions": {
+            "operation": "max",
+            "signedness": "signed",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "minmax_max_unsigned_16",
+          "path_id": 84,
+          "path_id_name": "MINMAX_MAX_UNSIGNED_16",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1087184,
+          "reference_asm": [
+            "MAX of A B unsigned"
+          ],
+          "conditions": {
+            "operation": "max",
+            "signedness": "unsigned",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "minmax_max_unsigned_24",
+          "path_id": 85,
+          "path_id_name": "MINMAX_MAX_UNSIGNED_24",
+          "family": "MINMAX",
+          "form": "minmax_reg_reg",
+          "chronons": 1114403,
+          "reference_asm": [
+            "MAX of X Y unsigned"
+          ],
+          "conditions": {
+            "operation": "max",
+            "signedness": "unsigned",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "times_signed_16",
+          "path_id": 86,
+          "path_id_name": "TIMES_SIGNED_16",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1067216,
+          "reference_asm": [
+            "A TIMES B"
+          ],
+          "conditions": {
+            "signedness": "signed",
+            "width_bits": 16,
+            "keep_high": false
+          }
+        },
+        {
+          "name": "times_signed_keep_high_16",
+          "path_id": 87,
+          "path_id_name": "TIMES_SIGNED_KEEP_HIGH_16",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1080000,
+          "reference_asm": [
+            "A TIMES B keep high"
+          ],
+          "conditions": {
+            "signedness": "signed",
+            "width_bits": 16,
+            "keep_high": true
+          }
+        },
+        {
+          "name": "times_unsigned_16",
+          "path_id": 88,
+          "path_id_name": "TIMES_UNSIGNED_16",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1053544,
+          "reference_asm": [
+            "A TIMES B unsigned"
+          ],
+          "conditions": {
+            "signedness": "unsigned",
+            "width_bits": 16,
+            "keep_high": false
+          }
+        },
+        {
+          "name": "times_unsigned_keep_high_16",
+          "path_id": 89,
+          "path_id_name": "TIMES_UNSIGNED_KEEP_HIGH_16",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1086836,
+          "reference_asm": [
+            "A TIMES B unsigned keep high"
+          ],
+          "conditions": {
+            "signedness": "unsigned",
+            "width_bits": 16,
+            "keep_high": true
+          }
+        },
+        {
+          "name": "times_signed_24",
+          "path_id": 90,
+          "path_id_name": "TIMES_SIGNED_24",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1153864,
+          "reference_asm": [
+            "X TIMES Y"
+          ],
+          "conditions": {
+            "signedness": "signed",
+            "width_bits": 24,
+            "keep_high": false
+          }
+        },
+        {
+          "name": "times_unsigned_24",
+          "path_id": 91,
+          "path_id_name": "TIMES_UNSIGNED_24",
+          "family": "TIMES",
+          "form": "times_reg_reg",
+          "chronons": 1087035,
+          "reference_asm": [
+            "X TIMES Y unsigned"
+          ],
+          "conditions": {
+            "signedness": "unsigned",
+            "width_bits": 24,
+            "keep_high": false
+          }
+        },
+        {
+          "name": "div_signed_16",
+          "path_id": 92,
+          "path_id_name": "DIV_SIGNED_16",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1113870,
+          "reference_asm": [
+            "A DIV B"
+          ],
+          "conditions": {
+            "operation": "div",
+            "signedness": "signed",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "div_signed_24",
+          "path_id": 93,
+          "path_id_name": "DIV_SIGNED_24",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1160656,
+          "reference_asm": [
+            "X DIV Y"
+          ],
+          "conditions": {
+            "operation": "div",
+            "signedness": "signed",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "div_unsigned_16",
+          "path_id": 94,
+          "path_id_name": "DIV_UNSIGNED_16",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1106841,
+          "reference_asm": [
+            "A DIV B unsigned"
+          ],
+          "conditions": {
+            "operation": "div",
+            "signedness": "unsigned",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "div_unsigned_24",
+          "path_id": 95,
+          "path_id_name": "DIV_UNSIGNED_24",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1140630,
+          "reference_asm": [
+            "X DIV Y unsigned"
+          ],
+          "conditions": {
+            "operation": "div",
+            "signedness": "unsigned",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "module_signed_16",
+          "path_id": 96,
+          "path_id_name": "MODULE_SIGNED_16",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1080588,
+          "reference_asm": [
+            "A MODULE B"
+          ],
+          "conditions": {
+            "operation": "module",
+            "signedness": "signed",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "module_signed_24",
+          "path_id": 97,
+          "path_id_name": "MODULE_SIGNED_24",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1167294,
+          "reference_asm": [
+            "X MODULE Y"
+          ],
+          "conditions": {
+            "operation": "module",
+            "signedness": "signed",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "module_unsigned_16",
+          "path_id": 98,
+          "path_id_name": "MODULE_UNSIGNED_16",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1100457,
+          "reference_asm": [
+            "A MODULE B unsigned"
+          ],
+          "conditions": {
+            "operation": "module",
+            "signedness": "unsigned",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "module_unsigned_24",
+          "path_id": 99,
+          "path_id_name": "MODULE_UNSIGNED_24",
+          "family": "DIV",
+          "form": "div_or_module",
+          "chronons": 1147571,
+          "reference_asm": [
+            "X MODULE Y unsigned"
+          ],
+          "conditions": {
+            "operation": "module",
+            "signedness": "unsigned",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "unary_negate_16",
+          "path_id": 100,
+          "path_id_name": "UNARY_NEGATE_16",
+          "family": "UNARY",
+          "form": "unary_reg",
+          "chronons": 993625,
+          "reference_asm": [
+            "NEGATE A"
+          ],
+          "conditions": {
+            "operation": "negate",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "unary_negate_24",
+          "path_id": 101,
+          "path_id_name": "UNARY_NEGATE_24",
+          "family": "UNARY",
+          "form": "unary_reg",
+          "chronons": 1097014,
+          "reference_asm": [
+            "NEGATE X"
+          ],
+          "conditions": {
+            "operation": "negate",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "unary_absolute_16",
+          "path_id": 102,
+          "path_id_name": "UNARY_ABSOLUTE_16",
+          "family": "UNARY",
+          "form": "unary_reg",
+          "chronons": 1040251,
+          "reference_asm": [
+            "ABSOLUTE A"
+          ],
+          "conditions": {
+            "operation": "absolute",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "unary_absolute_24",
+          "path_id": 103,
+          "path_id_name": "UNARY_ABSOLUTE_24",
+          "family": "UNARY",
+          "form": "unary_reg",
+          "chronons": 1066995,
+          "reference_asm": [
+            "ABSOLUTE X"
+          ],
+          "conditions": {
+            "operation": "absolute",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "shift_left_regcount_16",
+          "path_id": 104,
+          "path_id_name": "SHIFT_LEFT_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1227899,
+          "reference_asm": [
+            "A LEFTSHIFT B"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_left_regcount_24",
+          "path_id": 105,
+          "path_id_name": "SHIFT_LEFT_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1267556,
+          "reference_asm": [
+            "X LEFTSHIFT Y"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_left_keep_carry_regcount_16",
+          "path_id": 106,
+          "path_id_name": "SHIFT_LEFT_KEEP_CARRY_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1294079,
+          "reference_asm": [
+            "A LEFTSHIFT B keep carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_left_keep_carry_regcount_24",
+          "path_id": 107,
+          "path_id_name": "SHIFT_LEFT_KEEP_CARRY_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1334092,
+          "reference_asm": [
+            "X LEFTSHIFT Y keep carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_right_regcount_16",
+          "path_id": 108,
+          "path_id_name": "SHIFT_RIGHT_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1240289,
+          "reference_asm": [
+            "A RIGHTSHIFT B"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_right_regcount_24",
+          "path_id": 109,
+          "path_id_name": "SHIFT_RIGHT_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1300704,
+          "reference_asm": [
+            "X RIGHTSHIFT Y"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_right_keep_carry_regcount_16",
+          "path_id": 110,
+          "path_id_name": "SHIFT_RIGHT_KEEP_CARRY_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1300388,
+          "reference_asm": [
+            "A RIGHTSHIFT B keep carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_right_keep_carry_regcount_24",
+          "path_id": 111,
+          "path_id_name": "SHIFT_RIGHT_KEEP_CARRY_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1347312,
+          "reference_asm": [
+            "X RIGHTSHIFT Y keep carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_regcount_16",
+          "path_id": 112,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1226917,
+          "reference_asm": [
+            "A logical RIGHTSHIFT B"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_logical_right_regcount_24",
+          "path_id": 113,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1280369,
+          "reference_asm": [
+            "X logical RIGHTSHIFT Y"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "normal"
+          }
+        },
+        {
+          "name": "shift_logical_right_keep_carry_regcount_16",
+          "path_id": 114,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_KEEP_CARRY_REGCOUNT_16",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1293682,
+          "reference_asm": [
+            "A logical RIGHTSHIFT B keep carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 16,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_keep_carry_regcount_24",
+          "path_id": 115,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_KEEP_CARRY_REGCOUNT_24",
+          "family": "SHIFT",
+          "form": "reg_count",
+          "chronons": 1347192,
+          "reference_asm": [
+            "X logical RIGHTSHIFT Y keep carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 24,
+            "count_source": "register",
+            "carry_mode": "keep_carry"
+          }
+        },
+        {
+          "name": "shift_left_carry_step_use_16",
+          "path_id": 116,
+          "path_id_name": "SHIFT_LEFT_CARRY_STEP_USE_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1200549,
+          "reference_asm": [
+            "A LEFTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_left_carry_step_use_24",
+          "path_id": 117,
+          "path_id_name": "SHIFT_LEFT_CARRY_STEP_USE_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1260500,
+          "reference_asm": [
+            "X LEFTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_left_carry_step_keep_16",
+          "path_id": 118,
+          "path_id_name": "SHIFT_LEFT_CARRY_STEP_KEEP_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1226957,
+          "reference_asm": [
+            "A LEFTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "shift_left_carry_step_keep_24",
+          "path_id": 119,
+          "path_id_name": "SHIFT_LEFT_CARRY_STEP_KEEP_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1260483,
+          "reference_asm": [
+            "X LEFTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "shift_right_carry_step_use_16",
+          "path_id": 120,
+          "path_id_name": "SHIFT_RIGHT_CARRY_STEP_USE_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1226957,
+          "reference_asm": [
+            "A RIGHTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_right_carry_step_use_24",
+          "path_id": 121,
+          "path_id_name": "SHIFT_RIGHT_CARRY_STEP_USE_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1273599,
+          "reference_asm": [
+            "X RIGHTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_right_carry_step_keep_16",
+          "path_id": 122,
+          "path_id_name": "SHIFT_RIGHT_CARRY_STEP_KEEP_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1246956,
+          "reference_asm": [
+            "A RIGHTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "shift_right_carry_step_keep_24",
+          "path_id": 123,
+          "path_id_name": "SHIFT_RIGHT_CARRY_STEP_KEEP_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1260250,
+          "reference_asm": [
+            "X RIGHTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_carry_step_use_16",
+          "path_id": 124,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_CARRY_STEP_USE_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1226667,
+          "reference_asm": [
+            "A logical RIGHTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_carry_step_use_24",
+          "path_id": 125,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_CARRY_STEP_USE_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1273333,
+          "reference_asm": [
+            "X logical RIGHTSHIFT 1 use carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "use_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_carry_step_keep_16",
+          "path_id": 126,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_CARRY_STEP_KEEP_16",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1246667,
+          "reference_asm": [
+            "A logical RIGHTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 16,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "shift_logical_right_carry_step_keep_24",
+          "path_id": 127,
+          "path_id_name": "SHIFT_LOGICAL_RIGHT_CARRY_STEP_KEEP_24",
+          "family": "SHIFT",
+          "form": "carry_step",
+          "chronons": 1260000,
+          "reference_asm": [
+            "X logical RIGHTSHIFT 1 keep and use carry"
+          ],
+          "conditions": {
+            "direction": "logical_right",
+            "width_bits": 24,
+            "count_source": "immediate_one",
+            "carry_mode": "keep_and_use_carry"
+          }
+        },
+        {
+          "name": "rotate_left_16",
+          "path_id": 128,
+          "path_id_name": "ROTATE_LEFT_16",
+          "family": "ROTATE",
+          "form": "rotate_reg_reg",
+          "chronons": 1080590,
+          "reference_asm": [
+            "A LEFTROTATE B"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "rotate_left_24",
+          "path_id": 129,
+          "path_id_name": "ROTATE_LEFT_24",
+          "family": "ROTATE",
+          "form": "rotate_reg_reg",
+          "chronons": 1180724,
+          "reference_asm": [
+            "X LEFTROTATE Y"
+          ],
+          "conditions": {
+            "direction": "left",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "rotate_right_16",
+          "path_id": 130,
+          "path_id_name": "ROTATE_RIGHT_16",
+          "family": "ROTATE",
+          "form": "rotate_reg_reg",
+          "chronons": 1106878,
+          "reference_asm": [
+            "A RIGHTROTATE B"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "rotate_right_24",
+          "path_id": 131,
+          "path_id_name": "ROTATE_RIGHT_24",
+          "family": "ROTATE",
+          "form": "rotate_reg_reg",
+          "chronons": 1160750,
+          "reference_asm": [
+            "X RIGHTROTATE Y"
+          ],
+          "conditions": {
+            "direction": "right",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "jump_abs",
+          "path_id": 132,
+          "path_id_name": "JUMP_ABS",
+          "family": "JABS",
+          "form": "jump_abs",
+          "chronons": 1400654,
+          "reference_asm": [
+            "JUMP 0x00F004"
+          ],
+          "conditions": {
+            "target_kind": "addr24"
+          }
+        },
+        {
+          "name": "jump_reg",
+          "path_id": 133,
+          "path_id_name": "JUMP_REG",
+          "family": "JREG",
+          "form": "jump_reg",
+          "chronons": 900872,
+          "reference_asm": [
+            "JUMP X"
+          ],
+          "conditions": {
+            "target_kind": "reg24"
+          }
+        },
+        {
+          "name": "jump_conditional_equal_16_not_taken",
+          "path_id": 134,
+          "path_id_name": "JUMP_CONDITIONAL_EQUAL_16_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1480568,
+          "reference_asm": [
+            "JUMP +4 when A EQUAL B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": false,
+            "condition_variant": "equal"
+          }
+        },
+        {
+          "name": "jump_conditional_equal_16_taken",
+          "path_id": 135,
+          "path_id_name": "JUMP_CONDITIONAL_EQUAL_16_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1566667,
+          "reference_asm": [
+            "JUMP +4 when A EQUAL B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": true,
+            "condition_variant": "equal"
+          }
+        },
+        {
+          "name": "jump_conditional_equal_24_not_taken",
+          "path_id": 136,
+          "path_id_name": "JUMP_CONDITIONAL_EQUAL_24_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1567518,
+          "reference_asm": [
+            "JUMP +4 when X EQUAL Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": false,
+            "condition_variant": "equal"
+          }
+        },
+        {
+          "name": "jump_conditional_equal_24_taken",
+          "path_id": 137,
+          "path_id_name": "JUMP_CONDITIONAL_EQUAL_24_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1627078,
+          "reference_asm": [
+            "JUMP +4 when X EQUAL Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": true,
+            "condition_variant": "equal"
+          }
+        },
+        {
+          "name": "jump_conditional_less_than_16_not_taken",
+          "path_id": 138,
+          "path_id_name": "JUMP_CONDITIONAL_LESS_THAN_16_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1520371,
+          "reference_asm": [
+            "JUMP +4 when A LESS THAN B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": false,
+            "condition_variant": "less_than"
+          }
+        },
+        {
+          "name": "jump_conditional_less_than_16_taken",
+          "path_id": 139,
+          "path_id_name": "JUMP_CONDITIONAL_LESS_THAN_16_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1586667,
+          "reference_asm": [
+            "JUMP +4 when A LESS THAN B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": true,
+            "condition_variant": "less_than"
+          }
+        },
+        {
+          "name": "jump_conditional_less_than_24_not_taken",
+          "path_id": 140,
+          "path_id_name": "JUMP_CONDITIONAL_LESS_THAN_24_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1640259,
+          "reference_asm": [
+            "JUMP +4 when X LESS THAN Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": false,
+            "condition_variant": "less_than"
+          }
+        },
+        {
+          "name": "jump_conditional_less_than_24_taken",
+          "path_id": 141,
+          "path_id_name": "JUMP_CONDITIONAL_LESS_THAN_24_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1700000,
+          "reference_asm": [
+            "JUMP +4 when X LESS THAN Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": true,
+            "condition_variant": "less_than"
+          }
+        },
+        {
+          "name": "jump_conditional_below_16_not_taken",
+          "path_id": 142,
+          "path_id_name": "JUMP_CONDITIONAL_BELOW_16_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1486667,
+          "reference_asm": [
+            "JUMP +4 when A BELOW B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": false,
+            "condition_variant": "below"
+          }
+        },
+        {
+          "name": "jump_conditional_below_16_taken",
+          "path_id": 143,
+          "path_id_name": "JUMP_CONDITIONAL_BELOW_16_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1553333,
+          "reference_asm": [
+            "JUMP +4 when A BELOW B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": true,
+            "condition_variant": "below"
+          }
+        },
+        {
+          "name": "jump_conditional_below_24_not_taken",
+          "path_id": 144,
+          "path_id_name": "JUMP_CONDITIONAL_BELOW_24_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1533333,
+          "reference_asm": [
+            "JUMP +4 when X BELOW Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": false,
+            "condition_variant": "below"
+          }
+        },
+        {
+          "name": "jump_conditional_below_24_taken",
+          "path_id": 145,
+          "path_id_name": "JUMP_CONDITIONAL_BELOW_24_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1600000,
+          "reference_asm": [
+            "JUMP +4 when X BELOW Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": true,
+            "condition_variant": "below"
+          }
+        },
+        {
+          "name": "jump_conditional_check_16_not_taken",
+          "path_id": 146,
+          "path_id_name": "JUMP_CONDITIONAL_CHECK_16_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1500000,
+          "reference_asm": [
+            "JUMP +4 when A CHECK B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": false,
+            "condition_variant": "check"
+          }
+        },
+        {
+          "name": "jump_conditional_check_16_taken",
+          "path_id": 147,
+          "path_id_name": "JUMP_CONDITIONAL_CHECK_16_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1560000,
+          "reference_asm": [
+            "JUMP +4 when A CHECK B"
+          ],
+          "conditions": {
+            "width_bits": 16,
+            "branch_taken": true,
+            "condition_variant": "check"
+          }
+        },
+        {
+          "name": "jump_conditional_check_24_not_taken",
+          "path_id": 148,
+          "path_id_name": "JUMP_CONDITIONAL_CHECK_24_NOT_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1546667,
+          "reference_asm": [
+            "JUMP +4 when X CHECK Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": false,
+            "condition_variant": "check"
+          }
+        },
+        {
+          "name": "jump_conditional_check_24_taken",
+          "path_id": 149,
+          "path_id_name": "JUMP_CONDITIONAL_CHECK_24_TAKEN",
+          "family": "JCOND",
+          "form": "jump_conditional_relative",
+          "chronons": 1606667,
+          "reference_asm": [
+            "JUMP +4 when X CHECK Y"
+          ],
+          "conditions": {
+            "width_bits": 24,
+            "branch_taken": true,
+            "condition_variant": "check"
+          }
+        },
+        {
+          "name": "mem_abs_byte_read",
+          "path_id": 150,
+          "path_id_name": "MEM_ABS_BYTE_READ",
+          "family": "MEMABS8",
+          "form": "takeabs_byte",
+          "chronons": 1574674,
+          "reference_asm": [
+            "TAKE byte A from [0x000120]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "read",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_abs_reg16_read",
+          "path_id": 151,
+          "path_id_name": "MEM_ABS_REG16_READ",
+          "family": "MEMABS16",
+          "form": "takeabs_reg16",
+          "chronons": 1787729,
+          "reference_asm": [
+            "TAKE B from [0x000122]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "read",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_abs_reg24_read",
+          "path_id": 152,
+          "path_id_name": "MEM_ABS_REG24_READ",
+          "family": "MEMABS24",
+          "form": "takeabs_reg24",
+          "chronons": 2016009,
+          "reference_asm": [
+            "TAKE Z from [0x000124]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "read",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "mem_abs_byte_write",
+          "path_id": 153,
+          "path_id_name": "MEM_ABS_BYTE_WRITE",
+          "family": "MEMABS8",
+          "form": "giveabs_byte",
+          "chronons": 1440000,
+          "reference_asm": [
+            "GIVE byte A to [0x000120]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "write",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_abs_reg16_write",
+          "path_id": 154,
+          "path_id_name": "MEM_ABS_REG16_WRITE",
+          "family": "MEMABS16",
+          "form": "giveabs_reg16",
+          "chronons": 1500000,
+          "reference_asm": [
+            "GIVE B to [0x000122]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "write",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_abs_reg24_write",
+          "path_id": 155,
+          "path_id_name": "MEM_ABS_REG24_WRITE",
+          "family": "MEMABS24",
+          "form": "giveabs_reg24",
+          "chronons": 1680000,
+          "reference_asm": [
+            "GIVE Z to [0x000124]"
+          ],
+          "conditions": {
+            "addressing": "[addr24]",
+            "access": "write",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "mem_indirect_byte_read",
+          "path_id": 156,
+          "path_id_name": "MEM_INDIRECT_BYTE_READ",
+          "family": "MEMREGOFF",
+          "form": "take_indirect_byte",
+          "chronons": 1347690,
+          "reference_asm": [
+            "TAKE byte A from [W]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "read",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_indirect_reg16_read",
+          "path_id": 157,
+          "path_id_name": "MEM_INDIRECT_REG16_READ",
+          "family": "MEMREGOFF",
+          "form": "take_indirect_reg16",
+          "chronons": 1540600,
+          "reference_asm": [
+            "TAKE B from [Y]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "read",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_indirect_reg24_read",
+          "path_id": 158,
+          "path_id_name": "MEM_INDIRECT_REG24_READ",
+          "family": "MEMREGOFF",
+          "form": "take_indirect_reg24",
+          "chronons": 1753882,
+          "reference_asm": [
+            "TAKE Z from [X]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "read",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "mem_indirect_byte_write",
+          "path_id": 159,
+          "path_id_name": "MEM_INDIRECT_BYTE_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_indirect_byte",
+          "chronons": 1213757,
+          "reference_asm": [
+            "GIVE byte A to [W]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "write",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_indirect_reg16_write",
+          "path_id": 160,
+          "path_id_name": "MEM_INDIRECT_REG16_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_indirect_reg16",
+          "chronons": 1273721,
+          "reference_asm": [
+            "GIVE B to [Y]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "write",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_indirect_reg24_write",
+          "path_id": 161,
+          "path_id_name": "MEM_INDIRECT_REG24_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_indirect_reg24",
+          "chronons": 1473543,
+          "reference_asm": [
+            "GIVE Z to [X]"
+          ],
+          "conditions": {
+            "addressing": "[reg24]",
+            "access": "write",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "mem_regoff_byte_read",
+          "path_id": 162,
+          "path_id_name": "MEM_REGOFF_BYTE_READ",
+          "family": "MEMREGOFF",
+          "form": "take_regoff_byte",
+          "chronons": 1780695,
+          "reference_asm": [
+            "TAKE byte C from [W+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "read",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_regoff_reg16_read",
+          "path_id": 163,
+          "path_id_name": "MEM_REGOFF_REG16_READ",
+          "family": "MEMREGOFF",
+          "form": "take_regoff_reg16",
+          "chronons": 1967414,
+          "reference_asm": [
+            "TAKE D from [Y+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "read",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_regoff_reg24_read",
+          "path_id": 164,
+          "path_id_name": "MEM_REGOFF_REG24_READ",
+          "family": "MEMREGOFF",
+          "form": "take_regoff_reg24",
+          "chronons": 2187041,
+          "reference_asm": [
+            "TAKE Z from [X+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "read",
+            "width_bits": 24
+          }
+        },
+        {
+          "name": "mem_regoff_byte_write",
+          "path_id": 165,
+          "path_id_name": "MEM_REGOFF_BYTE_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_regoff_byte",
+          "chronons": 1633869,
+          "reference_asm": [
+            "GIVE byte C to [W+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "write",
+            "width_bits": 8
+          }
+        },
+        {
+          "name": "mem_regoff_reg16_write",
+          "path_id": 166,
+          "path_id_name": "MEM_REGOFF_REG16_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_regoff_reg16",
+          "chronons": 1700339,
+          "reference_asm": [
+            "GIVE D to [Y+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "write",
+            "width_bits": 16
+          }
+        },
+        {
+          "name": "mem_regoff_reg24_write",
+          "path_id": 167,
+          "path_id_name": "MEM_REGOFF_REG24_WRITE",
+          "family": "MEMREGOFF",
+          "form": "give_regoff_reg24",
+          "chronons": 1886925,
+          "reference_asm": [
+            "GIVE Z to [X+0x0010]"
+          ],
+          "conditions": {
+            "addressing": "[reg24+off16_signed]",
+            "access": "write",
+            "width_bits": 24
+          }
+        }
+      ]
+    }
+  }
+}
+

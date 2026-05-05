@@ -1,0 +1,29 @@
+{
+  "family": "SYSTEM",
+  "entries": [
+    {
+      "form": "pass",
+      "pattern": "pass",
+      "template": "PASS",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "interruptions_on",
+      "pattern": "interruptions_on",
+      "template": "INT on",
+      "relation": "mnemonic-shortened"
+    },
+    {
+      "form": "stop",
+      "pattern": "stop",
+      "template": "STOP",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "interruptions_off",
+      "pattern": "interruptions_off",
+      "template": "INT off",
+      "relation": "mnemonic-shortened"
+    }
+  ]
+}

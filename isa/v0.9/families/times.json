@@ -1,0 +1,168 @@
+{
+  "name": "TIMES",
+  "opcode_ref": "TIMES",
+  "status": "closed_with_restrictions",
+  "forms": [
+    {
+      "name": "times_reg_reg",
+      "syntax": {
+        "style": "infix",
+        "patterns": [
+          {
+            "name": "times_reg_reg",
+            "sequence": [
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "TIMES"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "slot",
+                "name": "unsigned_kw",
+                "slot_kind": "keyword",
+                "keyword_ref": "keyword_unsigned",
+                "optional": true
+              },
+              {
+                "kind": "slot",
+                "name": "keep_high_kw",
+                "slot_kind": "keyword",
+                "keyword_ref": "keyword_keep_high",
+                "optional": true
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "same_width",
+          "operands": [
+            "dest",
+            "src"
+          ]
+        },
+        {
+          "type": "keep_high_requires_width",
+          "slot": "keep_high_kw",
+          "width_bits": 16
+        }
+      ],
+      "defaults": {
+        "unsigned_kw": false,
+        "keep_high_kw": false
+      },
+      "derived_fields": {
+        "mode": {
+          "type": "keyword_combination_lookup",
+          "sources": [
+            "sequence.unsigned_kw",
+            "sequence.keep_high_kw"
+          ],
+          "cases": [
+            {
+              "when": [
+                false,
+                false
+              ],
+              "value": 0
+            },
+            {
+              "when": [
+                false,
+                true
+              ],
+              "value": 1
+            },
+            {
+              "when": [
+                true,
+                false
+              ],
+              "value": 2
+            },
+            {
+              "when": [
+                true,
+                true
+              ],
+              "value": 3
+            }
+          ]
+        },
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "MODE",
+              "kind": "slot",
+              "source": "derived.mode",
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "SZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 7,
+              "lsb": 5
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 4,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Multiplies src into dest, with optional unsigned mode and optional keep high in K for 16-bit forms."
+      }
+    }
+  ]
+}

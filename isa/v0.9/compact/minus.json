@@ -1,0 +1,23 @@
+{
+  "family": "MINUS",
+  "entries": [
+    {
+      "form": "reg_reg",
+      "pattern": "reg_reg",
+      "template": "MINUS[.KB|.UB|.KUB] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "imm6",
+      "pattern": "imm6",
+      "template": "MINUS <dest>,<imm>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "imm16",
+      "pattern": "imm16",
+      "template": "MINUS <dest>,<imm>",
+      "relation": "mnemonic-first"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "family": "MEMABS16",
+  "entries": [
+    {
+      "form": "takeabs_reg16",
+      "pattern": "takeabs_reg16",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "giveabs_reg16",
+      "pattern": "giveabs_reg16",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    }
+  ]
+}

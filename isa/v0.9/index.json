@@ -1,0 +1,52 @@
+{
+  "schema_name": "OpcodeOne ISA Source Index",
+  "schema_version": "0.4.0",
+  "status": "authoritative-source",
+  "isa_name": "OpcodeOne",
+  "isa_version": "0.9",
+  "files": {
+    "meta": "meta.json",
+    "registers": "registers.json",
+    "operand_kinds": "operand_kinds.json",
+    "syntax_model": "syntax_model.json",
+    "compact_syntax": "compact_syntax.json",
+    "encoding_model": "encoding_model.json",
+    "abstract_enums": "abstract_enums.json",
+    "abstract_kinds": "abstract_kinds.json",
+    "opcode_slots": "opcode_slots.json",
+    "timing_model": "timing_model.json",
+    "families": [
+      "families/memregoff.json",
+      "families/memabs8.json",
+      "families/memabs16.json",
+      "families/memabs24.json",
+      "families/movecopy.json",
+      "families/stack.json",
+      "families/flow.json",
+      "families/system.json",
+      "families/plus.json",
+      "families/minus.json",
+      "families/times.json",
+      "families/div.json",
+      "families/unary.json",
+      "families/set.json",
+      "families/logic.json",
+      "families/bit.json",
+      "families/minmax.json",
+      "families/shift.json",
+      "families/rotate.json",
+      "families/jabs.json",
+      "families/jreg.json",
+      "families/jcond.json"
+    ]
+  },
+  "generated": {
+    "bundle": "generated/opcodeone_isa_v0.9.full.json"
+  },
+  "notes": [
+    "Edit the split files in this directory; do not treat generated bundles as canonical.",
+    "Canonical syntax only. Compact syntax is documented separately as a non-normative surface and excluded from the normative source set.",
+    "All family and form files use the same normalized structure for syntax patterns, constraints, defaults, derived fields, and encoding sources.",
+    "The primary legible reference now lives in docs/src/."
+  ]
+}

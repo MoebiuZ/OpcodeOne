@@ -1,0 +1,27 @@
+{
+  "description": "Frozen numeric family opcode slots for the current closed OpcodeOne v0.9 families.",
+  "slots": {
+    "SYSTEM": 7,
+    "STACK": 5,
+    "PLUS": 8,
+    "MINUS": 9,
+    "TIMES": 10,
+    "DIV": 11,
+    "UNARY": 12,
+    "SET": 13,
+    "LOGIC": 14,
+    "BIT": 15,
+    "MINMAX": 16,
+    "SHIFT": 17,
+    "ROTATE": 18,
+    "JABS": 19,
+    "JREG": 20,
+    "JCOND": 21,
+    "MEMREGOFF": 0,
+    "MEMABS8": 1,
+    "MEMABS16": 2,
+    "MEMABS24": 3,
+    "MOVECOPY": 4,
+    "FLOW": 6
+  }
+}

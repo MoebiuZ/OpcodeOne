@@ -1,0 +1,11 @@
+{
+  "family": "JREG",
+  "entries": [
+    {
+      "form": "jump_reg",
+      "pattern": "jump_reg",
+      "template": "JMP <target>",
+      "relation": "mnemonic-shortened"
+    }
+  ]
+}

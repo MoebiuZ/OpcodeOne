@@ -1,0 +1,65 @@
+{
+  "name": "JREG",
+  "opcode_ref": "JREG",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "jump_reg",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "jump_reg",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "JUMP"
+              },
+              {
+                "kind": "slot",
+                "name": "target",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "RD",
+              "kind": "slot",
+              "source": "sequence.target",
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Unconditional jump to the 24-bit address stored in a reg24 operand."
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "family": "MOVECOPY",
+  "entries": [
+    {
+      "form": "copy_or_move",
+      "pattern": "copy",
+      "template": "COPY <src>,<dest>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_or_move",
+      "pattern": "move",
+      "template": "MOVE <src>,<dest>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "swap",
+      "pattern": "swap",
+      "template": "SWAP <left>,<right>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_k_into_reg24",
+      "pattern": "copy_k_into_reg24",
+      "template": "COPY K,<dest>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_reg24_into_k",
+      "pattern": "copy_reg24_into_k",
+      "template": "COPY <src>,K",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_sp_into_reg24",
+      "pattern": "copy_sp_into_reg24",
+      "template": "COPY SP,<dest>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_reg24_into_sp",
+      "pattern": "copy_reg24_into_sp",
+      "template": "COPY <src>,SP",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "copy_pc_into_reg24",
+      "pattern": "copy_pc_into_reg24",
+      "template": "COPY PC,<dest>",
+      "relation": "helper-words-elided"
+    }
+  ]
+}

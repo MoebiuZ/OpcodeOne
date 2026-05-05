@@ -1,0 +1,75 @@
+{
+  "reg16": {
+    "type": "register",
+    "register_set": "reg16"
+  },
+  "reg24": {
+    "type": "register",
+    "register_set": "reg24"
+  },
+  "imm6_signed": {
+    "type": "immediate",
+    "bits": 6,
+    "signed": true
+  },
+  "imm6_unsigned": {
+    "type": "immediate",
+    "bits": 6,
+    "signed": false
+  },
+  "imm16_signed": {
+    "type": "immediate",
+    "bits": 16,
+    "signed": true
+  },
+  "imm16_unsigned": {
+    "type": "immediate",
+    "bits": 16,
+    "signed": false
+  },
+  "addr24": {
+    "type": "address",
+    "bits": 24,
+    "signed": false
+  },
+  "off16": {
+    "type": "relative_offset",
+    "bits": 16,
+    "signed": true,
+    "unit": "bytes"
+  },
+  "mem_reg24": {
+    "type": "memory",
+    "addressing": "[reg24]"
+  },
+  "mem_reg24_off16": {
+    "type": "memory",
+    "addressing": "[reg24+off16_signed]"
+  },
+  "mem_abs24": {
+    "type": "memory",
+    "addressing": "[addr24]"
+  },
+  "bit_index_5": {
+    "type": "immediate",
+    "bits": 5,
+    "signed": false
+  },
+  "reg16_or_reg24": {
+    "type": "union",
+    "members": [
+      "reg16",
+      "reg24"
+    ]
+  },
+  "reg16_abs4": {
+    "type": "register_subset",
+    "register_set": "reg16",
+    "members": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  }
+}

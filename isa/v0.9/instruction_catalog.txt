@@ -1,0 +1,4887 @@
+# MEMREGOFF
+## take_indirect_byte
+### canonical
+TAKE byte A from [X]
+TAKE byte A from [Y]
+TAKE byte A from [Z]
+TAKE byte A from [W]
+TAKE byte B from [X]
+TAKE byte B from [Y]
+TAKE byte B from [Z]
+TAKE byte B from [W]
+TAKE byte C from [X]
+TAKE byte C from [Y]
+TAKE byte C from [Z]
+TAKE byte C from [W]
+TAKE byte D from [X]
+TAKE byte D from [Y]
+TAKE byte D from [Z]
+TAKE byte D from [W]
+TAKE byte E from [X]
+TAKE byte E from [Y]
+TAKE byte E from [Z]
+TAKE byte E from [W]
+TAKE byte F from [X]
+TAKE byte F from [Y]
+TAKE byte F from [Z]
+TAKE byte F from [W]
+TAKE byte G from [X]
+TAKE byte G from [Y]
+TAKE byte G from [Z]
+TAKE byte G from [W]
+TAKE byte H from [X]
+TAKE byte H from [Y]
+TAKE byte H from [Z]
+TAKE byte H from [W]
+
+## take_indirect_reg16
+### canonical
+TAKE A from [X]
+TAKE A from [Y]
+TAKE A from [Z]
+TAKE A from [W]
+TAKE B from [X]
+TAKE B from [Y]
+TAKE B from [Z]
+TAKE B from [W]
+TAKE C from [X]
+TAKE C from [Y]
+TAKE C from [Z]
+TAKE C from [W]
+TAKE D from [X]
+TAKE D from [Y]
+TAKE D from [Z]
+TAKE D from [W]
+TAKE E from [X]
+TAKE E from [Y]
+TAKE E from [Z]
+TAKE E from [W]
+TAKE F from [X]
+TAKE F from [Y]
+TAKE F from [Z]
+TAKE F from [W]
+TAKE G from [X]
+TAKE G from [Y]
+TAKE G from [Z]
+TAKE G from [W]
+TAKE H from [X]
+TAKE H from [Y]
+TAKE H from [Z]
+TAKE H from [W]
+
+## take_indirect_reg24
+### canonical
+TAKE X from [X]
+TAKE X from [Y]
+TAKE X from [Z]
+TAKE X from [W]
+TAKE Y from [X]
+TAKE Y from [Y]
+TAKE Y from [Z]
+TAKE Y from [W]
+TAKE Z from [X]
+TAKE Z from [Y]
+TAKE Z from [Z]
+TAKE Z from [W]
+TAKE W from [X]
+TAKE W from [Y]
+TAKE W from [Z]
+TAKE W from [W]
+
+## take_regoff_byte
+### canonical
+TAKE byte A from [X+<off16_signed>]
+TAKE byte A from [Y+<off16_signed>]
+TAKE byte A from [Z+<off16_signed>]
+TAKE byte A from [W+<off16_signed>]
+TAKE byte B from [X+<off16_signed>]
+TAKE byte B from [Y+<off16_signed>]
+TAKE byte B from [Z+<off16_signed>]
+TAKE byte B from [W+<off16_signed>]
+TAKE byte C from [X+<off16_signed>]
+TAKE byte C from [Y+<off16_signed>]
+TAKE byte C from [Z+<off16_signed>]
+TAKE byte C from [W+<off16_signed>]
+TAKE byte D from [X+<off16_signed>]
+TAKE byte D from [Y+<off16_signed>]
+TAKE byte D from [Z+<off16_signed>]
+TAKE byte D from [W+<off16_signed>]
+TAKE byte E from [X+<off16_signed>]
+TAKE byte E from [Y+<off16_signed>]
+TAKE byte E from [Z+<off16_signed>]
+TAKE byte E from [W+<off16_signed>]
+TAKE byte F from [X+<off16_signed>]
+TAKE byte F from [Y+<off16_signed>]
+TAKE byte F from [Z+<off16_signed>]
+TAKE byte F from [W+<off16_signed>]
+TAKE byte G from [X+<off16_signed>]
+TAKE byte G from [Y+<off16_signed>]
+TAKE byte G from [Z+<off16_signed>]
+TAKE byte G from [W+<off16_signed>]
+TAKE byte H from [X+<off16_signed>]
+TAKE byte H from [Y+<off16_signed>]
+TAKE byte H from [Z+<off16_signed>]
+TAKE byte H from [W+<off16_signed>]
+
+## take_regoff_reg16
+### canonical
+TAKE A from [X+<off16_signed>]
+TAKE A from [Y+<off16_signed>]
+TAKE A from [Z+<off16_signed>]
+TAKE A from [W+<off16_signed>]
+TAKE B from [X+<off16_signed>]
+TAKE B from [Y+<off16_signed>]
+TAKE B from [Z+<off16_signed>]
+TAKE B from [W+<off16_signed>]
+TAKE C from [X+<off16_signed>]
+TAKE C from [Y+<off16_signed>]
+TAKE C from [Z+<off16_signed>]
+TAKE C from [W+<off16_signed>]
+TAKE D from [X+<off16_signed>]
+TAKE D from [Y+<off16_signed>]
+TAKE D from [Z+<off16_signed>]
+TAKE D from [W+<off16_signed>]
+TAKE E from [X+<off16_signed>]
+TAKE E from [Y+<off16_signed>]
+TAKE E from [Z+<off16_signed>]
+TAKE E from [W+<off16_signed>]
+TAKE F from [X+<off16_signed>]
+TAKE F from [Y+<off16_signed>]
+TAKE F from [Z+<off16_signed>]
+TAKE F from [W+<off16_signed>]
+TAKE G from [X+<off16_signed>]
+TAKE G from [Y+<off16_signed>]
+TAKE G from [Z+<off16_signed>]
+TAKE G from [W+<off16_signed>]
+TAKE H from [X+<off16_signed>]
+TAKE H from [Y+<off16_signed>]
+TAKE H from [Z+<off16_signed>]
+TAKE H from [W+<off16_signed>]
+
+## take_regoff_reg24
+### canonical
+TAKE X from [X+<off16_signed>]
+TAKE X from [Y+<off16_signed>]
+TAKE X from [Z+<off16_signed>]
+TAKE X from [W+<off16_signed>]
+TAKE Y from [X+<off16_signed>]
+TAKE Y from [Y+<off16_signed>]
+TAKE Y from [Z+<off16_signed>]
+TAKE Y from [W+<off16_signed>]
+TAKE Z from [X+<off16_signed>]
+TAKE Z from [Y+<off16_signed>]
+TAKE Z from [Z+<off16_signed>]
+TAKE Z from [W+<off16_signed>]
+TAKE W from [X+<off16_signed>]
+TAKE W from [Y+<off16_signed>]
+TAKE W from [Z+<off16_signed>]
+TAKE W from [W+<off16_signed>]
+
+## give_indirect_byte
+### canonical
+GIVE byte A to [X]
+GIVE byte A to [Y]
+GIVE byte A to [Z]
+GIVE byte A to [W]
+GIVE byte B to [X]
+GIVE byte B to [Y]
+GIVE byte B to [Z]
+GIVE byte B to [W]
+GIVE byte C to [X]
+GIVE byte C to [Y]
+GIVE byte C to [Z]
+GIVE byte C to [W]
+GIVE byte D to [X]
+GIVE byte D to [Y]
+GIVE byte D to [Z]
+GIVE byte D to [W]
+GIVE byte E to [X]
+GIVE byte E to [Y]
+GIVE byte E to [Z]
+GIVE byte E to [W]
+GIVE byte F to [X]
+GIVE byte F to [Y]
+GIVE byte F to [Z]
+GIVE byte F to [W]
+GIVE byte G to [X]
+GIVE byte G to [Y]
+GIVE byte G to [Z]
+GIVE byte G to [W]
+GIVE byte H to [X]
+GIVE byte H to [Y]
+GIVE byte H to [Z]
+GIVE byte H to [W]
+
+## give_indirect_reg16
+### canonical
+GIVE A to [X]
+GIVE A to [Y]
+GIVE A to [Z]
+GIVE A to [W]
+GIVE B to [X]
+GIVE B to [Y]
+GIVE B to [Z]
+GIVE B to [W]
+GIVE C to [X]
+GIVE C to [Y]
+GIVE C to [Z]
+GIVE C to [W]
+GIVE D to [X]
+GIVE D to [Y]
+GIVE D to [Z]
+GIVE D to [W]
+GIVE E to [X]
+GIVE E to [Y]
+GIVE E to [Z]
+GIVE E to [W]
+GIVE F to [X]
+GIVE F to [Y]
+GIVE F to [Z]
+GIVE F to [W]
+GIVE G to [X]
+GIVE G to [Y]
+GIVE G to [Z]
+GIVE G to [W]
+GIVE H to [X]
+GIVE H to [Y]
+GIVE H to [Z]
+GIVE H to [W]
+
+## give_indirect_reg24
+### canonical
+GIVE X to [X]
+GIVE X to [Y]
+GIVE X to [Z]
+GIVE X to [W]
+GIVE Y to [X]
+GIVE Y to [Y]
+GIVE Y to [Z]
+GIVE Y to [W]
+GIVE Z to [X]
+GIVE Z to [Y]
+GIVE Z to [Z]
+GIVE Z to [W]
+GIVE W to [X]
+GIVE W to [Y]
+GIVE W to [Z]
+GIVE W to [W]
+
+## give_regoff_byte
+### canonical
+GIVE byte A to [X+<off16_signed>]
+GIVE byte A to [Y+<off16_signed>]
+GIVE byte A to [Z+<off16_signed>]
+GIVE byte A to [W+<off16_signed>]
+GIVE byte B to [X+<off16_signed>]
+GIVE byte B to [Y+<off16_signed>]
+GIVE byte B to [Z+<off16_signed>]
+GIVE byte B to [W+<off16_signed>]
+GIVE byte C to [X+<off16_signed>]
+GIVE byte C to [Y+<off16_signed>]
+GIVE byte C to [Z+<off16_signed>]
+GIVE byte C to [W+<off16_signed>]
+GIVE byte D to [X+<off16_signed>]
+GIVE byte D to [Y+<off16_signed>]
+GIVE byte D to [Z+<off16_signed>]
+GIVE byte D to [W+<off16_signed>]
+GIVE byte E to [X+<off16_signed>]
+GIVE byte E to [Y+<off16_signed>]
+GIVE byte E to [Z+<off16_signed>]
+GIVE byte E to [W+<off16_signed>]
+GIVE byte F to [X+<off16_signed>]
+GIVE byte F to [Y+<off16_signed>]
+GIVE byte F to [Z+<off16_signed>]
+GIVE byte F to [W+<off16_signed>]
+GIVE byte G to [X+<off16_signed>]
+GIVE byte G to [Y+<off16_signed>]
+GIVE byte G to [Z+<off16_signed>]
+GIVE byte G to [W+<off16_signed>]
+GIVE byte H to [X+<off16_signed>]
+GIVE byte H to [Y+<off16_signed>]
+GIVE byte H to [Z+<off16_signed>]
+GIVE byte H to [W+<off16_signed>]
+
+## give_regoff_reg16
+### canonical
+GIVE A to [X+<off16_signed>]
+GIVE A to [Y+<off16_signed>]
+GIVE A to [Z+<off16_signed>]
+GIVE A to [W+<off16_signed>]
+GIVE B to [X+<off16_signed>]
+GIVE B to [Y+<off16_signed>]
+GIVE B to [Z+<off16_signed>]
+GIVE B to [W+<off16_signed>]
+GIVE C to [X+<off16_signed>]
+GIVE C to [Y+<off16_signed>]
+GIVE C to [Z+<off16_signed>]
+GIVE C to [W+<off16_signed>]
+GIVE D to [X+<off16_signed>]
+GIVE D to [Y+<off16_signed>]
+GIVE D to [Z+<off16_signed>]
+GIVE D to [W+<off16_signed>]
+GIVE E to [X+<off16_signed>]
+GIVE E to [Y+<off16_signed>]
+GIVE E to [Z+<off16_signed>]
+GIVE E to [W+<off16_signed>]
+GIVE F to [X+<off16_signed>]
+GIVE F to [Y+<off16_signed>]
+GIVE F to [Z+<off16_signed>]
+GIVE F to [W+<off16_signed>]
+GIVE G to [X+<off16_signed>]
+GIVE G to [Y+<off16_signed>]
+GIVE G to [Z+<off16_signed>]
+GIVE G to [W+<off16_signed>]
+GIVE H to [X+<off16_signed>]
+GIVE H to [Y+<off16_signed>]
+GIVE H to [Z+<off16_signed>]
+GIVE H to [W+<off16_signed>]
+
+## give_regoff_reg24
+### canonical
+GIVE X to [X+<off16_signed>]
+GIVE X to [Y+<off16_signed>]
+GIVE X to [Z+<off16_signed>]
+GIVE X to [W+<off16_signed>]
+GIVE Y to [X+<off16_signed>]
+GIVE Y to [Y+<off16_signed>]
+GIVE Y to [Z+<off16_signed>]
+GIVE Y to [W+<off16_signed>]
+GIVE Z to [X+<off16_signed>]
+GIVE Z to [Y+<off16_signed>]
+GIVE Z to [Z+<off16_signed>]
+GIVE Z to [W+<off16_signed>]
+GIVE W to [X+<off16_signed>]
+GIVE W to [Y+<off16_signed>]
+GIVE W to [Z+<off16_signed>]
+GIVE W to [W+<off16_signed>]
+
+# MEMABS8
+## takeabs_byte
+### canonical
+TAKE byte A from [<addr24>]
+TAKE byte B from [<addr24>]
+TAKE byte C from [<addr24>]
+TAKE byte D from [<addr24>]
+
+## giveabs_byte
+### canonical
+GIVE byte A to [<addr24>]
+GIVE byte B to [<addr24>]
+GIVE byte C to [<addr24>]
+GIVE byte D to [<addr24>]
+
+# MEMABS16
+## takeabs_reg16
+### canonical
+TAKE A from [<addr24>]
+TAKE B from [<addr24>]
+TAKE C from [<addr24>]
+TAKE D from [<addr24>]
+
+## giveabs_reg16
+### canonical
+GIVE A to [<addr24>]
+GIVE B to [<addr24>]
+GIVE C to [<addr24>]
+GIVE D to [<addr24>]
+
+# MEMABS24
+## takeabs_reg24
+### canonical
+TAKE X from [<addr24>]
+TAKE Y from [<addr24>]
+TAKE Z from [<addr24>]
+TAKE W from [<addr24>]
+
+## giveabs_reg24
+### canonical
+GIVE X to [<addr24>]
+GIVE Y to [<addr24>]
+GIVE Z to [<addr24>]
+GIVE W to [<addr24>]
+
+# MOVECOPY
+## copy_or_move
+### copy
+COPY A into A
+COPY A into B
+COPY A into C
+COPY A into D
+COPY A into E
+COPY A into F
+COPY A into G
+COPY A into H
+COPY A into X
+COPY A into Y
+COPY A into Z
+COPY A into W
+COPY B into A
+COPY B into B
+COPY B into C
+COPY B into D
+COPY B into E
+COPY B into F
+COPY B into G
+COPY B into H
+COPY B into X
+COPY B into Y
+COPY B into Z
+COPY B into W
+COPY C into A
+COPY C into B
+COPY C into C
+COPY C into D
+COPY C into E
+COPY C into F
+COPY C into G
+COPY C into H
+COPY C into X
+COPY C into Y
+COPY C into Z
+COPY C into W
+COPY D into A
+COPY D into B
+COPY D into C
+COPY D into D
+COPY D into E
+COPY D into F
+COPY D into G
+COPY D into H
+COPY D into X
+COPY D into Y
+COPY D into Z
+COPY D into W
+COPY E into A
+COPY E into B
+COPY E into C
+COPY E into D
+COPY E into E
+COPY E into F
+COPY E into G
+COPY E into H
+COPY E into X
+COPY E into Y
+COPY E into Z
+COPY E into W
+COPY F into A
+COPY F into B
+COPY F into C
+COPY F into D
+COPY F into E
+COPY F into F
+COPY F into G
+COPY F into H
+COPY F into X
+COPY F into Y
+COPY F into Z
+COPY F into W
+COPY G into A
+COPY G into B
+COPY G into C
+COPY G into D
+COPY G into E
+COPY G into F
+COPY G into G
+COPY G into H
+COPY G into X
+COPY G into Y
+COPY G into Z
+COPY G into W
+COPY H into A
+COPY H into B
+COPY H into C
+COPY H into D
+COPY H into E
+COPY H into F
+COPY H into G
+COPY H into H
+COPY H into X
+COPY H into Y
+COPY H into Z
+COPY H into W
+COPY X into A
+COPY X into B
+COPY X into C
+COPY X into D
+COPY X into E
+COPY X into F
+COPY X into G
+COPY X into H
+COPY X into X
+COPY X into Y
+COPY X into Z
+COPY X into W
+COPY Y into A
+COPY Y into B
+COPY Y into C
+COPY Y into D
+COPY Y into E
+COPY Y into F
+COPY Y into G
+COPY Y into H
+COPY Y into X
+COPY Y into Y
+COPY Y into Z
+COPY Y into W
+COPY Z into A
+COPY Z into B
+COPY Z into C
+COPY Z into D
+COPY Z into E
+COPY Z into F
+COPY Z into G
+COPY Z into H
+COPY Z into X
+COPY Z into Y
+COPY Z into Z
+COPY Z into W
+COPY W into A
+COPY W into B
+COPY W into C
+COPY W into D
+COPY W into E
+COPY W into F
+COPY W into G
+COPY W into H
+COPY W into X
+COPY W into Y
+COPY W into Z
+COPY W into W
+
+### move
+MOVE A to A
+MOVE A to B
+MOVE A to C
+MOVE A to D
+MOVE A to E
+MOVE A to F
+MOVE A to G
+MOVE A to H
+MOVE A to X
+MOVE A to Y
+MOVE A to Z
+MOVE A to W
+MOVE B to A
+MOVE B to B
+MOVE B to C
+MOVE B to D
+MOVE B to E
+MOVE B to F
+MOVE B to G
+MOVE B to H
+MOVE B to X
+MOVE B to Y
+MOVE B to Z
+MOVE B to W
+MOVE C to A
+MOVE C to B
+MOVE C to C
+MOVE C to D
+MOVE C to E
+MOVE C to F
+MOVE C to G
+MOVE C to H
+MOVE C to X
+MOVE C to Y
+MOVE C to Z
+MOVE C to W
+MOVE D to A
+MOVE D to B
+MOVE D to C
+MOVE D to D
+MOVE D to E
+MOVE D to F
+MOVE D to G
+MOVE D to H
+MOVE D to X
+MOVE D to Y
+MOVE D to Z
+MOVE D to W
+MOVE E to A
+MOVE E to B
+MOVE E to C
+MOVE E to D
+MOVE E to E
+MOVE E to F
+MOVE E to G
+MOVE E to H
+MOVE E to X
+MOVE E to Y
+MOVE E to Z
+MOVE E to W
+MOVE F to A
+MOVE F to B
+MOVE F to C
+MOVE F to D
+MOVE F to E
+MOVE F to F
+MOVE F to G
+MOVE F to H
+MOVE F to X
+MOVE F to Y
+MOVE F to Z
+MOVE F to W
+MOVE G to A
+MOVE G to B
+MOVE G to C
+MOVE G to D
+MOVE G to E
+MOVE G to F
+MOVE G to G
+MOVE G to H
+MOVE G to X
+MOVE G to Y
+MOVE G to Z
+MOVE G to W
+MOVE H to A
+MOVE H to B
+MOVE H to C
+MOVE H to D
+MOVE H to E
+MOVE H to F
+MOVE H to G
+MOVE H to H
+MOVE H to X
+MOVE H to Y
+MOVE H to Z
+MOVE H to W
+MOVE X to A
+MOVE X to B
+MOVE X to C
+MOVE X to D
+MOVE X to E
+MOVE X to F
+MOVE X to G
+MOVE X to H
+MOVE X to X
+MOVE X to Y
+MOVE X to Z
+MOVE X to W
+MOVE Y to A
+MOVE Y to B
+MOVE Y to C
+MOVE Y to D
+MOVE Y to E
+MOVE Y to F
+MOVE Y to G
+MOVE Y to H
+MOVE Y to X
+MOVE Y to Y
+MOVE Y to Z
+MOVE Y to W
+MOVE Z to A
+MOVE Z to B
+MOVE Z to C
+MOVE Z to D
+MOVE Z to E
+MOVE Z to F
+MOVE Z to G
+MOVE Z to H
+MOVE Z to X
+MOVE Z to Y
+MOVE Z to Z
+MOVE Z to W
+MOVE W to A
+MOVE W to B
+MOVE W to C
+MOVE W to D
+MOVE W to E
+MOVE W to F
+MOVE W to G
+MOVE W to H
+MOVE W to X
+MOVE W to Y
+MOVE W to Z
+MOVE W to W
+
+## swap
+### canonical
+SWAP A with A
+SWAP A with B
+SWAP A with C
+SWAP A with D
+SWAP A with E
+SWAP A with F
+SWAP A with G
+SWAP A with H
+SWAP B with A
+SWAP B with B
+SWAP B with C
+SWAP B with D
+SWAP B with E
+SWAP B with F
+SWAP B with G
+SWAP B with H
+SWAP C with A
+SWAP C with B
+SWAP C with C
+SWAP C with D
+SWAP C with E
+SWAP C with F
+SWAP C with G
+SWAP C with H
+SWAP D with A
+SWAP D with B
+SWAP D with C
+SWAP D with D
+SWAP D with E
+SWAP D with F
+SWAP D with G
+SWAP D with H
+SWAP E with A
+SWAP E with B
+SWAP E with C
+SWAP E with D
+SWAP E with E
+SWAP E with F
+SWAP E with G
+SWAP E with H
+SWAP F with A
+SWAP F with B
+SWAP F with C
+SWAP F with D
+SWAP F with E
+SWAP F with F
+SWAP F with G
+SWAP F with H
+SWAP G with A
+SWAP G with B
+SWAP G with C
+SWAP G with D
+SWAP G with E
+SWAP G with F
+SWAP G with G
+SWAP G with H
+SWAP H with A
+SWAP H with B
+SWAP H with C
+SWAP H with D
+SWAP H with E
+SWAP H with F
+SWAP H with G
+SWAP H with H
+SWAP X with X
+SWAP X with Y
+SWAP X with Z
+SWAP X with W
+SWAP Y with X
+SWAP Y with Y
+SWAP Y with Z
+SWAP Y with W
+SWAP Z with X
+SWAP Z with Y
+SWAP Z with Z
+SWAP Z with W
+SWAP W with X
+SWAP W with Y
+SWAP W with Z
+SWAP W with W
+
+## copy_k_into_reg24
+### canonical
+COPY K into X
+COPY K into Y
+COPY K into Z
+COPY K into W
+
+## copy_reg24_into_k
+### canonical
+COPY X into K
+COPY Y into K
+COPY Z into K
+COPY W into K
+
+## copy_sp_into_reg24
+### canonical
+COPY SP into X
+COPY SP into Y
+COPY SP into Z
+COPY SP into W
+
+## copy_reg24_into_sp
+### canonical
+COPY X into SP
+COPY Y into SP
+COPY Z into SP
+COPY W into SP
+
+## copy_pc_into_reg24
+### canonical
+COPY PC into X
+COPY PC into Y
+COPY PC into Z
+COPY PC into W
+
+# STACK
+## place_reg16
+### canonical
+PLACE A
+PLACE B
+PLACE C
+PLACE D
+PLACE E
+PLACE F
+PLACE G
+PLACE H
+
+## place_reg24
+### canonical
+PLACE X
+PLACE Y
+PLACE Z
+PLACE W
+
+## lift_reg16
+### canonical
+LIFT A
+LIFT B
+LIFT C
+LIFT D
+LIFT E
+LIFT F
+LIFT G
+LIFT H
+
+## lift_reg24
+### canonical
+LIFT X
+LIFT Y
+LIFT Z
+LIFT W
+
+# FLOW
+## enter_addr
+### canonical
+ENTER <addr24>
+
+## enter_reg24
+### canonical
+ENTER X
+ENTER Y
+ENTER Z
+ENTER W
+
+## leave
+### canonical
+LEAVE
+
+## leave_interrupt
+### canonical
+LEAVE interruption
+
+# SYSTEM
+## pass
+### canonical
+PASS
+
+## interruptions_on
+### canonical
+INTERRUPTIONS on
+
+## stop
+### canonical
+STOP
+
+## interruptions_off
+### canonical
+INTERRUPTIONS off
+
+# PLUS
+## reg_reg
+### canonical
+A PLUS A
+A PLUS A keep carry
+A PLUS A use carry
+A PLUS A keep and use carry
+A PLUS B
+A PLUS B keep carry
+A PLUS B use carry
+A PLUS B keep and use carry
+A PLUS C
+A PLUS C keep carry
+A PLUS C use carry
+A PLUS C keep and use carry
+A PLUS D
+A PLUS D keep carry
+A PLUS D use carry
+A PLUS D keep and use carry
+A PLUS E
+A PLUS E keep carry
+A PLUS E use carry
+A PLUS E keep and use carry
+A PLUS F
+A PLUS F keep carry
+A PLUS F use carry
+A PLUS F keep and use carry
+A PLUS G
+A PLUS G keep carry
+A PLUS G use carry
+A PLUS G keep and use carry
+A PLUS H
+A PLUS H keep carry
+A PLUS H use carry
+A PLUS H keep and use carry
+B PLUS A
+B PLUS A keep carry
+B PLUS A use carry
+B PLUS A keep and use carry
+B PLUS B
+B PLUS B keep carry
+B PLUS B use carry
+B PLUS B keep and use carry
+B PLUS C
+B PLUS C keep carry
+B PLUS C use carry
+B PLUS C keep and use carry
+B PLUS D
+B PLUS D keep carry
+B PLUS D use carry
+B PLUS D keep and use carry
+B PLUS E
+B PLUS E keep carry
+B PLUS E use carry
+B PLUS E keep and use carry
+B PLUS F
+B PLUS F keep carry
+B PLUS F use carry
+B PLUS F keep and use carry
+B PLUS G
+B PLUS G keep carry
+B PLUS G use carry
+B PLUS G keep and use carry
+B PLUS H
+B PLUS H keep carry
+B PLUS H use carry
+B PLUS H keep and use carry
+C PLUS A
+C PLUS A keep carry
+C PLUS A use carry
+C PLUS A keep and use carry
+C PLUS B
+C PLUS B keep carry
+C PLUS B use carry
+C PLUS B keep and use carry
+C PLUS C
+C PLUS C keep carry
+C PLUS C use carry
+C PLUS C keep and use carry
+C PLUS D
+C PLUS D keep carry
+C PLUS D use carry
+C PLUS D keep and use carry
+C PLUS E
+C PLUS E keep carry
+C PLUS E use carry
+C PLUS E keep and use carry
+C PLUS F
+C PLUS F keep carry
+C PLUS F use carry
+C PLUS F keep and use carry
+C PLUS G
+C PLUS G keep carry
+C PLUS G use carry
+C PLUS G keep and use carry
+C PLUS H
+C PLUS H keep carry
+C PLUS H use carry
+C PLUS H keep and use carry
+D PLUS A
+D PLUS A keep carry
+D PLUS A use carry
+D PLUS A keep and use carry
+D PLUS B
+D PLUS B keep carry
+D PLUS B use carry
+D PLUS B keep and use carry
+D PLUS C
+D PLUS C keep carry
+D PLUS C use carry
+D PLUS C keep and use carry
+D PLUS D
+D PLUS D keep carry
+D PLUS D use carry
+D PLUS D keep and use carry
+D PLUS E
+D PLUS E keep carry
+D PLUS E use carry
+D PLUS E keep and use carry
+D PLUS F
+D PLUS F keep carry
+D PLUS F use carry
+D PLUS F keep and use carry
+D PLUS G
+D PLUS G keep carry
+D PLUS G use carry
+D PLUS G keep and use carry
+D PLUS H
+D PLUS H keep carry
+D PLUS H use carry
+D PLUS H keep and use carry
+E PLUS A
+E PLUS A keep carry
+E PLUS A use carry
+E PLUS A keep and use carry
+E PLUS B
+E PLUS B keep carry
+E PLUS B use carry
+E PLUS B keep and use carry
+E PLUS C
+E PLUS C keep carry
+E PLUS C use carry
+E PLUS C keep and use carry
+E PLUS D
+E PLUS D keep carry
+E PLUS D use carry
+E PLUS D keep and use carry
+E PLUS E
+E PLUS E keep carry
+E PLUS E use carry
+E PLUS E keep and use carry
+E PLUS F
+E PLUS F keep carry
+E PLUS F use carry
+E PLUS F keep and use carry
+E PLUS G
+E PLUS G keep carry
+E PLUS G use carry
+E PLUS G keep and use carry
+E PLUS H
+E PLUS H keep carry
+E PLUS H use carry
+E PLUS H keep and use carry
+F PLUS A
+F PLUS A keep carry
+F PLUS A use carry
+F PLUS A keep and use carry
+F PLUS B
+F PLUS B keep carry
+F PLUS B use carry
+F PLUS B keep and use carry
+F PLUS C
+F PLUS C keep carry
+F PLUS C use carry
+F PLUS C keep and use carry
+F PLUS D
+F PLUS D keep carry
+F PLUS D use carry
+F PLUS D keep and use carry
+F PLUS E
+F PLUS E keep carry
+F PLUS E use carry
+F PLUS E keep and use carry
+F PLUS F
+F PLUS F keep carry
+F PLUS F use carry
+F PLUS F keep and use carry
+F PLUS G
+F PLUS G keep carry
+F PLUS G use carry
+F PLUS G keep and use carry
+F PLUS H
+F PLUS H keep carry
+F PLUS H use carry
+F PLUS H keep and use carry
+G PLUS A
+G PLUS A keep carry
+G PLUS A use carry
+G PLUS A keep and use carry
+G PLUS B
+G PLUS B keep carry
+G PLUS B use carry
+G PLUS B keep and use carry
+G PLUS C
+G PLUS C keep carry
+G PLUS C use carry
+G PLUS C keep and use carry
+G PLUS D
+G PLUS D keep carry
+G PLUS D use carry
+G PLUS D keep and use carry
+G PLUS E
+G PLUS E keep carry
+G PLUS E use carry
+G PLUS E keep and use carry
+G PLUS F
+G PLUS F keep carry
+G PLUS F use carry
+G PLUS F keep and use carry
+G PLUS G
+G PLUS G keep carry
+G PLUS G use carry
+G PLUS G keep and use carry
+G PLUS H
+G PLUS H keep carry
+G PLUS H use carry
+G PLUS H keep and use carry
+H PLUS A
+H PLUS A keep carry
+H PLUS A use carry
+H PLUS A keep and use carry
+H PLUS B
+H PLUS B keep carry
+H PLUS B use carry
+H PLUS B keep and use carry
+H PLUS C
+H PLUS C keep carry
+H PLUS C use carry
+H PLUS C keep and use carry
+H PLUS D
+H PLUS D keep carry
+H PLUS D use carry
+H PLUS D keep and use carry
+H PLUS E
+H PLUS E keep carry
+H PLUS E use carry
+H PLUS E keep and use carry
+H PLUS F
+H PLUS F keep carry
+H PLUS F use carry
+H PLUS F keep and use carry
+H PLUS G
+H PLUS G keep carry
+H PLUS G use carry
+H PLUS G keep and use carry
+H PLUS H
+H PLUS H keep carry
+H PLUS H use carry
+H PLUS H keep and use carry
+X PLUS X
+X PLUS X keep carry
+X PLUS X use carry
+X PLUS X keep and use carry
+X PLUS Y
+X PLUS Y keep carry
+X PLUS Y use carry
+X PLUS Y keep and use carry
+X PLUS Z
+X PLUS Z keep carry
+X PLUS Z use carry
+X PLUS Z keep and use carry
+X PLUS W
+X PLUS W keep carry
+X PLUS W use carry
+X PLUS W keep and use carry
+Y PLUS X
+Y PLUS X keep carry
+Y PLUS X use carry
+Y PLUS X keep and use carry
+Y PLUS Y
+Y PLUS Y keep carry
+Y PLUS Y use carry
+Y PLUS Y keep and use carry
+Y PLUS Z
+Y PLUS Z keep carry
+Y PLUS Z use carry
+Y PLUS Z keep and use carry
+Y PLUS W
+Y PLUS W keep carry
+Y PLUS W use carry
+Y PLUS W keep and use carry
+Z PLUS X
+Z PLUS X keep carry
+Z PLUS X use carry
+Z PLUS X keep and use carry
+Z PLUS Y
+Z PLUS Y keep carry
+Z PLUS Y use carry
+Z PLUS Y keep and use carry
+Z PLUS Z
+Z PLUS Z keep carry
+Z PLUS Z use carry
+Z PLUS Z keep and use carry
+Z PLUS W
+Z PLUS W keep carry
+Z PLUS W use carry
+Z PLUS W keep and use carry
+W PLUS X
+W PLUS X keep carry
+W PLUS X use carry
+W PLUS X keep and use carry
+W PLUS Y
+W PLUS Y keep carry
+W PLUS Y use carry
+W PLUS Y keep and use carry
+W PLUS Z
+W PLUS Z keep carry
+W PLUS Z use carry
+W PLUS Z keep and use carry
+W PLUS W
+W PLUS W keep carry
+W PLUS W use carry
+W PLUS W keep and use carry
+
+## imm6
+### canonical
+A PLUS <imm6_signed>
+B PLUS <imm6_signed>
+C PLUS <imm6_signed>
+D PLUS <imm6_signed>
+E PLUS <imm6_signed>
+F PLUS <imm6_signed>
+G PLUS <imm6_signed>
+H PLUS <imm6_signed>
+X PLUS <imm6_signed>
+Y PLUS <imm6_signed>
+Z PLUS <imm6_signed>
+W PLUS <imm6_signed>
+
+## imm16
+### canonical
+A PLUS <imm16_signed>
+B PLUS <imm16_signed>
+C PLUS <imm16_signed>
+D PLUS <imm16_signed>
+E PLUS <imm16_signed>
+F PLUS <imm16_signed>
+G PLUS <imm16_signed>
+H PLUS <imm16_signed>
+X PLUS <imm16_signed>
+Y PLUS <imm16_signed>
+Z PLUS <imm16_signed>
+W PLUS <imm16_signed>
+
+# MINUS
+## reg_reg
+### canonical
+A MINUS A
+A MINUS A keep borrow
+A MINUS A use borrow
+A MINUS A keep and use borrow
+A MINUS B
+A MINUS B keep borrow
+A MINUS B use borrow
+A MINUS B keep and use borrow
+A MINUS C
+A MINUS C keep borrow
+A MINUS C use borrow
+A MINUS C keep and use borrow
+A MINUS D
+A MINUS D keep borrow
+A MINUS D use borrow
+A MINUS D keep and use borrow
+A MINUS E
+A MINUS E keep borrow
+A MINUS E use borrow
+A MINUS E keep and use borrow
+A MINUS F
+A MINUS F keep borrow
+A MINUS F use borrow
+A MINUS F keep and use borrow
+A MINUS G
+A MINUS G keep borrow
+A MINUS G use borrow
+A MINUS G keep and use borrow
+A MINUS H
+A MINUS H keep borrow
+A MINUS H use borrow
+A MINUS H keep and use borrow
+B MINUS A
+B MINUS A keep borrow
+B MINUS A use borrow
+B MINUS A keep and use borrow
+B MINUS B
+B MINUS B keep borrow
+B MINUS B use borrow
+B MINUS B keep and use borrow
+B MINUS C
+B MINUS C keep borrow
+B MINUS C use borrow
+B MINUS C keep and use borrow
+B MINUS D
+B MINUS D keep borrow
+B MINUS D use borrow
+B MINUS D keep and use borrow
+B MINUS E
+B MINUS E keep borrow
+B MINUS E use borrow
+B MINUS E keep and use borrow
+B MINUS F
+B MINUS F keep borrow
+B MINUS F use borrow
+B MINUS F keep and use borrow
+B MINUS G
+B MINUS G keep borrow
+B MINUS G use borrow
+B MINUS G keep and use borrow
+B MINUS H
+B MINUS H keep borrow
+B MINUS H use borrow
+B MINUS H keep and use borrow
+C MINUS A
+C MINUS A keep borrow
+C MINUS A use borrow
+C MINUS A keep and use borrow
+C MINUS B
+C MINUS B keep borrow
+C MINUS B use borrow
+C MINUS B keep and use borrow
+C MINUS C
+C MINUS C keep borrow
+C MINUS C use borrow
+C MINUS C keep and use borrow
+C MINUS D
+C MINUS D keep borrow
+C MINUS D use borrow
+C MINUS D keep and use borrow
+C MINUS E
+C MINUS E keep borrow
+C MINUS E use borrow
+C MINUS E keep and use borrow
+C MINUS F
+C MINUS F keep borrow
+C MINUS F use borrow
+C MINUS F keep and use borrow
+C MINUS G
+C MINUS G keep borrow
+C MINUS G use borrow
+C MINUS G keep and use borrow
+C MINUS H
+C MINUS H keep borrow
+C MINUS H use borrow
+C MINUS H keep and use borrow
+D MINUS A
+D MINUS A keep borrow
+D MINUS A use borrow
+D MINUS A keep and use borrow
+D MINUS B
+D MINUS B keep borrow
+D MINUS B use borrow
+D MINUS B keep and use borrow
+D MINUS C
+D MINUS C keep borrow
+D MINUS C use borrow
+D MINUS C keep and use borrow
+D MINUS D
+D MINUS D keep borrow
+D MINUS D use borrow
+D MINUS D keep and use borrow
+D MINUS E
+D MINUS E keep borrow
+D MINUS E use borrow
+D MINUS E keep and use borrow
+D MINUS F
+D MINUS F keep borrow
+D MINUS F use borrow
+D MINUS F keep and use borrow
+D MINUS G
+D MINUS G keep borrow
+D MINUS G use borrow
+D MINUS G keep and use borrow
+D MINUS H
+D MINUS H keep borrow
+D MINUS H use borrow
+D MINUS H keep and use borrow
+E MINUS A
+E MINUS A keep borrow
+E MINUS A use borrow
+E MINUS A keep and use borrow
+E MINUS B
+E MINUS B keep borrow
+E MINUS B use borrow
+E MINUS B keep and use borrow
+E MINUS C
+E MINUS C keep borrow
+E MINUS C use borrow
+E MINUS C keep and use borrow
+E MINUS D
+E MINUS D keep borrow
+E MINUS D use borrow
+E MINUS D keep and use borrow
+E MINUS E
+E MINUS E keep borrow
+E MINUS E use borrow
+E MINUS E keep and use borrow
+E MINUS F
+E MINUS F keep borrow
+E MINUS F use borrow
+E MINUS F keep and use borrow
+E MINUS G
+E MINUS G keep borrow
+E MINUS G use borrow
+E MINUS G keep and use borrow
+E MINUS H
+E MINUS H keep borrow
+E MINUS H use borrow
+E MINUS H keep and use borrow
+F MINUS A
+F MINUS A keep borrow
+F MINUS A use borrow
+F MINUS A keep and use borrow
+F MINUS B
+F MINUS B keep borrow
+F MINUS B use borrow
+F MINUS B keep and use borrow
+F MINUS C
+F MINUS C keep borrow
+F MINUS C use borrow
+F MINUS C keep and use borrow
+F MINUS D
+F MINUS D keep borrow
+F MINUS D use borrow
+F MINUS D keep and use borrow
+F MINUS E
+F MINUS E keep borrow
+F MINUS E use borrow
+F MINUS E keep and use borrow
+F MINUS F
+F MINUS F keep borrow
+F MINUS F use borrow
+F MINUS F keep and use borrow
+F MINUS G
+F MINUS G keep borrow
+F MINUS G use borrow
+F MINUS G keep and use borrow
+F MINUS H
+F MINUS H keep borrow
+F MINUS H use borrow
+F MINUS H keep and use borrow
+G MINUS A
+G MINUS A keep borrow
+G MINUS A use borrow
+G MINUS A keep and use borrow
+G MINUS B
+G MINUS B keep borrow
+G MINUS B use borrow
+G MINUS B keep and use borrow
+G MINUS C
+G MINUS C keep borrow
+G MINUS C use borrow
+G MINUS C keep and use borrow
+G MINUS D
+G MINUS D keep borrow
+G MINUS D use borrow
+G MINUS D keep and use borrow
+G MINUS E
+G MINUS E keep borrow
+G MINUS E use borrow
+G MINUS E keep and use borrow
+G MINUS F
+G MINUS F keep borrow
+G MINUS F use borrow
+G MINUS F keep and use borrow
+G MINUS G
+G MINUS G keep borrow
+G MINUS G use borrow
+G MINUS G keep and use borrow
+G MINUS H
+G MINUS H keep borrow
+G MINUS H use borrow
+G MINUS H keep and use borrow
+H MINUS A
+H MINUS A keep borrow
+H MINUS A use borrow
+H MINUS A keep and use borrow
+H MINUS B
+H MINUS B keep borrow
+H MINUS B use borrow
+H MINUS B keep and use borrow
+H MINUS C
+H MINUS C keep borrow
+H MINUS C use borrow
+H MINUS C keep and use borrow
+H MINUS D
+H MINUS D keep borrow
+H MINUS D use borrow
+H MINUS D keep and use borrow
+H MINUS E
+H MINUS E keep borrow
+H MINUS E use borrow
+H MINUS E keep and use borrow
+H MINUS F
+H MINUS F keep borrow
+H MINUS F use borrow
+H MINUS F keep and use borrow
+H MINUS G
+H MINUS G keep borrow
+H MINUS G use borrow
+H MINUS G keep and use borrow
+H MINUS H
+H MINUS H keep borrow
+H MINUS H use borrow
+H MINUS H keep and use borrow
+X MINUS X
+X MINUS X keep borrow
+X MINUS X use borrow
+X MINUS X keep and use borrow
+X MINUS Y
+X MINUS Y keep borrow
+X MINUS Y use borrow
+X MINUS Y keep and use borrow
+X MINUS Z
+X MINUS Z keep borrow
+X MINUS Z use borrow
+X MINUS Z keep and use borrow
+X MINUS W
+X MINUS W keep borrow
+X MINUS W use borrow
+X MINUS W keep and use borrow
+Y MINUS X
+Y MINUS X keep borrow
+Y MINUS X use borrow
+Y MINUS X keep and use borrow
+Y MINUS Y
+Y MINUS Y keep borrow
+Y MINUS Y use borrow
+Y MINUS Y keep and use borrow
+Y MINUS Z
+Y MINUS Z keep borrow
+Y MINUS Z use borrow
+Y MINUS Z keep and use borrow
+Y MINUS W
+Y MINUS W keep borrow
+Y MINUS W use borrow
+Y MINUS W keep and use borrow
+Z MINUS X
+Z MINUS X keep borrow
+Z MINUS X use borrow
+Z MINUS X keep and use borrow
+Z MINUS Y
+Z MINUS Y keep borrow
+Z MINUS Y use borrow
+Z MINUS Y keep and use borrow
+Z MINUS Z
+Z MINUS Z keep borrow
+Z MINUS Z use borrow
+Z MINUS Z keep and use borrow
+Z MINUS W
+Z MINUS W keep borrow
+Z MINUS W use borrow
+Z MINUS W keep and use borrow
+W MINUS X
+W MINUS X keep borrow
+W MINUS X use borrow
+W MINUS X keep and use borrow
+W MINUS Y
+W MINUS Y keep borrow
+W MINUS Y use borrow
+W MINUS Y keep and use borrow
+W MINUS Z
+W MINUS Z keep borrow
+W MINUS Z use borrow
+W MINUS Z keep and use borrow
+W MINUS W
+W MINUS W keep borrow
+W MINUS W use borrow
+W MINUS W keep and use borrow
+
+## imm6
+### canonical
+A MINUS <imm6_signed>
+B MINUS <imm6_signed>
+C MINUS <imm6_signed>
+D MINUS <imm6_signed>
+E MINUS <imm6_signed>
+F MINUS <imm6_signed>
+G MINUS <imm6_signed>
+H MINUS <imm6_signed>
+X MINUS <imm6_signed>
+Y MINUS <imm6_signed>
+Z MINUS <imm6_signed>
+W MINUS <imm6_signed>
+
+## imm16
+### canonical
+A MINUS <imm16_signed>
+B MINUS <imm16_signed>
+C MINUS <imm16_signed>
+D MINUS <imm16_signed>
+E MINUS <imm16_signed>
+F MINUS <imm16_signed>
+G MINUS <imm16_signed>
+H MINUS <imm16_signed>
+X MINUS <imm16_signed>
+Y MINUS <imm16_signed>
+Z MINUS <imm16_signed>
+W MINUS <imm16_signed>
+
+# TIMES
+## times_reg_reg
+### canonical
+A TIMES A
+A TIMES A keep high
+A TIMES A unsigned
+A TIMES A unsigned keep high
+A TIMES B
+A TIMES B keep high
+A TIMES B unsigned
+A TIMES B unsigned keep high
+A TIMES C
+A TIMES C keep high
+A TIMES C unsigned
+A TIMES C unsigned keep high
+A TIMES D
+A TIMES D keep high
+A TIMES D unsigned
+A TIMES D unsigned keep high
+A TIMES E
+A TIMES E keep high
+A TIMES E unsigned
+A TIMES E unsigned keep high
+A TIMES F
+A TIMES F keep high
+A TIMES F unsigned
+A TIMES F unsigned keep high
+A TIMES G
+A TIMES G keep high
+A TIMES G unsigned
+A TIMES G unsigned keep high
+A TIMES H
+A TIMES H keep high
+A TIMES H unsigned
+A TIMES H unsigned keep high
+B TIMES A
+B TIMES A keep high
+B TIMES A unsigned
+B TIMES A unsigned keep high
+B TIMES B
+B TIMES B keep high
+B TIMES B unsigned
+B TIMES B unsigned keep high
+B TIMES C
+B TIMES C keep high
+B TIMES C unsigned
+B TIMES C unsigned keep high
+B TIMES D
+B TIMES D keep high
+B TIMES D unsigned
+B TIMES D unsigned keep high
+B TIMES E
+B TIMES E keep high
+B TIMES E unsigned
+B TIMES E unsigned keep high
+B TIMES F
+B TIMES F keep high
+B TIMES F unsigned
+B TIMES F unsigned keep high
+B TIMES G
+B TIMES G keep high
+B TIMES G unsigned
+B TIMES G unsigned keep high
+B TIMES H
+B TIMES H keep high
+B TIMES H unsigned
+B TIMES H unsigned keep high
+C TIMES A
+C TIMES A keep high
+C TIMES A unsigned
+C TIMES A unsigned keep high
+C TIMES B
+C TIMES B keep high
+C TIMES B unsigned
+C TIMES B unsigned keep high
+C TIMES C
+C TIMES C keep high
+C TIMES C unsigned
+C TIMES C unsigned keep high
+C TIMES D
+C TIMES D keep high
+C TIMES D unsigned
+C TIMES D unsigned keep high
+C TIMES E
+C TIMES E keep high
+C TIMES E unsigned
+C TIMES E unsigned keep high
+C TIMES F
+C TIMES F keep high
+C TIMES F unsigned
+C TIMES F unsigned keep high
+C TIMES G
+C TIMES G keep high
+C TIMES G unsigned
+C TIMES G unsigned keep high
+C TIMES H
+C TIMES H keep high
+C TIMES H unsigned
+C TIMES H unsigned keep high
+D TIMES A
+D TIMES A keep high
+D TIMES A unsigned
+D TIMES A unsigned keep high
+D TIMES B
+D TIMES B keep high
+D TIMES B unsigned
+D TIMES B unsigned keep high
+D TIMES C
+D TIMES C keep high
+D TIMES C unsigned
+D TIMES C unsigned keep high
+D TIMES D
+D TIMES D keep high
+D TIMES D unsigned
+D TIMES D unsigned keep high
+D TIMES E
+D TIMES E keep high
+D TIMES E unsigned
+D TIMES E unsigned keep high
+D TIMES F
+D TIMES F keep high
+D TIMES F unsigned
+D TIMES F unsigned keep high
+D TIMES G
+D TIMES G keep high
+D TIMES G unsigned
+D TIMES G unsigned keep high
+D TIMES H
+D TIMES H keep high
+D TIMES H unsigned
+D TIMES H unsigned keep high
+E TIMES A
+E TIMES A keep high
+E TIMES A unsigned
+E TIMES A unsigned keep high
+E TIMES B
+E TIMES B keep high
+E TIMES B unsigned
+E TIMES B unsigned keep high
+E TIMES C
+E TIMES C keep high
+E TIMES C unsigned
+E TIMES C unsigned keep high
+E TIMES D
+E TIMES D keep high
+E TIMES D unsigned
+E TIMES D unsigned keep high
+E TIMES E
+E TIMES E keep high
+E TIMES E unsigned
+E TIMES E unsigned keep high
+E TIMES F
+E TIMES F keep high
+E TIMES F unsigned
+E TIMES F unsigned keep high
+E TIMES G
+E TIMES G keep high
+E TIMES G unsigned
+E TIMES G unsigned keep high
+E TIMES H
+E TIMES H keep high
+E TIMES H unsigned
+E TIMES H unsigned keep high
+F TIMES A
+F TIMES A keep high
+F TIMES A unsigned
+F TIMES A unsigned keep high
+F TIMES B
+F TIMES B keep high
+F TIMES B unsigned
+F TIMES B unsigned keep high
+F TIMES C
+F TIMES C keep high
+F TIMES C unsigned
+F TIMES C unsigned keep high
+F TIMES D
+F TIMES D keep high
+F TIMES D unsigned
+F TIMES D unsigned keep high
+F TIMES E
+F TIMES E keep high
+F TIMES E unsigned
+F TIMES E unsigned keep high
+F TIMES F
+F TIMES F keep high
+F TIMES F unsigned
+F TIMES F unsigned keep high
+F TIMES G
+F TIMES G keep high
+F TIMES G unsigned
+F TIMES G unsigned keep high
+F TIMES H
+F TIMES H keep high
+F TIMES H unsigned
+F TIMES H unsigned keep high
+G TIMES A
+G TIMES A keep high
+G TIMES A unsigned
+G TIMES A unsigned keep high
+G TIMES B
+G TIMES B keep high
+G TIMES B unsigned
+G TIMES B unsigned keep high
+G TIMES C
+G TIMES C keep high
+G TIMES C unsigned
+G TIMES C unsigned keep high
+G TIMES D
+G TIMES D keep high
+G TIMES D unsigned
+G TIMES D unsigned keep high
+G TIMES E
+G TIMES E keep high
+G TIMES E unsigned
+G TIMES E unsigned keep high
+G TIMES F
+G TIMES F keep high
+G TIMES F unsigned
+G TIMES F unsigned keep high
+G TIMES G
+G TIMES G keep high
+G TIMES G unsigned
+G TIMES G unsigned keep high
+G TIMES H
+G TIMES H keep high
+G TIMES H unsigned
+G TIMES H unsigned keep high
+H TIMES A
+H TIMES A keep high
+H TIMES A unsigned
+H TIMES A unsigned keep high
+H TIMES B
+H TIMES B keep high
+H TIMES B unsigned
+H TIMES B unsigned keep high
+H TIMES C
+H TIMES C keep high
+H TIMES C unsigned
+H TIMES C unsigned keep high
+H TIMES D
+H TIMES D keep high
+H TIMES D unsigned
+H TIMES D unsigned keep high
+H TIMES E
+H TIMES E keep high
+H TIMES E unsigned
+H TIMES E unsigned keep high
+H TIMES F
+H TIMES F keep high
+H TIMES F unsigned
+H TIMES F unsigned keep high
+H TIMES G
+H TIMES G keep high
+H TIMES G unsigned
+H TIMES G unsigned keep high
+H TIMES H
+H TIMES H keep high
+H TIMES H unsigned
+H TIMES H unsigned keep high
+X TIMES X
+X TIMES X unsigned
+X TIMES Y
+X TIMES Y unsigned
+X TIMES Z
+X TIMES Z unsigned
+X TIMES W
+X TIMES W unsigned
+Y TIMES X
+Y TIMES X unsigned
+Y TIMES Y
+Y TIMES Y unsigned
+Y TIMES Z
+Y TIMES Z unsigned
+Y TIMES W
+Y TIMES W unsigned
+Z TIMES X
+Z TIMES X unsigned
+Z TIMES Y
+Z TIMES Y unsigned
+Z TIMES Z
+Z TIMES Z unsigned
+Z TIMES W
+Z TIMES W unsigned
+W TIMES X
+W TIMES X unsigned
+W TIMES Y
+W TIMES Y unsigned
+W TIMES Z
+W TIMES Z unsigned
+W TIMES W
+W TIMES W unsigned
+
+# DIV
+## div_or_module
+### div
+A DIV A
+A DIV A unsigned
+A DIV B
+A DIV B unsigned
+A DIV C
+A DIV C unsigned
+A DIV D
+A DIV D unsigned
+A DIV E
+A DIV E unsigned
+A DIV F
+A DIV F unsigned
+A DIV G
+A DIV G unsigned
+A DIV H
+A DIV H unsigned
+B DIV A
+B DIV A unsigned
+B DIV B
+B DIV B unsigned
+B DIV C
+B DIV C unsigned
+B DIV D
+B DIV D unsigned
+B DIV E
+B DIV E unsigned
+B DIV F
+B DIV F unsigned
+B DIV G
+B DIV G unsigned
+B DIV H
+B DIV H unsigned
+C DIV A
+C DIV A unsigned
+C DIV B
+C DIV B unsigned
+C DIV C
+C DIV C unsigned
+C DIV D
+C DIV D unsigned
+C DIV E
+C DIV E unsigned
+C DIV F
+C DIV F unsigned
+C DIV G
+C DIV G unsigned
+C DIV H
+C DIV H unsigned
+D DIV A
+D DIV A unsigned
+D DIV B
+D DIV B unsigned
+D DIV C
+D DIV C unsigned
+D DIV D
+D DIV D unsigned
+D DIV E
+D DIV E unsigned
+D DIV F
+D DIV F unsigned
+D DIV G
+D DIV G unsigned
+D DIV H
+D DIV H unsigned
+E DIV A
+E DIV A unsigned
+E DIV B
+E DIV B unsigned
+E DIV C
+E DIV C unsigned
+E DIV D
+E DIV D unsigned
+E DIV E
+E DIV E unsigned
+E DIV F
+E DIV F unsigned
+E DIV G
+E DIV G unsigned
+E DIV H
+E DIV H unsigned
+F DIV A
+F DIV A unsigned
+F DIV B
+F DIV B unsigned
+F DIV C
+F DIV C unsigned
+F DIV D
+F DIV D unsigned
+F DIV E
+F DIV E unsigned
+F DIV F
+F DIV F unsigned
+F DIV G
+F DIV G unsigned
+F DIV H
+F DIV H unsigned
+G DIV A
+G DIV A unsigned
+G DIV B
+G DIV B unsigned
+G DIV C
+G DIV C unsigned
+G DIV D
+G DIV D unsigned
+G DIV E
+G DIV E unsigned
+G DIV F
+G DIV F unsigned
+G DIV G
+G DIV G unsigned
+G DIV H
+G DIV H unsigned
+H DIV A
+H DIV A unsigned
+H DIV B
+H DIV B unsigned
+H DIV C
+H DIV C unsigned
+H DIV D
+H DIV D unsigned
+H DIV E
+H DIV E unsigned
+H DIV F
+H DIV F unsigned
+H DIV G
+H DIV G unsigned
+H DIV H
+H DIV H unsigned
+X DIV X
+X DIV X unsigned
+X DIV Y
+X DIV Y unsigned
+X DIV Z
+X DIV Z unsigned
+X DIV W
+X DIV W unsigned
+Y DIV X
+Y DIV X unsigned
+Y DIV Y
+Y DIV Y unsigned
+Y DIV Z
+Y DIV Z unsigned
+Y DIV W
+Y DIV W unsigned
+Z DIV X
+Z DIV X unsigned
+Z DIV Y
+Z DIV Y unsigned
+Z DIV Z
+Z DIV Z unsigned
+Z DIV W
+Z DIV W unsigned
+W DIV X
+W DIV X unsigned
+W DIV Y
+W DIV Y unsigned
+W DIV Z
+W DIV Z unsigned
+W DIV W
+W DIV W unsigned
+
+### module
+A MODULE A
+A MODULE A unsigned
+A MODULE B
+A MODULE B unsigned
+A MODULE C
+A MODULE C unsigned
+A MODULE D
+A MODULE D unsigned
+A MODULE E
+A MODULE E unsigned
+A MODULE F
+A MODULE F unsigned
+A MODULE G
+A MODULE G unsigned
+A MODULE H
+A MODULE H unsigned
+B MODULE A
+B MODULE A unsigned
+B MODULE B
+B MODULE B unsigned
+B MODULE C
+B MODULE C unsigned
+B MODULE D
+B MODULE D unsigned
+B MODULE E
+B MODULE E unsigned
+B MODULE F
+B MODULE F unsigned
+B MODULE G
+B MODULE G unsigned
+B MODULE H
+B MODULE H unsigned
+C MODULE A
+C MODULE A unsigned
+C MODULE B
+C MODULE B unsigned
+C MODULE C
+C MODULE C unsigned
+C MODULE D
+C MODULE D unsigned
+C MODULE E
+C MODULE E unsigned
+C MODULE F
+C MODULE F unsigned
+C MODULE G
+C MODULE G unsigned
+C MODULE H
+C MODULE H unsigned
+D MODULE A
+D MODULE A unsigned
+D MODULE B
+D MODULE B unsigned
+D MODULE C
+D MODULE C unsigned
+D MODULE D
+D MODULE D unsigned
+D MODULE E
+D MODULE E unsigned
+D MODULE F
+D MODULE F unsigned
+D MODULE G
+D MODULE G unsigned
+D MODULE H
+D MODULE H unsigned
+E MODULE A
+E MODULE A unsigned
+E MODULE B
+E MODULE B unsigned
+E MODULE C
+E MODULE C unsigned
+E MODULE D
+E MODULE D unsigned
+E MODULE E
+E MODULE E unsigned
+E MODULE F
+E MODULE F unsigned
+E MODULE G
+E MODULE G unsigned
+E MODULE H
+E MODULE H unsigned
+F MODULE A
+F MODULE A unsigned
+F MODULE B
+F MODULE B unsigned
+F MODULE C
+F MODULE C unsigned
+F MODULE D
+F MODULE D unsigned
+F MODULE E
+F MODULE E unsigned
+F MODULE F
+F MODULE F unsigned
+F MODULE G
+F MODULE G unsigned
+F MODULE H
+F MODULE H unsigned
+G MODULE A
+G MODULE A unsigned
+G MODULE B
+G MODULE B unsigned
+G MODULE C
+G MODULE C unsigned
+G MODULE D
+G MODULE D unsigned
+G MODULE E
+G MODULE E unsigned
+G MODULE F
+G MODULE F unsigned
+G MODULE G
+G MODULE G unsigned
+G MODULE H
+G MODULE H unsigned
+H MODULE A
+H MODULE A unsigned
+H MODULE B
+H MODULE B unsigned
+H MODULE C
+H MODULE C unsigned
+H MODULE D
+H MODULE D unsigned
+H MODULE E
+H MODULE E unsigned
+H MODULE F
+H MODULE F unsigned
+H MODULE G
+H MODULE G unsigned
+H MODULE H
+H MODULE H unsigned
+X MODULE X
+X MODULE X unsigned
+X MODULE Y
+X MODULE Y unsigned
+X MODULE Z
+X MODULE Z unsigned
+X MODULE W
+X MODULE W unsigned
+Y MODULE X
+Y MODULE X unsigned
+Y MODULE Y
+Y MODULE Y unsigned
+Y MODULE Z
+Y MODULE Z unsigned
+Y MODULE W
+Y MODULE W unsigned
+Z MODULE X
+Z MODULE X unsigned
+Z MODULE Y
+Z MODULE Y unsigned
+Z MODULE Z
+Z MODULE Z unsigned
+Z MODULE W
+Z MODULE W unsigned
+W MODULE X
+W MODULE X unsigned
+W MODULE Y
+W MODULE Y unsigned
+W MODULE Z
+W MODULE Z unsigned
+W MODULE W
+W MODULE W unsigned
+
+# UNARY
+## unary_reg
+### negate
+NEGATE A
+NEGATE B
+NEGATE C
+NEGATE D
+NEGATE E
+NEGATE F
+NEGATE G
+NEGATE H
+NEGATE X
+NEGATE Y
+NEGATE Z
+NEGATE W
+
+### absolute
+ABSOLUTE A
+ABSOLUTE B
+ABSOLUTE C
+ABSOLUTE D
+ABSOLUTE E
+ABSOLUTE F
+ABSOLUTE G
+ABSOLUTE H
+ABSOLUTE X
+ABSOLUTE Y
+ABSOLUTE Z
+ABSOLUTE W
+
+# SET
+## imm6
+### canonical
+SET A to <imm6_unsigned>
+SET B to <imm6_unsigned>
+SET C to <imm6_unsigned>
+SET D to <imm6_unsigned>
+SET E to <imm6_unsigned>
+SET F to <imm6_unsigned>
+SET G to <imm6_unsigned>
+SET H to <imm6_unsigned>
+SET X to <imm6_unsigned>
+SET Y to <imm6_unsigned>
+SET Z to <imm6_unsigned>
+SET W to <imm6_unsigned>
+
+## imm16
+### canonical
+SET A to <imm16_unsigned>
+SET B to <imm16_unsigned>
+SET C to <imm16_unsigned>
+SET D to <imm16_unsigned>
+SET E to <imm16_unsigned>
+SET F to <imm16_unsigned>
+SET G to <imm16_unsigned>
+SET H to <imm16_unsigned>
+SET X to <imm16_unsigned>
+SET Y to <imm16_unsigned>
+SET Z to <imm16_unsigned>
+SET W to <imm16_unsigned>
+
+# LOGIC
+## reg_reg_or_not
+### and
+A AND A
+A AND B
+A AND C
+A AND D
+A AND E
+A AND F
+A AND G
+A AND H
+B AND A
+B AND B
+B AND C
+B AND D
+B AND E
+B AND F
+B AND G
+B AND H
+C AND A
+C AND B
+C AND C
+C AND D
+C AND E
+C AND F
+C AND G
+C AND H
+D AND A
+D AND B
+D AND C
+D AND D
+D AND E
+D AND F
+D AND G
+D AND H
+E AND A
+E AND B
+E AND C
+E AND D
+E AND E
+E AND F
+E AND G
+E AND H
+F AND A
+F AND B
+F AND C
+F AND D
+F AND E
+F AND F
+F AND G
+F AND H
+G AND A
+G AND B
+G AND C
+G AND D
+G AND E
+G AND F
+G AND G
+G AND H
+H AND A
+H AND B
+H AND C
+H AND D
+H AND E
+H AND F
+H AND G
+H AND H
+X AND X
+X AND Y
+X AND Z
+X AND W
+Y AND X
+Y AND Y
+Y AND Z
+Y AND W
+Z AND X
+Z AND Y
+Z AND Z
+Z AND W
+W AND X
+W AND Y
+W AND Z
+W AND W
+
+### or
+A OR A
+A OR B
+A OR C
+A OR D
+A OR E
+A OR F
+A OR G
+A OR H
+B OR A
+B OR B
+B OR C
+B OR D
+B OR E
+B OR F
+B OR G
+B OR H
+C OR A
+C OR B
+C OR C
+C OR D
+C OR E
+C OR F
+C OR G
+C OR H
+D OR A
+D OR B
+D OR C
+D OR D
+D OR E
+D OR F
+D OR G
+D OR H
+E OR A
+E OR B
+E OR C
+E OR D
+E OR E
+E OR F
+E OR G
+E OR H
+F OR A
+F OR B
+F OR C
+F OR D
+F OR E
+F OR F
+F OR G
+F OR H
+G OR A
+G OR B
+G OR C
+G OR D
+G OR E
+G OR F
+G OR G
+G OR H
+H OR A
+H OR B
+H OR C
+H OR D
+H OR E
+H OR F
+H OR G
+H OR H
+X OR X
+X OR Y
+X OR Z
+X OR W
+Y OR X
+Y OR Y
+Y OR Z
+Y OR W
+Z OR X
+Z OR Y
+Z OR Z
+Z OR W
+W OR X
+W OR Y
+W OR Z
+W OR W
+
+### xor
+A XOR A
+A XOR B
+A XOR C
+A XOR D
+A XOR E
+A XOR F
+A XOR G
+A XOR H
+B XOR A
+B XOR B
+B XOR C
+B XOR D
+B XOR E
+B XOR F
+B XOR G
+B XOR H
+C XOR A
+C XOR B
+C XOR C
+C XOR D
+C XOR E
+C XOR F
+C XOR G
+C XOR H
+D XOR A
+D XOR B
+D XOR C
+D XOR D
+D XOR E
+D XOR F
+D XOR G
+D XOR H
+E XOR A
+E XOR B
+E XOR C
+E XOR D
+E XOR E
+E XOR F
+E XOR G
+E XOR H
+F XOR A
+F XOR B
+F XOR C
+F XOR D
+F XOR E
+F XOR F
+F XOR G
+F XOR H
+G XOR A
+G XOR B
+G XOR C
+G XOR D
+G XOR E
+G XOR F
+G XOR G
+G XOR H
+H XOR A
+H XOR B
+H XOR C
+H XOR D
+H XOR E
+H XOR F
+H XOR G
+H XOR H
+X XOR X
+X XOR Y
+X XOR Z
+X XOR W
+Y XOR X
+Y XOR Y
+Y XOR Z
+Y XOR W
+Z XOR X
+Z XOR Y
+Z XOR Z
+Z XOR W
+W XOR X
+W XOR Y
+W XOR Z
+W XOR W
+
+### not
+NOT A
+NOT B
+NOT C
+NOT D
+NOT E
+NOT F
+NOT G
+NOT H
+NOT X
+NOT Y
+NOT Z
+NOT W
+
+## imm16
+### and
+A AND <imm16_unsigned>
+B AND <imm16_unsigned>
+C AND <imm16_unsigned>
+D AND <imm16_unsigned>
+E AND <imm16_unsigned>
+F AND <imm16_unsigned>
+G AND <imm16_unsigned>
+H AND <imm16_unsigned>
+X AND <imm16_unsigned>
+Y AND <imm16_unsigned>
+Z AND <imm16_unsigned>
+W AND <imm16_unsigned>
+
+### or
+A OR <imm16_unsigned>
+B OR <imm16_unsigned>
+C OR <imm16_unsigned>
+D OR <imm16_unsigned>
+E OR <imm16_unsigned>
+F OR <imm16_unsigned>
+G OR <imm16_unsigned>
+H OR <imm16_unsigned>
+X OR <imm16_unsigned>
+Y OR <imm16_unsigned>
+Z OR <imm16_unsigned>
+W OR <imm16_unsigned>
+
+### xor
+A XOR <imm16_unsigned>
+B XOR <imm16_unsigned>
+C XOR <imm16_unsigned>
+D XOR <imm16_unsigned>
+E XOR <imm16_unsigned>
+F XOR <imm16_unsigned>
+G XOR <imm16_unsigned>
+H XOR <imm16_unsigned>
+X XOR <imm16_unsigned>
+Y XOR <imm16_unsigned>
+Z XOR <imm16_unsigned>
+W XOR <imm16_unsigned>
+
+# BIT
+## bit_op
+### testbit
+A TESTBIT 0
+A TESTBIT 1
+A TESTBIT 2
+A TESTBIT 3
+A TESTBIT 4
+A TESTBIT 5
+A TESTBIT 6
+A TESTBIT 7
+A TESTBIT 8
+A TESTBIT 9
+A TESTBIT 10
+A TESTBIT 11
+A TESTBIT 12
+A TESTBIT 13
+A TESTBIT 14
+A TESTBIT 15
+B TESTBIT 0
+B TESTBIT 1
+B TESTBIT 2
+B TESTBIT 3
+B TESTBIT 4
+B TESTBIT 5
+B TESTBIT 6
+B TESTBIT 7
+B TESTBIT 8
+B TESTBIT 9
+B TESTBIT 10
+B TESTBIT 11
+B TESTBIT 12
+B TESTBIT 13
+B TESTBIT 14
+B TESTBIT 15
+C TESTBIT 0
+C TESTBIT 1
+C TESTBIT 2
+C TESTBIT 3
+C TESTBIT 4
+C TESTBIT 5
+C TESTBIT 6
+C TESTBIT 7
+C TESTBIT 8
+C TESTBIT 9
+C TESTBIT 10
+C TESTBIT 11
+C TESTBIT 12
+C TESTBIT 13
+C TESTBIT 14
+C TESTBIT 15
+D TESTBIT 0
+D TESTBIT 1
+D TESTBIT 2
+D TESTBIT 3
+D TESTBIT 4
+D TESTBIT 5
+D TESTBIT 6
+D TESTBIT 7
+D TESTBIT 8
+D TESTBIT 9
+D TESTBIT 10
+D TESTBIT 11
+D TESTBIT 12
+D TESTBIT 13
+D TESTBIT 14
+D TESTBIT 15
+E TESTBIT 0
+E TESTBIT 1
+E TESTBIT 2
+E TESTBIT 3
+E TESTBIT 4
+E TESTBIT 5
+E TESTBIT 6
+E TESTBIT 7
+E TESTBIT 8
+E TESTBIT 9
+E TESTBIT 10
+E TESTBIT 11
+E TESTBIT 12
+E TESTBIT 13
+E TESTBIT 14
+E TESTBIT 15
+F TESTBIT 0
+F TESTBIT 1
+F TESTBIT 2
+F TESTBIT 3
+F TESTBIT 4
+F TESTBIT 5
+F TESTBIT 6
+F TESTBIT 7
+F TESTBIT 8
+F TESTBIT 9
+F TESTBIT 10
+F TESTBIT 11
+F TESTBIT 12
+F TESTBIT 13
+F TESTBIT 14
+F TESTBIT 15
+G TESTBIT 0
+G TESTBIT 1
+G TESTBIT 2
+G TESTBIT 3
+G TESTBIT 4
+G TESTBIT 5
+G TESTBIT 6
+G TESTBIT 7
+G TESTBIT 8
+G TESTBIT 9
+G TESTBIT 10
+G TESTBIT 11
+G TESTBIT 12
+G TESTBIT 13
+G TESTBIT 14
+G TESTBIT 15
+H TESTBIT 0
+H TESTBIT 1
+H TESTBIT 2
+H TESTBIT 3
+H TESTBIT 4
+H TESTBIT 5
+H TESTBIT 6
+H TESTBIT 7
+H TESTBIT 8
+H TESTBIT 9
+H TESTBIT 10
+H TESTBIT 11
+H TESTBIT 12
+H TESTBIT 13
+H TESTBIT 14
+H TESTBIT 15
+X TESTBIT 0
+X TESTBIT 1
+X TESTBIT 2
+X TESTBIT 3
+X TESTBIT 4
+X TESTBIT 5
+X TESTBIT 6
+X TESTBIT 7
+X TESTBIT 8
+X TESTBIT 9
+X TESTBIT 10
+X TESTBIT 11
+X TESTBIT 12
+X TESTBIT 13
+X TESTBIT 14
+X TESTBIT 15
+X TESTBIT 16
+X TESTBIT 17
+X TESTBIT 18
+X TESTBIT 19
+X TESTBIT 20
+X TESTBIT 21
+X TESTBIT 22
+X TESTBIT 23
+Y TESTBIT 0
+Y TESTBIT 1
+Y TESTBIT 2
+Y TESTBIT 3
+Y TESTBIT 4
+Y TESTBIT 5
+Y TESTBIT 6
+Y TESTBIT 7
+Y TESTBIT 8
+Y TESTBIT 9
+Y TESTBIT 10
+Y TESTBIT 11
+Y TESTBIT 12
+Y TESTBIT 13
+Y TESTBIT 14
+Y TESTBIT 15
+Y TESTBIT 16
+Y TESTBIT 17
+Y TESTBIT 18
+Y TESTBIT 19
+Y TESTBIT 20
+Y TESTBIT 21
+Y TESTBIT 22
+Y TESTBIT 23
+Z TESTBIT 0
+Z TESTBIT 1
+Z TESTBIT 2
+Z TESTBIT 3
+Z TESTBIT 4
+Z TESTBIT 5
+Z TESTBIT 6
+Z TESTBIT 7
+Z TESTBIT 8
+Z TESTBIT 9
+Z TESTBIT 10
+Z TESTBIT 11
+Z TESTBIT 12
+Z TESTBIT 13
+Z TESTBIT 14
+Z TESTBIT 15
+Z TESTBIT 16
+Z TESTBIT 17
+Z TESTBIT 18
+Z TESTBIT 19
+Z TESTBIT 20
+Z TESTBIT 21
+Z TESTBIT 22
+Z TESTBIT 23
+W TESTBIT 0
+W TESTBIT 1
+W TESTBIT 2
+W TESTBIT 3
+W TESTBIT 4
+W TESTBIT 5
+W TESTBIT 6
+W TESTBIT 7
+W TESTBIT 8
+W TESTBIT 9
+W TESTBIT 10
+W TESTBIT 11
+W TESTBIT 12
+W TESTBIT 13
+W TESTBIT 14
+W TESTBIT 15
+W TESTBIT 16
+W TESTBIT 17
+W TESTBIT 18
+W TESTBIT 19
+W TESTBIT 20
+W TESTBIT 21
+W TESTBIT 22
+W TESTBIT 23
+
+### setbit
+A SETBIT 0
+A SETBIT 1
+A SETBIT 2
+A SETBIT 3
+A SETBIT 4
+A SETBIT 5
+A SETBIT 6
+A SETBIT 7
+A SETBIT 8
+A SETBIT 9
+A SETBIT 10
+A SETBIT 11
+A SETBIT 12
+A SETBIT 13
+A SETBIT 14
+A SETBIT 15
+B SETBIT 0
+B SETBIT 1
+B SETBIT 2
+B SETBIT 3
+B SETBIT 4
+B SETBIT 5
+B SETBIT 6
+B SETBIT 7
+B SETBIT 8
+B SETBIT 9
+B SETBIT 10
+B SETBIT 11
+B SETBIT 12
+B SETBIT 13
+B SETBIT 14
+B SETBIT 15
+C SETBIT 0
+C SETBIT 1
+C SETBIT 2
+C SETBIT 3
+C SETBIT 4
+C SETBIT 5
+C SETBIT 6
+C SETBIT 7
+C SETBIT 8
+C SETBIT 9
+C SETBIT 10
+C SETBIT 11
+C SETBIT 12
+C SETBIT 13
+C SETBIT 14
+C SETBIT 15
+D SETBIT 0
+D SETBIT 1
+D SETBIT 2
+D SETBIT 3
+D SETBIT 4
+D SETBIT 5
+D SETBIT 6
+D SETBIT 7
+D SETBIT 8
+D SETBIT 9
+D SETBIT 10
+D SETBIT 11
+D SETBIT 12
+D SETBIT 13
+D SETBIT 14
+D SETBIT 15
+E SETBIT 0
+E SETBIT 1
+E SETBIT 2
+E SETBIT 3
+E SETBIT 4
+E SETBIT 5
+E SETBIT 6
+E SETBIT 7
+E SETBIT 8
+E SETBIT 9
+E SETBIT 10
+E SETBIT 11
+E SETBIT 12
+E SETBIT 13
+E SETBIT 14
+E SETBIT 15
+F SETBIT 0
+F SETBIT 1
+F SETBIT 2
+F SETBIT 3
+F SETBIT 4
+F SETBIT 5
+F SETBIT 6
+F SETBIT 7
+F SETBIT 8
+F SETBIT 9
+F SETBIT 10
+F SETBIT 11
+F SETBIT 12
+F SETBIT 13
+F SETBIT 14
+F SETBIT 15
+G SETBIT 0
+G SETBIT 1
+G SETBIT 2
+G SETBIT 3
+G SETBIT 4
+G SETBIT 5
+G SETBIT 6
+G SETBIT 7
+G SETBIT 8
+G SETBIT 9
+G SETBIT 10
+G SETBIT 11
+G SETBIT 12
+G SETBIT 13
+G SETBIT 14
+G SETBIT 15
+H SETBIT 0
+H SETBIT 1
+H SETBIT 2
+H SETBIT 3
+H SETBIT 4
+H SETBIT 5
+H SETBIT 6
+H SETBIT 7
+H SETBIT 8
+H SETBIT 9
+H SETBIT 10
+H SETBIT 11
+H SETBIT 12
+H SETBIT 13
+H SETBIT 14
+H SETBIT 15
+X SETBIT 0
+X SETBIT 1
+X SETBIT 2
+X SETBIT 3
+X SETBIT 4
+X SETBIT 5
+X SETBIT 6
+X SETBIT 7
+X SETBIT 8
+X SETBIT 9
+X SETBIT 10
+X SETBIT 11
+X SETBIT 12
+X SETBIT 13
+X SETBIT 14
+X SETBIT 15
+X SETBIT 16
+X SETBIT 17
+X SETBIT 18
+X SETBIT 19
+X SETBIT 20
+X SETBIT 21
+X SETBIT 22
+X SETBIT 23
+Y SETBIT 0
+Y SETBIT 1
+Y SETBIT 2
+Y SETBIT 3
+Y SETBIT 4
+Y SETBIT 5
+Y SETBIT 6
+Y SETBIT 7
+Y SETBIT 8
+Y SETBIT 9
+Y SETBIT 10
+Y SETBIT 11
+Y SETBIT 12
+Y SETBIT 13
+Y SETBIT 14
+Y SETBIT 15
+Y SETBIT 16
+Y SETBIT 17
+Y SETBIT 18
+Y SETBIT 19
+Y SETBIT 20
+Y SETBIT 21
+Y SETBIT 22
+Y SETBIT 23
+Z SETBIT 0
+Z SETBIT 1
+Z SETBIT 2
+Z SETBIT 3
+Z SETBIT 4
+Z SETBIT 5
+Z SETBIT 6
+Z SETBIT 7
+Z SETBIT 8
+Z SETBIT 9
+Z SETBIT 10
+Z SETBIT 11
+Z SETBIT 12
+Z SETBIT 13
+Z SETBIT 14
+Z SETBIT 15
+Z SETBIT 16
+Z SETBIT 17
+Z SETBIT 18
+Z SETBIT 19
+Z SETBIT 20
+Z SETBIT 21
+Z SETBIT 22
+Z SETBIT 23
+W SETBIT 0
+W SETBIT 1
+W SETBIT 2
+W SETBIT 3
+W SETBIT 4
+W SETBIT 5
+W SETBIT 6
+W SETBIT 7
+W SETBIT 8
+W SETBIT 9
+W SETBIT 10
+W SETBIT 11
+W SETBIT 12
+W SETBIT 13
+W SETBIT 14
+W SETBIT 15
+W SETBIT 16
+W SETBIT 17
+W SETBIT 18
+W SETBIT 19
+W SETBIT 20
+W SETBIT 21
+W SETBIT 22
+W SETBIT 23
+
+### clearbit
+A CLEARBIT 0
+A CLEARBIT 1
+A CLEARBIT 2
+A CLEARBIT 3
+A CLEARBIT 4
+A CLEARBIT 5
+A CLEARBIT 6
+A CLEARBIT 7
+A CLEARBIT 8
+A CLEARBIT 9
+A CLEARBIT 10
+A CLEARBIT 11
+A CLEARBIT 12
+A CLEARBIT 13
+A CLEARBIT 14
+A CLEARBIT 15
+B CLEARBIT 0
+B CLEARBIT 1
+B CLEARBIT 2
+B CLEARBIT 3
+B CLEARBIT 4
+B CLEARBIT 5
+B CLEARBIT 6
+B CLEARBIT 7
+B CLEARBIT 8
+B CLEARBIT 9
+B CLEARBIT 10
+B CLEARBIT 11
+B CLEARBIT 12
+B CLEARBIT 13
+B CLEARBIT 14
+B CLEARBIT 15
+C CLEARBIT 0
+C CLEARBIT 1
+C CLEARBIT 2
+C CLEARBIT 3
+C CLEARBIT 4
+C CLEARBIT 5
+C CLEARBIT 6
+C CLEARBIT 7
+C CLEARBIT 8
+C CLEARBIT 9
+C CLEARBIT 10
+C CLEARBIT 11
+C CLEARBIT 12
+C CLEARBIT 13
+C CLEARBIT 14
+C CLEARBIT 15
+D CLEARBIT 0
+D CLEARBIT 1
+D CLEARBIT 2
+D CLEARBIT 3
+D CLEARBIT 4
+D CLEARBIT 5
+D CLEARBIT 6
+D CLEARBIT 7
+D CLEARBIT 8
+D CLEARBIT 9
+D CLEARBIT 10
+D CLEARBIT 11
+D CLEARBIT 12
+D CLEARBIT 13
+D CLEARBIT 14
+D CLEARBIT 15
+E CLEARBIT 0
+E CLEARBIT 1
+E CLEARBIT 2
+E CLEARBIT 3
+E CLEARBIT 4
+E CLEARBIT 5
+E CLEARBIT 6
+E CLEARBIT 7
+E CLEARBIT 8
+E CLEARBIT 9
+E CLEARBIT 10
+E CLEARBIT 11
+E CLEARBIT 12
+E CLEARBIT 13
+E CLEARBIT 14
+E CLEARBIT 15
+F CLEARBIT 0
+F CLEARBIT 1
+F CLEARBIT 2
+F CLEARBIT 3
+F CLEARBIT 4
+F CLEARBIT 5
+F CLEARBIT 6
+F CLEARBIT 7
+F CLEARBIT 8
+F CLEARBIT 9
+F CLEARBIT 10
+F CLEARBIT 11
+F CLEARBIT 12
+F CLEARBIT 13
+F CLEARBIT 14
+F CLEARBIT 15
+G CLEARBIT 0
+G CLEARBIT 1
+G CLEARBIT 2
+G CLEARBIT 3
+G CLEARBIT 4
+G CLEARBIT 5
+G CLEARBIT 6
+G CLEARBIT 7
+G CLEARBIT 8
+G CLEARBIT 9
+G CLEARBIT 10
+G CLEARBIT 11
+G CLEARBIT 12
+G CLEARBIT 13
+G CLEARBIT 14
+G CLEARBIT 15
+H CLEARBIT 0
+H CLEARBIT 1
+H CLEARBIT 2
+H CLEARBIT 3
+H CLEARBIT 4
+H CLEARBIT 5
+H CLEARBIT 6
+H CLEARBIT 7
+H CLEARBIT 8
+H CLEARBIT 9
+H CLEARBIT 10
+H CLEARBIT 11
+H CLEARBIT 12
+H CLEARBIT 13
+H CLEARBIT 14
+H CLEARBIT 15
+X CLEARBIT 0
+X CLEARBIT 1
+X CLEARBIT 2
+X CLEARBIT 3
+X CLEARBIT 4
+X CLEARBIT 5
+X CLEARBIT 6
+X CLEARBIT 7
+X CLEARBIT 8
+X CLEARBIT 9
+X CLEARBIT 10
+X CLEARBIT 11
+X CLEARBIT 12
+X CLEARBIT 13
+X CLEARBIT 14
+X CLEARBIT 15
+X CLEARBIT 16
+X CLEARBIT 17
+X CLEARBIT 18
+X CLEARBIT 19
+X CLEARBIT 20
+X CLEARBIT 21
+X CLEARBIT 22
+X CLEARBIT 23
+Y CLEARBIT 0
+Y CLEARBIT 1
+Y CLEARBIT 2
+Y CLEARBIT 3
+Y CLEARBIT 4
+Y CLEARBIT 5
+Y CLEARBIT 6
+Y CLEARBIT 7
+Y CLEARBIT 8
+Y CLEARBIT 9
+Y CLEARBIT 10
+Y CLEARBIT 11
+Y CLEARBIT 12
+Y CLEARBIT 13
+Y CLEARBIT 14
+Y CLEARBIT 15
+Y CLEARBIT 16
+Y CLEARBIT 17
+Y CLEARBIT 18
+Y CLEARBIT 19
+Y CLEARBIT 20
+Y CLEARBIT 21
+Y CLEARBIT 22
+Y CLEARBIT 23
+Z CLEARBIT 0
+Z CLEARBIT 1
+Z CLEARBIT 2
+Z CLEARBIT 3
+Z CLEARBIT 4
+Z CLEARBIT 5
+Z CLEARBIT 6
+Z CLEARBIT 7
+Z CLEARBIT 8
+Z CLEARBIT 9
+Z CLEARBIT 10
+Z CLEARBIT 11
+Z CLEARBIT 12
+Z CLEARBIT 13
+Z CLEARBIT 14
+Z CLEARBIT 15
+Z CLEARBIT 16
+Z CLEARBIT 17
+Z CLEARBIT 18
+Z CLEARBIT 19
+Z CLEARBIT 20
+Z CLEARBIT 21
+Z CLEARBIT 22
+Z CLEARBIT 23
+W CLEARBIT 0
+W CLEARBIT 1
+W CLEARBIT 2
+W CLEARBIT 3
+W CLEARBIT 4
+W CLEARBIT 5
+W CLEARBIT 6
+W CLEARBIT 7
+W CLEARBIT 8
+W CLEARBIT 9
+W CLEARBIT 10
+W CLEARBIT 11
+W CLEARBIT 12
+W CLEARBIT 13
+W CLEARBIT 14
+W CLEARBIT 15
+W CLEARBIT 16
+W CLEARBIT 17
+W CLEARBIT 18
+W CLEARBIT 19
+W CLEARBIT 20
+W CLEARBIT 21
+W CLEARBIT 22
+W CLEARBIT 23
+
+### togglebit
+A TOGGLEBIT 0
+A TOGGLEBIT 1
+A TOGGLEBIT 2
+A TOGGLEBIT 3
+A TOGGLEBIT 4
+A TOGGLEBIT 5
+A TOGGLEBIT 6
+A TOGGLEBIT 7
+A TOGGLEBIT 8
+A TOGGLEBIT 9
+A TOGGLEBIT 10
+A TOGGLEBIT 11
+A TOGGLEBIT 12
+A TOGGLEBIT 13
+A TOGGLEBIT 14
+A TOGGLEBIT 15
+B TOGGLEBIT 0
+B TOGGLEBIT 1
+B TOGGLEBIT 2
+B TOGGLEBIT 3
+B TOGGLEBIT 4
+B TOGGLEBIT 5
+B TOGGLEBIT 6
+B TOGGLEBIT 7
+B TOGGLEBIT 8
+B TOGGLEBIT 9
+B TOGGLEBIT 10
+B TOGGLEBIT 11
+B TOGGLEBIT 12
+B TOGGLEBIT 13
+B TOGGLEBIT 14
+B TOGGLEBIT 15
+C TOGGLEBIT 0
+C TOGGLEBIT 1
+C TOGGLEBIT 2
+C TOGGLEBIT 3
+C TOGGLEBIT 4
+C TOGGLEBIT 5
+C TOGGLEBIT 6
+C TOGGLEBIT 7
+C TOGGLEBIT 8
+C TOGGLEBIT 9
+C TOGGLEBIT 10
+C TOGGLEBIT 11
+C TOGGLEBIT 12
+C TOGGLEBIT 13
+C TOGGLEBIT 14
+C TOGGLEBIT 15
+D TOGGLEBIT 0
+D TOGGLEBIT 1
+D TOGGLEBIT 2
+D TOGGLEBIT 3
+D TOGGLEBIT 4
+D TOGGLEBIT 5
+D TOGGLEBIT 6
+D TOGGLEBIT 7
+D TOGGLEBIT 8
+D TOGGLEBIT 9
+D TOGGLEBIT 10
+D TOGGLEBIT 11
+D TOGGLEBIT 12
+D TOGGLEBIT 13
+D TOGGLEBIT 14
+D TOGGLEBIT 15
+E TOGGLEBIT 0
+E TOGGLEBIT 1
+E TOGGLEBIT 2
+E TOGGLEBIT 3
+E TOGGLEBIT 4
+E TOGGLEBIT 5
+E TOGGLEBIT 6
+E TOGGLEBIT 7
+E TOGGLEBIT 8
+E TOGGLEBIT 9
+E TOGGLEBIT 10
+E TOGGLEBIT 11
+E TOGGLEBIT 12
+E TOGGLEBIT 13
+E TOGGLEBIT 14
+E TOGGLEBIT 15
+F TOGGLEBIT 0
+F TOGGLEBIT 1
+F TOGGLEBIT 2
+F TOGGLEBIT 3
+F TOGGLEBIT 4
+F TOGGLEBIT 5
+F TOGGLEBIT 6
+F TOGGLEBIT 7
+F TOGGLEBIT 8
+F TOGGLEBIT 9
+F TOGGLEBIT 10
+F TOGGLEBIT 11
+F TOGGLEBIT 12
+F TOGGLEBIT 13
+F TOGGLEBIT 14
+F TOGGLEBIT 15
+G TOGGLEBIT 0
+G TOGGLEBIT 1
+G TOGGLEBIT 2
+G TOGGLEBIT 3
+G TOGGLEBIT 4
+G TOGGLEBIT 5
+G TOGGLEBIT 6
+G TOGGLEBIT 7
+G TOGGLEBIT 8
+G TOGGLEBIT 9
+G TOGGLEBIT 10
+G TOGGLEBIT 11
+G TOGGLEBIT 12
+G TOGGLEBIT 13
+G TOGGLEBIT 14
+G TOGGLEBIT 15
+H TOGGLEBIT 0
+H TOGGLEBIT 1
+H TOGGLEBIT 2
+H TOGGLEBIT 3
+H TOGGLEBIT 4
+H TOGGLEBIT 5
+H TOGGLEBIT 6
+H TOGGLEBIT 7
+H TOGGLEBIT 8
+H TOGGLEBIT 9
+H TOGGLEBIT 10
+H TOGGLEBIT 11
+H TOGGLEBIT 12
+H TOGGLEBIT 13
+H TOGGLEBIT 14
+H TOGGLEBIT 15
+X TOGGLEBIT 0
+X TOGGLEBIT 1
+X TOGGLEBIT 2
+X TOGGLEBIT 3
+X TOGGLEBIT 4
+X TOGGLEBIT 5
+X TOGGLEBIT 6
+X TOGGLEBIT 7
+X TOGGLEBIT 8
+X TOGGLEBIT 9
+X TOGGLEBIT 10
+X TOGGLEBIT 11
+X TOGGLEBIT 12
+X TOGGLEBIT 13
+X TOGGLEBIT 14
+X TOGGLEBIT 15
+X TOGGLEBIT 16
+X TOGGLEBIT 17
+X TOGGLEBIT 18
+X TOGGLEBIT 19
+X TOGGLEBIT 20
+X TOGGLEBIT 21
+X TOGGLEBIT 22
+X TOGGLEBIT 23
+Y TOGGLEBIT 0
+Y TOGGLEBIT 1
+Y TOGGLEBIT 2
+Y TOGGLEBIT 3
+Y TOGGLEBIT 4
+Y TOGGLEBIT 5
+Y TOGGLEBIT 6
+Y TOGGLEBIT 7
+Y TOGGLEBIT 8
+Y TOGGLEBIT 9
+Y TOGGLEBIT 10
+Y TOGGLEBIT 11
+Y TOGGLEBIT 12
+Y TOGGLEBIT 13
+Y TOGGLEBIT 14
+Y TOGGLEBIT 15
+Y TOGGLEBIT 16
+Y TOGGLEBIT 17
+Y TOGGLEBIT 18
+Y TOGGLEBIT 19
+Y TOGGLEBIT 20
+Y TOGGLEBIT 21
+Y TOGGLEBIT 22
+Y TOGGLEBIT 23
+Z TOGGLEBIT 0
+Z TOGGLEBIT 1
+Z TOGGLEBIT 2
+Z TOGGLEBIT 3
+Z TOGGLEBIT 4
+Z TOGGLEBIT 5
+Z TOGGLEBIT 6
+Z TOGGLEBIT 7
+Z TOGGLEBIT 8
+Z TOGGLEBIT 9
+Z TOGGLEBIT 10
+Z TOGGLEBIT 11
+Z TOGGLEBIT 12
+Z TOGGLEBIT 13
+Z TOGGLEBIT 14
+Z TOGGLEBIT 15
+Z TOGGLEBIT 16
+Z TOGGLEBIT 17
+Z TOGGLEBIT 18
+Z TOGGLEBIT 19
+Z TOGGLEBIT 20
+Z TOGGLEBIT 21
+Z TOGGLEBIT 22
+Z TOGGLEBIT 23
+W TOGGLEBIT 0
+W TOGGLEBIT 1
+W TOGGLEBIT 2
+W TOGGLEBIT 3
+W TOGGLEBIT 4
+W TOGGLEBIT 5
+W TOGGLEBIT 6
+W TOGGLEBIT 7
+W TOGGLEBIT 8
+W TOGGLEBIT 9
+W TOGGLEBIT 10
+W TOGGLEBIT 11
+W TOGGLEBIT 12
+W TOGGLEBIT 13
+W TOGGLEBIT 14
+W TOGGLEBIT 15
+W TOGGLEBIT 16
+W TOGGLEBIT 17
+W TOGGLEBIT 18
+W TOGGLEBIT 19
+W TOGGLEBIT 20
+W TOGGLEBIT 21
+W TOGGLEBIT 22
+W TOGGLEBIT 23
+
+# MINMAX
+## minmax_reg_reg
+### min
+MIN of A A
+MIN of A A unsigned
+MIN of A B
+MIN of A B unsigned
+MIN of A C
+MIN of A C unsigned
+MIN of A D
+MIN of A D unsigned
+MIN of A E
+MIN of A E unsigned
+MIN of A F
+MIN of A F unsigned
+MIN of A G
+MIN of A G unsigned
+MIN of A H
+MIN of A H unsigned
+MIN of B A
+MIN of B A unsigned
+MIN of B B
+MIN of B B unsigned
+MIN of B C
+MIN of B C unsigned
+MIN of B D
+MIN of B D unsigned
+MIN of B E
+MIN of B E unsigned
+MIN of B F
+MIN of B F unsigned
+MIN of B G
+MIN of B G unsigned
+MIN of B H
+MIN of B H unsigned
+MIN of C A
+MIN of C A unsigned
+MIN of C B
+MIN of C B unsigned
+MIN of C C
+MIN of C C unsigned
+MIN of C D
+MIN of C D unsigned
+MIN of C E
+MIN of C E unsigned
+MIN of C F
+MIN of C F unsigned
+MIN of C G
+MIN of C G unsigned
+MIN of C H
+MIN of C H unsigned
+MIN of D A
+MIN of D A unsigned
+MIN of D B
+MIN of D B unsigned
+MIN of D C
+MIN of D C unsigned
+MIN of D D
+MIN of D D unsigned
+MIN of D E
+MIN of D E unsigned
+MIN of D F
+MIN of D F unsigned
+MIN of D G
+MIN of D G unsigned
+MIN of D H
+MIN of D H unsigned
+MIN of E A
+MIN of E A unsigned
+MIN of E B
+MIN of E B unsigned
+MIN of E C
+MIN of E C unsigned
+MIN of E D
+MIN of E D unsigned
+MIN of E E
+MIN of E E unsigned
+MIN of E F
+MIN of E F unsigned
+MIN of E G
+MIN of E G unsigned
+MIN of E H
+MIN of E H unsigned
+MIN of F A
+MIN of F A unsigned
+MIN of F B
+MIN of F B unsigned
+MIN of F C
+MIN of F C unsigned
+MIN of F D
+MIN of F D unsigned
+MIN of F E
+MIN of F E unsigned
+MIN of F F
+MIN of F F unsigned
+MIN of F G
+MIN of F G unsigned
+MIN of F H
+MIN of F H unsigned
+MIN of G A
+MIN of G A unsigned
+MIN of G B
+MIN of G B unsigned
+MIN of G C
+MIN of G C unsigned
+MIN of G D
+MIN of G D unsigned
+MIN of G E
+MIN of G E unsigned
+MIN of G F
+MIN of G F unsigned
+MIN of G G
+MIN of G G unsigned
+MIN of G H
+MIN of G H unsigned
+MIN of H A
+MIN of H A unsigned
+MIN of H B
+MIN of H B unsigned
+MIN of H C
+MIN of H C unsigned
+MIN of H D
+MIN of H D unsigned
+MIN of H E
+MIN of H E unsigned
+MIN of H F
+MIN of H F unsigned
+MIN of H G
+MIN of H G unsigned
+MIN of H H
+MIN of H H unsigned
+MIN of X X
+MIN of X X unsigned
+MIN of X Y
+MIN of X Y unsigned
+MIN of X Z
+MIN of X Z unsigned
+MIN of X W
+MIN of X W unsigned
+MIN of Y X
+MIN of Y X unsigned
+MIN of Y Y
+MIN of Y Y unsigned
+MIN of Y Z
+MIN of Y Z unsigned
+MIN of Y W
+MIN of Y W unsigned
+MIN of Z X
+MIN of Z X unsigned
+MIN of Z Y
+MIN of Z Y unsigned
+MIN of Z Z
+MIN of Z Z unsigned
+MIN of Z W
+MIN of Z W unsigned
+MIN of W X
+MIN of W X unsigned
+MIN of W Y
+MIN of W Y unsigned
+MIN of W Z
+MIN of W Z unsigned
+MIN of W W
+MIN of W W unsigned
+
+### max
+MAX of A A
+MAX of A A unsigned
+MAX of A B
+MAX of A B unsigned
+MAX of A C
+MAX of A C unsigned
+MAX of A D
+MAX of A D unsigned
+MAX of A E
+MAX of A E unsigned
+MAX of A F
+MAX of A F unsigned
+MAX of A G
+MAX of A G unsigned
+MAX of A H
+MAX of A H unsigned
+MAX of B A
+MAX of B A unsigned
+MAX of B B
+MAX of B B unsigned
+MAX of B C
+MAX of B C unsigned
+MAX of B D
+MAX of B D unsigned
+MAX of B E
+MAX of B E unsigned
+MAX of B F
+MAX of B F unsigned
+MAX of B G
+MAX of B G unsigned
+MAX of B H
+MAX of B H unsigned
+MAX of C A
+MAX of C A unsigned
+MAX of C B
+MAX of C B unsigned
+MAX of C C
+MAX of C C unsigned
+MAX of C D
+MAX of C D unsigned
+MAX of C E
+MAX of C E unsigned
+MAX of C F
+MAX of C F unsigned
+MAX of C G
+MAX of C G unsigned
+MAX of C H
+MAX of C H unsigned
+MAX of D A
+MAX of D A unsigned
+MAX of D B
+MAX of D B unsigned
+MAX of D C
+MAX of D C unsigned
+MAX of D D
+MAX of D D unsigned
+MAX of D E
+MAX of D E unsigned
+MAX of D F
+MAX of D F unsigned
+MAX of D G
+MAX of D G unsigned
+MAX of D H
+MAX of D H unsigned
+MAX of E A
+MAX of E A unsigned
+MAX of E B
+MAX of E B unsigned
+MAX of E C
+MAX of E C unsigned
+MAX of E D
+MAX of E D unsigned
+MAX of E E
+MAX of E E unsigned
+MAX of E F
+MAX of E F unsigned
+MAX of E G
+MAX of E G unsigned
+MAX of E H
+MAX of E H unsigned
+MAX of F A
+MAX of F A unsigned
+MAX of F B
+MAX of F B unsigned
+MAX of F C
+MAX of F C unsigned
+MAX of F D
+MAX of F D unsigned
+MAX of F E
+MAX of F E unsigned
+MAX of F F
+MAX of F F unsigned
+MAX of F G
+MAX of F G unsigned
+MAX of F H
+MAX of F H unsigned
+MAX of G A
+MAX of G A unsigned
+MAX of G B
+MAX of G B unsigned
+MAX of G C
+MAX of G C unsigned
+MAX of G D
+MAX of G D unsigned
+MAX of G E
+MAX of G E unsigned
+MAX of G F
+MAX of G F unsigned
+MAX of G G
+MAX of G G unsigned
+MAX of G H
+MAX of G H unsigned
+MAX of H A
+MAX of H A unsigned
+MAX of H B
+MAX of H B unsigned
+MAX of H C
+MAX of H C unsigned
+MAX of H D
+MAX of H D unsigned
+MAX of H E
+MAX of H E unsigned
+MAX of H F
+MAX of H F unsigned
+MAX of H G
+MAX of H G unsigned
+MAX of H H
+MAX of H H unsigned
+MAX of X X
+MAX of X X unsigned
+MAX of X Y
+MAX of X Y unsigned
+MAX of X Z
+MAX of X Z unsigned
+MAX of X W
+MAX of X W unsigned
+MAX of Y X
+MAX of Y X unsigned
+MAX of Y Y
+MAX of Y Y unsigned
+MAX of Y Z
+MAX of Y Z unsigned
+MAX of Y W
+MAX of Y W unsigned
+MAX of Z X
+MAX of Z X unsigned
+MAX of Z Y
+MAX of Z Y unsigned
+MAX of Z Z
+MAX of Z Z unsigned
+MAX of Z W
+MAX of Z W unsigned
+MAX of W X
+MAX of W X unsigned
+MAX of W Y
+MAX of W Y unsigned
+MAX of W Z
+MAX of W Z unsigned
+MAX of W W
+MAX of W W unsigned
+
+# SHIFT
+## reg_count
+### leftshift
+A LEFTSHIFT A
+A LEFTSHIFT A keep carry
+A LEFTSHIFT B
+A LEFTSHIFT B keep carry
+A LEFTSHIFT C
+A LEFTSHIFT C keep carry
+A LEFTSHIFT D
+A LEFTSHIFT D keep carry
+A LEFTSHIFT E
+A LEFTSHIFT E keep carry
+A LEFTSHIFT F
+A LEFTSHIFT F keep carry
+A LEFTSHIFT G
+A LEFTSHIFT G keep carry
+A LEFTSHIFT H
+A LEFTSHIFT H keep carry
+B LEFTSHIFT A
+B LEFTSHIFT A keep carry
+B LEFTSHIFT B
+B LEFTSHIFT B keep carry
+B LEFTSHIFT C
+B LEFTSHIFT C keep carry
+B LEFTSHIFT D
+B LEFTSHIFT D keep carry
+B LEFTSHIFT E
+B LEFTSHIFT E keep carry
+B LEFTSHIFT F
+B LEFTSHIFT F keep carry
+B LEFTSHIFT G
+B LEFTSHIFT G keep carry
+B LEFTSHIFT H
+B LEFTSHIFT H keep carry
+C LEFTSHIFT A
+C LEFTSHIFT A keep carry
+C LEFTSHIFT B
+C LEFTSHIFT B keep carry
+C LEFTSHIFT C
+C LEFTSHIFT C keep carry
+C LEFTSHIFT D
+C LEFTSHIFT D keep carry
+C LEFTSHIFT E
+C LEFTSHIFT E keep carry
+C LEFTSHIFT F
+C LEFTSHIFT F keep carry
+C LEFTSHIFT G
+C LEFTSHIFT G keep carry
+C LEFTSHIFT H
+C LEFTSHIFT H keep carry
+D LEFTSHIFT A
+D LEFTSHIFT A keep carry
+D LEFTSHIFT B
+D LEFTSHIFT B keep carry
+D LEFTSHIFT C
+D LEFTSHIFT C keep carry
+D LEFTSHIFT D
+D LEFTSHIFT D keep carry
+D LEFTSHIFT E
+D LEFTSHIFT E keep carry
+D LEFTSHIFT F
+D LEFTSHIFT F keep carry
+D LEFTSHIFT G
+D LEFTSHIFT G keep carry
+D LEFTSHIFT H
+D LEFTSHIFT H keep carry
+E LEFTSHIFT A
+E LEFTSHIFT A keep carry
+E LEFTSHIFT B
+E LEFTSHIFT B keep carry
+E LEFTSHIFT C
+E LEFTSHIFT C keep carry
+E LEFTSHIFT D
+E LEFTSHIFT D keep carry
+E LEFTSHIFT E
+E LEFTSHIFT E keep carry
+E LEFTSHIFT F
+E LEFTSHIFT F keep carry
+E LEFTSHIFT G
+E LEFTSHIFT G keep carry
+E LEFTSHIFT H
+E LEFTSHIFT H keep carry
+F LEFTSHIFT A
+F LEFTSHIFT A keep carry
+F LEFTSHIFT B
+F LEFTSHIFT B keep carry
+F LEFTSHIFT C
+F LEFTSHIFT C keep carry
+F LEFTSHIFT D
+F LEFTSHIFT D keep carry
+F LEFTSHIFT E
+F LEFTSHIFT E keep carry
+F LEFTSHIFT F
+F LEFTSHIFT F keep carry
+F LEFTSHIFT G
+F LEFTSHIFT G keep carry
+F LEFTSHIFT H
+F LEFTSHIFT H keep carry
+G LEFTSHIFT A
+G LEFTSHIFT A keep carry
+G LEFTSHIFT B
+G LEFTSHIFT B keep carry
+G LEFTSHIFT C
+G LEFTSHIFT C keep carry
+G LEFTSHIFT D
+G LEFTSHIFT D keep carry
+G LEFTSHIFT E
+G LEFTSHIFT E keep carry
+G LEFTSHIFT F
+G LEFTSHIFT F keep carry
+G LEFTSHIFT G
+G LEFTSHIFT G keep carry
+G LEFTSHIFT H
+G LEFTSHIFT H keep carry
+H LEFTSHIFT A
+H LEFTSHIFT A keep carry
+H LEFTSHIFT B
+H LEFTSHIFT B keep carry
+H LEFTSHIFT C
+H LEFTSHIFT C keep carry
+H LEFTSHIFT D
+H LEFTSHIFT D keep carry
+H LEFTSHIFT E
+H LEFTSHIFT E keep carry
+H LEFTSHIFT F
+H LEFTSHIFT F keep carry
+H LEFTSHIFT G
+H LEFTSHIFT G keep carry
+H LEFTSHIFT H
+H LEFTSHIFT H keep carry
+X LEFTSHIFT X
+X LEFTSHIFT X keep carry
+X LEFTSHIFT Y
+X LEFTSHIFT Y keep carry
+X LEFTSHIFT Z
+X LEFTSHIFT Z keep carry
+X LEFTSHIFT W
+X LEFTSHIFT W keep carry
+Y LEFTSHIFT X
+Y LEFTSHIFT X keep carry
+Y LEFTSHIFT Y
+Y LEFTSHIFT Y keep carry
+Y LEFTSHIFT Z
+Y LEFTSHIFT Z keep carry
+Y LEFTSHIFT W
+Y LEFTSHIFT W keep carry
+Z LEFTSHIFT X
+Z LEFTSHIFT X keep carry
+Z LEFTSHIFT Y
+Z LEFTSHIFT Y keep carry
+Z LEFTSHIFT Z
+Z LEFTSHIFT Z keep carry
+Z LEFTSHIFT W
+Z LEFTSHIFT W keep carry
+W LEFTSHIFT X
+W LEFTSHIFT X keep carry
+W LEFTSHIFT Y
+W LEFTSHIFT Y keep carry
+W LEFTSHIFT Z
+W LEFTSHIFT Z keep carry
+W LEFTSHIFT W
+W LEFTSHIFT W keep carry
+
+### rightshift
+A RIGHTSHIFT A
+A RIGHTSHIFT A keep carry
+A RIGHTSHIFT B
+A RIGHTSHIFT B keep carry
+A RIGHTSHIFT C
+A RIGHTSHIFT C keep carry
+A RIGHTSHIFT D
+A RIGHTSHIFT D keep carry
+A RIGHTSHIFT E
+A RIGHTSHIFT E keep carry
+A RIGHTSHIFT F
+A RIGHTSHIFT F keep carry
+A RIGHTSHIFT G
+A RIGHTSHIFT G keep carry
+A RIGHTSHIFT H
+A RIGHTSHIFT H keep carry
+B RIGHTSHIFT A
+B RIGHTSHIFT A keep carry
+B RIGHTSHIFT B
+B RIGHTSHIFT B keep carry
+B RIGHTSHIFT C
+B RIGHTSHIFT C keep carry
+B RIGHTSHIFT D
+B RIGHTSHIFT D keep carry
+B RIGHTSHIFT E
+B RIGHTSHIFT E keep carry
+B RIGHTSHIFT F
+B RIGHTSHIFT F keep carry
+B RIGHTSHIFT G
+B RIGHTSHIFT G keep carry
+B RIGHTSHIFT H
+B RIGHTSHIFT H keep carry
+C RIGHTSHIFT A
+C RIGHTSHIFT A keep carry
+C RIGHTSHIFT B
+C RIGHTSHIFT B keep carry
+C RIGHTSHIFT C
+C RIGHTSHIFT C keep carry
+C RIGHTSHIFT D
+C RIGHTSHIFT D keep carry
+C RIGHTSHIFT E
+C RIGHTSHIFT E keep carry
+C RIGHTSHIFT F
+C RIGHTSHIFT F keep carry
+C RIGHTSHIFT G
+C RIGHTSHIFT G keep carry
+C RIGHTSHIFT H
+C RIGHTSHIFT H keep carry
+D RIGHTSHIFT A
+D RIGHTSHIFT A keep carry
+D RIGHTSHIFT B
+D RIGHTSHIFT B keep carry
+D RIGHTSHIFT C
+D RIGHTSHIFT C keep carry
+D RIGHTSHIFT D
+D RIGHTSHIFT D keep carry
+D RIGHTSHIFT E
+D RIGHTSHIFT E keep carry
+D RIGHTSHIFT F
+D RIGHTSHIFT F keep carry
+D RIGHTSHIFT G
+D RIGHTSHIFT G keep carry
+D RIGHTSHIFT H
+D RIGHTSHIFT H keep carry
+E RIGHTSHIFT A
+E RIGHTSHIFT A keep carry
+E RIGHTSHIFT B
+E RIGHTSHIFT B keep carry
+E RIGHTSHIFT C
+E RIGHTSHIFT C keep carry
+E RIGHTSHIFT D
+E RIGHTSHIFT D keep carry
+E RIGHTSHIFT E
+E RIGHTSHIFT E keep carry
+E RIGHTSHIFT F
+E RIGHTSHIFT F keep carry
+E RIGHTSHIFT G
+E RIGHTSHIFT G keep carry
+E RIGHTSHIFT H
+E RIGHTSHIFT H keep carry
+F RIGHTSHIFT A
+F RIGHTSHIFT A keep carry
+F RIGHTSHIFT B
+F RIGHTSHIFT B keep carry
+F RIGHTSHIFT C
+F RIGHTSHIFT C keep carry
+F RIGHTSHIFT D
+F RIGHTSHIFT D keep carry
+F RIGHTSHIFT E
+F RIGHTSHIFT E keep carry
+F RIGHTSHIFT F
+F RIGHTSHIFT F keep carry
+F RIGHTSHIFT G
+F RIGHTSHIFT G keep carry
+F RIGHTSHIFT H
+F RIGHTSHIFT H keep carry
+G RIGHTSHIFT A
+G RIGHTSHIFT A keep carry
+G RIGHTSHIFT B
+G RIGHTSHIFT B keep carry
+G RIGHTSHIFT C
+G RIGHTSHIFT C keep carry
+G RIGHTSHIFT D
+G RIGHTSHIFT D keep carry
+G RIGHTSHIFT E
+G RIGHTSHIFT E keep carry
+G RIGHTSHIFT F
+G RIGHTSHIFT F keep carry
+G RIGHTSHIFT G
+G RIGHTSHIFT G keep carry
+G RIGHTSHIFT H
+G RIGHTSHIFT H keep carry
+H RIGHTSHIFT A
+H RIGHTSHIFT A keep carry
+H RIGHTSHIFT B
+H RIGHTSHIFT B keep carry
+H RIGHTSHIFT C
+H RIGHTSHIFT C keep carry
+H RIGHTSHIFT D
+H RIGHTSHIFT D keep carry
+H RIGHTSHIFT E
+H RIGHTSHIFT E keep carry
+H RIGHTSHIFT F
+H RIGHTSHIFT F keep carry
+H RIGHTSHIFT G
+H RIGHTSHIFT G keep carry
+H RIGHTSHIFT H
+H RIGHTSHIFT H keep carry
+X RIGHTSHIFT X
+X RIGHTSHIFT X keep carry
+X RIGHTSHIFT Y
+X RIGHTSHIFT Y keep carry
+X RIGHTSHIFT Z
+X RIGHTSHIFT Z keep carry
+X RIGHTSHIFT W
+X RIGHTSHIFT W keep carry
+Y RIGHTSHIFT X
+Y RIGHTSHIFT X keep carry
+Y RIGHTSHIFT Y
+Y RIGHTSHIFT Y keep carry
+Y RIGHTSHIFT Z
+Y RIGHTSHIFT Z keep carry
+Y RIGHTSHIFT W
+Y RIGHTSHIFT W keep carry
+Z RIGHTSHIFT X
+Z RIGHTSHIFT X keep carry
+Z RIGHTSHIFT Y
+Z RIGHTSHIFT Y keep carry
+Z RIGHTSHIFT Z
+Z RIGHTSHIFT Z keep carry
+Z RIGHTSHIFT W
+Z RIGHTSHIFT W keep carry
+W RIGHTSHIFT X
+W RIGHTSHIFT X keep carry
+W RIGHTSHIFT Y
+W RIGHTSHIFT Y keep carry
+W RIGHTSHIFT Z
+W RIGHTSHIFT Z keep carry
+W RIGHTSHIFT W
+W RIGHTSHIFT W keep carry
+
+### logical_rightshift
+A logical RIGHTSHIFT A
+A logical RIGHTSHIFT A keep carry
+A logical RIGHTSHIFT B
+A logical RIGHTSHIFT B keep carry
+A logical RIGHTSHIFT C
+A logical RIGHTSHIFT C keep carry
+A logical RIGHTSHIFT D
+A logical RIGHTSHIFT D keep carry
+A logical RIGHTSHIFT E
+A logical RIGHTSHIFT E keep carry
+A logical RIGHTSHIFT F
+A logical RIGHTSHIFT F keep carry
+A logical RIGHTSHIFT G
+A logical RIGHTSHIFT G keep carry
+A logical RIGHTSHIFT H
+A logical RIGHTSHIFT H keep carry
+B logical RIGHTSHIFT A
+B logical RIGHTSHIFT A keep carry
+B logical RIGHTSHIFT B
+B logical RIGHTSHIFT B keep carry
+B logical RIGHTSHIFT C
+B logical RIGHTSHIFT C keep carry
+B logical RIGHTSHIFT D
+B logical RIGHTSHIFT D keep carry
+B logical RIGHTSHIFT E
+B logical RIGHTSHIFT E keep carry
+B logical RIGHTSHIFT F
+B logical RIGHTSHIFT F keep carry
+B logical RIGHTSHIFT G
+B logical RIGHTSHIFT G keep carry
+B logical RIGHTSHIFT H
+B logical RIGHTSHIFT H keep carry
+C logical RIGHTSHIFT A
+C logical RIGHTSHIFT A keep carry
+C logical RIGHTSHIFT B
+C logical RIGHTSHIFT B keep carry
+C logical RIGHTSHIFT C
+C logical RIGHTSHIFT C keep carry
+C logical RIGHTSHIFT D
+C logical RIGHTSHIFT D keep carry
+C logical RIGHTSHIFT E
+C logical RIGHTSHIFT E keep carry
+C logical RIGHTSHIFT F
+C logical RIGHTSHIFT F keep carry
+C logical RIGHTSHIFT G
+C logical RIGHTSHIFT G keep carry
+C logical RIGHTSHIFT H
+C logical RIGHTSHIFT H keep carry
+D logical RIGHTSHIFT A
+D logical RIGHTSHIFT A keep carry
+D logical RIGHTSHIFT B
+D logical RIGHTSHIFT B keep carry
+D logical RIGHTSHIFT C
+D logical RIGHTSHIFT C keep carry
+D logical RIGHTSHIFT D
+D logical RIGHTSHIFT D keep carry
+D logical RIGHTSHIFT E
+D logical RIGHTSHIFT E keep carry
+D logical RIGHTSHIFT F
+D logical RIGHTSHIFT F keep carry
+D logical RIGHTSHIFT G
+D logical RIGHTSHIFT G keep carry
+D logical RIGHTSHIFT H
+D logical RIGHTSHIFT H keep carry
+E logical RIGHTSHIFT A
+E logical RIGHTSHIFT A keep carry
+E logical RIGHTSHIFT B
+E logical RIGHTSHIFT B keep carry
+E logical RIGHTSHIFT C
+E logical RIGHTSHIFT C keep carry
+E logical RIGHTSHIFT D
+E logical RIGHTSHIFT D keep carry
+E logical RIGHTSHIFT E
+E logical RIGHTSHIFT E keep carry
+E logical RIGHTSHIFT F
+E logical RIGHTSHIFT F keep carry
+E logical RIGHTSHIFT G
+E logical RIGHTSHIFT G keep carry
+E logical RIGHTSHIFT H
+E logical RIGHTSHIFT H keep carry
+F logical RIGHTSHIFT A
+F logical RIGHTSHIFT A keep carry
+F logical RIGHTSHIFT B
+F logical RIGHTSHIFT B keep carry
+F logical RIGHTSHIFT C
+F logical RIGHTSHIFT C keep carry
+F logical RIGHTSHIFT D
+F logical RIGHTSHIFT D keep carry
+F logical RIGHTSHIFT E
+F logical RIGHTSHIFT E keep carry
+F logical RIGHTSHIFT F
+F logical RIGHTSHIFT F keep carry
+F logical RIGHTSHIFT G
+F logical RIGHTSHIFT G keep carry
+F logical RIGHTSHIFT H
+F logical RIGHTSHIFT H keep carry
+G logical RIGHTSHIFT A
+G logical RIGHTSHIFT A keep carry
+G logical RIGHTSHIFT B
+G logical RIGHTSHIFT B keep carry
+G logical RIGHTSHIFT C
+G logical RIGHTSHIFT C keep carry
+G logical RIGHTSHIFT D
+G logical RIGHTSHIFT D keep carry
+G logical RIGHTSHIFT E
+G logical RIGHTSHIFT E keep carry
+G logical RIGHTSHIFT F
+G logical RIGHTSHIFT F keep carry
+G logical RIGHTSHIFT G
+G logical RIGHTSHIFT G keep carry
+G logical RIGHTSHIFT H
+G logical RIGHTSHIFT H keep carry
+H logical RIGHTSHIFT A
+H logical RIGHTSHIFT A keep carry
+H logical RIGHTSHIFT B
+H logical RIGHTSHIFT B keep carry
+H logical RIGHTSHIFT C
+H logical RIGHTSHIFT C keep carry
+H logical RIGHTSHIFT D
+H logical RIGHTSHIFT D keep carry
+H logical RIGHTSHIFT E
+H logical RIGHTSHIFT E keep carry
+H logical RIGHTSHIFT F
+H logical RIGHTSHIFT F keep carry
+H logical RIGHTSHIFT G
+H logical RIGHTSHIFT G keep carry
+H logical RIGHTSHIFT H
+H logical RIGHTSHIFT H keep carry
+X logical RIGHTSHIFT X
+X logical RIGHTSHIFT X keep carry
+X logical RIGHTSHIFT Y
+X logical RIGHTSHIFT Y keep carry
+X logical RIGHTSHIFT Z
+X logical RIGHTSHIFT Z keep carry
+X logical RIGHTSHIFT W
+X logical RIGHTSHIFT W keep carry
+Y logical RIGHTSHIFT X
+Y logical RIGHTSHIFT X keep carry
+Y logical RIGHTSHIFT Y
+Y logical RIGHTSHIFT Y keep carry
+Y logical RIGHTSHIFT Z
+Y logical RIGHTSHIFT Z keep carry
+Y logical RIGHTSHIFT W
+Y logical RIGHTSHIFT W keep carry
+Z logical RIGHTSHIFT X
+Z logical RIGHTSHIFT X keep carry
+Z logical RIGHTSHIFT Y
+Z logical RIGHTSHIFT Y keep carry
+Z logical RIGHTSHIFT Z
+Z logical RIGHTSHIFT Z keep carry
+Z logical RIGHTSHIFT W
+Z logical RIGHTSHIFT W keep carry
+W logical RIGHTSHIFT X
+W logical RIGHTSHIFT X keep carry
+W logical RIGHTSHIFT Y
+W logical RIGHTSHIFT Y keep carry
+W logical RIGHTSHIFT Z
+W logical RIGHTSHIFT Z keep carry
+W logical RIGHTSHIFT W
+W logical RIGHTSHIFT W keep carry
+
+## carry_step
+### leftshift
+A LEFTSHIFT 1 use carry
+A LEFTSHIFT 1 keep and use carry
+B LEFTSHIFT 1 use carry
+B LEFTSHIFT 1 keep and use carry
+C LEFTSHIFT 1 use carry
+C LEFTSHIFT 1 keep and use carry
+D LEFTSHIFT 1 use carry
+D LEFTSHIFT 1 keep and use carry
+E LEFTSHIFT 1 use carry
+E LEFTSHIFT 1 keep and use carry
+F LEFTSHIFT 1 use carry
+F LEFTSHIFT 1 keep and use carry
+G LEFTSHIFT 1 use carry
+G LEFTSHIFT 1 keep and use carry
+H LEFTSHIFT 1 use carry
+H LEFTSHIFT 1 keep and use carry
+X LEFTSHIFT 1 use carry
+X LEFTSHIFT 1 keep and use carry
+Y LEFTSHIFT 1 use carry
+Y LEFTSHIFT 1 keep and use carry
+Z LEFTSHIFT 1 use carry
+Z LEFTSHIFT 1 keep and use carry
+W LEFTSHIFT 1 use carry
+W LEFTSHIFT 1 keep and use carry
+
+### rightshift
+A RIGHTSHIFT 1 use carry
+A RIGHTSHIFT 1 keep and use carry
+B RIGHTSHIFT 1 use carry
+B RIGHTSHIFT 1 keep and use carry
+C RIGHTSHIFT 1 use carry
+C RIGHTSHIFT 1 keep and use carry
+D RIGHTSHIFT 1 use carry
+D RIGHTSHIFT 1 keep and use carry
+E RIGHTSHIFT 1 use carry
+E RIGHTSHIFT 1 keep and use carry
+F RIGHTSHIFT 1 use carry
+F RIGHTSHIFT 1 keep and use carry
+G RIGHTSHIFT 1 use carry
+G RIGHTSHIFT 1 keep and use carry
+H RIGHTSHIFT 1 use carry
+H RIGHTSHIFT 1 keep and use carry
+X RIGHTSHIFT 1 use carry
+X RIGHTSHIFT 1 keep and use carry
+Y RIGHTSHIFT 1 use carry
+Y RIGHTSHIFT 1 keep and use carry
+Z RIGHTSHIFT 1 use carry
+Z RIGHTSHIFT 1 keep and use carry
+W RIGHTSHIFT 1 use carry
+W RIGHTSHIFT 1 keep and use carry
+
+### logical_rightshift
+A logical RIGHTSHIFT 1 use carry
+A logical RIGHTSHIFT 1 keep and use carry
+B logical RIGHTSHIFT 1 use carry
+B logical RIGHTSHIFT 1 keep and use carry
+C logical RIGHTSHIFT 1 use carry
+C logical RIGHTSHIFT 1 keep and use carry
+D logical RIGHTSHIFT 1 use carry
+D logical RIGHTSHIFT 1 keep and use carry
+E logical RIGHTSHIFT 1 use carry
+E logical RIGHTSHIFT 1 keep and use carry
+F logical RIGHTSHIFT 1 use carry
+F logical RIGHTSHIFT 1 keep and use carry
+G logical RIGHTSHIFT 1 use carry
+G logical RIGHTSHIFT 1 keep and use carry
+H logical RIGHTSHIFT 1 use carry
+H logical RIGHTSHIFT 1 keep and use carry
+X logical RIGHTSHIFT 1 use carry
+X logical RIGHTSHIFT 1 keep and use carry
+Y logical RIGHTSHIFT 1 use carry
+Y logical RIGHTSHIFT 1 keep and use carry
+Z logical RIGHTSHIFT 1 use carry
+Z logical RIGHTSHIFT 1 keep and use carry
+W logical RIGHTSHIFT 1 use carry
+W logical RIGHTSHIFT 1 keep and use carry
+
+# ROTATE
+## rotate_reg_reg
+### leftrotate
+A LEFTROTATE A
+A LEFTROTATE B
+A LEFTROTATE C
+A LEFTROTATE D
+A LEFTROTATE E
+A LEFTROTATE F
+A LEFTROTATE G
+A LEFTROTATE H
+B LEFTROTATE A
+B LEFTROTATE B
+B LEFTROTATE C
+B LEFTROTATE D
+B LEFTROTATE E
+B LEFTROTATE F
+B LEFTROTATE G
+B LEFTROTATE H
+C LEFTROTATE A
+C LEFTROTATE B
+C LEFTROTATE C
+C LEFTROTATE D
+C LEFTROTATE E
+C LEFTROTATE F
+C LEFTROTATE G
+C LEFTROTATE H
+D LEFTROTATE A
+D LEFTROTATE B
+D LEFTROTATE C
+D LEFTROTATE D
+D LEFTROTATE E
+D LEFTROTATE F
+D LEFTROTATE G
+D LEFTROTATE H
+E LEFTROTATE A
+E LEFTROTATE B
+E LEFTROTATE C
+E LEFTROTATE D
+E LEFTROTATE E
+E LEFTROTATE F
+E LEFTROTATE G
+E LEFTROTATE H
+F LEFTROTATE A
+F LEFTROTATE B
+F LEFTROTATE C
+F LEFTROTATE D
+F LEFTROTATE E
+F LEFTROTATE F
+F LEFTROTATE G
+F LEFTROTATE H
+G LEFTROTATE A
+G LEFTROTATE B
+G LEFTROTATE C
+G LEFTROTATE D
+G LEFTROTATE E
+G LEFTROTATE F
+G LEFTROTATE G
+G LEFTROTATE H
+H LEFTROTATE A
+H LEFTROTATE B
+H LEFTROTATE C
+H LEFTROTATE D
+H LEFTROTATE E
+H LEFTROTATE F
+H LEFTROTATE G
+H LEFTROTATE H
+X LEFTROTATE X
+X LEFTROTATE Y
+X LEFTROTATE Z
+X LEFTROTATE W
+Y LEFTROTATE X
+Y LEFTROTATE Y
+Y LEFTROTATE Z
+Y LEFTROTATE W
+Z LEFTROTATE X
+Z LEFTROTATE Y
+Z LEFTROTATE Z
+Z LEFTROTATE W
+W LEFTROTATE X
+W LEFTROTATE Y
+W LEFTROTATE Z
+W LEFTROTATE W
+
+### rightrotate
+A RIGHTROTATE A
+A RIGHTROTATE B
+A RIGHTROTATE C
+A RIGHTROTATE D
+A RIGHTROTATE E
+A RIGHTROTATE F
+A RIGHTROTATE G
+A RIGHTROTATE H
+B RIGHTROTATE A
+B RIGHTROTATE B
+B RIGHTROTATE C
+B RIGHTROTATE D
+B RIGHTROTATE E
+B RIGHTROTATE F
+B RIGHTROTATE G
+B RIGHTROTATE H
+C RIGHTROTATE A
+C RIGHTROTATE B
+C RIGHTROTATE C
+C RIGHTROTATE D
+C RIGHTROTATE E
+C RIGHTROTATE F
+C RIGHTROTATE G
+C RIGHTROTATE H
+D RIGHTROTATE A
+D RIGHTROTATE B
+D RIGHTROTATE C
+D RIGHTROTATE D
+D RIGHTROTATE E
+D RIGHTROTATE F
+D RIGHTROTATE G
+D RIGHTROTATE H
+E RIGHTROTATE A
+E RIGHTROTATE B
+E RIGHTROTATE C
+E RIGHTROTATE D
+E RIGHTROTATE E
+E RIGHTROTATE F
+E RIGHTROTATE G
+E RIGHTROTATE H
+F RIGHTROTATE A
+F RIGHTROTATE B
+F RIGHTROTATE C
+F RIGHTROTATE D
+F RIGHTROTATE E
+F RIGHTROTATE F
+F RIGHTROTATE G
+F RIGHTROTATE H
+G RIGHTROTATE A
+G RIGHTROTATE B
+G RIGHTROTATE C
+G RIGHTROTATE D
+G RIGHTROTATE E
+G RIGHTROTATE F
+G RIGHTROTATE G
+G RIGHTROTATE H
+H RIGHTROTATE A
+H RIGHTROTATE B
+H RIGHTROTATE C
+H RIGHTROTATE D
+H RIGHTROTATE E
+H RIGHTROTATE F
+H RIGHTROTATE G
+H RIGHTROTATE H
+X RIGHTROTATE X
+X RIGHTROTATE Y
+X RIGHTROTATE Z
+X RIGHTROTATE W
+Y RIGHTROTATE X
+Y RIGHTROTATE Y
+Y RIGHTROTATE Z
+Y RIGHTROTATE W
+Z RIGHTROTATE X
+Z RIGHTROTATE Y
+Z RIGHTROTATE Z
+Z RIGHTROTATE W
+W RIGHTROTATE X
+W RIGHTROTATE Y
+W RIGHTROTATE Z
+W RIGHTROTATE W
+
+# JABS
+## jump_abs
+### canonical
+JUMP <addr24>
+
+# JREG
+## jump_reg
+### canonical
+JUMP X
+JUMP Y
+JUMP Z
+JUMP W
+
+# JCOND
+## jump_conditional_relative
+### equal
+JUMP <off16> when A EQUAL A
+JUMP <off16> when A EQUAL B
+JUMP <off16> when A EQUAL C
+JUMP <off16> when A EQUAL D
+JUMP <off16> when A EQUAL E
+JUMP <off16> when A EQUAL F
+JUMP <off16> when A EQUAL G
+JUMP <off16> when A EQUAL H
+JUMP <off16> when B EQUAL A
+JUMP <off16> when B EQUAL B
+JUMP <off16> when B EQUAL C
+JUMP <off16> when B EQUAL D
+JUMP <off16> when B EQUAL E
+JUMP <off16> when B EQUAL F
+JUMP <off16> when B EQUAL G
+JUMP <off16> when B EQUAL H
+JUMP <off16> when C EQUAL A
+JUMP <off16> when C EQUAL B
+JUMP <off16> when C EQUAL C
+JUMP <off16> when C EQUAL D
+JUMP <off16> when C EQUAL E
+JUMP <off16> when C EQUAL F
+JUMP <off16> when C EQUAL G
+JUMP <off16> when C EQUAL H
+JUMP <off16> when D EQUAL A
+JUMP <off16> when D EQUAL B
+JUMP <off16> when D EQUAL C
+JUMP <off16> when D EQUAL D
+JUMP <off16> when D EQUAL E
+JUMP <off16> when D EQUAL F
+JUMP <off16> when D EQUAL G
+JUMP <off16> when D EQUAL H
+JUMP <off16> when E EQUAL A
+JUMP <off16> when E EQUAL B
+JUMP <off16> when E EQUAL C
+JUMP <off16> when E EQUAL D
+JUMP <off16> when E EQUAL E
+JUMP <off16> when E EQUAL F
+JUMP <off16> when E EQUAL G
+JUMP <off16> when E EQUAL H
+JUMP <off16> when F EQUAL A
+JUMP <off16> when F EQUAL B
+JUMP <off16> when F EQUAL C
+JUMP <off16> when F EQUAL D
+JUMP <off16> when F EQUAL E
+JUMP <off16> when F EQUAL F
+JUMP <off16> when F EQUAL G
+JUMP <off16> when F EQUAL H
+JUMP <off16> when G EQUAL A
+JUMP <off16> when G EQUAL B
+JUMP <off16> when G EQUAL C
+JUMP <off16> when G EQUAL D
+JUMP <off16> when G EQUAL E
+JUMP <off16> when G EQUAL F
+JUMP <off16> when G EQUAL G
+JUMP <off16> when G EQUAL H
+JUMP <off16> when H EQUAL A
+JUMP <off16> when H EQUAL B
+JUMP <off16> when H EQUAL C
+JUMP <off16> when H EQUAL D
+JUMP <off16> when H EQUAL E
+JUMP <off16> when H EQUAL F
+JUMP <off16> when H EQUAL G
+JUMP <off16> when H EQUAL H
+JUMP <off16> when X EQUAL X
+JUMP <off16> when X EQUAL Y
+JUMP <off16> when X EQUAL Z
+JUMP <off16> when X EQUAL W
+JUMP <off16> when Y EQUAL X
+JUMP <off16> when Y EQUAL Y
+JUMP <off16> when Y EQUAL Z
+JUMP <off16> when Y EQUAL W
+JUMP <off16> when Z EQUAL X
+JUMP <off16> when Z EQUAL Y
+JUMP <off16> when Z EQUAL Z
+JUMP <off16> when Z EQUAL W
+JUMP <off16> when W EQUAL X
+JUMP <off16> when W EQUAL Y
+JUMP <off16> when W EQUAL Z
+JUMP <off16> when W EQUAL W
+
+### less_than
+JUMP <off16> when A LESS than A
+JUMP <off16> when A LESS than B
+JUMP <off16> when A LESS than C
+JUMP <off16> when A LESS than D
+JUMP <off16> when A LESS than E
+JUMP <off16> when A LESS than F
+JUMP <off16> when A LESS than G
+JUMP <off16> when A LESS than H
+JUMP <off16> when B LESS than A
+JUMP <off16> when B LESS than B
+JUMP <off16> when B LESS than C
+JUMP <off16> when B LESS than D
+JUMP <off16> when B LESS than E
+JUMP <off16> when B LESS than F
+JUMP <off16> when B LESS than G
+JUMP <off16> when B LESS than H
+JUMP <off16> when C LESS than A
+JUMP <off16> when C LESS than B
+JUMP <off16> when C LESS than C
+JUMP <off16> when C LESS than D
+JUMP <off16> when C LESS than E
+JUMP <off16> when C LESS than F
+JUMP <off16> when C LESS than G
+JUMP <off16> when C LESS than H
+JUMP <off16> when D LESS than A
+JUMP <off16> when D LESS than B
+JUMP <off16> when D LESS than C
+JUMP <off16> when D LESS than D
+JUMP <off16> when D LESS than E
+JUMP <off16> when D LESS than F
+JUMP <off16> when D LESS than G
+JUMP <off16> when D LESS than H
+JUMP <off16> when E LESS than A
+JUMP <off16> when E LESS than B
+JUMP <off16> when E LESS than C
+JUMP <off16> when E LESS than D
+JUMP <off16> when E LESS than E
+JUMP <off16> when E LESS than F
+JUMP <off16> when E LESS than G
+JUMP <off16> when E LESS than H
+JUMP <off16> when F LESS than A
+JUMP <off16> when F LESS than B
+JUMP <off16> when F LESS than C
+JUMP <off16> when F LESS than D
+JUMP <off16> when F LESS than E
+JUMP <off16> when F LESS than F
+JUMP <off16> when F LESS than G
+JUMP <off16> when F LESS than H
+JUMP <off16> when G LESS than A
+JUMP <off16> when G LESS than B
+JUMP <off16> when G LESS than C
+JUMP <off16> when G LESS than D
+JUMP <off16> when G LESS than E
+JUMP <off16> when G LESS than F
+JUMP <off16> when G LESS than G
+JUMP <off16> when G LESS than H
+JUMP <off16> when H LESS than A
+JUMP <off16> when H LESS than B
+JUMP <off16> when H LESS than C
+JUMP <off16> when H LESS than D
+JUMP <off16> when H LESS than E
+JUMP <off16> when H LESS than F
+JUMP <off16> when H LESS than G
+JUMP <off16> when H LESS than H
+JUMP <off16> when X LESS than X
+JUMP <off16> when X LESS than Y
+JUMP <off16> when X LESS than Z
+JUMP <off16> when X LESS than W
+JUMP <off16> when Y LESS than X
+JUMP <off16> when Y LESS than Y
+JUMP <off16> when Y LESS than Z
+JUMP <off16> when Y LESS than W
+JUMP <off16> when Z LESS than X
+JUMP <off16> when Z LESS than Y
+JUMP <off16> when Z LESS than Z
+JUMP <off16> when Z LESS than W
+JUMP <off16> when W LESS than X
+JUMP <off16> when W LESS than Y
+JUMP <off16> when W LESS than Z
+JUMP <off16> when W LESS than W
+
+### below
+JUMP <off16> when A BELOW A
+JUMP <off16> when A BELOW B
+JUMP <off16> when A BELOW C
+JUMP <off16> when A BELOW D
+JUMP <off16> when A BELOW E
+JUMP <off16> when A BELOW F
+JUMP <off16> when A BELOW G
+JUMP <off16> when A BELOW H
+JUMP <off16> when B BELOW A
+JUMP <off16> when B BELOW B
+JUMP <off16> when B BELOW C
+JUMP <off16> when B BELOW D
+JUMP <off16> when B BELOW E
+JUMP <off16> when B BELOW F
+JUMP <off16> when B BELOW G
+JUMP <off16> when B BELOW H
+JUMP <off16> when C BELOW A
+JUMP <off16> when C BELOW B
+JUMP <off16> when C BELOW C
+JUMP <off16> when C BELOW D
+JUMP <off16> when C BELOW E
+JUMP <off16> when C BELOW F
+JUMP <off16> when C BELOW G
+JUMP <off16> when C BELOW H
+JUMP <off16> when D BELOW A
+JUMP <off16> when D BELOW B
+JUMP <off16> when D BELOW C
+JUMP <off16> when D BELOW D
+JUMP <off16> when D BELOW E
+JUMP <off16> when D BELOW F
+JUMP <off16> when D BELOW G
+JUMP <off16> when D BELOW H
+JUMP <off16> when E BELOW A
+JUMP <off16> when E BELOW B
+JUMP <off16> when E BELOW C
+JUMP <off16> when E BELOW D
+JUMP <off16> when E BELOW E
+JUMP <off16> when E BELOW F
+JUMP <off16> when E BELOW G
+JUMP <off16> when E BELOW H
+JUMP <off16> when F BELOW A
+JUMP <off16> when F BELOW B
+JUMP <off16> when F BELOW C
+JUMP <off16> when F BELOW D
+JUMP <off16> when F BELOW E
+JUMP <off16> when F BELOW F
+JUMP <off16> when F BELOW G
+JUMP <off16> when F BELOW H
+JUMP <off16> when G BELOW A
+JUMP <off16> when G BELOW B
+JUMP <off16> when G BELOW C
+JUMP <off16> when G BELOW D
+JUMP <off16> when G BELOW E
+JUMP <off16> when G BELOW F
+JUMP <off16> when G BELOW G
+JUMP <off16> when G BELOW H
+JUMP <off16> when H BELOW A
+JUMP <off16> when H BELOW B
+JUMP <off16> when H BELOW C
+JUMP <off16> when H BELOW D
+JUMP <off16> when H BELOW E
+JUMP <off16> when H BELOW F
+JUMP <off16> when H BELOW G
+JUMP <off16> when H BELOW H
+JUMP <off16> when X BELOW X
+JUMP <off16> when X BELOW Y
+JUMP <off16> when X BELOW Z
+JUMP <off16> when X BELOW W
+JUMP <off16> when Y BELOW X
+JUMP <off16> when Y BELOW Y
+JUMP <off16> when Y BELOW Z
+JUMP <off16> when Y BELOW W
+JUMP <off16> when Z BELOW X
+JUMP <off16> when Z BELOW Y
+JUMP <off16> when Z BELOW Z
+JUMP <off16> when Z BELOW W
+JUMP <off16> when W BELOW X
+JUMP <off16> when W BELOW Y
+JUMP <off16> when W BELOW Z
+JUMP <off16> when W BELOW W
+
+### check
+JUMP <off16> when A CHECK A
+JUMP <off16> when A CHECK B
+JUMP <off16> when A CHECK C
+JUMP <off16> when A CHECK D
+JUMP <off16> when A CHECK E
+JUMP <off16> when A CHECK F
+JUMP <off16> when A CHECK G
+JUMP <off16> when A CHECK H
+JUMP <off16> when B CHECK A
+JUMP <off16> when B CHECK B
+JUMP <off16> when B CHECK C
+JUMP <off16> when B CHECK D
+JUMP <off16> when B CHECK E
+JUMP <off16> when B CHECK F
+JUMP <off16> when B CHECK G
+JUMP <off16> when B CHECK H
+JUMP <off16> when C CHECK A
+JUMP <off16> when C CHECK B
+JUMP <off16> when C CHECK C
+JUMP <off16> when C CHECK D
+JUMP <off16> when C CHECK E
+JUMP <off16> when C CHECK F
+JUMP <off16> when C CHECK G
+JUMP <off16> when C CHECK H
+JUMP <off16> when D CHECK A
+JUMP <off16> when D CHECK B
+JUMP <off16> when D CHECK C
+JUMP <off16> when D CHECK D
+JUMP <off16> when D CHECK E
+JUMP <off16> when D CHECK F
+JUMP <off16> when D CHECK G
+JUMP <off16> when D CHECK H
+JUMP <off16> when E CHECK A
+JUMP <off16> when E CHECK B
+JUMP <off16> when E CHECK C
+JUMP <off16> when E CHECK D
+JUMP <off16> when E CHECK E
+JUMP <off16> when E CHECK F
+JUMP <off16> when E CHECK G
+JUMP <off16> when E CHECK H
+JUMP <off16> when F CHECK A
+JUMP <off16> when F CHECK B
+JUMP <off16> when F CHECK C
+JUMP <off16> when F CHECK D
+JUMP <off16> when F CHECK E
+JUMP <off16> when F CHECK F
+JUMP <off16> when F CHECK G
+JUMP <off16> when F CHECK H
+JUMP <off16> when G CHECK A
+JUMP <off16> when G CHECK B
+JUMP <off16> when G CHECK C
+JUMP <off16> when G CHECK D
+JUMP <off16> when G CHECK E
+JUMP <off16> when G CHECK F
+JUMP <off16> when G CHECK G
+JUMP <off16> when G CHECK H
+JUMP <off16> when H CHECK A
+JUMP <off16> when H CHECK B
+JUMP <off16> when H CHECK C
+JUMP <off16> when H CHECK D
+JUMP <off16> when H CHECK E
+JUMP <off16> when H CHECK F
+JUMP <off16> when H CHECK G
+JUMP <off16> when H CHECK H
+JUMP <off16> when X CHECK X
+JUMP <off16> when X CHECK Y
+JUMP <off16> when X CHECK Z
+JUMP <off16> when X CHECK W
+JUMP <off16> when Y CHECK X
+JUMP <off16> when Y CHECK Y
+JUMP <off16> when Y CHECK Z
+JUMP <off16> when Y CHECK W
+JUMP <off16> when Z CHECK X
+JUMP <off16> when Z CHECK Y
+JUMP <off16> when Z CHECK Z
+JUMP <off16> when Z CHECK W
+JUMP <off16> when W CHECK X
+JUMP <off16> when W CHECK Y
+JUMP <off16> when W CHECK Z
+JUMP <off16> when W CHECK W

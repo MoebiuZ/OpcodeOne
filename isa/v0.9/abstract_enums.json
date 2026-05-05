@@ -1,0 +1,77 @@
+{
+  "plus_modifier": {
+    "absent": 0,
+    "keep carry": 1,
+    "use carry": 2,
+    "keep and use carry": 3
+  },
+  "minus_modifier": {
+    "absent": 0,
+    "keep borrow": 1,
+    "use borrow": 2,
+    "keep and use borrow": 3
+  },
+  "movecopy_op": {
+    "COPY": 0,
+    "MOVE": 1,
+    "SWAP": 2,
+    "SPECIAL": 3
+  },
+  "movecopy_special": {
+    "K": 0,
+    "SP": 1,
+    "PC": 2
+  },
+  "unary_op": {
+    "NEGATE": 0,
+    "ABSOLUTE": 1
+  },
+  "div_op": {
+    "DIV": 0,
+    "MODULE": 1
+  },
+  "logic_subop": {
+    "AND": 0,
+    "OR": 1,
+    "XOR": 2,
+    "NOT": 3
+  },
+  "logic_subop_no_not": {
+    "AND": 0,
+    "OR": 1,
+    "XOR": 2
+  },
+  "bit_subop": {
+    "TESTBIT": 0,
+    "SETBIT": 1,
+    "CLEARBIT": 2,
+    "TOGGLEBIT": 3
+  },
+  "minmax_op": {
+    "MIN": 0,
+    "MAX": 1
+  },
+  "rotate_dir": {
+    "LEFTROTATE": 0,
+    "RIGHTROTATE": 1
+  },
+  "shift_subop": {
+    "LEFTSHIFT": 0,
+    "RIGHTSHIFT": 1,
+    "logical RIGHTSHIFT": 2
+  },
+  "shift_reg_modifier": {
+    "absent": 0,
+    "keep carry": 1
+  },
+  "shift_carry_modifier": {
+    "use carry": 0,
+    "keep and use carry": 1
+  },
+  "jcond_condition": {
+    "EQUAL": 1,
+    "LESS than": 2,
+    "BELOW": 3,
+    "CHECK": 4
+  }
+}

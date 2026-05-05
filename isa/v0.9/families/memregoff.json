@@ -1,0 +1,1229 @@
+{
+  "name": "MEMREGOFF",
+  "opcode_ref": "MEMREGOFF",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "take_indirect_byte",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_indirect_byte",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "literal",
+                "value": "byte"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads one byte from memory at reg24 into the low byte of reg16 and zero-extends the result."
+      }
+    },
+    {
+      "name": "take_indirect_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_indirect_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads two bytes from memory at reg24 into reg16."
+      }
+    },
+    {
+      "name": "take_indirect_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_indirect_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 2,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads three bytes from memory at reg24 into reg24."
+      }
+    },
+    {
+      "name": "take_regoff_byte",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_regoff_byte",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "literal",
+                "value": "byte"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads one byte from memory at reg24 plus signed offset into the low byte of reg16 and zero-extends the result."
+      }
+    },
+    {
+      "name": "take_regoff_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_regoff_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads two bytes from memory at reg24 plus signed offset into reg16."
+      }
+    },
+    {
+      "name": "take_regoff_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "take_regoff_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "TAKE"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "from"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 2,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads three bytes from memory at reg24 plus signed offset into reg24."
+      }
+    },
+    {
+      "name": "give_indirect_byte",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_indirect_byte",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "literal",
+                "value": "byte"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores the low byte of reg16 into memory at reg24."
+      }
+    },
+    {
+      "name": "give_indirect_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_indirect_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores two bytes from reg16 into memory at reg24."
+      }
+    },
+    {
+      "name": "give_indirect_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_indirect_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 2,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores three bytes from reg24 into memory at reg24."
+      }
+    },
+    {
+      "name": "give_regoff_byte",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_regoff_byte",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "literal",
+                "value": "byte"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores the low byte of reg16 into memory at reg24 plus signed offset."
+      }
+    },
+    {
+      "name": "give_regoff_reg16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_regoff_reg16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores two bytes from reg16 into memory at reg24 plus signed offset."
+      }
+    },
+    {
+      "name": "give_regoff_reg24",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "give_regoff_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "GIVE"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "mem",
+                "slot_kind": "operand",
+                "operand_kind_ref": "mem_reg24_off16"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "fixed",
+              "value": 2,
+              "msb": 9,
+              "lsb": 8
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.mem.base",
+              "msb": 3,
+              "lsb": 2
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 1,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.mem.offset",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stores three bytes from reg24 into memory at reg24 plus signed offset."
+      }
+    }
+  ]
+}

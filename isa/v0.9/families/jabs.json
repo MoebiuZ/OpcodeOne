@@ -1,0 +1,87 @@
+{
+  "name": "JABS",
+  "opcode_ref": "JABS",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "jump_abs",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "jump_abs",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "JUMP"
+              },
+              {
+                "kind": "slot",
+                "name": "addr",
+                "slot_kind": "operand",
+                "operand_kind_ref": "addr24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {
+        "addr_hi": {
+          "type": "bit_slice",
+          "source": "sequence.addr",
+          "msb": 23,
+          "lsb": 16
+        },
+        "addr_lo": {
+          "type": "bit_slice",
+          "source": "sequence.addr",
+          "msb": 15,
+          "lsb": 0
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 8
+            },
+            {
+              "name": "ADDR_HI",
+              "kind": "slot",
+              "source": "derived.addr_hi",
+              "msb": 7,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "ADDR_LO",
+              "kind": "slot",
+              "source": "derived.addr_lo",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Unconditional absolute jump."
+      }
+    }
+  ]
+}

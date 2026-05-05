@@ -1,0 +1,29 @@
+{
+  "family": "FLOW",
+  "entries": [
+    {
+      "form": "enter_addr",
+      "pattern": "enter_addr",
+      "template": "ENTER <target>",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "enter_reg24",
+      "pattern": "enter_reg24",
+      "template": "ENTER <target>",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "leave",
+      "pattern": "leave",
+      "template": "LEAVE",
+      "relation": "same-as-canonical"
+    },
+    {
+      "form": "leave_interrupt",
+      "pattern": "leave_interrupt",
+      "template": "LEAVE.INT",
+      "relation": "keyword-folded-into-suffix"
+    }
+  ]
+}

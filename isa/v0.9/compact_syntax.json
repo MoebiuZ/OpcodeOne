@@ -1,0 +1,453 @@
+{
+  "surface_name": "compact",
+  "status": "documented-non-normative",
+  "normative": false,
+  "notes": [
+    "Compact syntax templates are stored as per-family overlays, and the generated ISA bundle expands them into exhaustive coverage for the current closed canonical patterns.",
+    "Compact syntax is an optional assembly surface and does not change ISA semantics.",
+    "The normative ISA reference remains canonical syntax only.",
+    "The reference assembler currently accepts canonical syntax only.",
+    "Tools may expose this surface as sugar, aliases, or future front-end syntax.",
+    "The compact overlay files are non-normative source metadata and do not change canonical ISA semantics."
+  ],
+  "general_rules": [
+    "Omit helper words such as 'to', 'from', and 'into'.",
+    "Use commas between operands.",
+    "In TAKE/GIVE byte forms, fold the explicit 'byte' marker into the mnemonic suffix '.B'.",
+    "For ALU, logic, and shift/rotate forms, place the mnemonic first.",
+    "Express modifiers through compact suffixes."
+  ],
+  "suffixes": [
+    {
+      "suffix": ".U",
+      "meaning": "unsigned"
+    },
+    {
+      "suffix": ".L",
+      "meaning": "logical"
+    },
+    {
+      "suffix": ".KC",
+      "meaning": "keep carry"
+    },
+    {
+      "suffix": ".UC",
+      "meaning": "use carry"
+    },
+    {
+      "suffix": ".KUC",
+      "meaning": "keep and use carry"
+    },
+    {
+      "suffix": ".KB",
+      "meaning": "keep borrow"
+    },
+    {
+      "suffix": ".UB",
+      "meaning": "use borrow"
+    },
+    {
+      "suffix": ".KUB",
+      "meaning": "keep and use borrow"
+    },
+    {
+      "suffix": ".KH",
+      "meaning": "keep high"
+    },
+    {
+      "suffix": ".EQ",
+      "meaning": "EQUAL"
+    },
+    {
+      "suffix": ".LT",
+      "meaning": "LESS than"
+    },
+    {
+      "suffix": ".BLW",
+      "meaning": "BELOW"
+    },
+    {
+      "suffix": ".CHK",
+      "meaning": "CHECK"
+    }
+  ],
+  "constraints": [
+    "The base ISA does not define INCREMENT or DECREMENT, so compact syntax does not define INC or DEC as base instructions.",
+    "The base ISA does not define unconditional relative JMP off16; a tool may still offer it as a pseudoinstruction outside this documented base."
+  ],
+  "sections": [
+    {
+      "name": "memory",
+      "examples": [
+        {
+          "canonical": "TAKE byte A from [X]",
+          "compact": "TAKE.B A,[X]"
+        },
+        {
+          "canonical": "TAKE A from [Y+4]",
+          "compact": "TAKE A,[Y+4]"
+        },
+        {
+          "canonical": "TAKE X from [0x123456]",
+          "compact": "TAKE X,[0x123456]"
+        },
+        {
+          "canonical": "GIVE byte B to [X]",
+          "compact": "GIVE.B B,[X]"
+        },
+        {
+          "canonical": "GIVE C to [Y-2]",
+          "compact": "GIVE C,[Y-2]"
+        },
+        {
+          "canonical": "GIVE Z to [0x80FF20]",
+          "compact": "GIVE Z,[0x80FF20]"
+        }
+      ]
+    },
+    {
+      "name": "movement_and_load",
+      "examples": [
+        {
+          "canonical": "COPY A into B",
+          "compact": "COPY A,B"
+        },
+        {
+          "canonical": "COPY A into X",
+          "compact": "COPY A,X"
+        },
+        {
+          "canonical": "COPY Z into C",
+          "compact": "COPY Z,C"
+        },
+        {
+          "canonical": "MOVE A to B",
+          "compact": "MOVE A,B"
+        },
+        {
+          "canonical": "MOVE X to Y",
+          "compact": "MOVE X,Y"
+        },
+        {
+          "canonical": "SWAP A with B",
+          "compact": "SWAP A,B"
+        },
+        {
+          "canonical": "SWAP X with Y",
+          "compact": "SWAP X,Y"
+        },
+        {
+          "canonical": "SET A to 42",
+          "compact": "SET A,42"
+        },
+        {
+          "canonical": "SET X to 0x1234",
+          "compact": "SET X,0x1234"
+        }
+      ]
+    },
+    {
+      "name": "stack_and_flow",
+      "examples": [
+        {
+          "canonical": "PLACE A",
+          "compact": "PLACE A"
+        },
+        {
+          "canonical": "LIFT X",
+          "compact": "LIFT X"
+        },
+        {
+          "canonical": "ENTER 0x004000",
+          "compact": "ENTER 0x004000"
+        },
+        {
+          "canonical": "ENTER X",
+          "compact": "ENTER X"
+        },
+        {
+          "canonical": "LEAVE",
+          "compact": "LEAVE"
+        }
+      ]
+    },
+    {
+      "name": "plus_and_minus",
+      "examples": [
+        {
+          "canonical": "A PLUS B",
+          "compact": "PLUS A,B"
+        },
+        {
+          "canonical": "A PLUS 12",
+          "compact": "PLUS A,12"
+        },
+        {
+          "canonical": "A PLUS B keep carry",
+          "compact": "PLUS.KC A,B"
+        },
+        {
+          "canonical": "A PLUS B use carry",
+          "compact": "PLUS.UC A,B"
+        },
+        {
+          "canonical": "A PLUS B keep and use carry",
+          "compact": "PLUS.KUC A,B"
+        },
+        {
+          "canonical": "A MINUS B",
+          "compact": "MINUS A,B"
+        },
+        {
+          "canonical": "A MINUS 3",
+          "compact": "MINUS A,3"
+        },
+        {
+          "canonical": "A MINUS B keep borrow",
+          "compact": "MINUS.KB A,B"
+        },
+        {
+          "canonical": "A MINUS B use borrow",
+          "compact": "MINUS.UB A,B"
+        },
+        {
+          "canonical": "A MINUS B keep and use borrow",
+          "compact": "MINUS.KUB A,B"
+        }
+      ]
+    },
+    {
+      "name": "times_div_mod",
+      "examples": [
+        {
+          "canonical": "A TIMES B",
+          "compact": "TIMES A,B"
+        },
+        {
+          "canonical": "A TIMES B unsigned",
+          "compact": "TIMES.U A,B"
+        },
+        {
+          "canonical": "A TIMES B keep high",
+          "compact": "TIMES.KH A,B"
+        },
+        {
+          "canonical": "A TIMES B unsigned keep high",
+          "compact": "TIMES.U.KH A,B"
+        },
+        {
+          "canonical": "A DIV B",
+          "compact": "DIV A,B"
+        },
+        {
+          "canonical": "A DIV B unsigned",
+          "compact": "DIV.U A,B"
+        },
+        {
+          "canonical": "A MODULE B",
+          "compact": "MOD A,B"
+        },
+        {
+          "canonical": "A MODULE B unsigned",
+          "compact": "MOD.U A,B"
+        }
+      ]
+    },
+    {
+      "name": "unary_logic_bit_minmax",
+      "examples": [
+        {
+          "canonical": "NEGATE B",
+          "compact": "NEG B"
+        },
+        {
+          "canonical": "ABSOLUTE B",
+          "compact": "ABS B"
+        },
+        {
+          "canonical": "A AND B",
+          "compact": "AND A,B"
+        },
+        {
+          "canonical": "A OR B",
+          "compact": "OR A,B"
+        },
+        {
+          "canonical": "A XOR B",
+          "compact": "XOR A,B"
+        },
+        {
+          "canonical": "NOT A",
+          "compact": "NOT A"
+        },
+        {
+          "canonical": "A TESTBIT 3",
+          "compact": "BTST A,3"
+        },
+        {
+          "canonical": "A SETBIT 3",
+          "compact": "BSET A,3"
+        },
+        {
+          "canonical": "A CLEARBIT 3",
+          "compact": "BCLR A,3"
+        },
+        {
+          "canonical": "A TOGGLEBIT 3",
+          "compact": "BTGL A,3"
+        },
+        {
+          "canonical": "MAX of A B unsigned",
+          "compact": "MAX.U A,B"
+        },
+        {
+          "canonical": "MIN of A B",
+          "compact": "MIN A,B"
+        }
+      ]
+    },
+    {
+      "name": "shift_and_rotate",
+      "examples": [
+        {
+          "canonical": "A LEFTSHIFT B",
+          "compact": "LSH A,B"
+        },
+        {
+          "canonical": "A LEFTSHIFT 1 use carry",
+          "compact": "LSH.UC A,1"
+        },
+        {
+          "canonical": "A LEFTSHIFT 1 keep and use carry",
+          "compact": "LSH.KUC A,1"
+        },
+        {
+          "canonical": "A RIGHTSHIFT B",
+          "compact": "RSH A,B"
+        },
+        {
+          "canonical": "A RIGHTSHIFT 1 use carry",
+          "compact": "RSH.UC A,1"
+        },
+        {
+          "canonical": "A RIGHTSHIFT 1 keep and use carry",
+          "compact": "RSH.KUC A,1"
+        },
+        {
+          "canonical": "A logical RIGHTSHIFT B",
+          "compact": "RSH.L A,B"
+        },
+        {
+          "canonical": "A logical RIGHTSHIFT 1 use carry",
+          "compact": "RSH.L.UC A,1"
+        },
+        {
+          "canonical": "A logical RIGHTSHIFT 1 keep and use carry",
+          "compact": "RSH.L.KUC A,1"
+        },
+        {
+          "canonical": "A LEFTROTATE B",
+          "compact": "LROT A,B"
+        },
+        {
+          "canonical": "X RIGHTROTATE Y",
+          "compact": "RROT X,Y"
+        }
+      ]
+    },
+    {
+      "name": "jumps",
+      "notes": [
+        "The base ISA does not define a compact unconditional relative jump."
+      ],
+      "examples": [
+        {
+          "canonical": "JUMP X",
+          "compact": "JMP X"
+        },
+        {
+          "canonical": "JUMP 0x001200",
+          "compact": "JMP 0x001200"
+        },
+        {
+          "canonical": "JUMP +8 when A EQUAL B",
+          "compact": "JMP.EQ A,B,+8"
+        },
+        {
+          "canonical": "JUMP -6 when C LESS than D",
+          "compact": "JMP.LT C,D,-6"
+        },
+        {
+          "canonical": "JUMP +20 when E BELOW F",
+          "compact": "JMP.BLW E,F,+20"
+        },
+        {
+          "canonical": "JUMP +10 when G CHECK H",
+          "compact": "JMP.CHK G,H,+10"
+        }
+      ]
+    },
+    {
+      "name": "short_program",
+      "examples": [
+        {
+          "compact": "SET A,10"
+        },
+        {
+          "compact": "SET B,3"
+        },
+        {
+          "compact": "PLUS.KC A,B"
+        },
+        {
+          "compact": "TIMES.U.KH A,B"
+        },
+        {
+          "compact": "TAKE C,[X+4]"
+        },
+        {
+          "compact": "AND C,A"
+        },
+        {
+          "compact": "RSH.L.KUC C,1"
+        },
+        {
+          "compact": "JMP.EQ A,B,+6"
+        },
+        {
+          "compact": "MOD.U A,B"
+        },
+        {
+          "compact": "ABS B"
+        },
+        {
+          "compact": "GIVE C,[0x00FF20]"
+        }
+      ]
+    }
+  ],
+  "files": [
+    "compact/memregoff.json",
+    "compact/memabs8.json",
+    "compact/memabs16.json",
+    "compact/memabs24.json",
+    "compact/movecopy.json",
+    "compact/stack.json",
+    "compact/flow.json",
+    "compact/system.json",
+    "compact/plus.json",
+    "compact/minus.json",
+    "compact/times.json",
+    "compact/div.json",
+    "compact/unary.json",
+    "compact/set.json",
+    "compact/logic.json",
+    "compact/bit.json",
+    "compact/minmax.json",
+    "compact/shift.json",
+    "compact/rotate.json",
+    "compact/jabs.json",
+    "compact/jreg.json",
+    "compact/jcond.json"
+  ]
+}

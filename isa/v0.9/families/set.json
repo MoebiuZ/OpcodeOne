@@ -1,0 +1,205 @@
+{
+  "name": "SET",
+  "opcode_ref": "SET",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "imm6",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "imm6",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "SET"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "imm",
+                "slot_kind": "operand",
+                "operand_kind_ref": "imm6_unsigned"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": "bit10=1",
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "F1",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "SZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 8,
+              "lsb": 6
+            },
+            {
+              "name": "IMM6",
+              "kind": "slot",
+              "source": "sequence.imm",
+              "msb": 5,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads an unsigned 6-bit immediate into dest, zero-extending when dest is reg24."
+      }
+    },
+    {
+      "name": "imm16",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "imm16",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "SET"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "imm",
+                "slot_kind": "operand",
+                "operand_kind_ref": "imm16_unsigned"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": "bit10=0 && bit9=1",
+      "encoding": {
+        "word_count": 2,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "F1",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "F0",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "SZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 7,
+              "lsb": 5
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 4,
+              "lsb": 0
+            }
+          ],
+          [
+            {
+              "name": "IMM16",
+              "kind": "slot",
+              "source": "sequence.imm",
+              "msb": 15,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Loads a raw 16-bit immediate into dest, zero-extending when dest is reg24."
+      }
+    }
+  ]
+}

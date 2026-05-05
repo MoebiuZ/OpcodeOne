@@ -1,0 +1,19 @@
+{
+  "name": "OpcodeOne",
+  "version": "0.9",
+  "date": "2024-05-13",
+  "author": "Antonio Rodríguez",
+  "license": "Apache License, Version 2.0",
+  "status": "authoritative-modular-source",
+  "word_bits": 16,
+  "address_bits": 24,
+  "endianness": "little",
+  "alignment": "none",
+  "notes": [
+    "This directory is the authoritative machine-readable source for the closed OpcodeOne ISA forms currently captured.",
+    "Canonical syntax only. Compact syntax is documented separately as a non-normative surface and remains outside the normative source set.",
+    "Numeric family opcode assignments are fixed in opcode_slots.json for the current closed v0.9 families.",
+    "Family and form JSON files follow a normalized structure intended to stay stable as the ISA grows."
+  ],
+  "source_layout": "modular"
+}

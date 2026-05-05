@@ -1,0 +1,41 @@
+{
+  "family": "SHIFT",
+  "entries": [
+    {
+      "form": "reg_count",
+      "pattern": "leftshift",
+      "template": "LSH[.KC] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "reg_count",
+      "pattern": "rightshift",
+      "template": "RSH[.KC] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "reg_count",
+      "pattern": "logical_rightshift",
+      "template": "RSH.L[.KC] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "carry_step",
+      "pattern": "leftshift",
+      "template": "LSH[.UC|.KUC] <dest>,1",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "carry_step",
+      "pattern": "rightshift",
+      "template": "RSH[.UC|.KUC] <dest>,1",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "carry_step",
+      "pattern": "logical_rightshift",
+      "template": "RSH.L[.UC|.KUC] <dest>,1",
+      "relation": "mnemonic-first-with-suffixes"
+    }
+  ]
+}

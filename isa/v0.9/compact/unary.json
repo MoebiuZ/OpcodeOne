@@ -1,0 +1,17 @@
+{
+  "family": "UNARY",
+  "entries": [
+    {
+      "form": "unary_reg",
+      "pattern": "negate",
+      "template": "NEG <dest>",
+      "relation": "mnemonic-shortened"
+    },
+    {
+      "form": "unary_reg",
+      "pattern": "absolute",
+      "template": "ABS <dest>",
+      "relation": "mnemonic-shortened"
+    }
+  ]
+}

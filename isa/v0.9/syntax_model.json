@@ -1,0 +1,42 @@
+{
+  "description": "Canonical ISA syntax is expressed as named patterns. Each pattern is an ordered sequence of literal and slot tokens, and named tokens emit the explicit inputs consumed by encoding.",
+  "normative_surface": "canonical",
+  "documented_non_normative_surfaces": [
+    {
+      "name": "compact",
+      "status": "documented-non-normative",
+      "notes": [
+        "Compact syntax is documented separately from the canonical syntax model.",
+        "It may be supported by tooling as an alternate assembly surface, but it is not part of the normative ISA contract."
+      ]
+    }
+  ],
+  "pattern_fields": [
+    "name",
+    "sequence"
+  ],
+  "token_kinds": [
+    "literal",
+    "slot"
+  ],
+  "slot_kinds": [
+    "operand",
+    "enum",
+    "keyword"
+  ],
+  "literal_token_fields": [
+    "kind",
+    "value",
+    "name"
+  ],
+  "slot_token_fields": [
+    "kind",
+    "name",
+    "slot_kind",
+    "operand_kind_ref",
+    "enum_ref",
+    "keyword_ref",
+    "optional",
+    "omit_keys"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "family": "PLUS",
+  "entries": [
+    {
+      "form": "reg_reg",
+      "pattern": "reg_reg",
+      "template": "PLUS[.KC|.UC|.KUC] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "imm6",
+      "pattern": "imm6",
+      "template": "PLUS <dest>,<imm>",
+      "relation": "mnemonic-first"
+    },
+    {
+      "form": "imm16",
+      "pattern": "imm16",
+      "template": "PLUS <dest>,<imm>",
+      "relation": "mnemonic-first"
+    }
+  ]
+}

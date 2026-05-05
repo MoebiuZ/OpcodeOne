@@ -1,0 +1,17 @@
+{
+  "family": "MEMABS8",
+  "entries": [
+    {
+      "form": "takeabs_byte",
+      "pattern": "takeabs_byte",
+      "template": "TAKE.B <dest>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    },
+    {
+      "form": "giveabs_byte",
+      "pattern": "giveabs_byte",
+      "template": "GIVE.B <src>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    }
+  ]
+}

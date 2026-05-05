@@ -1,0 +1,29 @@
+{
+  "family": "BIT",
+  "entries": [
+    {
+      "form": "bit_op",
+      "pattern": "testbit",
+      "template": "BTST <dest>,<bit>",
+      "relation": "mnemonic-shortened"
+    },
+    {
+      "form": "bit_op",
+      "pattern": "setbit",
+      "template": "BSET <dest>,<bit>",
+      "relation": "mnemonic-shortened"
+    },
+    {
+      "form": "bit_op",
+      "pattern": "clearbit",
+      "template": "BCLR <dest>,<bit>",
+      "relation": "mnemonic-shortened"
+    },
+    {
+      "form": "bit_op",
+      "pattern": "togglebit",
+      "template": "BTGL <dest>,<bit>",
+      "relation": "mnemonic-shortened"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "family": "DIV",
+  "entries": [
+    {
+      "form": "div_or_module",
+      "pattern": "div",
+      "template": "DIV[.U] <dest>,<src>",
+      "relation": "mnemonic-first-with-suffixes"
+    },
+    {
+      "form": "div_or_module",
+      "pattern": "module",
+      "template": "MOD[.U] <dest>,<src>",
+      "relation": "mnemonic-shortened-with-suffixes"
+    }
+  ]
+}

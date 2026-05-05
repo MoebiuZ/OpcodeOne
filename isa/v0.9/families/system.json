@@ -1,0 +1,237 @@
+{
+  "name": "SYSTEM",
+  "opcode_ref": "SYSTEM",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "pass",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "pass",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "No operation. Execution continues at the next instruction."
+      }
+    },
+    {
+      "name": "interruptions_on",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "interruptions_on",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "INTERRUPTIONS"
+              },
+              {
+                "kind": "literal",
+                "value": "on"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Enables maskable interruptions. Delivery and handler dispatch remain platform-defined."
+      }
+    },
+    {
+      "name": "stop",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "stop",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "STOP"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 9,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Stops execution. Post-stop behavior depends on the execution environment."
+      }
+    },
+    {
+      "name": "interruptions_off",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "interruptions_off",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "INTERRUPTIONS"
+              },
+              {
+                "kind": "literal",
+                "value": "off"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 10,
+              "lsb": 10
+            },
+            {
+              "name": "MODE",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 9,
+              "lsb": 9
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Disables maskable interruptions. Non-maskable events remain outside the base ISA contract."
+      }
+    }
+  ]
+}

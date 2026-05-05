@@ -1,0 +1,706 @@
+{
+  "name": "MOVECOPY",
+  "opcode_ref": "MOVECOPY",
+  "status": "closed",
+  "forms": [
+    {
+      "name": "copy_or_move",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              }
+            ]
+          },
+          {
+            "name": "move",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "MOVE",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "to"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {
+        "operation": {
+          "type": "enum_lookup",
+          "source": "sequence.operation",
+          "enum_ref": "movecopy_op"
+        },
+        "dst_width": {
+          "type": "width_flag",
+          "source": "sequence.dest",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        },
+        "src_width": {
+          "type": "width_flag",
+          "source": "sequence.src",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "slot",
+              "source": "derived.operation",
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DSTSZ",
+              "kind": "slot",
+              "source": "derived.dst_width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SRCSZ",
+              "kind": "slot",
+              "source": "derived.src_width",
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 3,
+              "lsb": 1
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 0,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies or moves src into dest, allowing reg16/reg24 width conversion by zero-extension or truncation."
+      }
+    },
+    {
+      "name": "swap",
+      "syntax": {
+        "style": "keyword",
+        "patterns": [
+          {
+            "name": "swap",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "SWAP",
+                "name": "operation"
+              },
+              {
+                "kind": "slot",
+                "name": "left",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "with"
+              },
+              {
+                "kind": "slot",
+                "name": "right",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg16_or_reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "same_width",
+          "operands": [
+            "left",
+            "right"
+          ]
+        }
+      ],
+      "defaults": {},
+      "derived_fields": {
+        "operation": {
+          "type": "enum_lookup",
+          "source": "sequence.operation",
+          "enum_ref": "movecopy_op"
+        },
+        "width": {
+          "type": "width_flag",
+          "source": "sequence.right",
+          "mapping": {
+            "reg16": 0,
+            "reg24": 1
+          }
+        }
+      },
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "slot",
+              "source": "derived.operation",
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DSTSZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SRCSZ",
+              "kind": "slot",
+              "source": "derived.width",
+              "msb": 7,
+              "lsb": 7
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.right",
+              "msb": 6,
+              "lsb": 4
+            },
+            {
+              "name": "RA",
+              "kind": "slot",
+              "source": "sequence.left",
+              "msb": 3,
+              "lsb": 1
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 0,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Swaps two registers of the same width."
+      }
+    },
+    {
+      "name": "copy_k_into_reg24",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy_k_into_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY"
+              },
+              {
+                "kind": "literal",
+                "value": "K"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 3,
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SPECIAL",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 6
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 5,
+              "lsb": 4
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 3,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies K into a reg24 destination."
+      }
+    },
+    {
+      "name": "copy_reg24_into_k",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy_reg24_into_k",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "literal",
+                "value": "K"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 3,
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SPECIAL",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 7,
+              "lsb": 6
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 5,
+              "lsb": 4
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 3,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies a reg24 source into K."
+      }
+    },
+    {
+      "name": "copy_sp_into_reg24",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy_sp_into_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY"
+              },
+              {
+                "kind": "literal",
+                "value": "SP"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 3,
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SPECIAL",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 6
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 5,
+              "lsb": 4
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 3,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies SP into a reg24 destination."
+      }
+    },
+    {
+      "name": "copy_reg24_into_sp",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy_reg24_into_sp",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY"
+              },
+              {
+                "kind": "slot",
+                "name": "src",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "literal",
+                "value": "SP"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 3,
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SPECIAL",
+              "kind": "fixed",
+              "value": 1,
+              "msb": 7,
+              "lsb": 6
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.src",
+              "msb": 5,
+              "lsb": 4
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 3,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies a reg24 source into SP."
+      }
+    },
+    {
+      "name": "copy_pc_into_reg24",
+      "syntax": {
+        "style": "mixed",
+        "patterns": [
+          {
+            "name": "copy_pc_into_reg24",
+            "sequence": [
+              {
+                "kind": "literal",
+                "value": "COPY"
+              },
+              {
+                "kind": "literal",
+                "value": "PC"
+              },
+              {
+                "kind": "literal",
+                "value": "into"
+              },
+              {
+                "kind": "slot",
+                "name": "dest",
+                "slot_kind": "operand",
+                "operand_kind_ref": "reg24"
+              }
+            ]
+          }
+        ]
+      },
+      "constraints": [],
+      "defaults": {},
+      "derived_fields": {},
+      "decode_rule": null,
+      "encoding": {
+        "word_count": 1,
+        "words": [
+          [
+            {
+              "name": "OPCODE",
+              "kind": "slot",
+              "source": "family_opcode",
+              "msb": 15,
+              "lsb": 11
+            },
+            {
+              "name": "OP",
+              "kind": "fixed",
+              "value": 3,
+              "msb": 10,
+              "lsb": 9
+            },
+            {
+              "name": "DIR",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 8,
+              "lsb": 8
+            },
+            {
+              "name": "SPECIAL",
+              "kind": "fixed",
+              "value": 2,
+              "msb": 7,
+              "lsb": 6
+            },
+            {
+              "name": "RB",
+              "kind": "slot",
+              "source": "sequence.dest",
+              "msb": 5,
+              "lsb": 4
+            },
+            {
+              "name": "RES",
+              "kind": "fixed",
+              "value": 0,
+              "msb": 3,
+              "lsb": 0
+            }
+          ]
+        ]
+      },
+      "semantics": {
+        "summary": "Copies PC into a reg24 destination."
+      }
+    }
+  ]
+}

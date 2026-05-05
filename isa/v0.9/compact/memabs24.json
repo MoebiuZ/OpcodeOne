@@ -1,0 +1,17 @@
+{
+  "family": "MEMABS24",
+  "entries": [
+    {
+      "form": "takeabs_reg24",
+      "pattern": "takeabs_reg24",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "giveabs_reg24",
+      "pattern": "giveabs_reg24",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "family": "MEMREGOFF",
+  "entries": [
+    {
+      "form": "take_indirect_byte",
+      "pattern": "take_indirect_byte",
+      "template": "TAKE.B <dest>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    },
+    {
+      "form": "take_indirect_reg16",
+      "pattern": "take_indirect_reg16",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "take_indirect_reg24",
+      "pattern": "take_indirect_reg24",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "take_regoff_byte",
+      "pattern": "take_regoff_byte",
+      "template": "TAKE.B <dest>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    },
+    {
+      "form": "take_regoff_reg16",
+      "pattern": "take_regoff_reg16",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "take_regoff_reg24",
+      "pattern": "take_regoff_reg24",
+      "template": "TAKE <dest>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "give_indirect_byte",
+      "pattern": "give_indirect_byte",
+      "template": "GIVE.B <src>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    },
+    {
+      "form": "give_indirect_reg16",
+      "pattern": "give_indirect_reg16",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "give_indirect_reg24",
+      "pattern": "give_indirect_reg24",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "give_regoff_byte",
+      "pattern": "give_regoff_byte",
+      "template": "GIVE.B <src>,<mem>",
+      "relation": "helper-words-elided-and-byte-folded"
+    },
+    {
+      "form": "give_regoff_reg16",
+      "pattern": "give_regoff_reg16",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    },
+    {
+      "form": "give_regoff_reg24",
+      "pattern": "give_regoff_reg24",
+      "template": "GIVE <src>,<mem>",
+      "relation": "helper-words-elided"
+    }
+  ]
+}

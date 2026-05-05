@@ -1,0 +1,80 @@
+{
+  "reg16": {
+    "width_bits": 16,
+    "members": [
+      {
+        "name": "A",
+        "code": 0
+      },
+      {
+        "name": "B",
+        "code": 1
+      },
+      {
+        "name": "C",
+        "code": 2
+      },
+      {
+        "name": "D",
+        "code": 3
+      },
+      {
+        "name": "E",
+        "code": 4
+      },
+      {
+        "name": "F",
+        "code": 5
+      },
+      {
+        "name": "G",
+        "code": 6
+      },
+      {
+        "name": "H",
+        "code": 7
+      }
+    ]
+  },
+  "reg24": {
+    "width_bits": 24,
+    "members": [
+      {
+        "name": "X",
+        "code": 0
+      },
+      {
+        "name": "Y",
+        "code": 1
+      },
+      {
+        "name": "Z",
+        "code": 2
+      },
+      {
+        "name": "W",
+        "code": 3
+      }
+    ]
+  },
+  "special": {
+    "members": [
+      {
+        "name": "K",
+        "width_bits": 24,
+        "role": "implicit_aux"
+      },
+      {
+        "name": "SP",
+        "width_bits": 24,
+        "role": "stack_pointer"
+      },
+      {
+        "name": "PC",
+        "width_bits": 24,
+        "role": "program_counter",
+        "explicit_read_via_movecopy": true
+      }
+    ]
+  }
+}
